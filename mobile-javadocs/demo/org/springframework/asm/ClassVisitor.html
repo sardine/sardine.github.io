@@ -1,0 +1,304 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width" />
+  <title>ClassVisitor</title>
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <h1>ClassVisitor</h1>
+
+  org.springframework.asm.ClassVisitor
+
+
+  <div id="test">
+    <input type="text" v-model="message">
+
+    <template v-for="m in matchedMethods" :key="m.sig">
+      <h3>{{ m.name }}</h3>
+      <pre><code>{{ m.mods }} {{ m.name }}(<template v-for="(p, pi) in m.params" :key="p.name"><template v-if="pi != 0">, </template>{{ p.type }}{{ p.dim }} {{ p.name }}</template>)</code></pre>
+      <div><p>{{ m.desc }}</p></div>
+    </template>
+  </div>
+
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script>
+  var app = new Vue({
+  el: '#test',
+  data: {
+    message: '',
+    methods: [
+              {
+          name: 'visit',
+          mods: 'public',
+          sig: 'visit(int, int, java.lang.String, java.lang.String, java.lang.String, java.lang.String[])',
+          desc: ''/*'Visits the header of the class.'*/,
+          params: [
+                          {
+                name: 'version',
+                dim: '',
+                type: 'int',
+              },
+                          {
+                name: 'access',
+                dim: '',
+                type: 'int',
+              },
+                          {
+                name: 'name',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'signature',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'superName',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'interfaces',
+                dim: '[]',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'visitSource',
+          mods: 'public',
+          sig: 'visitSource(java.lang.String, java.lang.String)',
+          desc: ''/*'Visits the source of the class.'*/,
+          params: [
+                          {
+                name: 'source',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'debug',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'visitOuterClass',
+          mods: 'public',
+          sig: 'visitOuterClass(java.lang.String, java.lang.String, java.lang.String)',
+          desc: ''/*'Visits the enclosing class of the class. This method must be called only
+ if the class has an enclosing class.'*/,
+          params: [
+                          {
+                name: 'owner',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'name',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'desc',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'visitAnnotation',
+          mods: 'public',
+          sig: 'visitAnnotation(java.lang.String, boolean)',
+          desc: ''/*'Visits an annotation of the class.'*/,
+          params: [
+                          {
+                name: 'desc',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'visible',
+                dim: '',
+                type: 'boolean',
+              },
+                      ]
+        },
+              {
+          name: 'visitTypeAnnotation',
+          mods: 'public',
+          sig: 'visitTypeAnnotation(int, org.springframework.asm.TypePath, java.lang.String, boolean)',
+          desc: ''/*'Visits an annotation on a type in the class signature.'*/,
+          params: [
+                          {
+                name: 'typeRef',
+                dim: '',
+                type: 'int',
+              },
+                          {
+                name: 'typePath',
+                dim: '',
+                type: 'TypePath',
+              },
+                          {
+                name: 'desc',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'visible',
+                dim: '',
+                type: 'boolean',
+              },
+                      ]
+        },
+              {
+          name: 'visitAttribute',
+          mods: 'public',
+          sig: 'visitAttribute(org.springframework.asm.Attribute)',
+          desc: ''/*'Visits a non standard attribute of the class.'*/,
+          params: [
+                          {
+                name: 'attr',
+                dim: '',
+                type: 'Attribute',
+              },
+                      ]
+        },
+              {
+          name: 'visitInnerClass',
+          mods: 'public',
+          sig: 'visitInnerClass(java.lang.String, java.lang.String, java.lang.String, int)',
+          desc: ''/*'Visits information about an inner class. This inner class is not
+ necessarily a member of the class being visited.'*/,
+          params: [
+                          {
+                name: 'name',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'outerName',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'innerName',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'access',
+                dim: '',
+                type: 'int',
+              },
+                      ]
+        },
+              {
+          name: 'visitField',
+          mods: 'public',
+          sig: 'visitField(int, java.lang.String, java.lang.String, java.lang.String, java.lang.Object)',
+          desc: ''/*'Visits a field of the class.'*/,
+          params: [
+                          {
+                name: 'access',
+                dim: '',
+                type: 'int',
+              },
+                          {
+                name: 'name',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'desc',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'signature',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'value',
+                dim: '',
+                type: 'Object',
+              },
+                      ]
+        },
+              {
+          name: 'visitMethod',
+          mods: 'public',
+          sig: 'visitMethod(int, java.lang.String, java.lang.String, java.lang.String, java.lang.String[])',
+          desc: ''/*'Visits a method of the class. This method <i>must</i> return a new
+ {@link MethodVisitor} instance (or <tt>null</tt>) each time it is called,
+ i.e., it should not return a previously returned visitor.'*/,
+          params: [
+                          {
+                name: 'access',
+                dim: '',
+                type: 'int',
+              },
+                          {
+                name: 'name',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'desc',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'signature',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'exceptions',
+                dim: '[]',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'visitEnd',
+          mods: 'public',
+          sig: 'visitEnd()',
+          desc: ''/*'Visits the end of the class. This method, which is the last one to be
+ called, is used to inform the visitor that all the fields and methods of
+ the class have been visited.'*/,
+          params: [
+                      ]
+        },
+          ]
+  },
+  methods: {
+    show: function() {
+      alert(this.message);
+    }
+  },
+  computed: {
+    up: function() {
+      return this.message.toUpperCase();
+    },
+    matchedMethods: function() {
+      var a = this;
+      return this.methods.filter(function(m) {
+        return m.name.toLowerCase().indexOf(a.message.toLowerCase()) !== -1;
+      });
+    }
+  }
+});  
+  </script>
+</body>
+</html>
+

@@ -1,0 +1,204 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width" />
+  <title>PropertiesLoaderSupport</title>
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <h1>PropertiesLoaderSupport</h1>
+
+  org.springframework.core.io.support.PropertiesLoaderSupport
+
+
+  <div id="test">
+    <input type="text" v-model="message">
+
+    <template v-for="m in matchedMethods" :key="m.sig">
+      <h3>{{ m.name }}</h3>
+      <pre><code>{{ m.mods }} {{ m.name }}(<template v-for="(p, pi) in m.params" :key="p.name"><template v-if="pi != 0">, </template>{{ p.type }}{{ p.dim }} {{ p.name }}</template>)</code></pre>
+      <div><p>{{ m.desc }}</p></div>
+    </template>
+  </div>
+
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script>
+  var app = new Vue({
+  el: '#test',
+  data: {
+    message: '',
+    methods: [
+              {
+          name: 'setProperties',
+          mods: 'public',
+          sig: 'setProperties(java.util.Properties)',
+          desc: ''/*'Set local properties, e.g. via the "props" tag in XML bean definitions.
+ These can be considered defaults, to be overridden by properties
+ loaded from files.'*/,
+          params: [
+                          {
+                name: 'properties',
+                dim: '',
+                type: 'Properties',
+              },
+                      ]
+        },
+              {
+          name: 'setPropertiesArray',
+          mods: 'public',
+          sig: 'setPropertiesArray(java.util.Properties[])',
+          desc: ''/*'Set local properties, e.g. via the "props" tag in XML bean definitions,
+ allowing for merging multiple properties sets into one.'*/,
+          params: [
+                          {
+                name: 'propertiesArray',
+                dim: '[]',
+                type: 'Properties',
+              },
+                      ]
+        },
+              {
+          name: 'setLocation',
+          mods: 'public',
+          sig: 'setLocation(org.springframework.core.io.Resource)',
+          desc: ''/*'Set a location of a properties file to be loaded.
+ <p>Can point to a classic properties file or to an XML file
+ that follows JDK 1.5's properties XML format.'*/,
+          params: [
+                          {
+                name: 'location',
+                dim: '',
+                type: 'Resource',
+              },
+                      ]
+        },
+              {
+          name: 'setLocations',
+          mods: 'public',
+          sig: 'setLocations(org.springframework.core.io.Resource[])',
+          desc: ''/*'Set locations of properties files to be loaded.
+ <p>Can point to classic properties files or to XML files
+ that follow JDK 1.5's properties XML format.
+ <p>Note: Properties defined in later files will override
+ properties defined earlier files, in case of overlapping keys.
+ Hence, make sure that the most specific files are the last
+ ones in the given list of locations.'*/,
+          params: [
+                          {
+                name: 'locations',
+                dim: '[]',
+                type: 'Resource',
+              },
+                      ]
+        },
+              {
+          name: 'setLocalOverride',
+          mods: 'public',
+          sig: 'setLocalOverride(boolean)',
+          desc: ''/*'Set whether local properties override properties from files.
+ <p>Default is "false": Properties from files override local defaults.
+ Can be switched to "true" to let local properties override defaults
+ from files.'*/,
+          params: [
+                          {
+                name: 'localOverride',
+                dim: '',
+                type: 'boolean',
+              },
+                      ]
+        },
+              {
+          name: 'setIgnoreResourceNotFound',
+          mods: 'public',
+          sig: 'setIgnoreResourceNotFound(boolean)',
+          desc: ''/*'Set if failure to find the property resource should be ignored.
+ <p>"true" is appropriate if the properties file is completely optional.
+ Default is "false".'*/,
+          params: [
+                          {
+                name: 'ignoreResourceNotFound',
+                dim: '',
+                type: 'boolean',
+              },
+                      ]
+        },
+              {
+          name: 'setFileEncoding',
+          mods: 'public',
+          sig: 'setFileEncoding(java.lang.String)',
+          desc: ''/*'Set the encoding to use for parsing properties files.
+ <p>Default is none, using the {@code java.util.Properties}
+ default encoding.
+ <p>Only applies to classic properties files, not to XML files.'*/,
+          params: [
+                          {
+                name: 'encoding',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'setPropertiesPersister',
+          mods: 'public',
+          sig: 'setPropertiesPersister(org.springframework.util.PropertiesPersister)',
+          desc: ''/*'Set the PropertiesPersister to use for parsing properties files.
+ The default is DefaultPropertiesPersister.'*/,
+          params: [
+                          {
+                name: 'propertiesPersister',
+                dim: '',
+                type: 'PropertiesPersister',
+              },
+                      ]
+        },
+              {
+          name: 'mergeProperties',
+          mods: 'protected',
+          sig: 'mergeProperties()',
+          desc: ''/*'Return a merged Properties instance containing both the
+ loaded properties and properties set on this FactoryBean.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'loadProperties',
+          mods: 'protected',
+          sig: 'loadProperties(java.util.Properties)',
+          desc: ''/*'Load properties into the given instance.'*/,
+          params: [
+                          {
+                name: 'props',
+                dim: '',
+                type: 'Properties',
+              },
+                      ]
+        },
+          ]
+  },
+  methods: {
+    show: function() {
+      alert(this.message);
+    }
+  },
+  computed: {
+    up: function() {
+      return this.message.toUpperCase();
+    },
+    matchedMethods: function() {
+      var a = this;
+      return this.methods.filter(function(m) {
+        return m.name.toLowerCase().indexOf(a.message.toLowerCase()) !== -1;
+      });
+    }
+  }
+});  
+  </script>
+</body>
+</html>
+

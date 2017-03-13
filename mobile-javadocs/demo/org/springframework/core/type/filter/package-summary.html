@@ -1,0 +1,184 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width" />
+  <title>org.springframework.core.type.filter</title>
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
+</head>
+
+<body>
+  <a class="button" href="../../../../../index.html">Index</a>
+  <hr>
+  
+  <h1>org.springframework.core.type.filter</h1>
+
+  <div id="test">
+    <input type="text" v-model="message">
+
+    <div v-if="matchedInterfaces.length != 0">
+        <h2>インタフェース</h2>
+        <dl>
+          <template v-for="c in matchedInterfaces" :key="c.name">
+            <dt><a v-bind:href="c.href">{{ c.name }}</a></dt>
+            <dd v-html="c.desc"></dd>
+          </template>
+        </dl>
+      </div>
+      
+      <div v-if="matchedClasses.length != 0">
+        <h2>クラス</h2>
+        <dl>
+          <template v-for="c in matchedClasses" :key="c.name">
+            <dt><a v-bind:href="c.href">{{ c.name }}</a></dt>
+            <dd v-html="c.desc"></dd>
+          </template>
+        </dl>
+      </div>
+        
+      <div v-if="matchedEnums.length != 0">
+        <h2>列挙型</h2>
+        <dl>
+          <template v-for="c in matchedEnums" :key="c.name">
+            <dt><a v-bind:href="c.href">{{ c.name }}</a></dt>
+            <dd v-html="c.desc"></dd>
+          </template>
+        </dl>
+      </div>
+        
+      <div v-if="matchedExceptions.length != 0">
+        <h2>例外</h2>
+        <dl>
+          <template v-for="c in matchedExceptions" :key="c.name">
+            <dt><a v-bind:href="c.href">{{ c.name }}</a></dt>
+            <dd v-html="c.desc"></dd>
+          </template>
+        </dl>
+      </div>
+        
+      <div v-if="matchedErrors.length != 0">
+        <h2>エラー</h2>
+        <dl>
+          <template v-for="c in matchedErrors" :key="c.name">
+            <dt><a v-bind:href="c.href">{{ c.name }}</a></dt>
+            <dd v-html="c.desc"></dd>
+          </template>
+        </dl>
+      </div>
+        
+      <div v-if="matchedAnnotations.length != 0">
+        <h2>アノテーション</h2>
+        <dl>
+          <template v-for="c in matchedAnnotations" :key="c.name">
+            <dt><a v-bind:href="c.href">{{ c.name }}</a></dt>
+            <dd v-html="c.desc"></dd>
+          </template>
+        </dl>
+      </div>
+      </div>
+  
+
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script>
+          var app = new Vue({
+        el: '#test',
+        data: {
+          message: '',
+          interfaces: [
+                          {
+                name: 'TypeFilter',
+                desc: 'Base interface for type filters using a\u000A org.springframework.core.type.classreading.MetadataReader.',
+                href: 'TypeFilter.html'
+              },
+                      ],
+          classes: [
+                          {
+                name: 'RegexPatternTypeFilter',
+                desc: 'A simple filter for matching a fully-qualified class name with a regex Pattern.',
+                href: 'RegexPatternTypeFilter.html'
+              },
+                          {
+                name: 'AssignableTypeFilter',
+                desc: 'A simple filter which matches classes that are assignable to a given type.',
+                href: 'AssignableTypeFilter.html'
+              },
+                          {
+                name: 'AspectJTypeFilter',
+                desc: 'Type filter that uses AspectJ type pattern for matching.',
+                href: 'AspectJTypeFilter.html'
+              },
+                          {
+                name: 'AnnotationTypeFilter',
+                desc: 'A simple filter which matches classes with a given annotation,\u000A checking inherited annotations as well.',
+                href: 'AnnotationTypeFilter.html'
+              },
+                          {
+                name: 'AbstractTypeHierarchyTraversingFilter',
+                desc: 'Type filter that is aware of traversing over hierarchy.',
+                href: 'AbstractTypeHierarchyTraversingFilter.html'
+              },
+                          {
+                name: 'AbstractClassTestingTypeFilter',
+                desc: 'Type filter that exposes a\u000A org.springframework.core.type.ClassMetadata object\u000A to subclasses, for class testing purposes.',
+                href: 'AbstractClassTestingTypeFilter.html'
+              },
+                      ],
+          enums: [
+                      ],
+          exceptions: [
+                      ],
+          errors: [
+                      ],
+          annotations: [
+                      ]
+        },
+        methods: {
+        },
+        computed: {
+          up: function() {
+            return this.message.toUpperCase();
+          },
+          matchedInterfaces: function() {
+            var a = this;
+            return this.interfaces.filter(function(c) {
+              return c.name.toLowerCase().indexOf(a.message.toLowerCase()) !== -1;
+            });
+          },
+          matchedClasses: function() {
+            var a = this;
+            return this.classes.filter(function(c) {
+              return c.name.toLowerCase().indexOf(a.message.toLowerCase()) !== -1;
+            });
+          },
+          matchedEnums: function() {
+            var a = this;
+            return this.enums.filter(function(c) {
+              return c.name.toLowerCase().indexOf(a.message.toLowerCase()) !== -1;
+            });
+          },
+          matchedExceptions: function() {
+            var a = this;
+            return this.exceptions.filter(function(c) {
+              return c.name.toLowerCase().indexOf(a.message.toLowerCase()) !== -1;
+            });
+          },
+          matchedErrors: function() {
+            var a = this;
+            return this.errors.filter(function(c) {
+              return c.name.toLowerCase().indexOf(a.message.toLowerCase()) !== -1;
+            });
+          },
+          matchedAnnotations: function() {
+            var a = this;
+            return this.annotations.filter(function(c) {
+              return c.name.toLowerCase().indexOf(a.message.toLowerCase()) !== -1;
+            });
+          }
+        }
+      });  
+      </script>
+</body>
+</html>
+

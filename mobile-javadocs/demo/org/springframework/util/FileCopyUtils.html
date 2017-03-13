@@ -1,0 +1,211 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width" />
+  <title>FileCopyUtils</title>
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <h1>FileCopyUtils</h1>
+
+  org.springframework.util.FileCopyUtils
+
+
+  <div id="test">
+    <input type="text" v-model="message">
+
+    <template v-for="m in matchedMethods" :key="m.sig">
+      <h3>{{ m.name }}</h3>
+      <pre><code>{{ m.mods }} {{ m.name }}(<template v-for="(p, pi) in m.params" :key="p.name"><template v-if="pi != 0">, </template>{{ p.type }}{{ p.dim }} {{ p.name }}</template>)</code></pre>
+      <div><p>{{ m.desc }}</p></div>
+    </template>
+  </div>
+
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script>
+  var app = new Vue({
+  el: '#test',
+  data: {
+    message: '',
+    methods: [
+              {
+          name: 'copy',
+          mods: 'public static',
+          sig: 'copy(java.io.File, java.io.File)',
+          desc: ''/*'Copy the contents of the given input File to the given output File.'*/,
+          params: [
+                          {
+                name: 'in',
+                dim: '',
+                type: 'File',
+              },
+                          {
+                name: 'out',
+                dim: '',
+                type: 'File',
+              },
+                      ]
+        },
+              {
+          name: 'copy',
+          mods: 'public static',
+          sig: 'copy(byte[], java.io.File)',
+          desc: ''/*'Copy the contents of the given byte array to the given output File.'*/,
+          params: [
+                          {
+                name: 'in',
+                dim: '[]',
+                type: 'byte',
+              },
+                          {
+                name: 'out',
+                dim: '',
+                type: 'File',
+              },
+                      ]
+        },
+              {
+          name: 'copyToByteArray',
+          mods: 'public static',
+          sig: 'copyToByteArray(java.io.File)',
+          desc: ''/*'Copy the contents of the given input File into a new byte array.'*/,
+          params: [
+                          {
+                name: 'in',
+                dim: '',
+                type: 'File',
+              },
+                      ]
+        },
+              {
+          name: 'copy',
+          mods: 'public static',
+          sig: 'copy(java.io.InputStream, java.io.OutputStream)',
+          desc: ''/*'Copy the contents of the given InputStream to the given OutputStream.
+ Closes both streams when done.'*/,
+          params: [
+                          {
+                name: 'in',
+                dim: '',
+                type: 'InputStream',
+              },
+                          {
+                name: 'out',
+                dim: '',
+                type: 'OutputStream',
+              },
+                      ]
+        },
+              {
+          name: 'copy',
+          mods: 'public static',
+          sig: 'copy(byte[], java.io.OutputStream)',
+          desc: ''/*'Copy the contents of the given byte array to the given OutputStream.
+ Closes the stream when done.'*/,
+          params: [
+                          {
+                name: 'in',
+                dim: '[]',
+                type: 'byte',
+              },
+                          {
+                name: 'out',
+                dim: '',
+                type: 'OutputStream',
+              },
+                      ]
+        },
+              {
+          name: 'copyToByteArray',
+          mods: 'public static',
+          sig: 'copyToByteArray(java.io.InputStream)',
+          desc: ''/*'Copy the contents of the given InputStream into a new byte array.
+ Closes the stream when done.'*/,
+          params: [
+                          {
+                name: 'in',
+                dim: '',
+                type: 'InputStream',
+              },
+                      ]
+        },
+              {
+          name: 'copy',
+          mods: 'public static',
+          sig: 'copy(java.io.Reader, java.io.Writer)',
+          desc: ''/*'Copy the contents of the given Reader to the given Writer.
+ Closes both when done.'*/,
+          params: [
+                          {
+                name: 'in',
+                dim: '',
+                type: 'Reader',
+              },
+                          {
+                name: 'out',
+                dim: '',
+                type: 'Writer',
+              },
+                      ]
+        },
+              {
+          name: 'copy',
+          mods: 'public static',
+          sig: 'copy(java.lang.String, java.io.Writer)',
+          desc: ''/*'Copy the contents of the given String to the given output Writer.
+ Closes the writer when done.'*/,
+          params: [
+                          {
+                name: 'in',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'out',
+                dim: '',
+                type: 'Writer',
+              },
+                      ]
+        },
+              {
+          name: 'copyToString',
+          mods: 'public static',
+          sig: 'copyToString(java.io.Reader)',
+          desc: ''/*'Copy the contents of the given Reader into a String.
+ Closes the reader when done.'*/,
+          params: [
+                          {
+                name: 'in',
+                dim: '',
+                type: 'Reader',
+              },
+                      ]
+        },
+          ]
+  },
+  methods: {
+    show: function() {
+      alert(this.message);
+    }
+  },
+  computed: {
+    up: function() {
+      return this.message.toUpperCase();
+    },
+    matchedMethods: function() {
+      var a = this;
+      return this.methods.filter(function(m) {
+        return m.name.toLowerCase().indexOf(a.message.toLowerCase()) !== -1;
+      });
+    }
+  }
+});  
+  </script>
+</body>
+</html>
+

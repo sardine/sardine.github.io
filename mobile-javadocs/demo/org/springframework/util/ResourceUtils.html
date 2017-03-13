@@ -1,0 +1,286 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width" />
+  <title>ResourceUtils</title>
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <h1>ResourceUtils</h1>
+
+  org.springframework.util.ResourceUtils
+
+
+  <div id="test">
+    <input type="text" v-model="message">
+
+    <template v-for="m in matchedMethods" :key="m.sig">
+      <h3>{{ m.name }}</h3>
+      <pre><code>{{ m.mods }} {{ m.name }}(<template v-for="(p, pi) in m.params" :key="p.name"><template v-if="pi != 0">, </template>{{ p.type }}{{ p.dim }} {{ p.name }}</template>)</code></pre>
+      <div><p>{{ m.desc }}</p></div>
+    </template>
+  </div>
+
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script>
+  var app = new Vue({
+  el: '#test',
+  data: {
+    message: '',
+    methods: [
+              {
+          name: 'isUrl',
+          mods: 'public static',
+          sig: 'isUrl(java.lang.String)',
+          desc: ''/*'Return whether the given resource location is a URL:
+ either a special "classpath" pseudo URL or a standard URL.'*/,
+          params: [
+                          {
+                name: 'resourceLocation',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'getURL',
+          mods: 'public static',
+          sig: 'getURL(java.lang.String)',
+          desc: ''/*'Resolve the given resource location to a {@code java.net.URL}.
+ <p>Does not check whether the URL actually exists; simply returns
+ the URL that the given location would correspond to.'*/,
+          params: [
+                          {
+                name: 'resourceLocation',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'getFile',
+          mods: 'public static',
+          sig: 'getFile(java.lang.String)',
+          desc: ''/*'Resolve the given resource location to a {@code java.io.File},
+ i.e. to a file in the file system.
+ <p>Does not check whether the file actually exists; simply returns
+ the File that the given location would correspond to.'*/,
+          params: [
+                          {
+                name: 'resourceLocation',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'getFile',
+          mods: 'public static',
+          sig: 'getFile(java.net.URL)',
+          desc: ''/*'Resolve the given resource URL to a {@code java.io.File},
+ i.e. to a file in the file system.'*/,
+          params: [
+                          {
+                name: 'resourceUrl',
+                dim: '',
+                type: 'URL',
+              },
+                      ]
+        },
+              {
+          name: 'getFile',
+          mods: 'public static',
+          sig: 'getFile(java.net.URL, java.lang.String)',
+          desc: ''/*'Resolve the given resource URL to a {@code java.io.File},
+ i.e. to a file in the file system.'*/,
+          params: [
+                          {
+                name: 'resourceUrl',
+                dim: '',
+                type: 'URL',
+              },
+                          {
+                name: 'description',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'getFile',
+          mods: 'public static',
+          sig: 'getFile(java.net.URI)',
+          desc: ''/*'Resolve the given resource URI to a {@code java.io.File},
+ i.e. to a file in the file system.'*/,
+          params: [
+                          {
+                name: 'resourceUri',
+                dim: '',
+                type: 'URI',
+              },
+                      ]
+        },
+              {
+          name: 'getFile',
+          mods: 'public static',
+          sig: 'getFile(java.net.URI, java.lang.String)',
+          desc: ''/*'Resolve the given resource URI to a {@code java.io.File},
+ i.e. to a file in the file system.'*/,
+          params: [
+                          {
+                name: 'resourceUri',
+                dim: '',
+                type: 'URI',
+              },
+                          {
+                name: 'description',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'isFileURL',
+          mods: 'public static',
+          sig: 'isFileURL(java.net.URL)',
+          desc: ''/*'Determine whether the given URL points to a resource in the file system,
+ that is, has protocol "file", "vfsfile" or "vfs".'*/,
+          params: [
+                          {
+                name: 'url',
+                dim: '',
+                type: 'URL',
+              },
+                      ]
+        },
+              {
+          name: 'isJarURL',
+          mods: 'public static',
+          sig: 'isJarURL(java.net.URL)',
+          desc: ''/*'Determine whether the given URL points to a resource in a jar file,
+ that is, has protocol "jar", "zip", "vfszip" or "wsjar".'*/,
+          params: [
+                          {
+                name: 'url',
+                dim: '',
+                type: 'URL',
+              },
+                      ]
+        },
+              {
+          name: 'isJarFileURL',
+          mods: 'public static',
+          sig: 'isJarFileURL(java.net.URL)',
+          desc: ''/*'Determine whether the given URL points to a jar file itself,
+ that is, has protocol "file" and ends with the ".jar" extension.'*/,
+          params: [
+                          {
+                name: 'url',
+                dim: '',
+                type: 'URL',
+              },
+                      ]
+        },
+              {
+          name: 'extractJarFileURL',
+          mods: 'public static',
+          sig: 'extractJarFileURL(java.net.URL)',
+          desc: ''/*'Extract the URL for the actual jar file from the given URL
+ (which may point to a resource in a jar file or to a jar file itself).'*/,
+          params: [
+                          {
+                name: 'jarUrl',
+                dim: '',
+                type: 'URL',
+              },
+                      ]
+        },
+              {
+          name: 'extractArchiveURL',
+          mods: 'public static',
+          sig: 'extractArchiveURL(java.net.URL)',
+          desc: ''/*'Extract the URL for the outermost archive from the given jar/war URL
+ (which may point to a resource in a jar file or to a jar file itself).
+ <p>In the case of a jar file nested within a war file, this will return
+ a URL to the war file since that is the one resolvable in the file system.'*/,
+          params: [
+                          {
+                name: 'jarUrl',
+                dim: '',
+                type: 'URL',
+              },
+                      ]
+        },
+              {
+          name: 'toURI',
+          mods: 'public static',
+          sig: 'toURI(java.net.URL)',
+          desc: ''/*'Create a URI instance for the given URL,
+ replacing spaces with "%20" URI encoding first.
+ <p>Furthermore, this method works on JDK 1.4 as well,
+ in contrast to the {@code URL.toURI()} method.'*/,
+          params: [
+                          {
+                name: 'url',
+                dim: '',
+                type: 'URL',
+              },
+                      ]
+        },
+              {
+          name: 'toURI',
+          mods: 'public static',
+          sig: 'toURI(java.lang.String)',
+          desc: ''/*'Create a URI instance for the given location String,
+ replacing spaces with "%20" URI encoding first.'*/,
+          params: [
+                          {
+                name: 'location',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'useCachesIfNecessary',
+          mods: 'public static',
+          sig: 'useCachesIfNecessary(java.net.URLConnection)',
+          desc: ''/*'Set the {@link URLConnection#setUseCaches "useCaches"} flag on the
+ given connection, preferring {@code false} but leaving the
+ flag at {@code true} for JNLP based resources.'*/,
+          params: [
+                          {
+                name: 'con',
+                dim: '',
+                type: 'URLConnection',
+              },
+                      ]
+        },
+          ]
+  },
+  methods: {
+    show: function() {
+      alert(this.message);
+    }
+  },
+  computed: {
+    up: function() {
+      return this.message.toUpperCase();
+    },
+    matchedMethods: function() {
+      var a = this;
+      return this.methods.filter(function(m) {
+        return m.name.toLowerCase().indexOf(a.message.toLowerCase()) !== -1;
+      });
+    }
+  }
+});  
+  </script>
+</body>
+</html>
+

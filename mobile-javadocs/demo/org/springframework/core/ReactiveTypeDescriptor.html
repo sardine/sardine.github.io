@@ -1,0 +1,191 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width" />
+  <title>ReactiveTypeDescriptor</title>
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <h1>ReactiveTypeDescriptor</h1>
+
+  org.springframework.core.ReactiveTypeDescriptor
+
+
+  <div id="test">
+    <input type="text" v-model="message">
+
+    <template v-for="m in matchedMethods" :key="m.sig">
+      <h3>{{ m.name }}</h3>
+      <pre><code>{{ m.mods }} {{ m.name }}(<template v-for="(p, pi) in m.params" :key="p.name"><template v-if="pi != 0">, </template>{{ p.type }}{{ p.dim }} {{ p.name }}</template>)</code></pre>
+      <div><p>{{ m.desc }}</p></div>
+    </template>
+  </div>
+
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script>
+  var app = new Vue({
+  el: '#test',
+  data: {
+    message: '',
+    methods: [
+              {
+          name: 'getReactiveType',
+          mods: 'public',
+          sig: 'getReactiveType()',
+          desc: ''/*'Return the reactive type the descriptor was created for.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'getEmptyValue',
+          mods: 'public',
+          sig: 'getEmptyValue()',
+          desc: ''/*'Return an empty-value instance for the underlying reactive or async type.
+ Use of this type implies {@link #supportsEmpty()} is true.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'isMultiValue',
+          mods: 'public',
+          sig: 'isMultiValue()',
+          desc: ''/*'Return {@code true} if the reactive type can produce more than 1 value
+ can be produced and is therefore a good fit to adapt to {@code Flux}.
+ A {@code false} return value implies the reactive type can produce 1
+ value at most and is therefore a good fit to adapt to {@code Mono}.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'supportsEmpty',
+          mods: 'public',
+          sig: 'supportsEmpty()',
+          desc: ''/*'Return {@code true} if the reactive type can complete with no values.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'isNoValue',
+          mods: 'public',
+          sig: 'isNoValue()',
+          desc: ''/*'Return {@code true} if the reactive type does not produce any values and
+ only provides completion and error signals.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'equals',
+          mods: 'public',
+          sig: 'equals(java.lang.Object)',
+          desc: ''/*''*/,
+          params: [
+                          {
+                name: 'other',
+                dim: '',
+                type: 'Object',
+              },
+                      ]
+        },
+              {
+          name: 'hashCode',
+          mods: 'public',
+          sig: 'hashCode()',
+          desc: ''/*''*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'multiValue',
+          mods: 'public static',
+          sig: 'multiValue(java.lang.Class, java.util.function.Supplier)',
+          desc: ''/*'Descriptor for a reactive type that can produce 0..N values.'*/,
+          params: [
+                          {
+                name: 'type',
+                dim: '',
+                type: 'Class',
+              },
+                          {
+                name: 'emptySupplier',
+                dim: '',
+                type: 'Supplier',
+              },
+                      ]
+        },
+              {
+          name: 'singleOptionalValue',
+          mods: 'public static',
+          sig: 'singleOptionalValue(java.lang.Class, java.util.function.Supplier)',
+          desc: ''/*'Descriptor for a reactive type that can produce 0..1 values.'*/,
+          params: [
+                          {
+                name: 'type',
+                dim: '',
+                type: 'Class',
+              },
+                          {
+                name: 'emptySupplier',
+                dim: '',
+                type: 'Supplier',
+              },
+                      ]
+        },
+              {
+          name: 'singleRequiredValue',
+          mods: 'public static',
+          sig: 'singleRequiredValue(java.lang.Class)',
+          desc: ''/*'Descriptor for a reactive type that must produce 1 value to complete.'*/,
+          params: [
+                          {
+                name: 'type',
+                dim: '',
+                type: 'Class',
+              },
+                      ]
+        },
+              {
+          name: 'noValue',
+          mods: 'public static',
+          sig: 'noValue(java.lang.Class, java.util.function.Supplier)',
+          desc: ''/*'Descriptor for a reactive type that does not produce any values.'*/,
+          params: [
+                          {
+                name: 'type',
+                dim: '',
+                type: 'Class',
+              },
+                          {
+                name: 'emptySupplier',
+                dim: '',
+                type: 'Supplier',
+              },
+                      ]
+        },
+          ]
+  },
+  methods: {
+    show: function() {
+      alert(this.message);
+    }
+  },
+  computed: {
+    up: function() {
+      return this.message.toUpperCase();
+    },
+    matchedMethods: function() {
+      var a = this;
+      return this.methods.filter(function(m) {
+        return m.name.toLowerCase().indexOf(a.message.toLowerCase()) !== -1;
+      });
+    }
+  }
+});  
+  </script>
+</body>
+</html>
+

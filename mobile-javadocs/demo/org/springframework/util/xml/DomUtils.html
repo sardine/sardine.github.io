@@ -1,0 +1,196 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width" />
+  <title>DomUtils</title>
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <h1>DomUtils</h1>
+
+  org.springframework.util.xml.DomUtils
+
+
+  <div id="test">
+    <input type="text" v-model="message">
+
+    <template v-for="m in matchedMethods" :key="m.sig">
+      <h3>{{ m.name }}</h3>
+      <pre><code>{{ m.mods }} {{ m.name }}(<template v-for="(p, pi) in m.params" :key="p.name"><template v-if="pi != 0">, </template>{{ p.type }}{{ p.dim }} {{ p.name }}</template>)</code></pre>
+      <div><p>{{ m.desc }}</p></div>
+    </template>
+  </div>
+
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script>
+  var app = new Vue({
+  el: '#test',
+  data: {
+    message: '',
+    methods: [
+              {
+          name: 'getChildElementsByTagName',
+          mods: 'public static',
+          sig: 'getChildElementsByTagName(org.w3c.dom.Element, java.lang.String[])',
+          desc: ''/*'Retrieves all child elements of the given DOM element that match any of the given element names.
+ Only looks at the direct child level of the given element; do not go into further depth
+ (in contrast to the DOM API's {@code getElementsByTagName} method).'*/,
+          params: [
+                          {
+                name: 'ele',
+                dim: '',
+                type: 'Element',
+              },
+                          {
+                name: 'childEleNames',
+                dim: '[]',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'getChildElementsByTagName',
+          mods: 'public static',
+          sig: 'getChildElementsByTagName(org.w3c.dom.Element, java.lang.String)',
+          desc: ''/*'Retrieves all child elements of the given DOM element that match the given element name.
+ Only look at the direct child level of the given element; do not go into further depth
+ (in contrast to the DOM API's {@code getElementsByTagName} method).'*/,
+          params: [
+                          {
+                name: 'ele',
+                dim: '',
+                type: 'Element',
+              },
+                          {
+                name: 'childEleName',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'getChildElementByTagName',
+          mods: 'public static',
+          sig: 'getChildElementByTagName(org.w3c.dom.Element, java.lang.String)',
+          desc: ''/*'Utility method that returns the first child element identified by its name.'*/,
+          params: [
+                          {
+                name: 'ele',
+                dim: '',
+                type: 'Element',
+              },
+                          {
+                name: 'childEleName',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'getChildElementValueByTagName',
+          mods: 'public static',
+          sig: 'getChildElementValueByTagName(org.w3c.dom.Element, java.lang.String)',
+          desc: ''/*'Utility method that returns the first child element value identified by its name.'*/,
+          params: [
+                          {
+                name: 'ele',
+                dim: '',
+                type: 'Element',
+              },
+                          {
+                name: 'childEleName',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'getChildElements',
+          mods: 'public static',
+          sig: 'getChildElements(org.w3c.dom.Element)',
+          desc: ''/*'Retrieves all child elements of the given DOM element'*/,
+          params: [
+                          {
+                name: 'ele',
+                dim: '',
+                type: 'Element',
+              },
+                      ]
+        },
+              {
+          name: 'getTextValue',
+          mods: 'public static',
+          sig: 'getTextValue(org.w3c.dom.Element)',
+          desc: ''/*'Extracts the text value from the given DOM element, ignoring XML comments.
+ <p>Appends all CharacterData nodes and EntityReference nodes into a single
+ String value, excluding Comment nodes. Only exposes actual user-specified
+ text, no default values of any kind.'*/,
+          params: [
+                          {
+                name: 'valueEle',
+                dim: '',
+                type: 'Element',
+              },
+                      ]
+        },
+              {
+          name: 'nodeNameEquals',
+          mods: 'public static',
+          sig: 'nodeNameEquals(org.w3c.dom.Node, java.lang.String)',
+          desc: ''/*'Namespace-aware equals comparison. Returns {@code true} if either
+ {@link Node#getLocalName} or {@link Node#getNodeName} equals
+ {@code desiredName}, otherwise returns {@code false}.'*/,
+          params: [
+                          {
+                name: 'node',
+                dim: '',
+                type: 'Node',
+              },
+                          {
+                name: 'desiredName',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'createContentHandler',
+          mods: 'public static',
+          sig: 'createContentHandler(org.w3c.dom.Node)',
+          desc: ''/*'Returns a SAX {@code ContentHandler} that transforms callback calls to DOM {@code Node}s.'*/,
+          params: [
+                          {
+                name: 'node',
+                dim: '',
+                type: 'Node',
+              },
+                      ]
+        },
+          ]
+  },
+  methods: {
+    show: function() {
+      alert(this.message);
+    }
+  },
+  computed: {
+    up: function() {
+      return this.message.toUpperCase();
+    },
+    matchedMethods: function() {
+      var a = this;
+      return this.methods.filter(function(m) {
+        return m.name.toLowerCase().indexOf(a.message.toLowerCase()) !== -1;
+      });
+    }
+  }
+});  
+  </script>
+</body>
+</html>
+

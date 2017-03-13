@@ -1,0 +1,152 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width" />
+  <title>ExponentialBackOff</title>
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <h1>ExponentialBackOff</h1>
+
+  org.springframework.util.backoff.ExponentialBackOff
+
+
+  <div id="test">
+    <input type="text" v-model="message">
+
+    <template v-for="m in matchedMethods" :key="m.sig">
+      <h3>{{ m.name }}</h3>
+      <pre><code>{{ m.mods }} {{ m.name }}(<template v-for="(p, pi) in m.params" :key="p.name"><template v-if="pi != 0">, </template>{{ p.type }}{{ p.dim }} {{ p.name }}</template>)</code></pre>
+      <div><p>{{ m.desc }}</p></div>
+    </template>
+  </div>
+
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script>
+  var app = new Vue({
+  el: '#test',
+  data: {
+    message: '',
+    methods: [
+              {
+          name: 'setInitialInterval',
+          mods: 'public',
+          sig: 'setInitialInterval(long)',
+          desc: ''/*'The initial interval in milliseconds.'*/,
+          params: [
+                          {
+                name: 'initialInterval',
+                dim: '',
+                type: 'long',
+              },
+                      ]
+        },
+              {
+          name: 'getInitialInterval',
+          mods: 'public',
+          sig: 'getInitialInterval()',
+          desc: ''/*'Return the initial interval in milliseconds.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'setMultiplier',
+          mods: 'public',
+          sig: 'setMultiplier(double)',
+          desc: ''/*'The value to multiply the current interval by for each retry attempt.'*/,
+          params: [
+                          {
+                name: 'multiplier',
+                dim: '',
+                type: 'double',
+              },
+                      ]
+        },
+              {
+          name: 'getMultiplier',
+          mods: 'public',
+          sig: 'getMultiplier()',
+          desc: ''/*'Return the value to multiply the current interval by for each retry attempt.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'setMaxInterval',
+          mods: 'public',
+          sig: 'setMaxInterval(long)',
+          desc: ''/*'The maximum back off time.'*/,
+          params: [
+                          {
+                name: 'maxInterval',
+                dim: '',
+                type: 'long',
+              },
+                      ]
+        },
+              {
+          name: 'getMaxInterval',
+          mods: 'public',
+          sig: 'getMaxInterval()',
+          desc: ''/*'Return the maximum back off time.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'setMaxElapsedTime',
+          mods: 'public',
+          sig: 'setMaxElapsedTime(long)',
+          desc: ''/*'The maximum elapsed time in milliseconds after which a call to
+ {@link BackOffExecution#nextBackOff()} returns {@link BackOffExecution#STOP}.'*/,
+          params: [
+                          {
+                name: 'maxElapsedTime',
+                dim: '',
+                type: 'long',
+              },
+                      ]
+        },
+              {
+          name: 'getMaxElapsedTime',
+          mods: 'public',
+          sig: 'getMaxElapsedTime()',
+          desc: ''/*'Return the maximum elapsed time in milliseconds after which a call to
+ {@link BackOffExecution#nextBackOff()} returns {@link BackOffExecution#STOP}.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'start',
+          mods: 'public',
+          sig: 'start()',
+          desc: ''/*''*/,
+          params: [
+                      ]
+        },
+          ]
+  },
+  methods: {
+    show: function() {
+      alert(this.message);
+    }
+  },
+  computed: {
+    up: function() {
+      return this.message.toUpperCase();
+    },
+    matchedMethods: function() {
+      var a = this;
+      return this.methods.filter(function(m) {
+        return m.name.toLowerCase().indexOf(a.message.toLowerCase()) !== -1;
+      });
+    }
+  }
+});  
+  </script>
+</body>
+</html>
+

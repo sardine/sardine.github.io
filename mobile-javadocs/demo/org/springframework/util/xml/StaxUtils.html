@@ -1,0 +1,353 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width" />
+  <title>StaxUtils</title>
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <h1>StaxUtils</h1>
+
+  org.springframework.util.xml.StaxUtils
+
+
+  <div id="test">
+    <input type="text" v-model="message">
+
+    <template v-for="m in matchedMethods" :key="m.sig">
+      <h3>{{ m.name }}</h3>
+      <pre><code>{{ m.mods }} {{ m.name }}(<template v-for="(p, pi) in m.params" :key="p.name"><template v-if="pi != 0">, </template>{{ p.type }}{{ p.dim }} {{ p.name }}</template>)</code></pre>
+      <div><p>{{ m.desc }}</p></div>
+    </template>
+  </div>
+
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script>
+  var app = new Vue({
+  el: '#test',
+  data: {
+    message: '',
+    methods: [
+              {
+          name: 'createStaxSource',
+          mods: 'public static',
+          sig: 'createStaxSource(javax.xml.stream.XMLStreamReader)',
+          desc: ''/*'Create a JAXP 1.4 {@link StAXSource} for the given {@link XMLStreamReader}.'*/,
+          params: [
+                          {
+                name: 'streamReader',
+                dim: '',
+                type: 'XMLStreamReader',
+              },
+                      ]
+        },
+              {
+          name: 'createStaxSource',
+          mods: 'public static',
+          sig: 'createStaxSource(javax.xml.stream.XMLEventReader)',
+          desc: ''/*'Create a JAXP 1.4 a {@link StAXSource} for the given {@link XMLEventReader}.'*/,
+          params: [
+                          {
+                name: 'eventReader',
+                dim: '',
+                type: 'XMLEventReader',
+              },
+                      ]
+        },
+              {
+          name: 'createCustomStaxSource',
+          mods: 'public static',
+          sig: 'createCustomStaxSource(javax.xml.stream.XMLStreamReader)',
+          desc: ''/*'Create a custom, non-JAXP 1.4 StAX {@link Source} for the given {@link XMLStreamReader}.'*/,
+          params: [
+                          {
+                name: 'streamReader',
+                dim: '',
+                type: 'XMLStreamReader',
+              },
+                      ]
+        },
+              {
+          name: 'createCustomStaxSource',
+          mods: 'public static',
+          sig: 'createCustomStaxSource(javax.xml.stream.XMLEventReader)',
+          desc: ''/*'Create a custom, non-JAXP 1.4 StAX {@link Source} for the given {@link XMLEventReader}.'*/,
+          params: [
+                          {
+                name: 'eventReader',
+                dim: '',
+                type: 'XMLEventReader',
+              },
+                      ]
+        },
+              {
+          name: 'isStaxSource',
+          mods: 'public static',
+          sig: 'isStaxSource(javax.xml.transform.Source)',
+          desc: ''/*'Indicate whether the given {@link Source} is a JAXP 1.4 StAX Source or
+ custom StAX Source.'*/,
+          params: [
+                          {
+                name: 'source',
+                dim: '',
+                type: 'Source',
+              },
+                      ]
+        },
+              {
+          name: 'getXMLStreamReader',
+          mods: 'public static',
+          sig: 'getXMLStreamReader(javax.xml.transform.Source)',
+          desc: ''/*'Return the {@link XMLStreamReader} for the given StAX Source.'*/,
+          params: [
+                          {
+                name: 'source',
+                dim: '',
+                type: 'Source',
+              },
+                      ]
+        },
+              {
+          name: 'getXMLEventReader',
+          mods: 'public static',
+          sig: 'getXMLEventReader(javax.xml.transform.Source)',
+          desc: ''/*'Return the {@link XMLEventReader} for the given StAX Source.'*/,
+          params: [
+                          {
+                name: 'source',
+                dim: '',
+                type: 'Source',
+              },
+                      ]
+        },
+              {
+          name: 'createStaxResult',
+          mods: 'public static',
+          sig: 'createStaxResult(javax.xml.stream.XMLStreamWriter)',
+          desc: ''/*'Create a JAXP 1.4 {@link StAXResult} for the given {@link XMLStreamWriter}.'*/,
+          params: [
+                          {
+                name: 'streamWriter',
+                dim: '',
+                type: 'XMLStreamWriter',
+              },
+                      ]
+        },
+              {
+          name: 'createStaxResult',
+          mods: 'public static',
+          sig: 'createStaxResult(javax.xml.stream.XMLEventWriter)',
+          desc: ''/*'Create a JAXP 1.4 {@link StAXResult} for the given {@link XMLEventWriter}.'*/,
+          params: [
+                          {
+                name: 'eventWriter',
+                dim: '',
+                type: 'XMLEventWriter',
+              },
+                      ]
+        },
+              {
+          name: 'createCustomStaxResult',
+          mods: 'public static',
+          sig: 'createCustomStaxResult(javax.xml.stream.XMLStreamWriter)',
+          desc: ''/*'Create a custom, non-JAXP 1.4 StAX {@link Result} for the given {@link XMLStreamWriter}.'*/,
+          params: [
+                          {
+                name: 'streamWriter',
+                dim: '',
+                type: 'XMLStreamWriter',
+              },
+                      ]
+        },
+              {
+          name: 'createCustomStaxResult',
+          mods: 'public static',
+          sig: 'createCustomStaxResult(javax.xml.stream.XMLEventWriter)',
+          desc: ''/*'Create a custom, non-JAXP 1.4 StAX {@link Result} for the given {@link XMLEventWriter}.'*/,
+          params: [
+                          {
+                name: 'eventWriter',
+                dim: '',
+                type: 'XMLEventWriter',
+              },
+                      ]
+        },
+              {
+          name: 'isStaxResult',
+          mods: 'public static',
+          sig: 'isStaxResult(javax.xml.transform.Result)',
+          desc: ''/*'Indicate whether the given {@link Result} is a JAXP 1.4 StAX Result or
+ custom StAX Result.'*/,
+          params: [
+                          {
+                name: 'result',
+                dim: '',
+                type: 'Result',
+              },
+                      ]
+        },
+              {
+          name: 'getXMLStreamWriter',
+          mods: 'public static',
+          sig: 'getXMLStreamWriter(javax.xml.transform.Result)',
+          desc: ''/*'Return the {@link XMLStreamWriter} for the given StAX Result.'*/,
+          params: [
+                          {
+                name: 'result',
+                dim: '',
+                type: 'Result',
+              },
+                      ]
+        },
+              {
+          name: 'getXMLEventWriter',
+          mods: 'public static',
+          sig: 'getXMLEventWriter(javax.xml.transform.Result)',
+          desc: ''/*'Return the {@link XMLEventWriter} for the given StAX Result.'*/,
+          params: [
+                          {
+                name: 'result',
+                dim: '',
+                type: 'Result',
+              },
+                      ]
+        },
+              {
+          name: 'createXMLEventReader',
+          mods: 'public static',
+          sig: 'createXMLEventReader(java.util.List)',
+          desc: ''/*'Create a {@link XMLEventReader} from the given list of {@link XMLEvent}.'*/,
+          params: [
+                          {
+                name: 'events',
+                dim: '',
+                type: 'List',
+              },
+                      ]
+        },
+              {
+          name: 'createContentHandler',
+          mods: 'public static',
+          sig: 'createContentHandler(javax.xml.stream.XMLStreamWriter)',
+          desc: ''/*'Create a SAX {@link ContentHandler} that writes to the given StAX {@link XMLStreamWriter}.'*/,
+          params: [
+                          {
+                name: 'streamWriter',
+                dim: '',
+                type: 'XMLStreamWriter',
+              },
+                      ]
+        },
+              {
+          name: 'createContentHandler',
+          mods: 'public static',
+          sig: 'createContentHandler(javax.xml.stream.XMLEventWriter)',
+          desc: ''/*'Create a SAX {@link ContentHandler} that writes events to the given StAX {@link XMLEventWriter}.'*/,
+          params: [
+                          {
+                name: 'eventWriter',
+                dim: '',
+                type: 'XMLEventWriter',
+              },
+                      ]
+        },
+              {
+          name: 'createXMLReader',
+          mods: 'public static',
+          sig: 'createXMLReader(javax.xml.stream.XMLStreamReader)',
+          desc: ''/*'Create a SAX {@link XMLReader} that reads from the given StAX {@link XMLStreamReader}.'*/,
+          params: [
+                          {
+                name: 'streamReader',
+                dim: '',
+                type: 'XMLStreamReader',
+              },
+                      ]
+        },
+              {
+          name: 'createXMLReader',
+          mods: 'public static',
+          sig: 'createXMLReader(javax.xml.stream.XMLEventReader)',
+          desc: ''/*'Create a SAX {@link XMLReader} that reads from the given StAX {@link XMLEventReader}.'*/,
+          params: [
+                          {
+                name: 'eventReader',
+                dim: '',
+                type: 'XMLEventReader',
+              },
+                      ]
+        },
+              {
+          name: 'createEventStreamReader',
+          mods: 'public static',
+          sig: 'createEventStreamReader(javax.xml.stream.XMLEventReader)',
+          desc: ''/*'Return a {@link XMLStreamReader} that reads from a {@link XMLEventReader}.
+ Useful because the StAX {@code XMLInputFactory} allows one to create an
+ event reader from a stream reader, but not vice-versa.'*/,
+          params: [
+                          {
+                name: 'eventReader',
+                dim: '',
+                type: 'XMLEventReader',
+              },
+                      ]
+        },
+              {
+          name: 'createEventStreamWriter',
+          mods: 'public static',
+          sig: 'createEventStreamWriter(javax.xml.stream.XMLEventWriter)',
+          desc: ''/*'Return a {@link XMLStreamWriter} that writes to a {@link XMLEventWriter}.'*/,
+          params: [
+                          {
+                name: 'eventWriter',
+                dim: '',
+                type: 'XMLEventWriter',
+              },
+                      ]
+        },
+              {
+          name: 'createEventStreamWriter',
+          mods: 'public static',
+          sig: 'createEventStreamWriter(javax.xml.stream.XMLEventWriter, javax.xml.stream.XMLEventFactory)',
+          desc: ''/*'Return a {@link XMLStreamWriter} that writes to a {@link XMLEventWriter}.'*/,
+          params: [
+                          {
+                name: 'eventWriter',
+                dim: '',
+                type: 'XMLEventWriter',
+              },
+                          {
+                name: 'eventFactory',
+                dim: '',
+                type: 'XMLEventFactory',
+              },
+                      ]
+        },
+          ]
+  },
+  methods: {
+    show: function() {
+      alert(this.message);
+    }
+  },
+  computed: {
+    up: function() {
+      return this.message.toUpperCase();
+    },
+    matchedMethods: function() {
+      var a = this;
+      return this.methods.filter(function(m) {
+        return m.name.toLowerCase().indexOf(a.message.toLowerCase()) !== -1;
+      });
+    }
+  }
+});  
+  </script>
+</body>
+</html>
+

@@ -1,0 +1,495 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width" />
+  <title>MethodParameter</title>
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <h1>MethodParameter</h1>
+
+  org.springframework.core.MethodParameter
+
+
+  <div id="test">
+    <input type="text" v-model="message">
+
+    <template v-for="m in matchedMethods" :key="m.sig">
+      <h3>{{ m.name }}</h3>
+      <pre><code>{{ m.mods }} {{ m.name }}(<template v-for="(p, pi) in m.params" :key="p.name"><template v-if="pi != 0">, </template>{{ p.type }}{{ p.dim }} {{ p.name }}</template>)</code></pre>
+      <div><p>{{ m.desc }}</p></div>
+    </template>
+  </div>
+
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script>
+  var app = new Vue({
+  el: '#test',
+  data: {
+    message: '',
+    methods: [
+              {
+          name: 'getMethod',
+          mods: 'public',
+          sig: 'getMethod()',
+          desc: ''/*'Return the wrapped Method, if any.
+ <p>Note: Either Method or Constructor is available.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'getConstructor',
+          mods: 'public',
+          sig: 'getConstructor()',
+          desc: ''/*'Return the wrapped Constructor, if any.
+ <p>Note: Either Method or Constructor is available.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'getDeclaringClass',
+          mods: 'public',
+          sig: 'getDeclaringClass()',
+          desc: ''/*'Return the class that declares the underlying Method or Constructor.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'getMember',
+          mods: 'public',
+          sig: 'getMember()',
+          desc: ''/*'Return the wrapped member.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'getAnnotatedElement',
+          mods: 'public',
+          sig: 'getAnnotatedElement()',
+          desc: ''/*'Return the wrapped annotated element.
+ <p>Note: This method exposes the annotations declared on the method/constructor
+ itself (i.e. at the method/constructor level, not at the parameter level).'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'getExecutable',
+          mods: 'public',
+          sig: 'getExecutable()',
+          desc: ''/*'Return the wrapped executable.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'getParameter',
+          mods: 'public',
+          sig: 'getParameter()',
+          desc: ''/*'Return the {@link Parameter} descriptor for method/constructor parameter.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'getParameterIndex',
+          mods: 'public',
+          sig: 'getParameterIndex()',
+          desc: ''/*'Return the index of the method/constructor parameter.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'increaseNestingLevel',
+          mods: 'public',
+          sig: 'increaseNestingLevel()',
+          desc: ''/*'Increase this parameter's nesting level.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'decreaseNestingLevel',
+          mods: 'public',
+          sig: 'decreaseNestingLevel()',
+          desc: ''/*'Decrease this parameter's nesting level.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'getNestingLevel',
+          mods: 'public',
+          sig: 'getNestingLevel()',
+          desc: ''/*'Return the nesting level of the target type
+ (typically 1; e.g. in case of a List of Lists, 1 would indicate the
+ nested List, whereas 2 would indicate the element of the nested List).'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'setTypeIndexForCurrentLevel',
+          mods: 'public',
+          sig: 'setTypeIndexForCurrentLevel(int)',
+          desc: ''/*'Set the type index for the current nesting level.'*/,
+          params: [
+                          {
+                name: 'typeIndex',
+                dim: '',
+                type: 'int',
+              },
+                      ]
+        },
+              {
+          name: 'getTypeIndexForCurrentLevel',
+          mods: 'public',
+          sig: 'getTypeIndexForCurrentLevel()',
+          desc: ''/*'Return the type index for the current nesting level.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'getTypeIndexForLevel',
+          mods: 'public',
+          sig: 'getTypeIndexForLevel(int)',
+          desc: ''/*'Return the type index for the specified nesting level.'*/,
+          params: [
+                          {
+                name: 'nestingLevel',
+                dim: '',
+                type: 'int',
+              },
+                      ]
+        },
+              {
+          name: 'nested',
+          mods: 'public',
+          sig: 'nested()',
+          desc: ''/*'Return a variant of this {@code MethodParameter} which points to the
+ same parameter but one nesting level deeper. This is effectively the
+ same as {@link #increaseNestingLevel()}, just with an independent
+ {@code MethodParameter} object (e.g. in case of the original being cached).'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'isOptional',
+          mods: 'public',
+          sig: 'isOptional()',
+          desc: ''/*'Return whether this method indicates a parameter which is not required:
+ either in the form of Java 8's {@link java.util.Optional}, any variant
+ of a parameter-level {@code Nullable} annotation (such as from JSR-305
+ or the FindBugs set of annotations), or a language-level nullable type
+ declaration in Kotlin.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'nestedIfOptional',
+          mods: 'public',
+          sig: 'nestedIfOptional()',
+          desc: ''/*'Return a variant of this {@code MethodParameter} which points to
+ the same parameter but one nesting level deeper in case of a
+ {@link java.util.Optional} declaration.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'getContainingClass',
+          mods: 'public',
+          sig: 'getContainingClass()',
+          desc: ''/*''*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'getParameterType',
+          mods: 'public',
+          sig: 'getParameterType()',
+          desc: ''/*'Return the type of the method/constructor parameter.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'getGenericParameterType',
+          mods: 'public',
+          sig: 'getGenericParameterType()',
+          desc: ''/*'Return the generic type of the method/constructor parameter.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'getNestedParameterType',
+          mods: 'public',
+          sig: 'getNestedParameterType()',
+          desc: ''/*'Return the nested type of the method/constructor parameter.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'getNestedGenericParameterType',
+          mods: 'public',
+          sig: 'getNestedGenericParameterType()',
+          desc: ''/*'Return the nested generic type of the method/constructor parameter.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'getMethodAnnotations',
+          mods: 'public',
+          sig: 'getMethodAnnotations()',
+          desc: ''/*'Return the annotations associated with the target method/constructor itself.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'getMethodAnnotation',
+          mods: 'public',
+          sig: 'getMethodAnnotation(java.lang.Class)',
+          desc: ''/*'Return the method/constructor annotation of the given type, if available.'*/,
+          params: [
+                          {
+                name: 'annotationType',
+                dim: '',
+                type: 'Class',
+              },
+                      ]
+        },
+              {
+          name: 'hasMethodAnnotation',
+          mods: 'public',
+          sig: 'hasMethodAnnotation(java.lang.Class)',
+          desc: ''/*'Return whether the method/constructor is annotated with the given type.'*/,
+          params: [
+                          {
+                name: 'annotationType',
+                dim: '',
+                type: 'Class',
+              },
+                      ]
+        },
+              {
+          name: 'getParameterAnnotations',
+          mods: 'public',
+          sig: 'getParameterAnnotations()',
+          desc: ''/*'Return the annotations associated with the specific method/constructor parameter.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'hasParameterAnnotations',
+          mods: 'public',
+          sig: 'hasParameterAnnotations()',
+          desc: ''/*'Return {@code true} if the parameter has at least one annotation,
+ {@code false} if it has none.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'getParameterAnnotation',
+          mods: 'public',
+          sig: 'getParameterAnnotation(java.lang.Class)',
+          desc: ''/*'Return the parameter annotation of the given type, if available.'*/,
+          params: [
+                          {
+                name: 'annotationType',
+                dim: '',
+                type: 'Class',
+              },
+                      ]
+        },
+              {
+          name: 'hasParameterAnnotation',
+          mods: 'public',
+          sig: 'hasParameterAnnotation(java.lang.Class)',
+          desc: ''/*'Return whether the parameter is declared with the given annotation type.'*/,
+          params: [
+                          {
+                name: 'annotationType',
+                dim: '',
+                type: 'Class',
+              },
+                      ]
+        },
+              {
+          name: 'initParameterNameDiscovery',
+          mods: 'public',
+          sig: 'initParameterNameDiscovery(org.springframework.core.ParameterNameDiscoverer)',
+          desc: ''/*'Initialize parameter name discovery for this method parameter.
+ <p>This method does not actually try to retrieve the parameter name at
+ this point; it just allows discovery to happen when the application calls
+ {@link #getParameterName()} (if ever).'*/,
+          params: [
+                          {
+                name: 'parameterNameDiscoverer',
+                dim: '',
+                type: 'ParameterNameDiscoverer',
+              },
+                      ]
+        },
+              {
+          name: 'getParameterName',
+          mods: 'public',
+          sig: 'getParameterName()',
+          desc: ''/*'Return the name of the method/constructor parameter.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'adaptAnnotation',
+          mods: 'protected',
+          sig: 'adaptAnnotation(A)',
+          desc: ''/*'A template method to post-process a given annotation instance before
+ returning it to the caller.
+ <p>The default implementation simply returns the given annotation as-is.'*/,
+          params: [
+                          {
+                name: 'annotation',
+                dim: '',
+                type: 'Annotation',
+              },
+                      ]
+        },
+              {
+          name: 'adaptAnnotationArray',
+          mods: 'protected',
+          sig: 'adaptAnnotationArray(java.lang.annotation.Annotation[])',
+          desc: ''/*'A template method to post-process a given annotation array before
+ returning it to the caller.
+ <p>The default implementation simply returns the given annotation array as-is.'*/,
+          params: [
+                          {
+                name: 'annotations',
+                dim: '[]',
+                type: 'Annotation',
+              },
+                      ]
+        },
+              {
+          name: 'equals',
+          mods: 'public',
+          sig: 'equals(java.lang.Object)',
+          desc: ''/*''*/,
+          params: [
+                          {
+                name: 'other',
+                dim: '',
+                type: 'Object',
+              },
+                      ]
+        },
+              {
+          name: 'hashCode',
+          mods: 'public',
+          sig: 'hashCode()',
+          desc: ''/*''*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'toString',
+          mods: 'public',
+          sig: 'toString()',
+          desc: ''/*''*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'clone',
+          mods: 'public',
+          sig: 'clone()',
+          desc: ''/*''*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'forMethodOrConstructor',
+          mods: 'public static',
+          sig: 'forMethodOrConstructor(java.lang.Object, int)',
+          desc: ''/*'Create a new MethodParameter for the given method or constructor.
+ <p>This is a convenience factory method for scenarios where a
+ Method or Constructor reference is treated in a generic fashion.'*/,
+          params: [
+                          {
+                name: 'methodOrConstructor',
+                dim: '',
+                type: 'Object',
+              },
+                          {
+                name: 'parameterIndex',
+                dim: '',
+                type: 'int',
+              },
+                      ]
+        },
+              {
+          name: 'forExecutable',
+          mods: 'public static',
+          sig: 'forExecutable(java.lang.reflect.Executable, int)',
+          desc: ''/*'Create a new MethodParameter for the given method or constructor.
+ <p>This is a convenience factory method for scenarios where a
+ Method or Constructor reference is treated in a generic fashion.'*/,
+          params: [
+                          {
+                name: 'executable',
+                dim: '',
+                type: 'Executable',
+              },
+                          {
+                name: 'parameterIndex',
+                dim: '',
+                type: 'int',
+              },
+                      ]
+        },
+              {
+          name: 'forParameter',
+          mods: 'public static',
+          sig: 'forParameter(java.lang.reflect.Parameter)',
+          desc: ''/*'Create a new MethodParameter for the given parameter descriptor.
+ <p>This is a convenience factory method for scenarios where a
+ Java 8 {@link Parameter} descriptor is already available.'*/,
+          params: [
+                          {
+                name: 'parameter',
+                dim: '',
+                type: 'Parameter',
+              },
+                      ]
+        },
+              {
+          name: 'findParameterIndex',
+          mods: 'protected static',
+          sig: 'findParameterIndex(java.lang.reflect.Parameter)',
+          desc: ''/*''*/,
+          params: [
+                          {
+                name: 'parameter',
+                dim: '',
+                type: 'Parameter',
+              },
+                      ]
+        },
+          ]
+  },
+  methods: {
+    show: function() {
+      alert(this.message);
+    }
+  },
+  computed: {
+    up: function() {
+      return this.message.toUpperCase();
+    },
+    matchedMethods: function() {
+      var a = this;
+      return this.methods.filter(function(m) {
+        return m.name.toLowerCase().indexOf(a.message.toLowerCase()) !== -1;
+      });
+    }
+  }
+});  
+  </script>
+</body>
+</html>
+

@@ -1,0 +1,185 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width" />
+  <title>AbstractFileResolvingResource</title>
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <h1>AbstractFileResolvingResource</h1>
+
+  org.springframework.core.io.AbstractFileResolvingResource
+
+
+  <div id="test">
+    <input type="text" v-model="message">
+
+    <template v-for="m in matchedMethods" :key="m.sig">
+      <h3>{{ m.name }}</h3>
+      <pre><code>{{ m.mods }} {{ m.name }}(<template v-for="(p, pi) in m.params" :key="p.name"><template v-if="pi != 0">, </template>{{ p.type }}{{ p.dim }} {{ p.name }}</template>)</code></pre>
+      <div><p>{{ m.desc }}</p></div>
+    </template>
+  </div>
+
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script>
+  var app = new Vue({
+  el: '#test',
+  data: {
+    message: '',
+    methods: [
+              {
+          name: 'isFile',
+          mods: 'public',
+          sig: 'isFile()',
+          desc: ''/*''*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'getFile',
+          mods: 'public',
+          sig: 'getFile()',
+          desc: ''/*'This implementation returns a File reference for the underlying class path
+ resource, provided that it refers to a file in the file system.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'getFileForLastModifiedCheck',
+          mods: 'protected',
+          sig: 'getFileForLastModifiedCheck()',
+          desc: ''/*'This implementation determines the underlying File
+ (or jar file, in case of a resource in a jar/zip).'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'isFile',
+          mods: 'protected',
+          sig: 'isFile(java.net.URI)',
+          desc: ''/*'This implementation returns a File reference for the given URI-identified
+ resource, provided that it refers to a file in the file system.'*/,
+          params: [
+                          {
+                name: 'uri',
+                dim: '',
+                type: 'URI',
+              },
+                      ]
+        },
+              {
+          name: 'getFile',
+          mods: 'protected',
+          sig: 'getFile(java.net.URI)',
+          desc: ''/*'This implementation returns a File reference for the given URI-identified
+ resource, provided that it refers to a file in the file system.'*/,
+          params: [
+                          {
+                name: 'uri',
+                dim: '',
+                type: 'URI',
+              },
+                      ]
+        },
+              {
+          name: 'readableChannel',
+          mods: 'public',
+          sig: 'readableChannel()',
+          desc: ''/*'This implementation returns a FileChannel for the given URI-identified
+ resource, provided that it refers to a file in the file system.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'exists',
+          mods: 'public',
+          sig: 'exists()',
+          desc: ''/*''*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'isReadable',
+          mods: 'public',
+          sig: 'isReadable()',
+          desc: ''/*''*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'contentLength',
+          mods: 'public',
+          sig: 'contentLength()',
+          desc: ''/*''*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'lastModified',
+          mods: 'public',
+          sig: 'lastModified()',
+          desc: ''/*''*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'customizeConnection',
+          mods: 'protected',
+          sig: 'customizeConnection(java.net.URLConnection)',
+          desc: ''/*'Customize the given {@link URLConnection}, obtained in the course of an
+ {@link #exists()}, {@link #contentLength()} or {@link #lastModified()} call.
+ <p>Calls {@link ResourceUtils#useCachesIfNecessary(URLConnection)} and
+ delegates to {@link #customizeConnection(HttpURLConnection)} if possible.
+ Can be overridden in subclasses.'*/,
+          params: [
+                          {
+                name: 'con',
+                dim: '',
+                type: 'URLConnection',
+              },
+                      ]
+        },
+              {
+          name: 'customizeConnection',
+          mods: 'protected',
+          sig: 'customizeConnection(java.net.HttpURLConnection)',
+          desc: ''/*'Customize the given {@link HttpURLConnection}, obtained in the course of an
+ {@link #exists()}, {@link #contentLength()} or {@link #lastModified()} call.
+ <p>Sets request method "HEAD" by default. Can be overridden in subclasses.'*/,
+          params: [
+                          {
+                name: 'con',
+                dim: '',
+                type: 'HttpURLConnection',
+              },
+                      ]
+        },
+          ]
+  },
+  methods: {
+    show: function() {
+      alert(this.message);
+    }
+  },
+  computed: {
+    up: function() {
+      return this.message.toUpperCase();
+    },
+    matchedMethods: function() {
+      var a = this;
+      return this.methods.filter(function(m) {
+        return m.name.toLowerCase().indexOf(a.message.toLowerCase()) !== -1;
+      });
+    }
+  }
+});  
+  </script>
+</body>
+</html>
+

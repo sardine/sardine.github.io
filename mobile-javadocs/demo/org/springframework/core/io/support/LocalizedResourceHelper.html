@@ -1,0 +1,106 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width" />
+  <title>LocalizedResourceHelper</title>
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <h1>LocalizedResourceHelper</h1>
+
+  org.springframework.core.io.support.LocalizedResourceHelper
+
+
+  <div id="test">
+    <input type="text" v-model="message">
+
+    <template v-for="m in matchedMethods" :key="m.sig">
+      <h3>{{ m.name }}</h3>
+      <pre><code>{{ m.mods }} {{ m.name }}(<template v-for="(p, pi) in m.params" :key="p.name"><template v-if="pi != 0">, </template>{{ p.type }}{{ p.dim }} {{ p.name }}</template>)</code></pre>
+      <div><p>{{ m.desc }}</p></div>
+    </template>
+  </div>
+
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script>
+  var app = new Vue({
+  el: '#test',
+  data: {
+    message: '',
+    methods: [
+              {
+          name: 'setSeparator',
+          mods: 'public',
+          sig: 'setSeparator(java.lang.String)',
+          desc: ''/*'Set the separator to use inbetween file name parts.
+ Default is an underscore ("_").'*/,
+          params: [
+                          {
+                name: 'separator',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'findLocalizedResource',
+          mods: 'public',
+          sig: 'findLocalizedResource(java.lang.String, java.lang.String, java.util.Locale)',
+          desc: ''/*'Find the most specific localized resource for the given name,
+ extension and locale:
+ <p>The file will be searched with locations in the following order,
+ similar to {@code java.util.ResourceBundle}'s search order:
+ <ul>
+ <li>[name]_[language]_[country]_[variant][extension]
+ <li>[name]_[language]_[country][extension]
+ <li>[name]_[language][extension]
+ <li>[name][extension]
+ </ul>
+ <p>If none of the specific files can be found, a resource
+ descriptor for the default location will be returned.'*/,
+          params: [
+                          {
+                name: 'name',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'extension',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'locale',
+                dim: '',
+                type: 'Locale',
+              },
+                      ]
+        },
+          ]
+  },
+  methods: {
+    show: function() {
+      alert(this.message);
+    }
+  },
+  computed: {
+    up: function() {
+      return this.message.toUpperCase();
+    },
+    matchedMethods: function() {
+      var a = this;
+      return this.methods.filter(function(m) {
+        return m.name.toLowerCase().indexOf(a.message.toLowerCase()) !== -1;
+      });
+    }
+  }
+});  
+  </script>
+</body>
+</html>
+

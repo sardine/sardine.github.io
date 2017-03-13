@@ -1,0 +1,142 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width" />
+  <title>EncodedResource</title>
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <h1>EncodedResource</h1>
+
+  org.springframework.core.io.support.EncodedResource
+
+
+  <div id="test">
+    <input type="text" v-model="message">
+
+    <template v-for="m in matchedMethods" :key="m.sig">
+      <h3>{{ m.name }}</h3>
+      <pre><code>{{ m.mods }} {{ m.name }}(<template v-for="(p, pi) in m.params" :key="p.name"><template v-if="pi != 0">, </template>{{ p.type }}{{ p.dim }} {{ p.name }}</template>)</code></pre>
+      <div><p>{{ m.desc }}</p></div>
+    </template>
+  </div>
+
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script>
+  var app = new Vue({
+  el: '#test',
+  data: {
+    message: '',
+    methods: [
+              {
+          name: 'getResource',
+          mods: 'public final',
+          sig: 'getResource()',
+          desc: ''/*'Return the {@code Resource} held by this {@code EncodedResource}.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'getEncoding',
+          mods: 'public final',
+          sig: 'getEncoding()',
+          desc: ''/*'Return the encoding to use for reading from the {@linkplain #getResource() resource},
+ or {@code null} if none specified.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'getCharset',
+          mods: 'public final',
+          sig: 'getCharset()',
+          desc: ''/*'Return the {@code Charset} to use for reading from the {@linkplain #getResource() resource},
+ or {@code null} if none specified.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'requiresReader',
+          mods: 'public',
+          sig: 'requiresReader()',
+          desc: ''/*'Determine whether a {@link Reader} is required as opposed to an {@link InputStream},
+ i.e. whether an {@linkplain #getEncoding() encoding} or a {@link #getCharset() Charset}
+ has been specified.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'getReader',
+          mods: 'public',
+          sig: 'getReader()',
+          desc: ''/*'Open a {@code java.io.Reader} for the specified resource, using the specified
+ {@link #getCharset() Charset} or {@linkplain #getEncoding() encoding}
+ (if any).'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'getInputStream',
+          mods: 'public',
+          sig: 'getInputStream()',
+          desc: ''/*'Open an {@code InputStream} for the specified resource, ignoring any specified
+ {@link #getCharset() Charset} or {@linkplain #getEncoding() encoding}.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'equals',
+          mods: 'public',
+          sig: 'equals(java.lang.Object)',
+          desc: ''/*''*/,
+          params: [
+                          {
+                name: 'other',
+                dim: '',
+                type: 'Object',
+              },
+                      ]
+        },
+              {
+          name: 'hashCode',
+          mods: 'public',
+          sig: 'hashCode()',
+          desc: ''/*''*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'toString',
+          mods: 'public',
+          sig: 'toString()',
+          desc: ''/*''*/,
+          params: [
+                      ]
+        },
+          ]
+  },
+  methods: {
+    show: function() {
+      alert(this.message);
+    }
+  },
+  computed: {
+    up: function() {
+      return this.message.toUpperCase();
+    },
+    matchedMethods: function() {
+      var a = this;
+      return this.methods.filter(function(m) {
+        return m.name.toLowerCase().indexOf(a.message.toLowerCase()) !== -1;
+      });
+    }
+  }
+});  
+  </script>
+</body>
+</html>
+

@@ -1,0 +1,177 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width" />
+  <title>ClassMetadata</title>
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <h1>ClassMetadata</h1>
+
+  org.springframework.core.type.ClassMetadata
+
+
+  <div id="test">
+    <input type="text" v-model="message">
+
+    <template v-for="m in matchedMethods" :key="m.sig">
+      <h3>{{ m.name }}</h3>
+      <pre><code>{{ m.mods }} {{ m.name }}(<template v-for="(p, pi) in m.params" :key="p.name"><template v-if="pi != 0">, </template>{{ p.type }}{{ p.dim }} {{ p.name }}</template>)</code></pre>
+      <div><p>{{ m.desc }}</p></div>
+    </template>
+  </div>
+
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script>
+  var app = new Vue({
+  el: '#test',
+  data: {
+    message: '',
+    methods: [
+              {
+          name: 'getClassName',
+          mods: 'public',
+          sig: 'getClassName()',
+          desc: ''/*'Return the name of the underlying class.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'isInterface',
+          mods: 'public',
+          sig: 'isInterface()',
+          desc: ''/*'Return whether the underlying class represents an interface.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'isAnnotation',
+          mods: 'public',
+          sig: 'isAnnotation()',
+          desc: ''/*'Return whether the underlying class represents an annotation.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'isAbstract',
+          mods: 'public',
+          sig: 'isAbstract()',
+          desc: ''/*'Return whether the underlying class is marked as abstract.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'isConcrete',
+          mods: 'public',
+          sig: 'isConcrete()',
+          desc: ''/*'Return whether the underlying class represents a concrete class,
+ i.e. neither an interface nor an abstract class.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'isFinal',
+          mods: 'public',
+          sig: 'isFinal()',
+          desc: ''/*'Return whether the underlying class is marked as 'final'.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'isIndependent',
+          mods: 'public',
+          sig: 'isIndependent()',
+          desc: ''/*'Determine whether the underlying class is independent,
+ i.e. whether it is a top-level class or a nested class
+ (static inner class) that can be constructed independent
+ from an enclosing class.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'hasEnclosingClass',
+          mods: 'public',
+          sig: 'hasEnclosingClass()',
+          desc: ''/*'Return whether the underlying class has an enclosing class
+ (i.e. the underlying class is an inner/nested class or
+ a local class within a method).
+ <p>If this method returns {@code false}, then the
+ underlying class is a top-level class.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'getEnclosingClassName',
+          mods: 'public',
+          sig: 'getEnclosingClassName()',
+          desc: ''/*'Return the name of the enclosing class of the underlying class,
+ or {@code null} if the underlying class is a top-level class.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'hasSuperClass',
+          mods: 'public',
+          sig: 'hasSuperClass()',
+          desc: ''/*'Return whether the underlying class has a super class.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'getSuperClassName',
+          mods: 'public',
+          sig: 'getSuperClassName()',
+          desc: ''/*'Return the name of the super class of the underlying class,
+ or {@code null} if there is no super class defined.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'getInterfaceNames',
+          mods: 'public',
+          sig: 'getInterfaceNames()',
+          desc: ''/*'Return the names of all interfaces that the underlying class
+ implements, or an empty array if there are none.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'getMemberClassNames',
+          mods: 'public',
+          sig: 'getMemberClassNames()',
+          desc: ''/*'Return the names of all classes declared as members of the class represented by
+ this ClassMetadata object. This includes public, protected, default (package)
+ access, and private classes and interfaces declared by the class, but excludes
+ inherited classes and interfaces. An empty array is returned if no member classes
+ or interfaces exist.'*/,
+          params: [
+                      ]
+        },
+          ]
+  },
+  methods: {
+    show: function() {
+      alert(this.message);
+    }
+  },
+  computed: {
+    up: function() {
+      return this.message.toUpperCase();
+    },
+    matchedMethods: function() {
+      var a = this;
+      return this.methods.filter(function(m) {
+        return m.name.toLowerCase().indexOf(a.message.toLowerCase()) !== -1;
+      });
+    }
+  }
+});  
+  </script>
+</body>
+</html>
+

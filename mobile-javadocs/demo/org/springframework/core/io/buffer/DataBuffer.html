@@ -1,0 +1,287 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width" />
+  <title>DataBuffer</title>
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <h1>DataBuffer</h1>
+
+  org.springframework.core.io.buffer.DataBuffer
+
+
+  <div id="test">
+    <input type="text" v-model="message">
+
+    <template v-for="m in matchedMethods" :key="m.sig">
+      <h3>{{ m.name }}</h3>
+      <pre><code>{{ m.mods }} {{ m.name }}(<template v-for="(p, pi) in m.params" :key="p.name"><template v-if="pi != 0">, </template>{{ p.type }}{{ p.dim }} {{ p.name }}</template>)</code></pre>
+      <div><p>{{ m.desc }}</p></div>
+    </template>
+  </div>
+
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script>
+  var app = new Vue({
+  el: '#test',
+  data: {
+    message: '',
+    methods: [
+              {
+          name: 'factory',
+          mods: 'public',
+          sig: 'factory()',
+          desc: ''/*'Return the {@link DataBufferFactory} that created this buffer.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'indexOf',
+          mods: 'public',
+          sig: 'indexOf(java.util.function.IntPredicate, int)',
+          desc: ''/*'Return the index of the first byte in this buffer that matches the given
+ predicate.'*/,
+          params: [
+                          {
+                name: 'predicate',
+                dim: '',
+                type: 'IntPredicate',
+              },
+                          {
+                name: 'fromIndex',
+                dim: '',
+                type: 'int',
+              },
+                      ]
+        },
+              {
+          name: 'lastIndexOf',
+          mods: 'public',
+          sig: 'lastIndexOf(java.util.function.IntPredicate, int)',
+          desc: ''/*'Return the index of the last byte in this buffer that matches the given
+ predicate.'*/,
+          params: [
+                          {
+                name: 'predicate',
+                dim: '',
+                type: 'IntPredicate',
+              },
+                          {
+                name: 'fromIndex',
+                dim: '',
+                type: 'int',
+              },
+                      ]
+        },
+              {
+          name: 'readableByteCount',
+          mods: 'public',
+          sig: 'readableByteCount()',
+          desc: ''/*'Return the number of bytes that can be read from this data buffer.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'read',
+          mods: 'public',
+          sig: 'read()',
+          desc: ''/*'Read a single byte from the current reading position of this data buffer.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'read',
+          mods: 'public',
+          sig: 'read(byte[])',
+          desc: ''/*'Read this buffer's data into the specified destination, starting at the current
+ reading position of this buffer.'*/,
+          params: [
+                          {
+                name: 'destination',
+                dim: '[]',
+                type: 'byte',
+              },
+                      ]
+        },
+              {
+          name: 'read',
+          mods: 'public',
+          sig: 'read(byte[], int, int)',
+          desc: ''/*'Read at most {@code length} bytes of this buffer into the specified destination,
+ starting at the current reading position of this buffer.'*/,
+          params: [
+                          {
+                name: 'destination',
+                dim: '[]',
+                type: 'byte',
+              },
+                          {
+                name: 'offset',
+                dim: '',
+                type: 'int',
+              },
+                          {
+                name: 'length',
+                dim: '',
+                type: 'int',
+              },
+                      ]
+        },
+              {
+          name: 'write',
+          mods: 'public',
+          sig: 'write(byte)',
+          desc: ''/*'Write a single byte into this buffer at the current writing position.'*/,
+          params: [
+                          {
+                name: 'b',
+                dim: '',
+                type: 'byte',
+              },
+                      ]
+        },
+              {
+          name: 'write',
+          mods: 'public',
+          sig: 'write(byte[])',
+          desc: ''/*'Write the given source into this buffer, startin at the current writing position
+ of this buffer.'*/,
+          params: [
+                          {
+                name: 'source',
+                dim: '[]',
+                type: 'byte',
+              },
+                      ]
+        },
+              {
+          name: 'write',
+          mods: 'public',
+          sig: 'write(byte[], int, int)',
+          desc: ''/*'Write at most {@code length} bytes of the given source into this buffer, starting
+ at the current writing position of this buffer.'*/,
+          params: [
+                          {
+                name: 'source',
+                dim: '[]',
+                type: 'byte',
+              },
+                          {
+                name: 'offset',
+                dim: '',
+                type: 'int',
+              },
+                          {
+                name: 'length',
+                dim: '',
+                type: 'int',
+              },
+                      ]
+        },
+              {
+          name: 'write',
+          mods: 'public',
+          sig: 'write(org.springframework.core.io.buffer.DataBuffer[])',
+          desc: ''/*'Write one or more {@code DataBuffer}s to this buffer, starting at the current
+ writing position.'*/,
+          params: [
+                          {
+                name: 'buffers',
+                dim: '[]',
+                type: 'DataBuffer',
+              },
+                      ]
+        },
+              {
+          name: 'write',
+          mods: 'public',
+          sig: 'write(java.nio.ByteBuffer[])',
+          desc: ''/*'Write one or more {@link ByteBuffer} to this buffer, starting at the current
+ writing position.'*/,
+          params: [
+                          {
+                name: 'buffers',
+                dim: '[]',
+                type: 'ByteBuffer',
+              },
+                      ]
+        },
+              {
+          name: 'slice',
+          mods: 'public',
+          sig: 'slice(int, int)',
+          desc: ''/*'Create a new {@code DataBuffer} whose contents is a shared subsequence of this
+ data buffer's content.  Data between this data buffer and the returned buffer is
+ shared; though changes in the returned buffer's position will not be reflected
+ in the reading nor writing position of this data buffer.'*/,
+          params: [
+                          {
+                name: 'index',
+                dim: '',
+                type: 'int',
+              },
+                          {
+                name: 'length',
+                dim: '',
+                type: 'int',
+              },
+                      ]
+        },
+              {
+          name: 'asByteBuffer',
+          mods: 'public',
+          sig: 'asByteBuffer()',
+          desc: ''/*'Expose this buffer's bytes as a {@link ByteBuffer}. Data between this
+ {@code DataBuffer} and the returned {@code ByteBuffer} is shared; though
+ changes in the returned buffer's {@linkplain ByteBuffer#position() position}
+ will not be reflected in the reading nor writing position of this data buffer.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'asInputStream',
+          mods: 'public',
+          sig: 'asInputStream()',
+          desc: ''/*'Expose this buffer's data as an {@link InputStream}. Both data and position are
+ shared between the returned stream and this data buffer.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'asOutputStream',
+          mods: 'public',
+          sig: 'asOutputStream()',
+          desc: ''/*'Expose this buffer's data as an {@link OutputStream}. Both data and position are
+ shared between the returned stream and this data buffer.'*/,
+          params: [
+                      ]
+        },
+          ]
+  },
+  methods: {
+    show: function() {
+      alert(this.message);
+    }
+  },
+  computed: {
+    up: function() {
+      return this.message.toUpperCase();
+    },
+    matchedMethods: function() {
+      var a = this;
+      return this.methods.filter(function(m) {
+        return m.name.toLowerCase().indexOf(a.message.toLowerCase()) !== -1;
+      });
+    }
+  }
+});  
+  </script>
+</body>
+</html>
+

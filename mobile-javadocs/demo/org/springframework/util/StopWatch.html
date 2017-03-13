@@ -1,0 +1,212 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width" />
+  <title>StopWatch</title>
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <h1>StopWatch</h1>
+
+  org.springframework.util.StopWatch
+
+
+  <div id="test">
+    <input type="text" v-model="message">
+
+    <template v-for="m in matchedMethods" :key="m.sig">
+      <h3>{{ m.name }}</h3>
+      <pre><code>{{ m.mods }} {{ m.name }}(<template v-for="(p, pi) in m.params" :key="p.name"><template v-if="pi != 0">, </template>{{ p.type }}{{ p.dim }} {{ p.name }}</template>)</code></pre>
+      <div><p>{{ m.desc }}</p></div>
+    </template>
+  </div>
+
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script>
+  var app = new Vue({
+  el: '#test',
+  data: {
+    message: '',
+    methods: [
+              {
+          name: 'getId',
+          mods: 'public',
+          sig: 'getId()',
+          desc: ''/*'Return the id of this stop watch, as specified on construction.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'setKeepTaskList',
+          mods: 'public',
+          sig: 'setKeepTaskList(boolean)',
+          desc: ''/*'Determine whether the TaskInfo array is built over time. Set this to
+ "false" when using a StopWatch for millions of intervals, or the task
+ info structure will consume excessive memory. Default is "true".'*/,
+          params: [
+                          {
+                name: 'keepTaskList',
+                dim: '',
+                type: 'boolean',
+              },
+                      ]
+        },
+              {
+          name: 'start',
+          mods: 'public',
+          sig: 'start()',
+          desc: ''/*'Start an unnamed task. The results are undefined if {@link #stop()}
+ or timing methods are called without invoking this method.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'start',
+          mods: 'public',
+          sig: 'start(java.lang.String)',
+          desc: ''/*'Start a named task. The results are undefined if {@link #stop()}
+ or timing methods are called without invoking this method.'*/,
+          params: [
+                          {
+                name: 'taskName',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'stop',
+          mods: 'public',
+          sig: 'stop()',
+          desc: ''/*'Stop the current task. The results are undefined if timing
+ methods are called without invoking at least one pair
+ {@code start()} / {@code stop()} methods.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'isRunning',
+          mods: 'public',
+          sig: 'isRunning()',
+          desc: ''/*'Return whether the stop watch is currently running.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'currentTaskName',
+          mods: 'public',
+          sig: 'currentTaskName()',
+          desc: ''/*'Return the name of the currently running task, if any.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'getLastTaskTimeMillis',
+          mods: 'public',
+          sig: 'getLastTaskTimeMillis()',
+          desc: ''/*'Return the time taken by the last task.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'getLastTaskName',
+          mods: 'public',
+          sig: 'getLastTaskName()',
+          desc: ''/*'Return the name of the last task.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'getLastTaskInfo',
+          mods: 'public',
+          sig: 'getLastTaskInfo()',
+          desc: ''/*'Return the last task as a TaskInfo object.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'getTotalTimeMillis',
+          mods: 'public',
+          sig: 'getTotalTimeMillis()',
+          desc: ''/*'Return the total time in milliseconds for all tasks.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'getTotalTimeSeconds',
+          mods: 'public',
+          sig: 'getTotalTimeSeconds()',
+          desc: ''/*'Return the total time in seconds for all tasks.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'getTaskCount',
+          mods: 'public',
+          sig: 'getTaskCount()',
+          desc: ''/*'Return the number of tasks timed.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'getTaskInfo',
+          mods: 'public',
+          sig: 'getTaskInfo()',
+          desc: ''/*'Return an array of the data for tasks performed.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'shortSummary',
+          mods: 'public',
+          sig: 'shortSummary()',
+          desc: ''/*'Return a short description of the total running time.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'prettyPrint',
+          mods: 'public',
+          sig: 'prettyPrint()',
+          desc: ''/*'Return a string with a table describing all tasks performed.
+ For custom reporting, call getTaskInfo() and use the task info directly.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'toString',
+          mods: 'public',
+          sig: 'toString()',
+          desc: ''/*'Return an informative string describing all tasks performed
+ For custom reporting, call {@code getTaskInfo()} and use the task info directly.'*/,
+          params: [
+                      ]
+        },
+          ]
+  },
+  methods: {
+    show: function() {
+      alert(this.message);
+    }
+  },
+  computed: {
+    up: function() {
+      return this.message.toUpperCase();
+    },
+    matchedMethods: function() {
+      var a = this;
+      return this.methods.filter(function(m) {
+        return m.name.toLowerCase().indexOf(a.message.toLowerCase()) !== -1;
+      });
+    }
+  }
+});  
+  </script>
+</body>
+</html>
+

@@ -1,0 +1,708 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width" />
+  <title>ObjectUtils</title>
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <h1>ObjectUtils</h1>
+
+  org.springframework.util.ObjectUtils
+
+
+  <div id="test">
+    <input type="text" v-model="message">
+
+    <template v-for="m in matchedMethods" :key="m.sig">
+      <h3>{{ m.name }}</h3>
+      <pre><code>{{ m.mods }} {{ m.name }}(<template v-for="(p, pi) in m.params" :key="p.name"><template v-if="pi != 0">, </template>{{ p.type }}{{ p.dim }} {{ p.name }}</template>)</code></pre>
+      <div><p>{{ m.desc }}</p></div>
+    </template>
+  </div>
+
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script>
+  var app = new Vue({
+  el: '#test',
+  data: {
+    message: '',
+    methods: [
+              {
+          name: 'isCheckedException',
+          mods: 'public static',
+          sig: 'isCheckedException(java.lang.Throwable)',
+          desc: ''/*'Return whether the given throwable is a checked exception:
+ that is, neither a RuntimeException nor an Error.'*/,
+          params: [
+                          {
+                name: 'ex',
+                dim: '',
+                type: 'Throwable',
+              },
+                      ]
+        },
+              {
+          name: 'isCompatibleWithThrowsClause',
+          mods: 'public static',
+          sig: 'isCompatibleWithThrowsClause(java.lang.Throwable, java.lang.Class[])',
+          desc: ''/*'Check whether the given exception is compatible with the specified
+ exception types, as declared in a throws clause.'*/,
+          params: [
+                          {
+                name: 'ex',
+                dim: '',
+                type: 'Throwable',
+              },
+                          {
+                name: 'declaredExceptions',
+                dim: '[]',
+                type: 'Class',
+              },
+                      ]
+        },
+              {
+          name: 'isArray',
+          mods: 'public static',
+          sig: 'isArray(java.lang.Object)',
+          desc: ''/*'Determine whether the given object is an array:
+ either an Object array or a primitive array.'*/,
+          params: [
+                          {
+                name: 'obj',
+                dim: '',
+                type: 'Object',
+              },
+                      ]
+        },
+              {
+          name: 'isEmpty',
+          mods: 'public static',
+          sig: 'isEmpty(java.lang.Object[])',
+          desc: ''/*'Determine whether the given array is empty:
+ i.e. {@code null} or of zero length.'*/,
+          params: [
+                          {
+                name: 'array',
+                dim: '[]',
+                type: 'Object',
+              },
+                      ]
+        },
+              {
+          name: 'isEmpty',
+          mods: 'public static',
+          sig: 'isEmpty(java.lang.Object)',
+          desc: ''/*'Determine whether the given object is empty.
+ <p>This method supports the following object types.
+ <ul>
+ <li>{@code Optional}: considered empty if {@link Optional#empty()}</li>
+ <li>{@code Array}: considered empty if its length is zero</li>
+ <li>{@link CharSequence}: considered empty if its length is zero</li>
+ <li>{@link Collection}: delegates to {@link Collection#isEmpty()}</li>
+ <li>{@link Map}: delegates to {@link Map#isEmpty()}</li>
+ </ul>
+ <p>If the given object is non-null and not one of the aforementioned
+ supported types, this method returns {@code false}.'*/,
+          params: [
+                          {
+                name: 'obj',
+                dim: '',
+                type: 'Object',
+              },
+                      ]
+        },
+              {
+          name: 'unwrapOptional',
+          mods: 'public static',
+          sig: 'unwrapOptional(java.lang.Object)',
+          desc: ''/*'Unwrap the given object which is potentially a {@link java.util.Optional}.'*/,
+          params: [
+                          {
+                name: 'obj',
+                dim: '',
+                type: 'Object',
+              },
+                      ]
+        },
+              {
+          name: 'containsElement',
+          mods: 'public static',
+          sig: 'containsElement(java.lang.Object[], java.lang.Object)',
+          desc: ''/*'Check whether the given array contains the given element.'*/,
+          params: [
+                          {
+                name: 'array',
+                dim: '[]',
+                type: 'Object',
+              },
+                          {
+                name: 'element',
+                dim: '',
+                type: 'Object',
+              },
+                      ]
+        },
+              {
+          name: 'containsConstant',
+          mods: 'public static',
+          sig: 'containsConstant(java.lang.Enum[], java.lang.String)',
+          desc: ''/*'Check whether the given array of enum constants contains a constant with the given name,
+ ignoring case when determining a match.'*/,
+          params: [
+                          {
+                name: 'enumValues',
+                dim: '[]',
+                type: 'Enum',
+              },
+                          {
+                name: 'constant',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'containsConstant',
+          mods: 'public static',
+          sig: 'containsConstant(java.lang.Enum[], java.lang.String, boolean)',
+          desc: ''/*'Check whether the given array of enum constants contains a constant with the given name.'*/,
+          params: [
+                          {
+                name: 'enumValues',
+                dim: '[]',
+                type: 'Enum',
+              },
+                          {
+                name: 'constant',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'caseSensitive',
+                dim: '',
+                type: 'boolean',
+              },
+                      ]
+        },
+              {
+          name: 'caseInsensitiveValueOf',
+          mods: 'public static',
+          sig: 'caseInsensitiveValueOf(E[], java.lang.String)',
+          desc: ''/*'Case insensitive alternative to {@link Enum#valueOf(Class, String)}.'*/,
+          params: [
+                          {
+                name: 'enumValues',
+                dim: '[]',
+                type: 'Enum',
+              },
+                          {
+                name: 'constant',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'addObjectToArray',
+          mods: 'public static',
+          sig: 'addObjectToArray(A[], O)',
+          desc: ''/*'Append the given object to the given array, returning a new array
+ consisting of the input array contents plus the given object.'*/,
+          params: [
+                          {
+                name: 'array',
+                dim: '[]',
+                type: 'Object',
+              },
+                          {
+                name: 'obj',
+                dim: '',
+                type: 'Object',
+              },
+                      ]
+        },
+              {
+          name: 'toObjectArray',
+          mods: 'public static',
+          sig: 'toObjectArray(java.lang.Object)',
+          desc: ''/*'Convert the given array (which may be a primitive array) to an
+ object array (if necessary of primitive wrapper objects).
+ <p>A {@code null} source value will be converted to an
+ empty Object array.'*/,
+          params: [
+                          {
+                name: 'source',
+                dim: '',
+                type: 'Object',
+              },
+                      ]
+        },
+              {
+          name: 'nullSafeEquals',
+          mods: 'public static',
+          sig: 'nullSafeEquals(java.lang.Object, java.lang.Object)',
+          desc: ''/*'Determine if the given objects are equal, returning {@code true} if
+ both are {@code null} or {@code false} if only one is {@code null}.
+ <p>Compares arrays with {@code Arrays.equals}, performing an equality
+ check based on the array elements rather than the array reference.'*/,
+          params: [
+                          {
+                name: 'o1',
+                dim: '',
+                type: 'Object',
+              },
+                          {
+                name: 'o2',
+                dim: '',
+                type: 'Object',
+              },
+                      ]
+        },
+              {
+          name: 'nullSafeHashCode',
+          mods: 'public static',
+          sig: 'nullSafeHashCode(java.lang.Object)',
+          desc: ''/*'Return as hash code for the given object; typically the value of
+ {@code Object#hashCode()}}. If the object is an array,
+ this method will delegate to any of the {@code nullSafeHashCode}
+ methods for arrays in this class. If the object is {@code null},
+ this method returns 0.'*/,
+          params: [
+                          {
+                name: 'obj',
+                dim: '',
+                type: 'Object',
+              },
+                      ]
+        },
+              {
+          name: 'nullSafeHashCode',
+          mods: 'public static',
+          sig: 'nullSafeHashCode(java.lang.Object[])',
+          desc: ''/*'Return a hash code based on the contents of the specified array.
+ If {@code array} is {@code null}, this method returns 0.'*/,
+          params: [
+                          {
+                name: 'array',
+                dim: '[]',
+                type: 'Object',
+              },
+                      ]
+        },
+              {
+          name: 'nullSafeHashCode',
+          mods: 'public static',
+          sig: 'nullSafeHashCode(boolean[])',
+          desc: ''/*'Return a hash code based on the contents of the specified array.
+ If {@code array} is {@code null}, this method returns 0.'*/,
+          params: [
+                          {
+                name: 'array',
+                dim: '[]',
+                type: 'boolean',
+              },
+                      ]
+        },
+              {
+          name: 'nullSafeHashCode',
+          mods: 'public static',
+          sig: 'nullSafeHashCode(byte[])',
+          desc: ''/*'Return a hash code based on the contents of the specified array.
+ If {@code array} is {@code null}, this method returns 0.'*/,
+          params: [
+                          {
+                name: 'array',
+                dim: '[]',
+                type: 'byte',
+              },
+                      ]
+        },
+              {
+          name: 'nullSafeHashCode',
+          mods: 'public static',
+          sig: 'nullSafeHashCode(char[])',
+          desc: ''/*'Return a hash code based on the contents of the specified array.
+ If {@code array} is {@code null}, this method returns 0.'*/,
+          params: [
+                          {
+                name: 'array',
+                dim: '[]',
+                type: 'char',
+              },
+                      ]
+        },
+              {
+          name: 'nullSafeHashCode',
+          mods: 'public static',
+          sig: 'nullSafeHashCode(double[])',
+          desc: ''/*'Return a hash code based on the contents of the specified array.
+ If {@code array} is {@code null}, this method returns 0.'*/,
+          params: [
+                          {
+                name: 'array',
+                dim: '[]',
+                type: 'double',
+              },
+                      ]
+        },
+              {
+          name: 'nullSafeHashCode',
+          mods: 'public static',
+          sig: 'nullSafeHashCode(float[])',
+          desc: ''/*'Return a hash code based on the contents of the specified array.
+ If {@code array} is {@code null}, this method returns 0.'*/,
+          params: [
+                          {
+                name: 'array',
+                dim: '[]',
+                type: 'float',
+              },
+                      ]
+        },
+              {
+          name: 'nullSafeHashCode',
+          mods: 'public static',
+          sig: 'nullSafeHashCode(int[])',
+          desc: ''/*'Return a hash code based on the contents of the specified array.
+ If {@code array} is {@code null}, this method returns 0.'*/,
+          params: [
+                          {
+                name: 'array',
+                dim: '[]',
+                type: 'int',
+              },
+                      ]
+        },
+              {
+          name: 'nullSafeHashCode',
+          mods: 'public static',
+          sig: 'nullSafeHashCode(long[])',
+          desc: ''/*'Return a hash code based on the contents of the specified array.
+ If {@code array} is {@code null}, this method returns 0.'*/,
+          params: [
+                          {
+                name: 'array',
+                dim: '[]',
+                type: 'long',
+              },
+                      ]
+        },
+              {
+          name: 'nullSafeHashCode',
+          mods: 'public static',
+          sig: 'nullSafeHashCode(short[])',
+          desc: ''/*'Return a hash code based on the contents of the specified array.
+ If {@code array} is {@code null}, this method returns 0.'*/,
+          params: [
+                          {
+                name: 'array',
+                dim: '[]',
+                type: 'short',
+              },
+                      ]
+        },
+              {
+          name: 'hashCode',
+          mods: 'public static',
+          sig: 'hashCode(boolean)',
+          desc: ''/*'Return the same value as {@link Boolean#hashCode()}}.'*/,
+          params: [
+                          {
+                name: 'bool',
+                dim: '',
+                type: 'boolean',
+              },
+                      ]
+        },
+              {
+          name: 'hashCode',
+          mods: 'public static',
+          sig: 'hashCode(double)',
+          desc: ''/*'Return the same value as {@link Double#hashCode()}}.'*/,
+          params: [
+                          {
+                name: 'dbl',
+                dim: '',
+                type: 'double',
+              },
+                      ]
+        },
+              {
+          name: 'hashCode',
+          mods: 'public static',
+          sig: 'hashCode(float)',
+          desc: ''/*'Return the same value as {@link Float#hashCode()}}.'*/,
+          params: [
+                          {
+                name: 'flt',
+                dim: '',
+                type: 'float',
+              },
+                      ]
+        },
+              {
+          name: 'hashCode',
+          mods: 'public static',
+          sig: 'hashCode(long)',
+          desc: ''/*'Return the same value as {@link Long#hashCode()}}.'*/,
+          params: [
+                          {
+                name: 'lng',
+                dim: '',
+                type: 'long',
+              },
+                      ]
+        },
+              {
+          name: 'identityToString',
+          mods: 'public static',
+          sig: 'identityToString(java.lang.Object)',
+          desc: ''/*'Return a String representation of an object's overall identity.'*/,
+          params: [
+                          {
+                name: 'obj',
+                dim: '',
+                type: 'Object',
+              },
+                      ]
+        },
+              {
+          name: 'getIdentityHexString',
+          mods: 'public static',
+          sig: 'getIdentityHexString(java.lang.Object)',
+          desc: ''/*'Return a hex String form of an object's identity hash code.'*/,
+          params: [
+                          {
+                name: 'obj',
+                dim: '',
+                type: 'Object',
+              },
+                      ]
+        },
+              {
+          name: 'getDisplayString',
+          mods: 'public static',
+          sig: 'getDisplayString(java.lang.Object)',
+          desc: ''/*'Return a content-based String representation if {@code obj} is
+ not {@code null}; otherwise returns an empty String.
+ <p>Differs from {@link #nullSafeToString(Object)} in that it returns
+ an empty String rather than "null" for a {@code null} value.'*/,
+          params: [
+                          {
+                name: 'obj',
+                dim: '',
+                type: 'Object',
+              },
+                      ]
+        },
+              {
+          name: 'nullSafeClassName',
+          mods: 'public static',
+          sig: 'nullSafeClassName(java.lang.Object)',
+          desc: ''/*'Determine the class name for the given object.
+ <p>Returns {@code "null"} if {@code obj} is {@code null}.'*/,
+          params: [
+                          {
+                name: 'obj',
+                dim: '',
+                type: 'Object',
+              },
+                      ]
+        },
+              {
+          name: 'nullSafeToString',
+          mods: 'public static',
+          sig: 'nullSafeToString(java.lang.Object)',
+          desc: ''/*'Return a String representation of the specified Object.
+ <p>Builds a String representation of the contents in case of an array.
+ Returns {@code "null"} if {@code obj} is {@code null}.'*/,
+          params: [
+                          {
+                name: 'obj',
+                dim: '',
+                type: 'Object',
+              },
+                      ]
+        },
+              {
+          name: 'nullSafeToString',
+          mods: 'public static',
+          sig: 'nullSafeToString(java.lang.Object[])',
+          desc: ''/*'Return a String representation of the contents of the specified array.
+ <p>The String representation consists of a list of the array's elements,
+ enclosed in curly braces ({@code "{}"}). Adjacent elements are separated
+ by the characters {@code ", "} (a comma followed by a space). Returns
+ {@code "null"} if {@code array} is {@code null}.'*/,
+          params: [
+                          {
+                name: 'array',
+                dim: '[]',
+                type: 'Object',
+              },
+                      ]
+        },
+              {
+          name: 'nullSafeToString',
+          mods: 'public static',
+          sig: 'nullSafeToString(boolean[])',
+          desc: ''/*'Return a String representation of the contents of the specified array.
+ <p>The String representation consists of a list of the array's elements,
+ enclosed in curly braces ({@code "{}"}). Adjacent elements are separated
+ by the characters {@code ", "} (a comma followed by a space). Returns
+ {@code "null"} if {@code array} is {@code null}.'*/,
+          params: [
+                          {
+                name: 'array',
+                dim: '[]',
+                type: 'boolean',
+              },
+                      ]
+        },
+              {
+          name: 'nullSafeToString',
+          mods: 'public static',
+          sig: 'nullSafeToString(byte[])',
+          desc: ''/*'Return a String representation of the contents of the specified array.
+ <p>The String representation consists of a list of the array's elements,
+ enclosed in curly braces ({@code "{}"}). Adjacent elements are separated
+ by the characters {@code ", "} (a comma followed by a space). Returns
+ {@code "null"} if {@code array} is {@code null}.'*/,
+          params: [
+                          {
+                name: 'array',
+                dim: '[]',
+                type: 'byte',
+              },
+                      ]
+        },
+              {
+          name: 'nullSafeToString',
+          mods: 'public static',
+          sig: 'nullSafeToString(char[])',
+          desc: ''/*'Return a String representation of the contents of the specified array.
+ <p>The String representation consists of a list of the array's elements,
+ enclosed in curly braces ({@code "{}"}). Adjacent elements are separated
+ by the characters {@code ", "} (a comma followed by a space). Returns
+ {@code "null"} if {@code array} is {@code null}.'*/,
+          params: [
+                          {
+                name: 'array',
+                dim: '[]',
+                type: 'char',
+              },
+                      ]
+        },
+              {
+          name: 'nullSafeToString',
+          mods: 'public static',
+          sig: 'nullSafeToString(double[])',
+          desc: ''/*'Return a String representation of the contents of the specified array.
+ <p>The String representation consists of a list of the array's elements,
+ enclosed in curly braces ({@code "{}"}). Adjacent elements are separated
+ by the characters {@code ", "} (a comma followed by a space). Returns
+ {@code "null"} if {@code array} is {@code null}.'*/,
+          params: [
+                          {
+                name: 'array',
+                dim: '[]',
+                type: 'double',
+              },
+                      ]
+        },
+              {
+          name: 'nullSafeToString',
+          mods: 'public static',
+          sig: 'nullSafeToString(float[])',
+          desc: ''/*'Return a String representation of the contents of the specified array.
+ <p>The String representation consists of a list of the array's elements,
+ enclosed in curly braces ({@code "{}"}). Adjacent elements are separated
+ by the characters {@code ", "} (a comma followed by a space). Returns
+ {@code "null"} if {@code array} is {@code null}.'*/,
+          params: [
+                          {
+                name: 'array',
+                dim: '[]',
+                type: 'float',
+              },
+                      ]
+        },
+              {
+          name: 'nullSafeToString',
+          mods: 'public static',
+          sig: 'nullSafeToString(int[])',
+          desc: ''/*'Return a String representation of the contents of the specified array.
+ <p>The String representation consists of a list of the array's elements,
+ enclosed in curly braces ({@code "{}"}). Adjacent elements are separated
+ by the characters {@code ", "} (a comma followed by a space). Returns
+ {@code "null"} if {@code array} is {@code null}.'*/,
+          params: [
+                          {
+                name: 'array',
+                dim: '[]',
+                type: 'int',
+              },
+                      ]
+        },
+              {
+          name: 'nullSafeToString',
+          mods: 'public static',
+          sig: 'nullSafeToString(long[])',
+          desc: ''/*'Return a String representation of the contents of the specified array.
+ <p>The String representation consists of a list of the array's elements,
+ enclosed in curly braces ({@code "{}"}). Adjacent elements are separated
+ by the characters {@code ", "} (a comma followed by a space). Returns
+ {@code "null"} if {@code array} is {@code null}.'*/,
+          params: [
+                          {
+                name: 'array',
+                dim: '[]',
+                type: 'long',
+              },
+                      ]
+        },
+              {
+          name: 'nullSafeToString',
+          mods: 'public static',
+          sig: 'nullSafeToString(short[])',
+          desc: ''/*'Return a String representation of the contents of the specified array.
+ <p>The String representation consists of a list of the array's elements,
+ enclosed in curly braces ({@code "{}"}). Adjacent elements are separated
+ by the characters {@code ", "} (a comma followed by a space). Returns
+ {@code "null"} if {@code array} is {@code null}.'*/,
+          params: [
+                          {
+                name: 'array',
+                dim: '[]',
+                type: 'short',
+              },
+                      ]
+        },
+          ]
+  },
+  methods: {
+    show: function() {
+      alert(this.message);
+    }
+  },
+  computed: {
+    up: function() {
+      return this.message.toUpperCase();
+    },
+    matchedMethods: function() {
+      var a = this;
+      return this.methods.filter(function(m) {
+        return m.name.toLowerCase().indexOf(a.message.toLowerCase()) !== -1;
+      });
+    }
+  }
+});  
+  </script>
+</body>
+</html>
+

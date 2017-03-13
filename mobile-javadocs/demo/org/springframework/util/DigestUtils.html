@@ -1,0 +1,148 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width" />
+  <title>DigestUtils</title>
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <h1>DigestUtils</h1>
+
+  org.springframework.util.DigestUtils
+
+
+  <div id="test">
+    <input type="text" v-model="message">
+
+    <template v-for="m in matchedMethods" :key="m.sig">
+      <h3>{{ m.name }}</h3>
+      <pre><code>{{ m.mods }} {{ m.name }}(<template v-for="(p, pi) in m.params" :key="p.name"><template v-if="pi != 0">, </template>{{ p.type }}{{ p.dim }} {{ p.name }}</template>)</code></pre>
+      <div><p>{{ m.desc }}</p></div>
+    </template>
+  </div>
+
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script>
+  var app = new Vue({
+  el: '#test',
+  data: {
+    message: '',
+    methods: [
+              {
+          name: 'md5Digest',
+          mods: 'public static',
+          sig: 'md5Digest(byte[])',
+          desc: ''/*'Calculate the MD5 digest of the given bytes.'*/,
+          params: [
+                          {
+                name: 'bytes',
+                dim: '[]',
+                type: 'byte',
+              },
+                      ]
+        },
+              {
+          name: 'md5Digest',
+          mods: 'public static',
+          sig: 'md5Digest(java.io.InputStream)',
+          desc: ''/*'Calculate the MD5 digest of the given stream.'*/,
+          params: [
+                          {
+                name: 'inputStream',
+                dim: '',
+                type: 'InputStream',
+              },
+                      ]
+        },
+              {
+          name: 'md5DigestAsHex',
+          mods: 'public static',
+          sig: 'md5DigestAsHex(byte[])',
+          desc: ''/*'Return a hexadecimal string representation of the MD5 digest of the given bytes.'*/,
+          params: [
+                          {
+                name: 'bytes',
+                dim: '[]',
+                type: 'byte',
+              },
+                      ]
+        },
+              {
+          name: 'md5DigestAsHex',
+          mods: 'public static',
+          sig: 'md5DigestAsHex(java.io.InputStream)',
+          desc: ''/*'Return a hexadecimal string representation of the MD5 digest of the given stream.'*/,
+          params: [
+                          {
+                name: 'inputStream',
+                dim: '',
+                type: 'InputStream',
+              },
+                      ]
+        },
+              {
+          name: 'appendMd5DigestAsHex',
+          mods: 'public static',
+          sig: 'appendMd5DigestAsHex(byte[], java.lang.StringBuilder)',
+          desc: ''/*'Append a hexadecimal string representation of the MD5 digest of the given
+ bytes to the given {@link StringBuilder}.'*/,
+          params: [
+                          {
+                name: 'bytes',
+                dim: '[]',
+                type: 'byte',
+              },
+                          {
+                name: 'builder',
+                dim: '',
+                type: 'StringBuilder',
+              },
+                      ]
+        },
+              {
+          name: 'appendMd5DigestAsHex',
+          mods: 'public static',
+          sig: 'appendMd5DigestAsHex(java.io.InputStream, java.lang.StringBuilder)',
+          desc: ''/*'Append a hexadecimal string representation of the MD5 digest of the given
+ inputStream to the given {@link StringBuilder}.'*/,
+          params: [
+                          {
+                name: 'inputStream',
+                dim: '',
+                type: 'InputStream',
+              },
+                          {
+                name: 'builder',
+                dim: '',
+                type: 'StringBuilder',
+              },
+                      ]
+        },
+          ]
+  },
+  methods: {
+    show: function() {
+      alert(this.message);
+    }
+  },
+  computed: {
+    up: function() {
+      return this.message.toUpperCase();
+    },
+    matchedMethods: function() {
+      var a = this;
+      return this.methods.filter(function(m) {
+        return m.name.toLowerCase().indexOf(a.message.toLowerCase()) !== -1;
+      });
+    }
+  }
+});  
+  </script>
+</body>
+</html>
+

@@ -1,0 +1,291 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width" />
+  <title>AnnotationAttributes</title>
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <h1>AnnotationAttributes</h1>
+
+  org.springframework.core.annotation.AnnotationAttributes
+
+
+  <div id="test">
+    <input type="text" v-model="message">
+
+    <template v-for="m in matchedMethods" :key="m.sig">
+      <h3>{{ m.name }}</h3>
+      <pre><code>{{ m.mods }} {{ m.name }}(<template v-for="(p, pi) in m.params" :key="p.name"><template v-if="pi != 0">, </template>{{ p.type }}{{ p.dim }} {{ p.name }}</template>)</code></pre>
+      <div><p>{{ m.desc }}</p></div>
+    </template>
+  </div>
+
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script>
+  var app = new Vue({
+  el: '#test',
+  data: {
+    message: '',
+    methods: [
+              {
+          name: 'annotationType',
+          mods: 'public',
+          sig: 'annotationType()',
+          desc: ''/*'Get the type of annotation represented by this
+ {@code AnnotationAttributes} instance.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'getString',
+          mods: 'public',
+          sig: 'getString(java.lang.String)',
+          desc: ''/*'Get the value stored under the specified {@code attributeName} as a
+ string.'*/,
+          params: [
+                          {
+                name: 'attributeName',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'getStringArray',
+          mods: 'public',
+          sig: 'getStringArray(java.lang.String)',
+          desc: ''/*'Get the value stored under the specified {@code attributeName} as an
+ array of strings.
+ <p>If the value stored under the specified {@code attributeName} is
+ a string, it will be wrapped in a single-element array before
+ returning it.'*/,
+          params: [
+                          {
+                name: 'attributeName',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'getBoolean',
+          mods: 'public',
+          sig: 'getBoolean(java.lang.String)',
+          desc: ''/*'Get the value stored under the specified {@code attributeName} as a
+ boolean.'*/,
+          params: [
+                          {
+                name: 'attributeName',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'getNumber',
+          mods: 'public',
+          sig: 'getNumber(java.lang.String)',
+          desc: ''/*'Get the value stored under the specified {@code attributeName} as a
+ number.'*/,
+          params: [
+                          {
+                name: 'attributeName',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'getEnum',
+          mods: 'public',
+          sig: 'getEnum(java.lang.String)',
+          desc: ''/*'Get the value stored under the specified {@code attributeName} as an
+ enum.'*/,
+          params: [
+                          {
+                name: 'attributeName',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'getClass',
+          mods: 'public',
+          sig: 'getClass(java.lang.String)',
+          desc: ''/*'Get the value stored under the specified {@code attributeName} as a
+ class.'*/,
+          params: [
+                          {
+                name: 'attributeName',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'getClassArray',
+          mods: 'public',
+          sig: 'getClassArray(java.lang.String)',
+          desc: ''/*'Get the value stored under the specified {@code attributeName} as an
+ array of classes.
+ <p>If the value stored under the specified {@code attributeName} is
+ a class, it will be wrapped in a single-element array before
+ returning it.'*/,
+          params: [
+                          {
+                name: 'attributeName',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'getAnnotation',
+          mods: 'public',
+          sig: 'getAnnotation(java.lang.String)',
+          desc: ''/*'Get the {@link AnnotationAttributes} stored under the specified
+ {@code attributeName}.
+ <p>Note: if you expect an actual annotation, invoke
+ {@link #getAnnotation(String, Class)} instead.'*/,
+          params: [
+                          {
+                name: 'attributeName',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'getAnnotation',
+          mods: 'public',
+          sig: 'getAnnotation(java.lang.String, java.lang.Class)',
+          desc: ''/*'Get the annotation of type {@code annotationType} stored under the
+ specified {@code attributeName}.'*/,
+          params: [
+                          {
+                name: 'attributeName',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'annotationType',
+                dim: '',
+                type: 'Class',
+              },
+                      ]
+        },
+              {
+          name: 'getAnnotationArray',
+          mods: 'public',
+          sig: 'getAnnotationArray(java.lang.String)',
+          desc: ''/*'Get the array of {@link AnnotationAttributes} stored under the specified
+ {@code attributeName}.
+ <p>If the value stored under the specified {@code attributeName} is
+ an instance of {@code AnnotationAttributes}, it will be wrapped in
+ a single-element array before returning it.
+ <p>Note: if you expect an actual array of annotations, invoke
+ {@link #getAnnotationArray(String, Class)} instead.'*/,
+          params: [
+                          {
+                name: 'attributeName',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'getAnnotationArray',
+          mods: 'public',
+          sig: 'getAnnotationArray(java.lang.String, java.lang.Class)',
+          desc: ''/*'Get the array of type {@code annotationType} stored under the specified
+ {@code attributeName}.
+ <p>If the value stored under the specified {@code attributeName} is
+ an {@code Annotation}, it will be wrapped in a single-element array
+ before returning it.'*/,
+          params: [
+                          {
+                name: 'attributeName',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'annotationType',
+                dim: '',
+                type: 'Class',
+              },
+                      ]
+        },
+              {
+          name: 'putIfAbsent',
+          mods: 'public',
+          sig: 'putIfAbsent(java.lang.String, java.lang.Object)',
+          desc: ''/*'Store the supplied {@code value} in this map under the specified
+ {@code key}, unless a value is already stored under the key.'*/,
+          params: [
+                          {
+                name: 'key',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'value',
+                dim: '',
+                type: 'Object',
+              },
+                      ]
+        },
+              {
+          name: 'toString',
+          mods: 'public',
+          sig: 'toString()',
+          desc: ''/*''*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'fromMap',
+          mods: 'public static',
+          sig: 'fromMap(java.util.Map)',
+          desc: ''/*'Return an {@link AnnotationAttributes} instance based on the given map.
+ <p>If the map is already an {@code AnnotationAttributes} instance, it
+ will be cast and returned immediately without creating a new instance.
+ Otherwise a new instance will be created by passing the supplied map
+ to the {@link #AnnotationAttributes(Map)} constructor.'*/,
+          params: [
+                          {
+                name: 'map',
+                dim: '',
+                type: 'Map',
+              },
+                      ]
+        },
+          ]
+  },
+  methods: {
+    show: function() {
+      alert(this.message);
+    }
+  },
+  computed: {
+    up: function() {
+      return this.message.toUpperCase();
+    },
+    matchedMethods: function() {
+      var a = this;
+      return this.methods.filter(function(m) {
+        return m.name.toLowerCase().indexOf(a.message.toLowerCase()) !== -1;
+      });
+    }
+  }
+});  
+  </script>
+</body>
+</html>
+

@@ -1,0 +1,95 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width" />
+  <title>BridgeMethodResolver</title>
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <h1>BridgeMethodResolver</h1>
+
+  org.springframework.core.BridgeMethodResolver
+
+
+  <div id="test">
+    <input type="text" v-model="message">
+
+    <template v-for="m in matchedMethods" :key="m.sig">
+      <h3>{{ m.name }}</h3>
+      <pre><code>{{ m.mods }} {{ m.name }}(<template v-for="(p, pi) in m.params" :key="p.name"><template v-if="pi != 0">, </template>{{ p.type }}{{ p.dim }} {{ p.name }}</template>)</code></pre>
+      <div><p>{{ m.desc }}</p></div>
+    </template>
+  </div>
+
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script>
+  var app = new Vue({
+  el: '#test',
+  data: {
+    message: '',
+    methods: [
+              {
+          name: 'findBridgedMethod',
+          mods: 'public static',
+          sig: 'findBridgedMethod(java.lang.reflect.Method)',
+          desc: ''/*'Find the original method for the supplied {@link Method bridge Method}.
+ <p>It is safe to call this method passing in a non-bridge {@link Method} instance.
+ In such a case, the supplied {@link Method} instance is returned directly to the caller.
+ Callers are <strong>not</strong> required to check for bridging before calling this method.'*/,
+          params: [
+                          {
+                name: 'bridgeMethod',
+                dim: '',
+                type: 'Method',
+              },
+                      ]
+        },
+              {
+          name: 'isVisibilityBridgeMethodPair',
+          mods: 'public static',
+          sig: 'isVisibilityBridgeMethodPair(java.lang.reflect.Method, java.lang.reflect.Method)',
+          desc: ''/*'Compare the signatures of the bridge method and the method which it bridges. If
+ the parameter and return types are the same, it is a 'visibility' bridge method
+ introduced in Java 6 to fix http://bugs.sun.com/view_bug.do?bug_id=6342411.
+ See also http://stas-blogspot.blogspot.com/2010/03/java-bridge-methods-explained.html'*/,
+          params: [
+                          {
+                name: 'bridgeMethod',
+                dim: '',
+                type: 'Method',
+              },
+                          {
+                name: 'bridgedMethod',
+                dim: '',
+                type: 'Method',
+              },
+                      ]
+        },
+          ]
+  },
+  methods: {
+    show: function() {
+      alert(this.message);
+    }
+  },
+  computed: {
+    up: function() {
+      return this.message.toUpperCase();
+    },
+    matchedMethods: function() {
+      var a = this;
+      return this.methods.filter(function(m) {
+        return m.name.toLowerCase().indexOf(a.message.toLowerCase()) !== -1;
+      });
+    }
+  }
+});  
+  </script>
+</body>
+</html>
+

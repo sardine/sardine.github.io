@@ -1,0 +1,469 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width" />
+  <title>org.springframework.util</title>
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
+</head>
+
+<body>
+  <a class="button" href="../../../index.html">Index</a>
+  <hr>
+  
+  <h1>org.springframework.util</h1>
+
+  <div id="test">
+    <input type="text" v-model="message">
+
+    <div v-if="matchedInterfaces.length != 0">
+        <h2>インタフェース</h2>
+        <dl>
+          <template v-for="c in matchedInterfaces" :key="c.name">
+            <dt><a v-bind:href="c.href">{{ c.name }}</a></dt>
+            <dd v-html="c.desc"></dd>
+          </template>
+        </dl>
+      </div>
+      
+      <div v-if="matchedClasses.length != 0">
+        <h2>クラス</h2>
+        <dl>
+          <template v-for="c in matchedClasses" :key="c.name">
+            <dt><a v-bind:href="c.href">{{ c.name }}</a></dt>
+            <dd v-html="c.desc"></dd>
+          </template>
+        </dl>
+      </div>
+        
+      <div v-if="matchedEnums.length != 0">
+        <h2>列挙型</h2>
+        <dl>
+          <template v-for="c in matchedEnums" :key="c.name">
+            <dt><a v-bind:href="c.href">{{ c.name }}</a></dt>
+            <dd v-html="c.desc"></dd>
+          </template>
+        </dl>
+      </div>
+        
+      <div v-if="matchedExceptions.length != 0">
+        <h2>例外</h2>
+        <dl>
+          <template v-for="c in matchedExceptions" :key="c.name">
+            <dt><a v-bind:href="c.href">{{ c.name }}</a></dt>
+            <dd v-html="c.desc"></dd>
+          </template>
+        </dl>
+      </div>
+        
+      <div v-if="matchedErrors.length != 0">
+        <h2>エラー</h2>
+        <dl>
+          <template v-for="c in matchedErrors" :key="c.name">
+            <dt><a v-bind:href="c.href">{{ c.name }}</a></dt>
+            <dd v-html="c.desc"></dd>
+          </template>
+        </dl>
+      </div>
+        
+      <div v-if="matchedAnnotations.length != 0">
+        <h2>アノテーション</h2>
+        <dl>
+          <template v-for="c in matchedAnnotations" :key="c.name">
+            <dt><a v-bind:href="c.href">{{ c.name }}</a></dt>
+            <dd v-html="c.desc"></dd>
+          </template>
+        </dl>
+      </div>
+      </div>
+  
+
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script>
+          var app = new Vue({
+        el: '#test',
+        data: {
+          message: '',
+          interfaces: [
+                          {
+                name: 'StringValueResolver',
+                desc: 'Simple strategy interface for resolving a String value.',
+                href: 'StringValueResolver.html'
+              },
+                          {
+                name: 'ReflectionUtils.MethodCallback',
+                desc: 'Action to take on each method.',
+                href: 'ReflectionUtils.MethodCallback.html'
+              },
+                          {
+                name: 'ReflectionUtils.MethodFilter',
+                desc: 'Callback optionally used to filter methods to be operated on by a method callback.',
+                href: 'ReflectionUtils.MethodFilter.html'
+              },
+                          {
+                name: 'ReflectionUtils.FieldCallback',
+                desc: 'Callback interface invoked on each field in the hierarchy.',
+                href: 'ReflectionUtils.FieldCallback.html'
+              },
+                          {
+                name: 'ReflectionUtils.FieldFilter',
+                desc: 'Callback optionally used to filter fields to be operated on by a field callback.',
+                href: 'ReflectionUtils.FieldFilter.html'
+              },
+                          {
+                name: 'PropertyPlaceholderHelper.PlaceholderResolver',
+                desc: 'Strategy interface used to resolve replacement values for placeholders contained in Strings.',
+                href: 'PropertyPlaceholderHelper.PlaceholderResolver.html'
+              },
+                          {
+                name: 'PropertiesPersister',
+                desc: 'Strategy interface for persisting java.util.Properties,\u000A allowing for pluggable parsing strategies.',
+                href: 'PropertiesPersister.html'
+              },
+                          {
+                name: 'PathMatcher',
+                desc: 'Strategy interface for String-based path matching.',
+                href: 'PathMatcher.html'
+              },
+                          {
+                name: 'MultiValueMap',
+                desc: 'Extension of the Map interface that stores multiple values.',
+                href: 'MultiValueMap.html'
+              },
+                          {
+                name: 'IdGenerator',
+                desc: 'Contract for generating universally unique identifiers UUID (UUIDs).',
+                href: 'IdGenerator.html'
+              },
+                          {
+                name: 'ErrorHandler',
+                desc: 'A strategy for handling errors.',
+                href: 'ErrorHandler.html'
+              },
+                          {
+                name: 'ConcurrentReferenceHashMap.Reference',
+                desc: 'A reference to an Entry contained in the map.',
+                href: 'ConcurrentReferenceHashMap.Reference.html'
+              },
+                          {
+                name: 'AutoPopulatingList.ElementFactory',
+                desc: 'Factory interface for creating elements for an index-based access\u000A data structure such as a java.util.List.',
+                href: 'AutoPopulatingList.ElementFactory.html'
+              },
+                      ],
+          classes: [
+                          {
+                name: 'TypeUtils',
+                desc: 'Utility to work with Java 5 generic type parameters.',
+                href: 'TypeUtils.html'
+              },
+                          {
+                name: 'SystemPropertyUtils',
+                desc: 'Helper class for resolving placeholders in texts.',
+                href: 'SystemPropertyUtils.html'
+              },
+                          {
+                name: 'StringUtils',
+                desc: 'Miscellaneous String utility methods.',
+                href: 'StringUtils.html'
+              },
+                          {
+                name: 'StreamUtils',
+                desc: 'Simple utility methods for dealing with streams.',
+                href: 'StreamUtils.html'
+              },
+                          {
+                name: 'StopWatch',
+                desc: 'Simple stop watch, allowing for timing of a number of tasks,\u000A exposing total running time and running time for each named task.',
+                href: 'StopWatch.html'
+              },
+                          {
+                name: 'StopWatch.TaskInfo',
+                desc: 'Inner class to hold data about one task executed within the stop watch.',
+                href: 'StopWatch.TaskInfo.html'
+              },
+                          {
+                name: 'SocketUtils',
+                desc: 'Simple utility methods for working with network sockets \u0026mdash; for example,\u000A for finding available ports on localhost.',
+                href: 'SocketUtils.html'
+              },
+                          {
+                name: 'SimpleIdGenerator',
+                desc: 'A simple IdGenerator that starts at 1 and increments by 1 with each call.',
+                href: 'SimpleIdGenerator.html'
+              },
+                          {
+                name: 'SerializationUtils',
+                desc: 'Static utilities for serialization and deserialization.',
+                href: 'SerializationUtils.html'
+              },
+                          {
+                name: 'ResourceUtils',
+                desc: 'Utility methods for resolving resource locations to files in the\u000A file system.',
+                href: 'ResourceUtils.html'
+              },
+                          {
+                name: 'ResizableByteArrayOutputStream',
+                desc: 'An extension of java.io.ByteArrayOutputStream that:\u000A \u003Cul\u003E\u000A \u003Cli\u003Ehas public org.springframework.util.ResizableByteArrayOutputStream#grow(int)\u000A and org.springframework.util.ResizableByteArrayOutputStream#resize(int) methods\u000A to get more control over the size of the internal buffer\u003C\u002Fli\u003E\u000A \u003Cli\u003Ehas a higher initial capacity (256) by default\u003C\u002Fli\u003E\u000A \u003C\u002Ful\u003E\u000A\u000A \u003Cp\u003EAs of 4.2, this class has been superseded by FastByteArrayOutputStream\u000A for Spring\u0027s internal use where no assignability to ByteArrayOutputStream\u000A is needed (since FastByteArrayOutputStream is more efficient with buffer\u000A resize management but doesn\u0027t extend the standard ByteArrayOutputStream).',
+                href: 'ResizableByteArrayOutputStream.html'
+              },
+                          {
+                name: 'ReflectionUtils',
+                desc: 'Simple utility class for working with the reflection API and handling\u000A reflection exceptions.',
+                href: 'ReflectionUtils.html'
+              },
+                          {
+                name: 'PropertyPlaceholderHelper',
+                desc: 'Utility class for working with Strings that have placeholder values in them.',
+                href: 'PropertyPlaceholderHelper.html'
+              },
+                          {
+                name: 'PatternMatchUtils',
+                desc: 'Utility methods for simple pattern matching, in particular for\u000A Spring\u0027s typical \u0022xxx*\u0022, \u0022*xxx\u0022 and \u0022*xxx*\u0022 pattern styles.',
+                href: 'PatternMatchUtils.html'
+              },
+                          {
+                name: 'ObjectUtils',
+                desc: 'Miscellaneous object utility methods.',
+                href: 'ObjectUtils.html'
+              },
+                          {
+                name: 'NumberUtils',
+                desc: 'Miscellaneous utility methods for number conversion and parsing.',
+                href: 'NumberUtils.html'
+              },
+                          {
+                name: 'MimeTypeUtils',
+                desc: 'Miscellaneous MimeType utility methods.',
+                href: 'MimeTypeUtils.html'
+              },
+                          {
+                name: 'MimeType',
+                desc: 'Represents a MIME Type, as originally defined in RFC 2046 and subsequently used in\u000A other Internet protocols including HTTP.',
+                href: 'MimeType.html'
+              },
+                          {
+                name: 'MimeType.SpecificityComparator',
+                desc: '',
+                href: 'MimeType.SpecificityComparator.html'
+              },
+                          {
+                name: 'MethodInvoker',
+                desc: 'Helper class that allows for specifying a method to invoke in a declarative\u000A fashion, be it static or non-static.',
+                href: 'MethodInvoker.html'
+              },
+                          {
+                name: 'LinkedMultiValueMap',
+                desc: 'Simple implementation of MultiValueMap that wraps a LinkedHashMap,\u000A storing multiple values in a LinkedList.',
+                href: 'LinkedMultiValueMap.html'
+              },
+                          {
+                name: 'LinkedCaseInsensitiveMap',
+                desc: 'LinkedHashMap variant that stores String keys in a case-insensitive\u000A manner, for example for key-based access in a results table.',
+                href: 'LinkedCaseInsensitiveMap.html'
+              },
+                          {
+                name: 'JdkIdGenerator',
+                desc: 'An IdGenerator that calls java.util.UUID#randomUUID().',
+                href: 'JdkIdGenerator.html'
+              },
+                          {
+                name: 'InstanceFilter',
+                desc: 'A simple instance filter that checks if a given instance match based on\u000A a collection of includes and excludes element.',
+                href: 'InstanceFilter.html'
+              },
+                          {
+                name: 'FileSystemUtils',
+                desc: 'Utility methods for working with the file system.',
+                href: 'FileSystemUtils.html'
+              },
+                          {
+                name: 'FileCopyUtils',
+                desc: 'Simple utility methods for file and stream copying.',
+                href: 'FileCopyUtils.html'
+              },
+                          {
+                name: 'FastByteArrayOutputStream',
+                desc: 'A speedy alternative to java.io.ByteArrayOutputStream.',
+                href: 'FastByteArrayOutputStream.html'
+              },
+                          {
+                name: 'ExceptionTypeFilter',
+                desc: 'An InstanceFilter implementation that handles exception types.',
+                href: 'ExceptionTypeFilter.html'
+              },
+                          {
+                name: 'DigestUtils',
+                desc: 'Miscellaneous methods for calculating digests.',
+                href: 'DigestUtils.html'
+              },
+                          {
+                name: 'DefaultPropertiesPersister',
+                desc: 'Default implementation of the PropertiesPersister interface.',
+                href: 'DefaultPropertiesPersister.html'
+              },
+                          {
+                name: 'CustomizableThreadCreator',
+                desc: 'Simple customizable helper class for creating new Thread instances.',
+                href: 'CustomizableThreadCreator.html'
+              },
+                          {
+                name: 'ConcurrentReferenceHashMap',
+                desc: 'A ConcurrentHashMap that uses ReferenceType#SOFT soft or\u000A ReferenceType#WEAK weak references for both keys and values.',
+                href: 'ConcurrentReferenceHashMap.html'
+              },
+                          {
+                name: 'ConcurrentReferenceHashMap.ReferenceType',
+                desc: 'Various reference types supported by this map.',
+                href: 'ConcurrentReferenceHashMap.ReferenceType.html'
+              },
+                          {
+                name: 'ConcurrentReferenceHashMap.Segment',
+                desc: 'A single segment used to divide the map to allow better concurrent performance.',
+                href: 'ConcurrentReferenceHashMap.Segment.html'
+              },
+                          {
+                name: 'ConcurrentReferenceHashMap.Entry',
+                desc: 'A single map entry.',
+                href: 'ConcurrentReferenceHashMap.Entry.html'
+              },
+                          {
+                name: 'ConcurrentReferenceHashMap.Restructure',
+                desc: 'The types of restructuring that can be performed.',
+                href: 'ConcurrentReferenceHashMap.Restructure.html'
+              },
+                          {
+                name: 'ConcurrentReferenceHashMap.ReferenceManager',
+                desc: 'Strategy class used to manage References.',
+                href: 'ConcurrentReferenceHashMap.ReferenceManager.html'
+              },
+                          {
+                name: 'ConcurrencyThrottleSupport',
+                desc: 'Support class for throttling concurrent access to a specific resource.',
+                href: 'ConcurrencyThrottleSupport.html'
+              },
+                          {
+                name: 'CompositeIterator',
+                desc: 'Composite iterator that combines multiple other iterators,\u000A as registered via #add(Iterator).',
+                href: 'CompositeIterator.html'
+              },
+                          {
+                name: 'CommonsLogWriter',
+                desc: 'java.io.Writer adapter for a Commons Logging Log.',
+                href: 'CommonsLogWriter.html'
+              },
+                          {
+                name: 'CollectionUtils',
+                desc: 'Miscellaneous collection utility methods.',
+                href: 'CollectionUtils.html'
+              },
+                          {
+                name: 'ClassUtils',
+                desc: 'Miscellaneous class utility methods.',
+                href: 'ClassUtils.html'
+              },
+                          {
+                name: 'Base64Utils',
+                desc: 'A simple utility class for Base64 encoding and decoding.',
+                href: 'Base64Utils.html'
+              },
+                          {
+                name: 'AutoPopulatingList',
+                desc: 'Simple List wrapper class that allows for elements to be\u000A automatically populated as they are requested.',
+                href: 'AutoPopulatingList.html'
+              },
+                          {
+                name: 'Assert',
+                desc: 'Assertion utility class that assists in validating arguments.',
+                href: 'Assert.html'
+              },
+                          {
+                name: 'AntPathMatcher',
+                desc: 'PathMatcher implementation for Ant-style path patterns.',
+                href: 'AntPathMatcher.html'
+              },
+                          {
+                name: 'AntPathMatcher.AntPathStringMatcher',
+                desc: 'Tests whether or not a string matches against a pattern via a Pattern.',
+                href: 'AntPathMatcher.AntPathStringMatcher.html'
+              },
+                          {
+                name: 'AntPathMatcher.AntPatternComparator',
+                desc: 'The default Comparator implementation returned by\u000A #getPatternComparator(String).',
+                href: 'AntPathMatcher.AntPatternComparator.html'
+              },
+                          {
+                name: 'AlternativeJdkIdGenerator',
+                desc: 'An IdGenerator that uses SecureRandom for the initial seed and\u000A Random thereafter, instead of calling UUID#randomUUID() every\u000A time as org.springframework.util.JdkIdGenerator JdkIdGenerator does.',
+                href: 'AlternativeJdkIdGenerator.html'
+              },
+                      ],
+          enums: [
+                      ],
+          exceptions: [
+                          {
+                name: 'InvalidMimeTypeException',
+                desc: 'Exception thrown from MimeTypeUtils#parseMimeType(String) in case of\u000A encountering an invalid content type specification String.',
+                href: 'InvalidMimeTypeException.html'
+              },
+                          {
+                name: 'AutoPopulatingList.ElementInstantiationException',
+                desc: 'Exception to be thrown from ElementFactory.',
+                href: 'AutoPopulatingList.ElementInstantiationException.html'
+              },
+                      ],
+          errors: [
+                      ],
+          annotations: [
+                      ]
+        },
+        methods: {
+        },
+        computed: {
+          up: function() {
+            return this.message.toUpperCase();
+          },
+          matchedInterfaces: function() {
+            var a = this;
+            return this.interfaces.filter(function(c) {
+              return c.name.toLowerCase().indexOf(a.message.toLowerCase()) !== -1;
+            });
+          },
+          matchedClasses: function() {
+            var a = this;
+            return this.classes.filter(function(c) {
+              return c.name.toLowerCase().indexOf(a.message.toLowerCase()) !== -1;
+            });
+          },
+          matchedEnums: function() {
+            var a = this;
+            return this.enums.filter(function(c) {
+              return c.name.toLowerCase().indexOf(a.message.toLowerCase()) !== -1;
+            });
+          },
+          matchedExceptions: function() {
+            var a = this;
+            return this.exceptions.filter(function(c) {
+              return c.name.toLowerCase().indexOf(a.message.toLowerCase()) !== -1;
+            });
+          },
+          matchedErrors: function() {
+            var a = this;
+            return this.errors.filter(function(c) {
+              return c.name.toLowerCase().indexOf(a.message.toLowerCase()) !== -1;
+            });
+          },
+          matchedAnnotations: function() {
+            var a = this;
+            return this.annotations.filter(function(c) {
+              return c.name.toLowerCase().indexOf(a.message.toLowerCase()) !== -1;
+            });
+          }
+        }
+      });  
+      </script>
+</body>
+</html>
+

@@ -1,0 +1,189 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width" />
+  <title>org.springframework.core.task</title>
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
+</head>
+
+<body>
+  <a class="button" href="../../../../index.html">Index</a>
+  <hr>
+  
+  <h1>org.springframework.core.task</h1>
+
+  <div id="test">
+    <input type="text" v-model="message">
+
+    <div v-if="matchedInterfaces.length != 0">
+        <h2>インタフェース</h2>
+        <dl>
+          <template v-for="c in matchedInterfaces" :key="c.name">
+            <dt><a v-bind:href="c.href">{{ c.name }}</a></dt>
+            <dd v-html="c.desc"></dd>
+          </template>
+        </dl>
+      </div>
+      
+      <div v-if="matchedClasses.length != 0">
+        <h2>クラス</h2>
+        <dl>
+          <template v-for="c in matchedClasses" :key="c.name">
+            <dt><a v-bind:href="c.href">{{ c.name }}</a></dt>
+            <dd v-html="c.desc"></dd>
+          </template>
+        </dl>
+      </div>
+        
+      <div v-if="matchedEnums.length != 0">
+        <h2>列挙型</h2>
+        <dl>
+          <template v-for="c in matchedEnums" :key="c.name">
+            <dt><a v-bind:href="c.href">{{ c.name }}</a></dt>
+            <dd v-html="c.desc"></dd>
+          </template>
+        </dl>
+      </div>
+        
+      <div v-if="matchedExceptions.length != 0">
+        <h2>例外</h2>
+        <dl>
+          <template v-for="c in matchedExceptions" :key="c.name">
+            <dt><a v-bind:href="c.href">{{ c.name }}</a></dt>
+            <dd v-html="c.desc"></dd>
+          </template>
+        </dl>
+      </div>
+        
+      <div v-if="matchedErrors.length != 0">
+        <h2>エラー</h2>
+        <dl>
+          <template v-for="c in matchedErrors" :key="c.name">
+            <dt><a v-bind:href="c.href">{{ c.name }}</a></dt>
+            <dd v-html="c.desc"></dd>
+          </template>
+        </dl>
+      </div>
+        
+      <div v-if="matchedAnnotations.length != 0">
+        <h2>アノテーション</h2>
+        <dl>
+          <template v-for="c in matchedAnnotations" :key="c.name">
+            <dt><a v-bind:href="c.href">{{ c.name }}</a></dt>
+            <dd v-html="c.desc"></dd>
+          </template>
+        </dl>
+      </div>
+      </div>
+  
+
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script>
+          var app = new Vue({
+        el: '#test',
+        data: {
+          message: '',
+          interfaces: [
+                          {
+                name: 'TaskExecutor',
+                desc: 'Simple task executor interface that abstracts the execution\u000A of a Runnable.',
+                href: 'TaskExecutor.html'
+              },
+                          {
+                name: 'TaskDecorator',
+                desc: 'A callback interface for a decorator to be applied to any Runnable\u000A about to be executed.',
+                href: 'TaskDecorator.html'
+              },
+                          {
+                name: 'AsyncTaskExecutor',
+                desc: 'Extended interface for asynchronous TaskExecutor implementations,\u000A offering an overloaded #execute(Runnable, long) variant with a start\u000A timeout parameter as well support for java.util.concurrent.Callable.',
+                href: 'AsyncTaskExecutor.html'
+              },
+                          {
+                name: 'AsyncListenableTaskExecutor',
+                desc: 'Extension of the AsyncTaskExecutor interface, adding the capability to submit\u000A tasks for ListenableFutures.',
+                href: 'AsyncListenableTaskExecutor.html'
+              },
+                      ],
+          classes: [
+                          {
+                name: 'SyncTaskExecutor',
+                desc: 'TaskExecutor implementation that executes each task \u003Ci\u003Esynchronously\u003C\u002Fi\u003E\u000A in the calling thread.',
+                href: 'SyncTaskExecutor.html'
+              },
+                          {
+                name: 'SimpleAsyncTaskExecutor',
+                desc: 'TaskExecutor implementation that fires up a new Thread for each task,\u000A executing it asynchronously.',
+                href: 'SimpleAsyncTaskExecutor.html'
+              },
+                      ],
+          enums: [
+                      ],
+          exceptions: [
+                          {
+                name: 'TaskTimeoutException',
+                desc: 'Exception thrown when a AsyncTaskExecutor rejects to accept\u000A a given task for execution because of the specified timeout.',
+                href: 'TaskTimeoutException.html'
+              },
+                          {
+                name: 'TaskRejectedException',
+                desc: 'Exception thrown when a TaskExecutor rejects to accept\u000A a given task for execution.',
+                href: 'TaskRejectedException.html'
+              },
+                      ],
+          errors: [
+                      ],
+          annotations: [
+                      ]
+        },
+        methods: {
+        },
+        computed: {
+          up: function() {
+            return this.message.toUpperCase();
+          },
+          matchedInterfaces: function() {
+            var a = this;
+            return this.interfaces.filter(function(c) {
+              return c.name.toLowerCase().indexOf(a.message.toLowerCase()) !== -1;
+            });
+          },
+          matchedClasses: function() {
+            var a = this;
+            return this.classes.filter(function(c) {
+              return c.name.toLowerCase().indexOf(a.message.toLowerCase()) !== -1;
+            });
+          },
+          matchedEnums: function() {
+            var a = this;
+            return this.enums.filter(function(c) {
+              return c.name.toLowerCase().indexOf(a.message.toLowerCase()) !== -1;
+            });
+          },
+          matchedExceptions: function() {
+            var a = this;
+            return this.exceptions.filter(function(c) {
+              return c.name.toLowerCase().indexOf(a.message.toLowerCase()) !== -1;
+            });
+          },
+          matchedErrors: function() {
+            var a = this;
+            return this.errors.filter(function(c) {
+              return c.name.toLowerCase().indexOf(a.message.toLowerCase()) !== -1;
+            });
+          },
+          matchedAnnotations: function() {
+            var a = this;
+            return this.annotations.filter(function(c) {
+              return c.name.toLowerCase().indexOf(a.message.toLowerCase()) !== -1;
+            });
+          }
+        }
+      });  
+      </script>
+</body>
+</html>
+

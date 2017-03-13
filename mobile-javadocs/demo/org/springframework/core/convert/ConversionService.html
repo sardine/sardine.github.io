@@ -1,0 +1,153 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width" />
+  <title>ConversionService</title>
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <h1>ConversionService</h1>
+
+  org.springframework.core.convert.ConversionService
+
+
+  <div id="test">
+    <input type="text" v-model="message">
+
+    <template v-for="m in matchedMethods" :key="m.sig">
+      <h3>{{ m.name }}</h3>
+      <pre><code>{{ m.mods }} {{ m.name }}(<template v-for="(p, pi) in m.params" :key="p.name"><template v-if="pi != 0">, </template>{{ p.type }}{{ p.dim }} {{ p.name }}</template>)</code></pre>
+      <div><p>{{ m.desc }}</p></div>
+    </template>
+  </div>
+
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script>
+  var app = new Vue({
+  el: '#test',
+  data: {
+    message: '',
+    methods: [
+              {
+          name: 'canConvert',
+          mods: 'public',
+          sig: 'canConvert(java.lang.Class, java.lang.Class)',
+          desc: ''/*'Return {@code true} if objects of {@code sourceType} can be converted to the {@code targetType}.
+ <p>If this method returns {@code true}, it means {@link #convert(Object, Class)} is capable
+ of converting an instance of {@code sourceType} to {@code targetType}.
+ <p>Special note on collections, arrays, and maps types:
+ For conversion between collection, array, and map types, this method will return {@code true}
+ even though a convert invocation may still generate a {@link ConversionException} if the
+ underlying elements are not convertible. Callers are expected to handle this exceptional case
+ when working with collections and maps.'*/,
+          params: [
+                          {
+                name: 'sourceType',
+                dim: '',
+                type: 'Class',
+              },
+                          {
+                name: 'targetType',
+                dim: '',
+                type: 'Class',
+              },
+                      ]
+        },
+              {
+          name: 'canConvert',
+          mods: 'public',
+          sig: 'canConvert(org.springframework.core.convert.TypeDescriptor, org.springframework.core.convert.TypeDescriptor)',
+          desc: ''/*'Return {@code true} if objects of {@code sourceType} can be converted to the {@code targetType}.
+ The TypeDescriptors provide additional context about the source and target locations
+ where conversion would occur, often object fields or property locations.
+ <p>If this method returns {@code true}, it means {@link #convert(Object, TypeDescriptor, TypeDescriptor)}
+ is capable of converting an instance of {@code sourceType} to {@code targetType}.
+ <p>Special note on collections, arrays, and maps types:
+ For conversion between collection, array, and map types, this method will return {@code true}
+ even though a convert invocation may still generate a {@link ConversionException} if the
+ underlying elements are not convertible. Callers are expected to handle this exceptional case
+ when working with collections and maps.'*/,
+          params: [
+                          {
+                name: 'sourceType',
+                dim: '',
+                type: 'TypeDescriptor',
+              },
+                          {
+                name: 'targetType',
+                dim: '',
+                type: 'TypeDescriptor',
+              },
+                      ]
+        },
+              {
+          name: 'convert',
+          mods: 'public',
+          sig: 'convert(java.lang.Object, java.lang.Class)',
+          desc: ''/*'Convert the given {@code source} to the specified {@code targetType}.'*/,
+          params: [
+                          {
+                name: 'source',
+                dim: '',
+                type: 'Object',
+              },
+                          {
+                name: 'targetType',
+                dim: '',
+                type: 'Class',
+              },
+                      ]
+        },
+              {
+          name: 'convert',
+          mods: 'public',
+          sig: 'convert(java.lang.Object, org.springframework.core.convert.TypeDescriptor, org.springframework.core.convert.TypeDescriptor)',
+          desc: ''/*'Convert the given {@code source} to the specified {@code targetType}.
+ The TypeDescriptors provide additional context about the source and target locations
+ where conversion will occur, often object fields or property locations.'*/,
+          params: [
+                          {
+                name: 'source',
+                dim: '',
+                type: 'Object',
+              },
+                          {
+                name: 'sourceType',
+                dim: '',
+                type: 'TypeDescriptor',
+              },
+                          {
+                name: 'targetType',
+                dim: '',
+                type: 'TypeDescriptor',
+              },
+                      ]
+        },
+          ]
+  },
+  methods: {
+    show: function() {
+      alert(this.message);
+    }
+  },
+  computed: {
+    up: function() {
+      return this.message.toUpperCase();
+    },
+    matchedMethods: function() {
+      var a = this;
+      return this.methods.filter(function(m) {
+        return m.name.toLowerCase().indexOf(a.message.toLowerCase()) !== -1;
+      });
+    }
+  }
+});  
+  </script>
+</body>
+</html>
+

@@ -1,0 +1,214 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width" />
+  <title>org.springframework.core.io.support</title>
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
+</head>
+
+<body>
+  <a class="button" href="../../../../../index.html">Index</a>
+  <hr>
+  
+  <h1>org.springframework.core.io.support</h1>
+
+  <div id="test">
+    <input type="text" v-model="message">
+
+    <div v-if="matchedInterfaces.length != 0">
+        <h2>インタフェース</h2>
+        <dl>
+          <template v-for="c in matchedInterfaces" :key="c.name">
+            <dt><a v-bind:href="c.href">{{ c.name }}</a></dt>
+            <dd v-html="c.desc"></dd>
+          </template>
+        </dl>
+      </div>
+      
+      <div v-if="matchedClasses.length != 0">
+        <h2>クラス</h2>
+        <dl>
+          <template v-for="c in matchedClasses" :key="c.name">
+            <dt><a v-bind:href="c.href">{{ c.name }}</a></dt>
+            <dd v-html="c.desc"></dd>
+          </template>
+        </dl>
+      </div>
+        
+      <div v-if="matchedEnums.length != 0">
+        <h2>列挙型</h2>
+        <dl>
+          <template v-for="c in matchedEnums" :key="c.name">
+            <dt><a v-bind:href="c.href">{{ c.name }}</a></dt>
+            <dd v-html="c.desc"></dd>
+          </template>
+        </dl>
+      </div>
+        
+      <div v-if="matchedExceptions.length != 0">
+        <h2>例外</h2>
+        <dl>
+          <template v-for="c in matchedExceptions" :key="c.name">
+            <dt><a v-bind:href="c.href">{{ c.name }}</a></dt>
+            <dd v-html="c.desc"></dd>
+          </template>
+        </dl>
+      </div>
+        
+      <div v-if="matchedErrors.length != 0">
+        <h2>エラー</h2>
+        <dl>
+          <template v-for="c in matchedErrors" :key="c.name">
+            <dt><a v-bind:href="c.href">{{ c.name }}</a></dt>
+            <dd v-html="c.desc"></dd>
+          </template>
+        </dl>
+      </div>
+        
+      <div v-if="matchedAnnotations.length != 0">
+        <h2>アノテーション</h2>
+        <dl>
+          <template v-for="c in matchedAnnotations" :key="c.name">
+            <dt><a v-bind:href="c.href">{{ c.name }}</a></dt>
+            <dd v-html="c.desc"></dd>
+          </template>
+        </dl>
+      </div>
+      </div>
+  
+
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script>
+          var app = new Vue({
+        el: '#test',
+        data: {
+          message: '',
+          interfaces: [
+                          {
+                name: 'ResourcePatternResolver',
+                desc: 'Strategy interface for resolving a location pattern (for example,\u000A an Ant-style path pattern) into Resource objects.',
+                href: 'ResourcePatternResolver.html'
+              },
+                          {
+                name: 'PropertySourceFactory',
+                desc: 'Strategy interface for creating resource-based PropertySource wrappers.',
+                href: 'PropertySourceFactory.html'
+              },
+                      ],
+          classes: [
+                          {
+                name: 'SpringFactoriesLoader',
+                desc: 'General purpose factory loading mechanism for internal use within the framework.',
+                href: 'SpringFactoriesLoader.html'
+              },
+                          {
+                name: 'ResourceRegion',
+                desc: 'Region of a Resource implementation, materialized by a position\u000A within the Resource and a byte count for the length of that region.',
+                href: 'ResourceRegion.html'
+              },
+                          {
+                name: 'ResourcePropertySource',
+                desc: 'Subclass of PropertiesPropertySource that loads a Properties object\u000A from a given org.springframework.core.io.Resource or resource location such as\u000A \u0022classpath:\u002Fcom\u002Fmyco\u002Ffoo.properties\u0022 or \u0022file:\u002Fpath\u002Fto\u002Ffile.xml\u0022.',
+                href: 'ResourcePropertySource.html'
+              },
+                          {
+                name: 'ResourcePatternUtils',
+                desc: 'Utility class for determining whether a given URL is a resource\u000A location that can be loaded via a ResourcePatternResolver.',
+                href: 'ResourcePatternUtils.html'
+              },
+                          {
+                name: 'ResourceArrayPropertyEditor',
+                desc: 'Editor for org.springframework.core.io.Resource arrays, to\u000A automatically convert String location patterns\u000A (e.g.',
+                href: 'ResourceArrayPropertyEditor.html'
+              },
+                          {
+                name: 'PropertiesLoaderUtils',
+                desc: 'Convenient utility methods for loading of java.util.Properties,\u000A performing standard handling of input streams.',
+                href: 'PropertiesLoaderUtils.html'
+              },
+                          {
+                name: 'PropertiesLoaderSupport',
+                desc: 'Base class for JavaBean-style components that need to load properties\u000A from one or more resources.',
+                href: 'PropertiesLoaderSupport.html'
+              },
+                          {
+                name: 'PathMatchingResourcePatternResolver',
+                desc: 'A ResourcePatternResolver implementation that is able to resolve a\u000A specified resource location path into one or more matching Resources.',
+                href: 'PathMatchingResourcePatternResolver.html'
+              },
+                          {
+                name: 'LocalizedResourceHelper',
+                desc: 'Helper class for loading a localized resource,\u000A specified through name, extension and current locale.',
+                href: 'LocalizedResourceHelper.html'
+              },
+                          {
+                name: 'EncodedResource',
+                desc: 'Holder that combines a Resource descriptor with a specific encoding\u000A or Charset to be used for reading from the resource.',
+                href: 'EncodedResource.html'
+              },
+                          {
+                name: 'DefaultPropertySourceFactory',
+                desc: 'The default implementation for PropertySourceFactory,\u000A wrapping every resource in a ResourcePropertySource.',
+                href: 'DefaultPropertySourceFactory.html'
+              },
+                      ],
+          enums: [
+                      ],
+          exceptions: [
+                      ],
+          errors: [
+                      ],
+          annotations: [
+                      ]
+        },
+        methods: {
+        },
+        computed: {
+          up: function() {
+            return this.message.toUpperCase();
+          },
+          matchedInterfaces: function() {
+            var a = this;
+            return this.interfaces.filter(function(c) {
+              return c.name.toLowerCase().indexOf(a.message.toLowerCase()) !== -1;
+            });
+          },
+          matchedClasses: function() {
+            var a = this;
+            return this.classes.filter(function(c) {
+              return c.name.toLowerCase().indexOf(a.message.toLowerCase()) !== -1;
+            });
+          },
+          matchedEnums: function() {
+            var a = this;
+            return this.enums.filter(function(c) {
+              return c.name.toLowerCase().indexOf(a.message.toLowerCase()) !== -1;
+            });
+          },
+          matchedExceptions: function() {
+            var a = this;
+            return this.exceptions.filter(function(c) {
+              return c.name.toLowerCase().indexOf(a.message.toLowerCase()) !== -1;
+            });
+          },
+          matchedErrors: function() {
+            var a = this;
+            return this.errors.filter(function(c) {
+              return c.name.toLowerCase().indexOf(a.message.toLowerCase()) !== -1;
+            });
+          },
+          matchedAnnotations: function() {
+            var a = this;
+            return this.annotations.filter(function(c) {
+              return c.name.toLowerCase().indexOf(a.message.toLowerCase()) !== -1;
+            });
+          }
+        }
+      });  
+      </script>
+</body>
+</html>
+

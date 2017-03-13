@@ -1,0 +1,119 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width" />
+  <title>Property</title>
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <h1>Property</h1>
+
+  org.springframework.core.convert.Property
+
+
+  <div id="test">
+    <input type="text" v-model="message">
+
+    <template v-for="m in matchedMethods" :key="m.sig">
+      <h3>{{ m.name }}</h3>
+      <pre><code>{{ m.mods }} {{ m.name }}(<template v-for="(p, pi) in m.params" :key="p.name"><template v-if="pi != 0">, </template>{{ p.type }}{{ p.dim }} {{ p.name }}</template>)</code></pre>
+      <div><p>{{ m.desc }}</p></div>
+    </template>
+  </div>
+
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script>
+  var app = new Vue({
+  el: '#test',
+  data: {
+    message: '',
+    methods: [
+              {
+          name: 'getObjectType',
+          mods: 'public',
+          sig: 'getObjectType()',
+          desc: ''/*'The object declaring this property, either directly or in a superclass the object extends.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'getName',
+          mods: 'public',
+          sig: 'getName()',
+          desc: ''/*'The name of the property: e.g. 'foo''*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'getType',
+          mods: 'public',
+          sig: 'getType()',
+          desc: ''/*'The property type: e.g. {@code java.lang.String}'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'getReadMethod',
+          mods: 'public',
+          sig: 'getReadMethod()',
+          desc: ''/*'The property getter method: e.g. {@code getFoo()}'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'getWriteMethod',
+          mods: 'public',
+          sig: 'getWriteMethod()',
+          desc: ''/*'The property setter method: e.g. {@code setFoo(String)}'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'equals',
+          mods: 'public',
+          sig: 'equals(java.lang.Object)',
+          desc: ''/*''*/,
+          params: [
+                          {
+                name: 'other',
+                dim: '',
+                type: 'Object',
+              },
+                      ]
+        },
+              {
+          name: 'hashCode',
+          mods: 'public',
+          sig: 'hashCode()',
+          desc: ''/*''*/,
+          params: [
+                      ]
+        },
+          ]
+  },
+  methods: {
+    show: function() {
+      alert(this.message);
+    }
+  },
+  computed: {
+    up: function() {
+      return this.message.toUpperCase();
+    },
+    matchedMethods: function() {
+      var a = this;
+      return this.methods.filter(function(m) {
+        return m.name.toLowerCase().indexOf(a.message.toLowerCase()) !== -1;
+      });
+    }
+  }
+});  
+  </script>
+</body>
+</html>
+

@@ -1,0 +1,166 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width" />
+  <title>Base64Utils</title>
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <h1>Base64Utils</h1>
+
+  org.springframework.util.Base64Utils
+
+
+  <div id="test">
+    <input type="text" v-model="message">
+
+    <template v-for="m in matchedMethods" :key="m.sig">
+      <h3>{{ m.name }}</h3>
+      <pre><code>{{ m.mods }} {{ m.name }}(<template v-for="(p, pi) in m.params" :key="p.name"><template v-if="pi != 0">, </template>{{ p.type }}{{ p.dim }} {{ p.name }}</template>)</code></pre>
+      <div><p>{{ m.desc }}</p></div>
+    </template>
+  </div>
+
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script>
+  var app = new Vue({
+  el: '#test',
+  data: {
+    message: '',
+    methods: [
+              {
+          name: 'encode',
+          mods: 'public static',
+          sig: 'encode(byte[])',
+          desc: ''/*'Base64-encode the given byte array.'*/,
+          params: [
+                          {
+                name: 'src',
+                dim: '[]',
+                type: 'byte',
+              },
+                      ]
+        },
+              {
+          name: 'decode',
+          mods: 'public static',
+          sig: 'decode(byte[])',
+          desc: ''/*'Base64-decode the given byte array.'*/,
+          params: [
+                          {
+                name: 'src',
+                dim: '[]',
+                type: 'byte',
+              },
+                      ]
+        },
+              {
+          name: 'encodeUrlSafe',
+          mods: 'public static',
+          sig: 'encodeUrlSafe(byte[])',
+          desc: ''/*'Base64-encode the given byte array using the RFC 4648
+ "URL and Filename Safe Alphabet".'*/,
+          params: [
+                          {
+                name: 'src',
+                dim: '[]',
+                type: 'byte',
+              },
+                      ]
+        },
+              {
+          name: 'decodeUrlSafe',
+          mods: 'public static',
+          sig: 'decodeUrlSafe(byte[])',
+          desc: ''/*'Base64-decode the given byte array using the RFC 4648
+ "URL and Filename Safe Alphabet".'*/,
+          params: [
+                          {
+                name: 'src',
+                dim: '[]',
+                type: 'byte',
+              },
+                      ]
+        },
+              {
+          name: 'encodeToString',
+          mods: 'public static',
+          sig: 'encodeToString(byte[])',
+          desc: ''/*'Base64-encode the given byte array to a String.'*/,
+          params: [
+                          {
+                name: 'src',
+                dim: '[]',
+                type: 'byte',
+              },
+                      ]
+        },
+              {
+          name: 'decodeFromString',
+          mods: 'public static',
+          sig: 'decodeFromString(java.lang.String)',
+          desc: ''/*'Base64-decode the given byte array from an UTF-8 String.'*/,
+          params: [
+                          {
+                name: 'src',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'encodeToUrlSafeString',
+          mods: 'public static',
+          sig: 'encodeToUrlSafeString(byte[])',
+          desc: ''/*'Base64-encode the given byte array to a String using the RFC 4648
+ "URL and Filename Safe Alphabet".'*/,
+          params: [
+                          {
+                name: 'src',
+                dim: '[]',
+                type: 'byte',
+              },
+                      ]
+        },
+              {
+          name: 'decodeFromUrlSafeString',
+          mods: 'public static',
+          sig: 'decodeFromUrlSafeString(java.lang.String)',
+          desc: ''/*'Base64-decode the given byte array from an UTF-8 String using the RFC 4648
+ "URL and Filename Safe Alphabet".'*/,
+          params: [
+                          {
+                name: 'src',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+          ]
+  },
+  methods: {
+    show: function() {
+      alert(this.message);
+    }
+  },
+  computed: {
+    up: function() {
+      return this.message.toUpperCase();
+    },
+    matchedMethods: function() {
+      var a = this;
+      return this.methods.filter(function(m) {
+        return m.name.toLowerCase().indexOf(a.message.toLowerCase()) !== -1;
+      });
+    }
+  }
+});  
+  </script>
+</body>
+</html>
+

@@ -1,0 +1,109 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width" />
+  <title>ResourceRegionEncoder</title>
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <h1>ResourceRegionEncoder</h1>
+
+  org.springframework.core.codec.ResourceRegionEncoder
+
+
+  <div id="test">
+    <input type="text" v-model="message">
+
+    <template v-for="m in matchedMethods" :key="m.sig">
+      <h3>{{ m.name }}</h3>
+      <pre><code>{{ m.mods }} {{ m.name }}(<template v-for="(p, pi) in m.params" :key="p.name"><template v-if="pi != 0">, </template>{{ p.type }}{{ p.dim }} {{ p.name }}</template>)</code></pre>
+      <div><p>{{ m.desc }}</p></div>
+    </template>
+  </div>
+
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script>
+  var app = new Vue({
+  el: '#test',
+  data: {
+    message: '',
+    methods: [
+              {
+          name: 'canEncode',
+          mods: 'public',
+          sig: 'canEncode(org.springframework.core.ResolvableType, org.springframework.util.MimeType)',
+          desc: ''/*''*/,
+          params: [
+                          {
+                name: 'elementType',
+                dim: '',
+                type: 'ResolvableType',
+              },
+                          {
+                name: 'mimeType',
+                dim: '',
+                type: 'MimeType',
+              },
+                      ]
+        },
+              {
+          name: 'encode',
+          mods: 'public',
+          sig: 'encode(&lt;any&gt;, org.springframework.core.io.buffer.DataBufferFactory, org.springframework.core.ResolvableType, org.springframework.util.MimeType, java.util.Map)',
+          desc: ''/*''*/,
+          params: [
+                          {
+                name: 'inputStream',
+                dim: '',
+                type: '&lt;any&gt;',
+              },
+                          {
+                name: 'bufferFactory',
+                dim: '',
+                type: 'DataBufferFactory',
+              },
+                          {
+                name: 'elementType',
+                dim: '',
+                type: 'ResolvableType',
+              },
+                          {
+                name: 'mimeType',
+                dim: '',
+                type: 'MimeType',
+              },
+                          {
+                name: 'hints',
+                dim: '',
+                type: 'Map',
+              },
+                      ]
+        },
+          ]
+  },
+  methods: {
+    show: function() {
+      alert(this.message);
+    }
+  },
+  computed: {
+    up: function() {
+      return this.message.toUpperCase();
+    },
+    matchedMethods: function() {
+      var a = this;
+      return this.methods.filter(function(m) {
+        return m.name.toLowerCase().indexOf(a.message.toLowerCase()) !== -1;
+      });
+    }
+  }
+});  
+  </script>
+</body>
+</html>
+

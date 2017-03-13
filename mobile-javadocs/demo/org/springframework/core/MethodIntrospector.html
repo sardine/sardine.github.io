@@ -1,0 +1,119 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width" />
+  <title>MethodIntrospector</title>
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <h1>MethodIntrospector</h1>
+
+  org.springframework.core.MethodIntrospector
+
+
+  <div id="test">
+    <input type="text" v-model="message">
+
+    <template v-for="m in matchedMethods" :key="m.sig">
+      <h3>{{ m.name }}</h3>
+      <pre><code>{{ m.mods }} {{ m.name }}(<template v-for="(p, pi) in m.params" :key="p.name"><template v-if="pi != 0">, </template>{{ p.type }}{{ p.dim }} {{ p.name }}</template>)</code></pre>
+      <div><p>{{ m.desc }}</p></div>
+    </template>
+  </div>
+
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script>
+  var app = new Vue({
+  el: '#test',
+  data: {
+    message: '',
+    methods: [
+              {
+          name: 'selectMethods',
+          mods: 'public static',
+          sig: 'selectMethods(java.lang.Class, org.springframework.core.MethodIntrospector.MetadataLookup)',
+          desc: ''/*'Select methods on the given target type based on the lookup of associated metadata.
+ <p>Callers define methods of interest through the {@link MetadataLookup} parameter,
+ allowing to collect the associated metadata into the result map.'*/,
+          params: [
+                          {
+                name: 'targetType',
+                dim: '',
+                type: 'Class',
+              },
+                          {
+                name: 'metadataLookup',
+                dim: '',
+                type: 'MetadataLookup',
+              },
+                      ]
+        },
+              {
+          name: 'selectMethods',
+          mods: 'public static',
+          sig: 'selectMethods(java.lang.Class, org.springframework.util.ReflectionUtils.MethodFilter)',
+          desc: ''/*'Select methods on the given target type based on a filter.
+ <p>Callers define methods of interest through the {@code MethodFilter} parameter.'*/,
+          params: [
+                          {
+                name: 'targetType',
+                dim: '',
+                type: 'Class',
+              },
+                          {
+                name: 'methodFilter',
+                dim: '',
+                type: 'MethodFilter',
+              },
+                      ]
+        },
+              {
+          name: 'selectInvocableMethod',
+          mods: 'public static',
+          sig: 'selectInvocableMethod(java.lang.reflect.Method, java.lang.Class)',
+          desc: ''/*'Select an invocable method on the target type: either the given method itself
+ if actually exposed on the target type, or otherwise a corresponding method
+ on one of the target type's interfaces or on the target type itself.
+ <p>Matches on user-declared interfaces will be preferred since they are likely
+ to contain relevant metadata that corresponds to the method on the target class.'*/,
+          params: [
+                          {
+                name: 'method',
+                dim: '',
+                type: 'Method',
+              },
+                          {
+                name: 'targetType',
+                dim: '',
+                type: 'Class',
+              },
+                      ]
+        },
+          ]
+  },
+  methods: {
+    show: function() {
+      alert(this.message);
+    }
+  },
+  computed: {
+    up: function() {
+      return this.message.toUpperCase();
+    },
+    matchedMethods: function() {
+      var a = this;
+      return this.methods.filter(function(m) {
+        return m.name.toLowerCase().indexOf(a.message.toLowerCase()) !== -1;
+      });
+    }
+  }
+});  
+  </script>
+</body>
+</html>
+

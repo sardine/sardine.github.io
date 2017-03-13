@@ -1,0 +1,170 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width" />
+  <title>PropertySource</title>
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <h1>PropertySource</h1>
+
+  org.springframework.core.env.PropertySource
+
+
+  <div id="test">
+    <input type="text" v-model="message">
+
+    <template v-for="m in matchedMethods" :key="m.sig">
+      <h3>{{ m.name }}</h3>
+      <pre><code>{{ m.mods }} {{ m.name }}(<template v-for="(p, pi) in m.params" :key="p.name"><template v-if="pi != 0">, </template>{{ p.type }}{{ p.dim }} {{ p.name }}</template>)</code></pre>
+      <div><p>{{ m.desc }}</p></div>
+    </template>
+  </div>
+
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script>
+  var app = new Vue({
+  el: '#test',
+  data: {
+    message: '',
+    methods: [
+              {
+          name: 'getName',
+          mods: 'public',
+          sig: 'getName()',
+          desc: ''/*'Return the name of this {@code PropertySource}'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'getSource',
+          mods: 'public',
+          sig: 'getSource()',
+          desc: ''/*'Return the underlying source object for this {@code PropertySource}.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'containsProperty',
+          mods: 'public',
+          sig: 'containsProperty(java.lang.String)',
+          desc: ''/*'Return whether this {@code PropertySource} contains the given name.
+ <p>This implementation simply checks for a {@code null} return value
+ from {@link #getProperty(String)}. Subclasses may wish to implement
+ a more efficient algorithm if possible.'*/,
+          params: [
+                          {
+                name: 'name',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'getProperty',
+          mods: 'public abstract',
+          sig: 'getProperty(java.lang.String)',
+          desc: ''/*'Return the value associated with the given name,
+ or {@code null} if not found.'*/,
+          params: [
+                          {
+                name: 'name',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'equals',
+          mods: 'public',
+          sig: 'equals(java.lang.Object)',
+          desc: ''/*'This {@code PropertySource} object is equal to the given object if:
+ <ul>
+ <li>they are the same instance
+ <li>the {@code name} properties for both objects are equal
+ </ul>
+ <p>No properties other than {@code name} are evaluated.'*/,
+          params: [
+                          {
+                name: 'obj',
+                dim: '',
+                type: 'Object',
+              },
+                      ]
+        },
+              {
+          name: 'hashCode',
+          mods: 'public',
+          sig: 'hashCode()',
+          desc: ''/*'Return a hash code derived from the {@code name} property
+ of this {@code PropertySource} object.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'toString',
+          mods: 'public',
+          sig: 'toString()',
+          desc: ''/*'Produce concise output (type and name) if the current log level does not include
+ debug. If debug is enabled, produce verbose output including the hash code of the
+ PropertySource instance and every name/value property pair.
+ <p>This variable verbosity is useful as a property source such as system properties
+ or environment variables may contain an arbitrary number of property pairs,
+ potentially leading to difficult to read exception and log messages.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'named',
+          mods: 'public static',
+          sig: 'named(java.lang.String)',
+          desc: ''/*'Return a {@code PropertySource} implementation intended for collection comparison purposes only.
+ <p>Primarily for internal use, but given a collection of {@code PropertySource} objects, may be
+ used as follows:
+ <pre class="code">
+ {@code List<PropertySource<?>> sources = new ArrayList<PropertySource<?>>();
+ sources.add(new MapPropertySource("sourceA", mapA));
+ sources.add(new MapPropertySource("sourceB", mapB));
+ assert sources.contains(PropertySource.named("sourceA"));
+ assert sources.contains(PropertySource.named("sourceB"));
+ assert !sources.contains(PropertySource.named("sourceC"));
+ }</pre>
+ The returned {@code PropertySource} will throw {@code UnsupportedOperationException}
+ if any methods other than {@code equals(Object)}, {@code hashCode()}, and {@code toString()}
+ are called.'*/,
+          params: [
+                          {
+                name: 'name',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+          ]
+  },
+  methods: {
+    show: function() {
+      alert(this.message);
+    }
+  },
+  computed: {
+    up: function() {
+      return this.message.toUpperCase();
+    },
+    matchedMethods: function() {
+      var a = this;
+      return this.methods.filter(function(m) {
+        return m.name.toLowerCase().indexOf(a.message.toLowerCase()) !== -1;
+      });
+    }
+  }
+});  
+  </script>
+</body>
+</html>
+

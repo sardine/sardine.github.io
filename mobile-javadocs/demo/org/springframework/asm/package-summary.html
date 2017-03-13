@@ -1,0 +1,224 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width" />
+  <title>org.springframework.asm</title>
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
+</head>
+
+<body>
+  <a class="button" href="../../../index.html">Index</a>
+  <hr>
+  
+  <h1>org.springframework.asm</h1>
+
+  <div id="test">
+    <input type="text" v-model="message">
+
+    <div v-if="matchedInterfaces.length != 0">
+        <h2>インタフェース</h2>
+        <dl>
+          <template v-for="c in matchedInterfaces" :key="c.name">
+            <dt><a v-bind:href="c.href">{{ c.name }}</a></dt>
+            <dd v-html="c.desc"></dd>
+          </template>
+        </dl>
+      </div>
+      
+      <div v-if="matchedClasses.length != 0">
+        <h2>クラス</h2>
+        <dl>
+          <template v-for="c in matchedClasses" :key="c.name">
+            <dt><a v-bind:href="c.href">{{ c.name }}</a></dt>
+            <dd v-html="c.desc"></dd>
+          </template>
+        </dl>
+      </div>
+        
+      <div v-if="matchedEnums.length != 0">
+        <h2>列挙型</h2>
+        <dl>
+          <template v-for="c in matchedEnums" :key="c.name">
+            <dt><a v-bind:href="c.href">{{ c.name }}</a></dt>
+            <dd v-html="c.desc"></dd>
+          </template>
+        </dl>
+      </div>
+        
+      <div v-if="matchedExceptions.length != 0">
+        <h2>例外</h2>
+        <dl>
+          <template v-for="c in matchedExceptions" :key="c.name">
+            <dt><a v-bind:href="c.href">{{ c.name }}</a></dt>
+            <dd v-html="c.desc"></dd>
+          </template>
+        </dl>
+      </div>
+        
+      <div v-if="matchedErrors.length != 0">
+        <h2>エラー</h2>
+        <dl>
+          <template v-for="c in matchedErrors" :key="c.name">
+            <dt><a v-bind:href="c.href">{{ c.name }}</a></dt>
+            <dd v-html="c.desc"></dd>
+          </template>
+        </dl>
+      </div>
+        
+      <div v-if="matchedAnnotations.length != 0">
+        <h2>アノテーション</h2>
+        <dl>
+          <template v-for="c in matchedAnnotations" :key="c.name">
+            <dt><a v-bind:href="c.href">{{ c.name }}</a></dt>
+            <dd v-html="c.desc"></dd>
+          </template>
+        </dl>
+      </div>
+      </div>
+  
+
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script>
+          var app = new Vue({
+        el: '#test',
+        data: {
+          message: '',
+          interfaces: [
+                          {
+                name: 'Opcodes',
+                desc: 'Defines the JVM opcodes, access flags and array type codes.',
+                href: 'Opcodes.html'
+              },
+                      ],
+          classes: [
+                          {
+                name: 'TypeReference',
+                desc: 'A reference to a type appearing in a class, field or method declaration, or\u000A on an instruction.',
+                href: 'TypeReference.html'
+              },
+                          {
+                name: 'TypePath',
+                desc: 'The path to a type argument, wildcard bound, array element type, or static\u000A inner type within an enclosing type.',
+                href: 'TypePath.html'
+              },
+                          {
+                name: 'Type',
+                desc: 'A Java field or method type.',
+                href: 'Type.html'
+              },
+                          {
+                name: 'SpringAsmInfo',
+                desc: 'Utility class exposing constants related to Spring\u0027s internal repackaging\u000A of the ASM bytecode manipulation library (currently based on version 5.0).',
+                href: 'SpringAsmInfo.html'
+              },
+                          {
+                name: 'MethodVisitor',
+                desc: 'A visitor to visit a Java method.',
+                href: 'MethodVisitor.html'
+              },
+                          {
+                name: 'Label',
+                desc: 'A label represents a position in the bytecode of a method.',
+                href: 'Label.html'
+              },
+                          {
+                name: 'Handle',
+                desc: 'A reference to a field or a method.',
+                href: 'Handle.html'
+              },
+                          {
+                name: 'FieldVisitor',
+                desc: 'A visitor to visit a Java field.',
+                href: 'FieldVisitor.html'
+              },
+                          {
+                name: 'ClassWriter',
+                desc: 'A ClassVisitor that generates classes in bytecode form.',
+                href: 'ClassWriter.html'
+              },
+                          {
+                name: 'ClassVisitor',
+                desc: 'A visitor to visit a Java class.',
+                href: 'ClassVisitor.html'
+              },
+                          {
+                name: 'ClassReader',
+                desc: 'A Java class parser to make a ClassVisitor visit an existing class.',
+                href: 'ClassReader.html'
+              },
+                          {
+                name: 'ByteVector',
+                desc: 'A dynamically extensible vector of bytes.',
+                href: 'ByteVector.html'
+              },
+                          {
+                name: 'Attribute',
+                desc: 'A non standard class, field, method or code attribute.',
+                href: 'Attribute.html'
+              },
+                          {
+                name: 'AnnotationVisitor',
+                desc: 'A visitor to visit a Java annotation.',
+                href: 'AnnotationVisitor.html'
+              },
+                      ],
+          enums: [
+                      ],
+          exceptions: [
+                      ],
+          errors: [
+                      ],
+          annotations: [
+                      ]
+        },
+        methods: {
+        },
+        computed: {
+          up: function() {
+            return this.message.toUpperCase();
+          },
+          matchedInterfaces: function() {
+            var a = this;
+            return this.interfaces.filter(function(c) {
+              return c.name.toLowerCase().indexOf(a.message.toLowerCase()) !== -1;
+            });
+          },
+          matchedClasses: function() {
+            var a = this;
+            return this.classes.filter(function(c) {
+              return c.name.toLowerCase().indexOf(a.message.toLowerCase()) !== -1;
+            });
+          },
+          matchedEnums: function() {
+            var a = this;
+            return this.enums.filter(function(c) {
+              return c.name.toLowerCase().indexOf(a.message.toLowerCase()) !== -1;
+            });
+          },
+          matchedExceptions: function() {
+            var a = this;
+            return this.exceptions.filter(function(c) {
+              return c.name.toLowerCase().indexOf(a.message.toLowerCase()) !== -1;
+            });
+          },
+          matchedErrors: function() {
+            var a = this;
+            return this.errors.filter(function(c) {
+              return c.name.toLowerCase().indexOf(a.message.toLowerCase()) !== -1;
+            });
+          },
+          matchedAnnotations: function() {
+            var a = this;
+            return this.annotations.filter(function(c) {
+              return c.name.toLowerCase().indexOf(a.message.toLowerCase()) !== -1;
+            });
+          }
+        }
+      });  
+      </script>
+</body>
+</html>
+

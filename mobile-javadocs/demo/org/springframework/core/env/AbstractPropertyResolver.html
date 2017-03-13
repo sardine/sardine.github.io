@@ -1,0 +1,338 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width" />
+  <title>AbstractPropertyResolver</title>
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <h1>AbstractPropertyResolver</h1>
+
+  org.springframework.core.env.AbstractPropertyResolver
+
+
+  <div id="test">
+    <input type="text" v-model="message">
+
+    <template v-for="m in matchedMethods" :key="m.sig">
+      <h3>{{ m.name }}</h3>
+      <pre><code>{{ m.mods }} {{ m.name }}(<template v-for="(p, pi) in m.params" :key="p.name"><template v-if="pi != 0">, </template>{{ p.type }}{{ p.dim }} {{ p.name }}</template>)</code></pre>
+      <div><p>{{ m.desc }}</p></div>
+    </template>
+  </div>
+
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script>
+  var app = new Vue({
+  el: '#test',
+  data: {
+    message: '',
+    methods: [
+              {
+          name: 'getConversionService',
+          mods: 'public',
+          sig: 'getConversionService()',
+          desc: ''/*''*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'setConversionService',
+          mods: 'public',
+          sig: 'setConversionService(org.springframework.core.convert.support.ConfigurableConversionService)',
+          desc: ''/*''*/,
+          params: [
+                          {
+                name: 'conversionService',
+                dim: '',
+                type: 'ConfigurableConversionService',
+              },
+                      ]
+        },
+              {
+          name: 'setPlaceholderPrefix',
+          mods: 'public',
+          sig: 'setPlaceholderPrefix(java.lang.String)',
+          desc: ''/*'Set the prefix that placeholders replaced by this resolver must begin with.
+ <p>The default is "${".'*/,
+          params: [
+                          {
+                name: 'placeholderPrefix',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'setPlaceholderSuffix',
+          mods: 'public',
+          sig: 'setPlaceholderSuffix(java.lang.String)',
+          desc: ''/*'Set the suffix that placeholders replaced by this resolver must end with.
+ <p>The default is "}".'*/,
+          params: [
+                          {
+                name: 'placeholderSuffix',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'setValueSeparator',
+          mods: 'public',
+          sig: 'setValueSeparator(java.lang.String)',
+          desc: ''/*'Specify the separating character between the placeholders replaced by this
+ resolver and their associated default value, or {@code null} if no such
+ special character should be processed as a value separator.
+ <p>The default is ":".'*/,
+          params: [
+                          {
+                name: 'valueSeparator',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'setIgnoreUnresolvableNestedPlaceholders',
+          mods: 'public',
+          sig: 'setIgnoreUnresolvableNestedPlaceholders(boolean)',
+          desc: ''/*'Set whether to throw an exception when encountering an unresolvable placeholder
+ nested within the value of a given property. A {@code false} value indicates strict
+ resolution, i.e. that an exception will be thrown. A {@code true} value indicates
+ that unresolvable nested placeholders should be passed through in their unresolved
+ ${...} form.
+ <p>The default is {@code false}.'*/,
+          params: [
+                          {
+                name: 'ignoreUnresolvableNestedPlaceholders',
+                dim: '',
+                type: 'boolean',
+              },
+                      ]
+        },
+              {
+          name: 'setRequiredProperties',
+          mods: 'public',
+          sig: 'setRequiredProperties(java.lang.String[])',
+          desc: ''/*''*/,
+          params: [
+                          {
+                name: 'requiredProperties',
+                dim: '[]',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'validateRequiredProperties',
+          mods: 'public',
+          sig: 'validateRequiredProperties()',
+          desc: ''/*''*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'containsProperty',
+          mods: 'public',
+          sig: 'containsProperty(java.lang.String)',
+          desc: ''/*''*/,
+          params: [
+                          {
+                name: 'key',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'getProperty',
+          mods: 'public',
+          sig: 'getProperty(java.lang.String)',
+          desc: ''/*''*/,
+          params: [
+                          {
+                name: 'key',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'getProperty',
+          mods: 'public',
+          sig: 'getProperty(java.lang.String, java.lang.String)',
+          desc: ''/*''*/,
+          params: [
+                          {
+                name: 'key',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'defaultValue',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'getProperty',
+          mods: 'public',
+          sig: 'getProperty(java.lang.String, java.lang.Class, T)',
+          desc: ''/*''*/,
+          params: [
+                          {
+                name: 'key',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'targetType',
+                dim: '',
+                type: 'Class',
+              },
+                          {
+                name: 'defaultValue',
+                dim: '',
+                type: 'Object',
+              },
+                      ]
+        },
+              {
+          name: 'getRequiredProperty',
+          mods: 'public',
+          sig: 'getRequiredProperty(java.lang.String)',
+          desc: ''/*''*/,
+          params: [
+                          {
+                name: 'key',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'getRequiredProperty',
+          mods: 'public',
+          sig: 'getRequiredProperty(java.lang.String, java.lang.Class)',
+          desc: ''/*''*/,
+          params: [
+                          {
+                name: 'key',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'valueType',
+                dim: '',
+                type: 'Class',
+              },
+                      ]
+        },
+              {
+          name: 'resolvePlaceholders',
+          mods: 'public',
+          sig: 'resolvePlaceholders(java.lang.String)',
+          desc: ''/*''*/,
+          params: [
+                          {
+                name: 'text',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'resolveRequiredPlaceholders',
+          mods: 'public',
+          sig: 'resolveRequiredPlaceholders(java.lang.String)',
+          desc: ''/*''*/,
+          params: [
+                          {
+                name: 'text',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'resolveNestedPlaceholders',
+          mods: 'protected',
+          sig: 'resolveNestedPlaceholders(java.lang.String)',
+          desc: ''/*'Resolve placeholders within the given string, deferring to the value of
+ {@link #setIgnoreUnresolvableNestedPlaceholders} to determine whether any
+ unresolvable placeholders should raise an exception or be ignored.
+ <p>Invoked from {@link #getProperty} and its variants, implicitly resolving
+ nested placeholders. In contrast, {@link #resolvePlaceholders} and
+ {@link #resolveRequiredPlaceholders} do <emphasis>not</emphasis> delegate
+ to this method but rather perform their own handling of unresolvable
+ placeholders, as specified by each of those methods.'*/,
+          params: [
+                          {
+                name: 'value',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'convertValueIfNecessary',
+          mods: 'protected',
+          sig: 'convertValueIfNecessary(java.lang.Object, java.lang.Class)',
+          desc: ''/*'Convert the given value to the specified target type, if necessary.'*/,
+          params: [
+                          {
+                name: 'value',
+                dim: '',
+                type: 'Object',
+              },
+                          {
+                name: 'targetType',
+                dim: '',
+                type: 'Class',
+              },
+                      ]
+        },
+              {
+          name: 'getPropertyAsRawString',
+          mods: 'protected abstract',
+          sig: 'getPropertyAsRawString(java.lang.String)',
+          desc: ''/*'Retrieve the specified property as a raw String,
+ i.e. without resolution of nested placeholders.'*/,
+          params: [
+                          {
+                name: 'key',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+          ]
+  },
+  methods: {
+    show: function() {
+      alert(this.message);
+    }
+  },
+  computed: {
+    up: function() {
+      return this.message.toUpperCase();
+    },
+    matchedMethods: function() {
+      var a = this;
+      return this.methods.filter(function(m) {
+        return m.name.toLowerCase().indexOf(a.message.toLowerCase()) !== -1;
+      });
+    }
+  }
+});  
+  </script>
+</body>
+</html>
+

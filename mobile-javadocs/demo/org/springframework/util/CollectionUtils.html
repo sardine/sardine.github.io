@@ -1,0 +1,362 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width" />
+  <title>CollectionUtils</title>
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <h1>CollectionUtils</h1>
+
+  org.springframework.util.CollectionUtils
+
+
+  <div id="test">
+    <input type="text" v-model="message">
+
+    <template v-for="m in matchedMethods" :key="m.sig">
+      <h3>{{ m.name }}</h3>
+      <pre><code>{{ m.mods }} {{ m.name }}(<template v-for="(p, pi) in m.params" :key="p.name"><template v-if="pi != 0">, </template>{{ p.type }}{{ p.dim }} {{ p.name }}</template>)</code></pre>
+      <div><p>{{ m.desc }}</p></div>
+    </template>
+  </div>
+
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script>
+  var app = new Vue({
+  el: '#test',
+  data: {
+    message: '',
+    methods: [
+              {
+          name: 'isEmpty',
+          mods: 'public static',
+          sig: 'isEmpty(java.util.Collection)',
+          desc: ''/*'Return {@code true} if the supplied Collection is {@code null} or empty.
+ Otherwise, return {@code false}.'*/,
+          params: [
+                          {
+                name: 'collection',
+                dim: '',
+                type: 'Collection',
+              },
+                      ]
+        },
+              {
+          name: 'isEmpty',
+          mods: 'public static',
+          sig: 'isEmpty(java.util.Map)',
+          desc: ''/*'Return {@code true} if the supplied Map is {@code null} or empty.
+ Otherwise, return {@code false}.'*/,
+          params: [
+                          {
+                name: 'map',
+                dim: '',
+                type: 'Map',
+              },
+                      ]
+        },
+              {
+          name: 'arrayToList',
+          mods: 'public static',
+          sig: 'arrayToList(java.lang.Object)',
+          desc: ''/*'Convert the supplied array into a List. A primitive array gets converted
+ into a List of the appropriate wrapper type.
+ <p><b>NOTE:</b> Generally prefer the standard {@link Arrays#asList} method.
+ This {@code arrayToList} method is just meant to deal with an incoming Object
+ value that might be an {@code Object[]} or a primitive array at runtime.
+ <p>A {@code null} source value will be converted to an empty List.'*/,
+          params: [
+                          {
+                name: 'source',
+                dim: '',
+                type: 'Object',
+              },
+                      ]
+        },
+              {
+          name: 'mergeArrayIntoCollection',
+          mods: 'public static',
+          sig: 'mergeArrayIntoCollection(java.lang.Object, java.util.Collection)',
+          desc: ''/*'Merge the given array into the given Collection.'*/,
+          params: [
+                          {
+                name: 'array',
+                dim: '',
+                type: 'Object',
+              },
+                          {
+                name: 'collection',
+                dim: '',
+                type: 'Collection',
+              },
+                      ]
+        },
+              {
+          name: 'mergePropertiesIntoMap',
+          mods: 'public static',
+          sig: 'mergePropertiesIntoMap(java.util.Properties, java.util.Map)',
+          desc: ''/*'Merge the given Properties instance into the given Map,
+ copying all properties (key-value pairs) over.
+ <p>Uses {@code Properties.propertyNames()} to even catch
+ default properties linked into the original Properties instance.'*/,
+          params: [
+                          {
+                name: 'props',
+                dim: '',
+                type: 'Properties',
+              },
+                          {
+                name: 'map',
+                dim: '',
+                type: 'Map',
+              },
+                      ]
+        },
+              {
+          name: 'contains',
+          mods: 'public static',
+          sig: 'contains(java.util.Iterator, java.lang.Object)',
+          desc: ''/*'Check whether the given Iterator contains the given element.'*/,
+          params: [
+                          {
+                name: 'iterator',
+                dim: '',
+                type: 'Iterator',
+              },
+                          {
+                name: 'element',
+                dim: '',
+                type: 'Object',
+              },
+                      ]
+        },
+              {
+          name: 'contains',
+          mods: 'public static',
+          sig: 'contains(java.util.Enumeration, java.lang.Object)',
+          desc: ''/*'Check whether the given Enumeration contains the given element.'*/,
+          params: [
+                          {
+                name: 'enumeration',
+                dim: '',
+                type: 'Enumeration',
+              },
+                          {
+                name: 'element',
+                dim: '',
+                type: 'Object',
+              },
+                      ]
+        },
+              {
+          name: 'containsInstance',
+          mods: 'public static',
+          sig: 'containsInstance(java.util.Collection, java.lang.Object)',
+          desc: ''/*'Check whether the given Collection contains the given element instance.
+ <p>Enforces the given instance to be present, rather than returning
+ {@code true} for an equal element as well.'*/,
+          params: [
+                          {
+                name: 'collection',
+                dim: '',
+                type: 'Collection',
+              },
+                          {
+                name: 'element',
+                dim: '',
+                type: 'Object',
+              },
+                      ]
+        },
+              {
+          name: 'containsAny',
+          mods: 'public static',
+          sig: 'containsAny(java.util.Collection, java.util.Collection)',
+          desc: ''/*'Return {@code true} if any element in '{@code candidates}' is
+ contained in '{@code source}'; otherwise returns {@code false}.'*/,
+          params: [
+                          {
+                name: 'source',
+                dim: '',
+                type: 'Collection',
+              },
+                          {
+                name: 'candidates',
+                dim: '',
+                type: 'Collection',
+              },
+                      ]
+        },
+              {
+          name: 'findFirstMatch',
+          mods: 'public static',
+          sig: 'findFirstMatch(java.util.Collection, java.util.Collection)',
+          desc: ''/*'Return the first element in '{@code candidates}' that is contained in
+ '{@code source}'. If no element in '{@code candidates}' is present in
+ '{@code source}' returns {@code null}. Iteration order is
+ {@link Collection} implementation specific.'*/,
+          params: [
+                          {
+                name: 'source',
+                dim: '',
+                type: 'Collection',
+              },
+                          {
+                name: 'candidates',
+                dim: '',
+                type: 'Collection',
+              },
+                      ]
+        },
+              {
+          name: 'findValueOfType',
+          mods: 'public static',
+          sig: 'findValueOfType(java.util.Collection, java.lang.Class)',
+          desc: ''/*'Find a single value of the given type in the given Collection.'*/,
+          params: [
+                          {
+                name: 'collection',
+                dim: '',
+                type: 'Collection',
+              },
+                          {
+                name: 'type',
+                dim: '',
+                type: 'Class',
+              },
+                      ]
+        },
+              {
+          name: 'findValueOfType',
+          mods: 'public static',
+          sig: 'findValueOfType(java.util.Collection, java.lang.Class[])',
+          desc: ''/*'Find a single value of one of the given types in the given Collection:
+ searching the Collection for a value of the first type, then
+ searching for a value of the second type, etc.'*/,
+          params: [
+                          {
+                name: 'collection',
+                dim: '',
+                type: 'Collection',
+              },
+                          {
+                name: 'types',
+                dim: '[]',
+                type: 'Class',
+              },
+                      ]
+        },
+              {
+          name: 'hasUniqueObject',
+          mods: 'public static',
+          sig: 'hasUniqueObject(java.util.Collection)',
+          desc: ''/*'Determine whether the given Collection only contains a single unique object.'*/,
+          params: [
+                          {
+                name: 'collection',
+                dim: '',
+                type: 'Collection',
+              },
+                      ]
+        },
+              {
+          name: 'findCommonElementType',
+          mods: 'public static',
+          sig: 'findCommonElementType(java.util.Collection)',
+          desc: ''/*'Find the common element type of the given Collection, if any.'*/,
+          params: [
+                          {
+                name: 'collection',
+                dim: '',
+                type: 'Collection',
+              },
+                      ]
+        },
+              {
+          name: 'toArray',
+          mods: 'public static',
+          sig: 'toArray(java.util.Enumeration, A[])',
+          desc: ''/*'Marshal the elements from the given enumeration into an array of the given type.
+ Enumeration elements must be assignable to the type of the given array. The array
+ returned will be a different instance than the array given.'*/,
+          params: [
+                          {
+                name: 'enumeration',
+                dim: '',
+                type: 'Enumeration',
+              },
+                          {
+                name: 'array',
+                dim: '[]',
+                type: 'Object',
+              },
+                      ]
+        },
+              {
+          name: 'toIterator',
+          mods: 'public static',
+          sig: 'toIterator(java.util.Enumeration)',
+          desc: ''/*'Adapt an enumeration to an iterator.'*/,
+          params: [
+                          {
+                name: 'enumeration',
+                dim: '',
+                type: 'Enumeration',
+              },
+                      ]
+        },
+              {
+          name: 'toMultiValueMap',
+          mods: 'public static',
+          sig: 'toMultiValueMap(java.util.Map)',
+          desc: ''/*'Adapt a {@code Map<K, List<V>>} to an {@code MultiValueMap<K, V>}.'*/,
+          params: [
+                          {
+                name: 'map',
+                dim: '',
+                type: 'Map',
+              },
+                      ]
+        },
+              {
+          name: 'unmodifiableMultiValueMap',
+          mods: 'public static',
+          sig: 'unmodifiableMultiValueMap(org.springframework.util.MultiValueMap)',
+          desc: ''/*'Return an unmodifiable view of the specified multi-value map.'*/,
+          params: [
+                          {
+                name: 'map',
+                dim: '',
+                type: 'MultiValueMap',
+              },
+                      ]
+        },
+          ]
+  },
+  methods: {
+    show: function() {
+      alert(this.message);
+    }
+  },
+  computed: {
+    up: function() {
+      return this.message.toUpperCase();
+    },
+    matchedMethods: function() {
+      var a = this;
+      return this.methods.filter(function(m) {
+        return m.name.toLowerCase().indexOf(a.message.toLowerCase()) !== -1;
+      });
+    }
+  }
+});  
+  </script>
+</body>
+</html>
+

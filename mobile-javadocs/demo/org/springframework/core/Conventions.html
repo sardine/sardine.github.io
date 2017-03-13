@@ -1,0 +1,191 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width" />
+  <title>Conventions</title>
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <h1>Conventions</h1>
+
+  org.springframework.core.Conventions
+
+
+  <div id="test">
+    <input type="text" v-model="message">
+
+    <template v-for="m in matchedMethods" :key="m.sig">
+      <h3>{{ m.name }}</h3>
+      <pre><code>{{ m.mods }} {{ m.name }}(<template v-for="(p, pi) in m.params" :key="p.name"><template v-if="pi != 0">, </template>{{ p.type }}{{ p.dim }} {{ p.name }}</template>)</code></pre>
+      <div><p>{{ m.desc }}</p></div>
+    </template>
+  </div>
+
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script>
+  var app = new Vue({
+  el: '#test',
+  data: {
+    message: '',
+    methods: [
+              {
+          name: 'getVariableName',
+          mods: 'public static',
+          sig: 'getVariableName(java.lang.Object)',
+          desc: ''/*'Determine the conventional variable name for the supplied
+ {@code Object} based on its concrete type. The convention
+ used is to return the uncapitalized short name of the {@code Class},
+ according to JavaBeans property naming rules: So,
+ {@code com.myapp.Product} becomes {@code product};
+ {@code com.myapp.MyProduct} becomes {@code myProduct};
+ {@code com.myapp.UKProduct} becomes {@code UKProduct}.
+ <p>For arrays, we use the pluralized version of the array component type.
+ For {@code Collection}s we attempt to 'peek ahead' in the
+ {@code Collection} to determine the component type and
+ return the pluralized version of that component type.'*/,
+          params: [
+                          {
+                name: 'value',
+                dim: '',
+                type: 'Object',
+              },
+                      ]
+        },
+              {
+          name: 'getVariableNameForParameter',
+          mods: 'public static',
+          sig: 'getVariableNameForParameter(org.springframework.core.MethodParameter)',
+          desc: ''/*'Determine the conventional variable name for the supplied parameter,
+ taking the generic collection type (if any) into account.'*/,
+          params: [
+                          {
+                name: 'parameter',
+                dim: '',
+                type: 'MethodParameter',
+              },
+                      ]
+        },
+              {
+          name: 'getVariableNameForReturnType',
+          mods: 'public static',
+          sig: 'getVariableNameForReturnType(java.lang.reflect.Method)',
+          desc: ''/*'Determine the conventional variable name for the return type of the supplied method,
+ taking the generic collection type (if any) into account.'*/,
+          params: [
+                          {
+                name: 'method',
+                dim: '',
+                type: 'Method',
+              },
+                      ]
+        },
+              {
+          name: 'getVariableNameForReturnType',
+          mods: 'public static',
+          sig: 'getVariableNameForReturnType(java.lang.reflect.Method, java.lang.Object)',
+          desc: ''/*'Determine the conventional variable name for the return type of the supplied method,
+ taking the generic collection type (if any) into account, falling back to the
+ given return value if the method declaration is not specific enough (i.e. in case of
+ the return type being declared as {@code Object} or as untyped collection).'*/,
+          params: [
+                          {
+                name: 'method',
+                dim: '',
+                type: 'Method',
+              },
+                          {
+                name: 'value',
+                dim: '',
+                type: 'Object',
+              },
+                      ]
+        },
+              {
+          name: 'getVariableNameForReturnType',
+          mods: 'public static',
+          sig: 'getVariableNameForReturnType(java.lang.reflect.Method, java.lang.Class, java.lang.Object)',
+          desc: ''/*'Determine the conventional variable name for the return type of the supplied method,
+ taking the generic collection type (if any) into account, falling back to the
+ given return value if the method declaration is not specific enough (i.e. in case of
+ the return type being declared as {@code Object} or as untyped collection).'*/,
+          params: [
+                          {
+                name: 'method',
+                dim: '',
+                type: 'Method',
+              },
+                          {
+                name: 'resolvedType',
+                dim: '',
+                type: 'Class',
+              },
+                          {
+                name: 'value',
+                dim: '',
+                type: 'Object',
+              },
+                      ]
+        },
+              {
+          name: 'attributeNameToPropertyName',
+          mods: 'public static',
+          sig: 'attributeNameToPropertyName(java.lang.String)',
+          desc: ''/*'Convert {@code String}s in attribute name format (lowercase, hyphens separating words)
+ into property name format (camel-cased). For example, {@code transaction-manager} is
+ converted into {@code transactionManager}.'*/,
+          params: [
+                          {
+                name: 'attributeName',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'getQualifiedAttributeName',
+          mods: 'public static',
+          sig: 'getQualifiedAttributeName(java.lang.Class, java.lang.String)',
+          desc: ''/*'Return an attribute name qualified by the supplied enclosing {@link Class}. For example,
+ the attribute name '{@code foo}' qualified by {@link Class} '{@code com.myapp.SomeClass}'
+ would be '{@code com.myapp.SomeClass.foo}''*/,
+          params: [
+                          {
+                name: 'enclosingClass',
+                dim: '',
+                type: 'Class',
+              },
+                          {
+                name: 'attributeName',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+          ]
+  },
+  methods: {
+    show: function() {
+      alert(this.message);
+    }
+  },
+  computed: {
+    up: function() {
+      return this.message.toUpperCase();
+    },
+    matchedMethods: function() {
+      var a = this;
+      return this.methods.filter(function(m) {
+        return m.name.toLowerCase().indexOf(a.message.toLowerCase()) !== -1;
+      });
+    }
+  }
+});  
+  </script>
+</body>
+</html>
+

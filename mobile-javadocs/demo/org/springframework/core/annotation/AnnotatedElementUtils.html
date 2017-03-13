@@ -1,0 +1,692 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width" />
+  <title>AnnotatedElementUtils</title>
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <h1>AnnotatedElementUtils</h1>
+
+  org.springframework.core.annotation.AnnotatedElementUtils
+
+
+  <div id="test">
+    <input type="text" v-model="message">
+
+    <template v-for="m in matchedMethods" :key="m.sig">
+      <h3>{{ m.name }}</h3>
+      <pre><code>{{ m.mods }} {{ m.name }}(<template v-for="(p, pi) in m.params" :key="p.name"><template v-if="pi != 0">, </template>{{ p.type }}{{ p.dim }} {{ p.name }}</template>)</code></pre>
+      <div><p>{{ m.desc }}</p></div>
+    </template>
+  </div>
+
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script>
+  var app = new Vue({
+  el: '#test',
+  data: {
+    message: '',
+    methods: [
+              {
+          name: 'forAnnotations',
+          mods: 'public static',
+          sig: 'forAnnotations(java.lang.annotation.Annotation[])',
+          desc: ''/*'Build an adapted {@link AnnotatedElement} for the given annotations,
+ typically for use with other methods on {@link AnnotatedElementUtils}.'*/,
+          params: [
+                          {
+                name: 'annotations',
+                dim: '[]',
+                type: 'Annotation',
+              },
+                      ]
+        },
+              {
+          name: 'getMetaAnnotationTypes',
+          mods: 'public static',
+          sig: 'getMetaAnnotationTypes(java.lang.reflect.AnnotatedElement, java.lang.Class)',
+          desc: ''/*'Get the fully qualified class names of all meta-annotation types
+ <em>present</em> on the annotation (of the specified {@code annotationType})
+ on the supplied {@link AnnotatedElement}.
+ <p>This method follows <em>get semantics</em> as described in the
+ {@linkplain AnnotatedElementUtils class-level javadoc}.'*/,
+          params: [
+                          {
+                name: 'element',
+                dim: '',
+                type: 'AnnotatedElement',
+              },
+                          {
+                name: 'annotationType',
+                dim: '',
+                type: 'Class',
+              },
+                      ]
+        },
+              {
+          name: 'getMetaAnnotationTypes',
+          mods: 'public static',
+          sig: 'getMetaAnnotationTypes(java.lang.reflect.AnnotatedElement, java.lang.String)',
+          desc: ''/*'Get the fully qualified class names of all meta-annotation
+ types <em>present</em> on the annotation (of the specified
+ {@code annotationName}) on the supplied {@link AnnotatedElement}.
+ <p>This method follows <em>get semantics</em> as described in the
+ {@linkplain AnnotatedElementUtils class-level javadoc}.'*/,
+          params: [
+                          {
+                name: 'element',
+                dim: '',
+                type: 'AnnotatedElement',
+              },
+                          {
+                name: 'annotationName',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'hasMetaAnnotationTypes',
+          mods: 'public static',
+          sig: 'hasMetaAnnotationTypes(java.lang.reflect.AnnotatedElement, java.lang.Class)',
+          desc: ''/*'Determine if the supplied {@link AnnotatedElement} is annotated with
+ a <em>composed annotation</em> that is meta-annotated with an
+ annotation of the specified {@code annotationType}.
+ <p>This method follows <em>get semantics</em> as described in the
+ {@linkplain AnnotatedElementUtils class-level javadoc}.'*/,
+          params: [
+                          {
+                name: 'element',
+                dim: '',
+                type: 'AnnotatedElement',
+              },
+                          {
+                name: 'annotationType',
+                dim: '',
+                type: 'Class',
+              },
+                      ]
+        },
+              {
+          name: 'hasMetaAnnotationTypes',
+          mods: 'public static',
+          sig: 'hasMetaAnnotationTypes(java.lang.reflect.AnnotatedElement, java.lang.String)',
+          desc: ''/*'Determine if the supplied {@link AnnotatedElement} is annotated with a
+ <em>composed annotation</em> that is meta-annotated with an annotation
+ of the specified {@code annotationName}.
+ <p>This method follows <em>get semantics</em> as described in the
+ {@linkplain AnnotatedElementUtils class-level javadoc}.'*/,
+          params: [
+                          {
+                name: 'element',
+                dim: '',
+                type: 'AnnotatedElement',
+              },
+                          {
+                name: 'annotationName',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'isAnnotated',
+          mods: 'public static',
+          sig: 'isAnnotated(java.lang.reflect.AnnotatedElement, java.lang.Class)',
+          desc: ''/*'Determine if an annotation of the specified {@code annotationType}
+ is <em>present</em> on the supplied {@link AnnotatedElement} or
+ within the annotation hierarchy <em>above</em> the specified element.
+ <p>If this method returns {@code true}, then {@link #getMergedAnnotationAttributes}
+ will return a non-null value.
+ <p>This method follows <em>get semantics</em> as described in the
+ {@linkplain AnnotatedElementUtils class-level javadoc}.'*/,
+          params: [
+                          {
+                name: 'element',
+                dim: '',
+                type: 'AnnotatedElement',
+              },
+                          {
+                name: 'annotationType',
+                dim: '',
+                type: 'Class',
+              },
+                      ]
+        },
+              {
+          name: 'isAnnotated',
+          mods: 'public static',
+          sig: 'isAnnotated(java.lang.reflect.AnnotatedElement, java.lang.String)',
+          desc: ''/*'Determine if an annotation of the specified {@code annotationName} is
+ <em>present</em> on the supplied {@link AnnotatedElement} or within the
+ annotation hierarchy <em>above</em> the specified element.
+ <p>If this method returns {@code true}, then {@link #getMergedAnnotationAttributes}
+ will return a non-null value.
+ <p>This method follows <em>get semantics</em> as described in the
+ {@linkplain AnnotatedElementUtils class-level javadoc}.'*/,
+          params: [
+                          {
+                name: 'element',
+                dim: '',
+                type: 'AnnotatedElement',
+              },
+                          {
+                name: 'annotationName',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'getMergedAnnotationAttributes',
+          mods: 'public static',
+          sig: 'getMergedAnnotationAttributes(java.lang.reflect.AnnotatedElement, java.lang.Class)',
+          desc: ''/*'Get the first annotation of the specified {@code annotationType} within
+ the annotation hierarchy <em>above</em> the supplied {@code element} and
+ merge that annotation's attributes with <em>matching</em> attributes from
+ annotations in lower levels of the annotation hierarchy.
+ <p>{@link AliasFor @AliasFor} semantics are fully supported, both
+ within a single annotation and within the annotation hierarchy.
+ <p>This method delegates to {@link #getMergedAnnotationAttributes(AnnotatedElement, String)}.'*/,
+          params: [
+                          {
+                name: 'element',
+                dim: '',
+                type: 'AnnotatedElement',
+              },
+                          {
+                name: 'annotationType',
+                dim: '',
+                type: 'Class',
+              },
+                      ]
+        },
+              {
+          name: 'getMergedAnnotationAttributes',
+          mods: 'public static',
+          sig: 'getMergedAnnotationAttributes(java.lang.reflect.AnnotatedElement, java.lang.String)',
+          desc: ''/*'Get the first annotation of the specified {@code annotationName} within
+ the annotation hierarchy <em>above</em> the supplied {@code element} and
+ merge that annotation's attributes with <em>matching</em> attributes from
+ annotations in lower levels of the annotation hierarchy.
+ <p>{@link AliasFor @AliasFor} semantics are fully supported, both
+ within a single annotation and within the annotation hierarchy.
+ <p>This method delegates to {@link #getMergedAnnotationAttributes(AnnotatedElement, String, boolean, boolean)},
+ supplying {@code false} for {@code classValuesAsString} and {@code nestedAnnotationsAsMap}.'*/,
+          params: [
+                          {
+                name: 'element',
+                dim: '',
+                type: 'AnnotatedElement',
+              },
+                          {
+                name: 'annotationName',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'getMergedAnnotationAttributes',
+          mods: 'public static',
+          sig: 'getMergedAnnotationAttributes(java.lang.reflect.AnnotatedElement, java.lang.String, boolean, boolean)',
+          desc: ''/*'Get the first annotation of the specified {@code annotationName} within
+ the annotation hierarchy <em>above</em> the supplied {@code element} and
+ merge that annotation's attributes with <em>matching</em> attributes from
+ annotations in lower levels of the annotation hierarchy.
+ <p>Attributes from lower levels in the annotation hierarchy override attributes
+ of the same name from higher levels, and {@link AliasFor @AliasFor} semantics are
+ fully supported, both within a single annotation and within the annotation hierarchy.
+ <p>In contrast to {@link #getAllAnnotationAttributes}, the search algorithm used by
+ this method will stop searching the annotation hierarchy once the first annotation
+ of the specified {@code annotationName} has been found. As a consequence,
+ additional annotations of the specified {@code annotationName} will be ignored.
+ <p>This method follows <em>get semantics</em> as described in the
+ {@linkplain AnnotatedElementUtils class-level javadoc}.'*/,
+          params: [
+                          {
+                name: 'element',
+                dim: '',
+                type: 'AnnotatedElement',
+              },
+                          {
+                name: 'annotationName',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'classValuesAsString',
+                dim: '',
+                type: 'boolean',
+              },
+                          {
+                name: 'nestedAnnotationsAsMap',
+                dim: '',
+                type: 'boolean',
+              },
+                      ]
+        },
+              {
+          name: 'getMergedAnnotation',
+          mods: 'public static',
+          sig: 'getMergedAnnotation(java.lang.reflect.AnnotatedElement, java.lang.Class)',
+          desc: ''/*'Get the first annotation of the specified {@code annotationType} within
+ the annotation hierarchy <em>above</em> the supplied {@code element},
+ merge that annotation's attributes with <em>matching</em> attributes from
+ annotations in lower levels of the annotation hierarchy, and synthesize
+ the result back into an annotation of the specified {@code annotationType}.
+ <p>{@link AliasFor @AliasFor} semantics are fully supported, both
+ within a single annotation and within the annotation hierarchy.
+ <p>This method delegates to {@link #getMergedAnnotationAttributes(AnnotatedElement, Class)}
+ and {@link AnnotationUtils#synthesizeAnnotation(Map, Class, AnnotatedElement)}.'*/,
+          params: [
+                          {
+                name: 'element',
+                dim: '',
+                type: 'AnnotatedElement',
+              },
+                          {
+                name: 'annotationType',
+                dim: '',
+                type: 'Class',
+              },
+                      ]
+        },
+              {
+          name: 'getAllMergedAnnotations',
+          mods: 'public static',
+          sig: 'getAllMergedAnnotations(java.lang.reflect.AnnotatedElement, java.lang.Class)',
+          desc: ''/*'Get <strong>all</strong> annotations of the specified {@code annotationType}
+ within the annotation hierarchy <em>above</em> the supplied {@code element};
+ and for each annotation found, merge that annotation's attributes with
+ <em>matching</em> attributes from annotations in lower levels of the annotation
+ hierarchy and synthesize the results back into an annotation of the specified
+ {@code annotationType}.
+ <p>{@link AliasFor @AliasFor} semantics are fully supported, both within a
+ single annotation and within annotation hierarchies.
+ <p>This method follows <em>get semantics</em> as described in the
+ {@linkplain AnnotatedElementUtils class-level javadoc}.'*/,
+          params: [
+                          {
+                name: 'element',
+                dim: '',
+                type: 'AnnotatedElement',
+              },
+                          {
+                name: 'annotationType',
+                dim: '',
+                type: 'Class',
+              },
+                      ]
+        },
+              {
+          name: 'getMergedRepeatableAnnotations',
+          mods: 'public static',
+          sig: 'getMergedRepeatableAnnotations(java.lang.reflect.AnnotatedElement, java.lang.Class)',
+          desc: ''/*'Get all <em>repeatable annotations</em> of the specified {@code annotationType}
+ within the annotation hierarchy <em>above</em> the supplied {@code element};
+ and for each annotation found, merge that annotation's attributes with
+ <em>matching</em> attributes from annotations in lower levels of the annotation
+ hierarchy and synthesize the results back into an annotation of the specified
+ {@code annotationType}.
+ <p>The container type that holds the repeatable annotations will be looked up
+ via {@link java.lang.annotation.Repeatable}.
+ <p>{@link AliasFor @AliasFor} semantics are fully supported, both within a
+ single annotation and within annotation hierarchies.
+ <p>This method follows <em>get semantics</em> as described in the
+ {@linkplain AnnotatedElementUtils class-level javadoc}.'*/,
+          params: [
+                          {
+                name: 'element',
+                dim: '',
+                type: 'AnnotatedElement',
+              },
+                          {
+                name: 'annotationType',
+                dim: '',
+                type: 'Class',
+              },
+                      ]
+        },
+              {
+          name: 'getMergedRepeatableAnnotations',
+          mods: 'public static',
+          sig: 'getMergedRepeatableAnnotations(java.lang.reflect.AnnotatedElement, java.lang.Class, java.lang.Class)',
+          desc: ''/*'Get all <em>repeatable annotations</em> of the specified {@code annotationType}
+ within the annotation hierarchy <em>above</em> the supplied {@code element};
+ and for each annotation found, merge that annotation's attributes with
+ <em>matching</em> attributes from annotations in lower levels of the annotation
+ hierarchy and synthesize the results back into an annotation of the specified
+ {@code annotationType}.
+ <p>{@link AliasFor @AliasFor} semantics are fully supported, both within a
+ single annotation and within annotation hierarchies.
+ <p>This method follows <em>get semantics</em> as described in the
+ {@linkplain AnnotatedElementUtils class-level javadoc}.'*/,
+          params: [
+                          {
+                name: 'element',
+                dim: '',
+                type: 'AnnotatedElement',
+              },
+                          {
+                name: 'annotationType',
+                dim: '',
+                type: 'Class',
+              },
+                          {
+                name: 'containerType',
+                dim: '',
+                type: 'Class',
+              },
+                      ]
+        },
+              {
+          name: 'getAllAnnotationAttributes',
+          mods: 'public static',
+          sig: 'getAllAnnotationAttributes(java.lang.reflect.AnnotatedElement, java.lang.String)',
+          desc: ''/*'Get the annotation attributes of <strong>all</strong> annotations of the specified
+ {@code annotationName} in the annotation hierarchy above the supplied
+ {@link AnnotatedElement} and store the results in a {@link MultiValueMap}.
+ <p>Note: in contrast to {@link #getMergedAnnotationAttributes(AnnotatedElement, String)},
+ this method does <em>not</em> support attribute overrides.
+ <p>This method follows <em>get semantics</em> as described in the
+ {@linkplain AnnotatedElementUtils class-level javadoc}.'*/,
+          params: [
+                          {
+                name: 'element',
+                dim: '',
+                type: 'AnnotatedElement',
+              },
+                          {
+                name: 'annotationName',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'getAllAnnotationAttributes',
+          mods: 'public static',
+          sig: 'getAllAnnotationAttributes(java.lang.reflect.AnnotatedElement, java.lang.String, boolean, boolean)',
+          desc: ''/*'Get the annotation attributes of <strong>all</strong> annotations of
+ the specified {@code annotationName} in the annotation hierarchy above
+ the supplied {@link AnnotatedElement} and store the results in a
+ {@link MultiValueMap}.
+ <p>Note: in contrast to {@link #getMergedAnnotationAttributes(AnnotatedElement, String)},
+ this method does <em>not</em> support attribute overrides.
+ <p>This method follows <em>get semantics</em> as described in the
+ {@linkplain AnnotatedElementUtils class-level javadoc}.'*/,
+          params: [
+                          {
+                name: 'element',
+                dim: '',
+                type: 'AnnotatedElement',
+              },
+                          {
+                name: 'annotationName',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'classValuesAsString',
+                dim: '',
+                type: 'boolean',
+              },
+                          {
+                name: 'nestedAnnotationsAsMap',
+                dim: '',
+                type: 'boolean',
+              },
+                      ]
+        },
+              {
+          name: 'hasAnnotation',
+          mods: 'public static',
+          sig: 'hasAnnotation(java.lang.reflect.AnnotatedElement, java.lang.Class)',
+          desc: ''/*'Determine if an annotation of the specified {@code annotationType}
+ is <em>available</em> on the supplied {@link AnnotatedElement} or
+ within the annotation hierarchy <em>above</em> the specified element.
+ <p>If this method returns {@code true}, then {@link #findMergedAnnotationAttributes}
+ will return a non-null value.
+ <p>This method follows <em>find semantics</em> as described in the
+ {@linkplain AnnotatedElementUtils class-level javadoc}.'*/,
+          params: [
+                          {
+                name: 'element',
+                dim: '',
+                type: 'AnnotatedElement',
+              },
+                          {
+                name: 'annotationType',
+                dim: '',
+                type: 'Class',
+              },
+                      ]
+        },
+              {
+          name: 'findMergedAnnotationAttributes',
+          mods: 'public static',
+          sig: 'findMergedAnnotationAttributes(java.lang.reflect.AnnotatedElement, java.lang.Class, boolean, boolean)',
+          desc: ''/*'Find the first annotation of the specified {@code annotationType} within
+ the annotation hierarchy <em>above</em> the supplied {@code element} and
+ merge that annotation's attributes with <em>matching</em> attributes from
+ annotations in lower levels of the annotation hierarchy.
+ <p>Attributes from lower levels in the annotation hierarchy override
+ attributes of the same name from higher levels, and
+ {@link AliasFor @AliasFor} semantics are fully supported, both
+ within a single annotation and within the annotation hierarchy.
+ <p>In contrast to {@link #getAllAnnotationAttributes}, the search
+ algorithm used by this method will stop searching the annotation
+ hierarchy once the first annotation of the specified
+ {@code annotationType} has been found. As a consequence, additional
+ annotations of the specified {@code annotationType} will be ignored.
+ <p>This method follows <em>find semantics</em> as described in the
+ {@linkplain AnnotatedElementUtils class-level javadoc}.'*/,
+          params: [
+                          {
+                name: 'element',
+                dim: '',
+                type: 'AnnotatedElement',
+              },
+                          {
+                name: 'annotationType',
+                dim: '',
+                type: 'Class',
+              },
+                          {
+                name: 'classValuesAsString',
+                dim: '',
+                type: 'boolean',
+              },
+                          {
+                name: 'nestedAnnotationsAsMap',
+                dim: '',
+                type: 'boolean',
+              },
+                      ]
+        },
+              {
+          name: 'findMergedAnnotationAttributes',
+          mods: 'public static',
+          sig: 'findMergedAnnotationAttributes(java.lang.reflect.AnnotatedElement, java.lang.String, boolean, boolean)',
+          desc: ''/*'Find the first annotation of the specified {@code annotationName} within
+ the annotation hierarchy <em>above</em> the supplied {@code element} and
+ merge that annotation's attributes with <em>matching</em> attributes from
+ annotations in lower levels of the annotation hierarchy.
+ <p>Attributes from lower levels in the annotation hierarchy override
+ attributes of the same name from higher levels, and
+ {@link AliasFor @AliasFor} semantics are fully supported, both
+ within a single annotation and within the annotation hierarchy.
+ <p>In contrast to {@link #getAllAnnotationAttributes}, the search
+ algorithm used by this method will stop searching the annotation
+ hierarchy once the first annotation of the specified
+ {@code annotationName} has been found. As a consequence, additional
+ annotations of the specified {@code annotationName} will be ignored.
+ <p>This method follows <em>find semantics</em> as described in the
+ {@linkplain AnnotatedElementUtils class-level javadoc}.'*/,
+          params: [
+                          {
+                name: 'element',
+                dim: '',
+                type: 'AnnotatedElement',
+              },
+                          {
+                name: 'annotationName',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'classValuesAsString',
+                dim: '',
+                type: 'boolean',
+              },
+                          {
+                name: 'nestedAnnotationsAsMap',
+                dim: '',
+                type: 'boolean',
+              },
+                      ]
+        },
+              {
+          name: 'findMergedAnnotation',
+          mods: 'public static',
+          sig: 'findMergedAnnotation(java.lang.reflect.AnnotatedElement, java.lang.Class)',
+          desc: ''/*'Find the first annotation of the specified {@code annotationType} within
+ the annotation hierarchy <em>above</em> the supplied {@code element},
+ merge that annotation's attributes with <em>matching</em> attributes from
+ annotations in lower levels of the annotation hierarchy, and synthesize
+ the result back into an annotation of the specified {@code annotationType}.
+ <p>{@link AliasFor @AliasFor} semantics are fully supported, both
+ within a single annotation and within the annotation hierarchy.
+ <p>This method follows <em>find semantics</em> as described in the
+ {@linkplain AnnotatedElementUtils class-level javadoc}.'*/,
+          params: [
+                          {
+                name: 'element',
+                dim: '',
+                type: 'AnnotatedElement',
+              },
+                          {
+                name: 'annotationType',
+                dim: '',
+                type: 'Class',
+              },
+                      ]
+        },
+              {
+          name: 'findAllMergedAnnotations',
+          mods: 'public static',
+          sig: 'findAllMergedAnnotations(java.lang.reflect.AnnotatedElement, java.lang.Class)',
+          desc: ''/*'Find <strong>all</strong> annotations of the specified {@code annotationType}
+ within the annotation hierarchy <em>above</em> the supplied {@code element};
+ and for each annotation found, merge that annotation's attributes with
+ <em>matching</em> attributes from annotations in lower levels of the annotation
+ hierarchy and synthesize the results back into an annotation of the specified
+ {@code annotationType}.
+ <p>{@link AliasFor @AliasFor} semantics are fully supported, both within a
+ single annotation and within annotation hierarchies.
+ <p>This method follows <em>find semantics</em> as described in the
+ {@linkplain AnnotatedElementUtils class-level javadoc}.'*/,
+          params: [
+                          {
+                name: 'element',
+                dim: '',
+                type: 'AnnotatedElement',
+              },
+                          {
+                name: 'annotationType',
+                dim: '',
+                type: 'Class',
+              },
+                      ]
+        },
+              {
+          name: 'findMergedRepeatableAnnotations',
+          mods: 'public static',
+          sig: 'findMergedRepeatableAnnotations(java.lang.reflect.AnnotatedElement, java.lang.Class)',
+          desc: ''/*'Find all <em>repeatable annotations</em> of the specified {@code annotationType}
+ within the annotation hierarchy <em>above</em> the supplied {@code element};
+ and for each annotation found, merge that annotation's attributes with
+ <em>matching</em> attributes from annotations in lower levels of the annotation
+ hierarchy and synthesize the results back into an annotation of the specified
+ {@code annotationType}.
+ <p>The container type that holds the repeatable annotations will be looked up
+ via {@link java.lang.annotation.Repeatable}.
+ <p>{@link AliasFor @AliasFor} semantics are fully supported, both within a
+ single annotation and within annotation hierarchies.
+ <p>This method follows <em>find semantics</em> as described in the
+ {@linkplain AnnotatedElementUtils class-level javadoc}.'*/,
+          params: [
+                          {
+                name: 'element',
+                dim: '',
+                type: 'AnnotatedElement',
+              },
+                          {
+                name: 'annotationType',
+                dim: '',
+                type: 'Class',
+              },
+                      ]
+        },
+              {
+          name: 'findMergedRepeatableAnnotations',
+          mods: 'public static',
+          sig: 'findMergedRepeatableAnnotations(java.lang.reflect.AnnotatedElement, java.lang.Class, java.lang.Class)',
+          desc: ''/*'Find all <em>repeatable annotations</em> of the specified {@code annotationType}
+ within the annotation hierarchy <em>above</em> the supplied {@code element};
+ and for each annotation found, merge that annotation's attributes with
+ <em>matching</em> attributes from annotations in lower levels of the annotation
+ hierarchy and synthesize the results back into an annotation of the specified
+ {@code annotationType}.
+ <p>{@link AliasFor @AliasFor} semantics are fully supported, both within a
+ single annotation and within annotation hierarchies.
+ <p>This method follows <em>find semantics</em> as described in the
+ {@linkplain AnnotatedElementUtils class-level javadoc}.'*/,
+          params: [
+                          {
+                name: 'element',
+                dim: '',
+                type: 'AnnotatedElement',
+              },
+                          {
+                name: 'annotationType',
+                dim: '',
+                type: 'Class',
+              },
+                          {
+                name: 'containerType',
+                dim: '',
+                type: 'Class',
+              },
+                      ]
+        },
+          ]
+  },
+  methods: {
+    show: function() {
+      alert(this.message);
+    }
+  },
+  computed: {
+    up: function() {
+      return this.message.toUpperCase();
+    },
+    matchedMethods: function() {
+      var a = this;
+      return this.methods.filter(function(m) {
+        return m.name.toLowerCase().indexOf(a.message.toLowerCase()) !== -1;
+      });
+    }
+  }
+});  
+  </script>
+</body>
+</html>
+

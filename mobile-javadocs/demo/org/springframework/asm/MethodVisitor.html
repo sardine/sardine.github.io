@@ -1,0 +1,818 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width" />
+  <title>MethodVisitor</title>
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <h1>MethodVisitor</h1>
+
+  org.springframework.asm.MethodVisitor
+
+
+  <div id="test">
+    <input type="text" v-model="message">
+
+    <template v-for="m in matchedMethods" :key="m.sig">
+      <h3>{{ m.name }}</h3>
+      <pre><code>{{ m.mods }} {{ m.name }}(<template v-for="(p, pi) in m.params" :key="p.name"><template v-if="pi != 0">, </template>{{ p.type }}{{ p.dim }} {{ p.name }}</template>)</code></pre>
+      <div><p>{{ m.desc }}</p></div>
+    </template>
+  </div>
+
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script>
+  var app = new Vue({
+  el: '#test',
+  data: {
+    message: '',
+    methods: [
+              {
+          name: 'visitParameter',
+          mods: 'public',
+          sig: 'visitParameter(java.lang.String, int)',
+          desc: ''/*'Visits a parameter of this method.'*/,
+          params: [
+                          {
+                name: 'name',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'access',
+                dim: '',
+                type: 'int',
+              },
+                      ]
+        },
+              {
+          name: 'visitAnnotationDefault',
+          mods: 'public',
+          sig: 'visitAnnotationDefault()',
+          desc: ''/*'Visits the default value of this annotation interface method.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'visitAnnotation',
+          mods: 'public',
+          sig: 'visitAnnotation(java.lang.String, boolean)',
+          desc: ''/*'Visits an annotation of this method.'*/,
+          params: [
+                          {
+                name: 'desc',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'visible',
+                dim: '',
+                type: 'boolean',
+              },
+                      ]
+        },
+              {
+          name: 'visitTypeAnnotation',
+          mods: 'public',
+          sig: 'visitTypeAnnotation(int, org.springframework.asm.TypePath, java.lang.String, boolean)',
+          desc: ''/*'Visits an annotation on a type in the method signature.'*/,
+          params: [
+                          {
+                name: 'typeRef',
+                dim: '',
+                type: 'int',
+              },
+                          {
+                name: 'typePath',
+                dim: '',
+                type: 'TypePath',
+              },
+                          {
+                name: 'desc',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'visible',
+                dim: '',
+                type: 'boolean',
+              },
+                      ]
+        },
+              {
+          name: 'visitParameterAnnotation',
+          mods: 'public',
+          sig: 'visitParameterAnnotation(int, java.lang.String, boolean)',
+          desc: ''/*'Visits an annotation of a parameter this method.'*/,
+          params: [
+                          {
+                name: 'parameter',
+                dim: '',
+                type: 'int',
+              },
+                          {
+                name: 'desc',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'visible',
+                dim: '',
+                type: 'boolean',
+              },
+                      ]
+        },
+              {
+          name: 'visitAttribute',
+          mods: 'public',
+          sig: 'visitAttribute(org.springframework.asm.Attribute)',
+          desc: ''/*'Visits a non standard attribute of this method.'*/,
+          params: [
+                          {
+                name: 'attr',
+                dim: '',
+                type: 'Attribute',
+              },
+                      ]
+        },
+              {
+          name: 'visitCode',
+          mods: 'public',
+          sig: 'visitCode()',
+          desc: ''/*'Starts the visit of the method's code, if any (i.e. non abstract method).'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'visitFrame',
+          mods: 'public',
+          sig: 'visitFrame(int, int, java.lang.Object[], int, java.lang.Object[])',
+          desc: ''/*'Visits the current state of the local variables and operand stack
+ elements. This method must(*) be called <i>just before</i> any
+ instruction <b>i</b> that follows an unconditional branch instruction
+ such as GOTO or THROW, that is the target of a jump instruction, or that
+ starts an exception handler block. The visited types must describe the
+ values of the local variables and of the operand stack elements <i>just
+ before</i> <b>i</b> is executed.<br>
+ <br>
+ (*) this is mandatory only for classes whose version is greater than or
+ equal to {@link Opcodes#V1_6 V1_6}. <br>
+ <br>
+ The frames of a method must be given either in expanded form, or in
+ compressed form (all frames must use the same format, i.e. you must not
+ mix expanded and compressed frames within a single method):
+ <ul>
+ <li>In expanded form, all frames must have the F_NEW type.</li>
+ <li>In compressed form, frames are basically "deltas" from the state of
+ the previous frame:
+ <ul>
+ <li>{@link Opcodes#F_SAME} representing frame with exactly the same
+ locals as the previous frame and with the empty stack.</li>
+ <li>{@link Opcodes#F_SAME1} representing frame with exactly the same
+ locals as the previous frame and with single value on the stack (
+ <code>nStack</code> is 1 and <code>stack[0]</code> contains value for the
+ type of the stack item).</li>
+ <li>{@link Opcodes#F_APPEND} representing frame with current locals are
+ the same as the locals in the previous frame, except that additional
+ locals are defined (<code>nLocal</code> is 1, 2 or 3 and
+ <code>local</code> elements contains values representing added types).</li>
+ <li>{@link Opcodes#F_CHOP} representing frame with current locals are the
+ same as the locals in the previous frame, except that the last 1-3 locals
+ are absent and with the empty stack (<code>nLocals</code> is 1, 2 or 3).</li>
+ <li>{@link Opcodes#F_FULL} representing complete frame data.</li>
+ </ul>
+ </li>
+ </ul>
+ <br>
+ In both cases the first frame, corresponding to the method's parameters
+ and access flags, is implicit and must not be visited. Also, it is
+ illegal to visit two or more frames for the same code location (i.e., at
+ least one instruction must be visited between two calls to visitFrame).'*/,
+          params: [
+                          {
+                name: 'type',
+                dim: '',
+                type: 'int',
+              },
+                          {
+                name: 'nLocal',
+                dim: '',
+                type: 'int',
+              },
+                          {
+                name: 'local',
+                dim: '[]',
+                type: 'Object',
+              },
+                          {
+                name: 'nStack',
+                dim: '',
+                type: 'int',
+              },
+                          {
+                name: 'stack',
+                dim: '[]',
+                type: 'Object',
+              },
+                      ]
+        },
+              {
+          name: 'visitInsn',
+          mods: 'public',
+          sig: 'visitInsn(int)',
+          desc: ''/*'Visits a zero operand instruction.'*/,
+          params: [
+                          {
+                name: 'opcode',
+                dim: '',
+                type: 'int',
+              },
+                      ]
+        },
+              {
+          name: 'visitIntInsn',
+          mods: 'public',
+          sig: 'visitIntInsn(int, int)',
+          desc: ''/*'Visits an instruction with a single int operand.'*/,
+          params: [
+                          {
+                name: 'opcode',
+                dim: '',
+                type: 'int',
+              },
+                          {
+                name: 'operand',
+                dim: '',
+                type: 'int',
+              },
+                      ]
+        },
+              {
+          name: 'visitVarInsn',
+          mods: 'public',
+          sig: 'visitVarInsn(int, int)',
+          desc: ''/*'Visits a local variable instruction. A local variable instruction is an
+ instruction that loads or stores the value of a local variable.'*/,
+          params: [
+                          {
+                name: 'opcode',
+                dim: '',
+                type: 'int',
+              },
+                          {
+                name: 'var',
+                dim: '',
+                type: 'int',
+              },
+                      ]
+        },
+              {
+          name: 'visitTypeInsn',
+          mods: 'public',
+          sig: 'visitTypeInsn(int, java.lang.String)',
+          desc: ''/*'Visits a type instruction. A type instruction is an instruction that
+ takes the internal name of a class as parameter.'*/,
+          params: [
+                          {
+                name: 'opcode',
+                dim: '',
+                type: 'int',
+              },
+                          {
+                name: 'type',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'visitFieldInsn',
+          mods: 'public',
+          sig: 'visitFieldInsn(int, java.lang.String, java.lang.String, java.lang.String)',
+          desc: ''/*'Visits a field instruction. A field instruction is an instruction that
+ loads or stores the value of a field of an object.'*/,
+          params: [
+                          {
+                name: 'opcode',
+                dim: '',
+                type: 'int',
+              },
+                          {
+                name: 'owner',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'name',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'desc',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'visitMethodInsn',
+          mods: 'public',
+          sig: 'visitMethodInsn(int, java.lang.String, java.lang.String, java.lang.String)',
+          desc: ''/*'Visits a method instruction. A method instruction is an instruction that
+ invokes a method.'*/,
+          params: [
+                          {
+                name: 'opcode',
+                dim: '',
+                type: 'int',
+              },
+                          {
+                name: 'owner',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'name',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'desc',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'visitMethodInsn',
+          mods: 'public',
+          sig: 'visitMethodInsn(int, java.lang.String, java.lang.String, java.lang.String, boolean)',
+          desc: ''/*'Visits a method instruction. A method instruction is an instruction that
+ invokes a method.'*/,
+          params: [
+                          {
+                name: 'opcode',
+                dim: '',
+                type: 'int',
+              },
+                          {
+                name: 'owner',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'name',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'desc',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'itf',
+                dim: '',
+                type: 'boolean',
+              },
+                      ]
+        },
+              {
+          name: 'visitInvokeDynamicInsn',
+          mods: 'public',
+          sig: 'visitInvokeDynamicInsn(java.lang.String, java.lang.String, org.springframework.asm.Handle, java.lang.Object[])',
+          desc: ''/*'Visits an invokedynamic instruction.'*/,
+          params: [
+                          {
+                name: 'name',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'desc',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'bsm',
+                dim: '',
+                type: 'Handle',
+              },
+                          {
+                name: 'bsmArgs',
+                dim: '[]',
+                type: 'Object',
+              },
+                      ]
+        },
+              {
+          name: 'visitJumpInsn',
+          mods: 'public',
+          sig: 'visitJumpInsn(int, org.springframework.asm.Label)',
+          desc: ''/*'Visits a jump instruction. A jump instruction is an instruction that may
+ jump to another instruction.'*/,
+          params: [
+                          {
+                name: 'opcode',
+                dim: '',
+                type: 'int',
+              },
+                          {
+                name: 'label',
+                dim: '',
+                type: 'Label',
+              },
+                      ]
+        },
+              {
+          name: 'visitLabel',
+          mods: 'public',
+          sig: 'visitLabel(org.springframework.asm.Label)',
+          desc: ''/*'Visits a label. A label designates the instruction that will be visited
+ just after it.'*/,
+          params: [
+                          {
+                name: 'label',
+                dim: '',
+                type: 'Label',
+              },
+                      ]
+        },
+              {
+          name: 'visitLdcInsn',
+          mods: 'public',
+          sig: 'visitLdcInsn(java.lang.Object)',
+          desc: ''/*'Visits a LDC instruction. Note that new constant types may be added in
+ future versions of the Java Virtual Machine. To easily detect new
+ constant types, implementations of this method should check for
+ unexpected constant types, like this:
+ 
+ <pre>
+ if (cst instanceof Integer) {
+     // ...
+ } else if (cst instanceof Float) {
+     // ...
+ } else if (cst instanceof Long) {
+     // ...
+ } else if (cst instanceof Double) {
+     // ...
+ } else if (cst instanceof String) {
+     // ...
+ } else if (cst instanceof Type) {
+     int sort = ((Type) cst).getSort();
+     if (sort == Type.OBJECT) {
+         // ...
+     } else if (sort == Type.ARRAY) {
+         // ...
+     } else if (sort == Type.METHOD) {
+         // ...
+     } else {
+         // throw an exception
+     }
+ } else if (cst instanceof Handle) {
+     // ...
+ } else {
+     // throw an exception
+ }
+ </pre>'*/,
+          params: [
+                          {
+                name: 'cst',
+                dim: '',
+                type: 'Object',
+              },
+                      ]
+        },
+              {
+          name: 'visitIincInsn',
+          mods: 'public',
+          sig: 'visitIincInsn(int, int)',
+          desc: ''/*'Visits an IINC instruction.'*/,
+          params: [
+                          {
+                name: 'var',
+                dim: '',
+                type: 'int',
+              },
+                          {
+                name: 'increment',
+                dim: '',
+                type: 'int',
+              },
+                      ]
+        },
+              {
+          name: 'visitTableSwitchInsn',
+          mods: 'public',
+          sig: 'visitTableSwitchInsn(int, int, org.springframework.asm.Label, org.springframework.asm.Label[])',
+          desc: ''/*'Visits a TABLESWITCH instruction.'*/,
+          params: [
+                          {
+                name: 'min',
+                dim: '',
+                type: 'int',
+              },
+                          {
+                name: 'max',
+                dim: '',
+                type: 'int',
+              },
+                          {
+                name: 'dflt',
+                dim: '',
+                type: 'Label',
+              },
+                          {
+                name: 'labels',
+                dim: '[]',
+                type: 'Label',
+              },
+                      ]
+        },
+              {
+          name: 'visitLookupSwitchInsn',
+          mods: 'public',
+          sig: 'visitLookupSwitchInsn(org.springframework.asm.Label, int[], org.springframework.asm.Label[])',
+          desc: ''/*'Visits a LOOKUPSWITCH instruction.'*/,
+          params: [
+                          {
+                name: 'dflt',
+                dim: '',
+                type: 'Label',
+              },
+                          {
+                name: 'keys',
+                dim: '[]',
+                type: 'int',
+              },
+                          {
+                name: 'labels',
+                dim: '[]',
+                type: 'Label',
+              },
+                      ]
+        },
+              {
+          name: 'visitMultiANewArrayInsn',
+          mods: 'public',
+          sig: 'visitMultiANewArrayInsn(java.lang.String, int)',
+          desc: ''/*'Visits a MULTIANEWARRAY instruction.'*/,
+          params: [
+                          {
+                name: 'desc',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'dims',
+                dim: '',
+                type: 'int',
+              },
+                      ]
+        },
+              {
+          name: 'visitInsnAnnotation',
+          mods: 'public',
+          sig: 'visitInsnAnnotation(int, org.springframework.asm.TypePath, java.lang.String, boolean)',
+          desc: ''/*'Visits an annotation on an instruction. This method must be called just
+ <i>after</i> the annotated instruction. It can be called several times
+ for the same instruction.'*/,
+          params: [
+                          {
+                name: 'typeRef',
+                dim: '',
+                type: 'int',
+              },
+                          {
+                name: 'typePath',
+                dim: '',
+                type: 'TypePath',
+              },
+                          {
+                name: 'desc',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'visible',
+                dim: '',
+                type: 'boolean',
+              },
+                      ]
+        },
+              {
+          name: 'visitTryCatchBlock',
+          mods: 'public',
+          sig: 'visitTryCatchBlock(org.springframework.asm.Label, org.springframework.asm.Label, org.springframework.asm.Label, java.lang.String)',
+          desc: ''/*'Visits a try catch block.'*/,
+          params: [
+                          {
+                name: 'start',
+                dim: '',
+                type: 'Label',
+              },
+                          {
+                name: 'end',
+                dim: '',
+                type: 'Label',
+              },
+                          {
+                name: 'handler',
+                dim: '',
+                type: 'Label',
+              },
+                          {
+                name: 'type',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'visitTryCatchAnnotation',
+          mods: 'public',
+          sig: 'visitTryCatchAnnotation(int, org.springframework.asm.TypePath, java.lang.String, boolean)',
+          desc: ''/*'Visits an annotation on an exception handler type. This method must be
+ called <i>after</i> the {@link #visitTryCatchBlock} for the annotated
+ exception handler. It can be called several times for the same exception
+ handler.'*/,
+          params: [
+                          {
+                name: 'typeRef',
+                dim: '',
+                type: 'int',
+              },
+                          {
+                name: 'typePath',
+                dim: '',
+                type: 'TypePath',
+              },
+                          {
+                name: 'desc',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'visible',
+                dim: '',
+                type: 'boolean',
+              },
+                      ]
+        },
+              {
+          name: 'visitLocalVariable',
+          mods: 'public',
+          sig: 'visitLocalVariable(java.lang.String, java.lang.String, java.lang.String, org.springframework.asm.Label, org.springframework.asm.Label, int)',
+          desc: ''/*'Visits a local variable declaration.'*/,
+          params: [
+                          {
+                name: 'name',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'desc',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'signature',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'start',
+                dim: '',
+                type: 'Label',
+              },
+                          {
+                name: 'end',
+                dim: '',
+                type: 'Label',
+              },
+                          {
+                name: 'index',
+                dim: '',
+                type: 'int',
+              },
+                      ]
+        },
+              {
+          name: 'visitLocalVariableAnnotation',
+          mods: 'public',
+          sig: 'visitLocalVariableAnnotation(int, org.springframework.asm.TypePath, org.springframework.asm.Label[], org.springframework.asm.Label[], int[], java.lang.String, boolean)',
+          desc: ''/*'Visits an annotation on a local variable type.'*/,
+          params: [
+                          {
+                name: 'typeRef',
+                dim: '',
+                type: 'int',
+              },
+                          {
+                name: 'typePath',
+                dim: '',
+                type: 'TypePath',
+              },
+                          {
+                name: 'start',
+                dim: '[]',
+                type: 'Label',
+              },
+                          {
+                name: 'end',
+                dim: '[]',
+                type: 'Label',
+              },
+                          {
+                name: 'index',
+                dim: '[]',
+                type: 'int',
+              },
+                          {
+                name: 'desc',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'visible',
+                dim: '',
+                type: 'boolean',
+              },
+                      ]
+        },
+              {
+          name: 'visitLineNumber',
+          mods: 'public',
+          sig: 'visitLineNumber(int, org.springframework.asm.Label)',
+          desc: ''/*'Visits a line number declaration.'*/,
+          params: [
+                          {
+                name: 'line',
+                dim: '',
+                type: 'int',
+              },
+                          {
+                name: 'start',
+                dim: '',
+                type: 'Label',
+              },
+                      ]
+        },
+              {
+          name: 'visitMaxs',
+          mods: 'public',
+          sig: 'visitMaxs(int, int)',
+          desc: ''/*'Visits the maximum stack size and the maximum number of local variables
+ of the method.'*/,
+          params: [
+                          {
+                name: 'maxStack',
+                dim: '',
+                type: 'int',
+              },
+                          {
+                name: 'maxLocals',
+                dim: '',
+                type: 'int',
+              },
+                      ]
+        },
+              {
+          name: 'visitEnd',
+          mods: 'public',
+          sig: 'visitEnd()',
+          desc: ''/*'Visits the end of the method. This method, which is the last one to be
+ called, is used to inform the visitor that all the annotations and
+ attributes of the method have been visited.'*/,
+          params: [
+                      ]
+        },
+          ]
+  },
+  methods: {
+    show: function() {
+      alert(this.message);
+    }
+  },
+  computed: {
+    up: function() {
+      return this.message.toUpperCase();
+    },
+    matchedMethods: function() {
+      var a = this;
+      return this.methods.filter(function(m) {
+        return m.name.toLowerCase().indexOf(a.message.toLowerCase()) !== -1;
+      });
+    }
+  }
+});  
+  </script>
+</body>
+</html>
+

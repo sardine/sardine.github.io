@@ -1,0 +1,255 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width" />
+  <title>MethodInvoker</title>
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <h1>MethodInvoker</h1>
+
+  org.springframework.util.MethodInvoker
+
+
+  <div id="test">
+    <input type="text" v-model="message">
+
+    <template v-for="m in matchedMethods" :key="m.sig">
+      <h3>{{ m.name }}</h3>
+      <pre><code>{{ m.mods }} {{ m.name }}(<template v-for="(p, pi) in m.params" :key="p.name"><template v-if="pi != 0">, </template>{{ p.type }}{{ p.dim }} {{ p.name }}</template>)</code></pre>
+      <div><p>{{ m.desc }}</p></div>
+    </template>
+  </div>
+
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script>
+  var app = new Vue({
+  el: '#test',
+  data: {
+    message: '',
+    methods: [
+              {
+          name: 'setTargetClass',
+          mods: 'public',
+          sig: 'setTargetClass(java.lang.Class)',
+          desc: ''/*'Set the target class on which to call the target method.
+ Only necessary when the target method is static; else,
+ a target object needs to be specified anyway.'*/,
+          params: [
+                          {
+                name: 'targetClass',
+                dim: '',
+                type: 'Class',
+              },
+                      ]
+        },
+              {
+          name: 'getTargetClass',
+          mods: 'public',
+          sig: 'getTargetClass()',
+          desc: ''/*'Return the target class on which to call the target method.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'setTargetObject',
+          mods: 'public',
+          sig: 'setTargetObject(java.lang.Object)',
+          desc: ''/*'Set the target object on which to call the target method.
+ Only necessary when the target method is not static;
+ else, a target class is sufficient.'*/,
+          params: [
+                          {
+                name: 'targetObject',
+                dim: '',
+                type: 'Object',
+              },
+                      ]
+        },
+              {
+          name: 'getTargetObject',
+          mods: 'public',
+          sig: 'getTargetObject()',
+          desc: ''/*'Return the target object on which to call the target method.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'setTargetMethod',
+          mods: 'public',
+          sig: 'setTargetMethod(java.lang.String)',
+          desc: ''/*'Set the name of the method to be invoked.
+ Refers to either a static method or a non-static method,
+ depending on a target object being set.'*/,
+          params: [
+                          {
+                name: 'targetMethod',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'getTargetMethod',
+          mods: 'public',
+          sig: 'getTargetMethod()',
+          desc: ''/*'Return the name of the method to be invoked.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'setStaticMethod',
+          mods: 'public',
+          sig: 'setStaticMethod(java.lang.String)',
+          desc: ''/*'Set a fully qualified static method name to invoke,
+ e.g. "example.MyExampleClass.myExampleMethod".
+ Convenient alternative to specifying targetClass and targetMethod.'*/,
+          params: [
+                          {
+                name: 'staticMethod',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'setArguments',
+          mods: 'public',
+          sig: 'setArguments(java.lang.Object[])',
+          desc: ''/*'Set arguments for the method invocation. If this property is not set,
+ or the Object array is of length 0, a method with no arguments is assumed.'*/,
+          params: [
+                          {
+                name: 'arguments',
+                dim: '[]',
+                type: 'Object',
+              },
+                      ]
+        },
+              {
+          name: 'getArguments',
+          mods: 'public',
+          sig: 'getArguments()',
+          desc: ''/*'Return the arguments for the method invocation.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'prepare',
+          mods: 'public',
+          sig: 'prepare()',
+          desc: ''/*'Prepare the specified method.
+ The method can be invoked any number of times afterwards.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'resolveClassName',
+          mods: 'protected',
+          sig: 'resolveClassName(java.lang.String)',
+          desc: ''/*'Resolve the given class name into a Class.
+ <p>The default implementations uses {@code ClassUtils.forName},
+ using the thread context class loader.'*/,
+          params: [
+                          {
+                name: 'className',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'findMatchingMethod',
+          mods: 'protected',
+          sig: 'findMatchingMethod()',
+          desc: ''/*'Find a matching method with the specified name for the specified arguments.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'getPreparedMethod',
+          mods: 'public',
+          sig: 'getPreparedMethod()',
+          desc: ''/*'Return the prepared Method object that will be invoked.
+ <p>Can for example be used to determine the return type.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'isPrepared',
+          mods: 'public',
+          sig: 'isPrepared()',
+          desc: ''/*'Return whether this invoker has been prepared already,
+ i.e. whether it allows access to {@link #getPreparedMethod()} already.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'invoke',
+          mods: 'public',
+          sig: 'invoke()',
+          desc: ''/*'Invoke the specified method.
+ <p>The invoker needs to have been prepared before.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'getTypeDifferenceWeight',
+          mods: 'public static',
+          sig: 'getTypeDifferenceWeight(java.lang.Class[], java.lang.Object[])',
+          desc: ''/*'Algorithm that judges the match between the declared parameter types of a candidate method
+ and a specific list of arguments that this method is supposed to be invoked with.
+ <p>Determines a weight that represents the class hierarchy difference between types and
+ arguments. A direct match, i.e. type Integer -> arg of class Integer, does not increase
+ the result - all direct matches means weight 0. A match between type Object and arg of
+ class Integer would increase the weight by 2, due to the superclass 2 steps up in the
+ hierarchy (i.e. Object) being the last one that still matches the required type Object.
+ Type Number and class Integer would increase the weight by 1 accordingly, due to the
+ superclass 1 step up the hierarchy (i.e. Number) still matching the required type Number.
+ Therefore, with an arg of type Integer, a constructor (Integer) would be preferred to a
+ constructor (Number) which would in turn be preferred to a constructor (Object).
+ All argument weights get accumulated.
+ <p>Note: This is the algorithm used by MethodInvoker itself and also the algorithm
+ used for constructor and factory method selection in Spring's bean container (in case
+ of lenient constructor resolution which is the default for regular bean definitions).'*/,
+          params: [
+                          {
+                name: 'paramTypes',
+                dim: '[]',
+                type: 'Class',
+              },
+                          {
+                name: 'args',
+                dim: '[]',
+                type: 'Object',
+              },
+                      ]
+        },
+          ]
+  },
+  methods: {
+    show: function() {
+      alert(this.message);
+    }
+  },
+  computed: {
+    up: function() {
+      return this.message.toUpperCase();
+    },
+    matchedMethods: function() {
+      var a = this;
+      return this.methods.filter(function(m) {
+        return m.name.toLowerCase().indexOf(a.message.toLowerCase()) !== -1;
+      });
+    }
+  }
+});  
+  </script>
+</body>
+</html>
+

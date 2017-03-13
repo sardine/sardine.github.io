@@ -1,0 +1,384 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width" />
+  <title>PathMatchingResourcePatternResolver</title>
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <h1>PathMatchingResourcePatternResolver</h1>
+
+  org.springframework.core.io.support.PathMatchingResourcePatternResolver
+
+
+  <div id="test">
+    <input type="text" v-model="message">
+
+    <template v-for="m in matchedMethods" :key="m.sig">
+      <h3>{{ m.name }}</h3>
+      <pre><code>{{ m.mods }} {{ m.name }}(<template v-for="(p, pi) in m.params" :key="p.name"><template v-if="pi != 0">, </template>{{ p.type }}{{ p.dim }} {{ p.name }}</template>)</code></pre>
+      <div><p>{{ m.desc }}</p></div>
+    </template>
+  </div>
+
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script>
+  var app = new Vue({
+  el: '#test',
+  data: {
+    message: '',
+    methods: [
+              {
+          name: 'getResourceLoader',
+          mods: 'public',
+          sig: 'getResourceLoader()',
+          desc: ''/*'Return the ResourceLoader that this pattern resolver works with.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'getClassLoader',
+          mods: 'public',
+          sig: 'getClassLoader()',
+          desc: ''/*''*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'setPathMatcher',
+          mods: 'public',
+          sig: 'setPathMatcher(org.springframework.util.PathMatcher)',
+          desc: ''/*'Set the PathMatcher implementation to use for this
+ resource pattern resolver. Default is AntPathMatcher.'*/,
+          params: [
+                          {
+                name: 'pathMatcher',
+                dim: '',
+                type: 'PathMatcher',
+              },
+                      ]
+        },
+              {
+          name: 'getPathMatcher',
+          mods: 'public',
+          sig: 'getPathMatcher()',
+          desc: ''/*'Return the PathMatcher that this resource pattern resolver uses.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'getResource',
+          mods: 'public',
+          sig: 'getResource(java.lang.String)',
+          desc: ''/*''*/,
+          params: [
+                          {
+                name: 'location',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'getResources',
+          mods: 'public',
+          sig: 'getResources(java.lang.String)',
+          desc: ''/*''*/,
+          params: [
+                          {
+                name: 'locationPattern',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'findAllClassPathResources',
+          mods: 'protected',
+          sig: 'findAllClassPathResources(java.lang.String)',
+          desc: ''/*'Find all class location resources with the given location via the ClassLoader.
+ Delegates to {@link #doFindAllClassPathResources(String)}.'*/,
+          params: [
+                          {
+                name: 'location',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'doFindAllClassPathResources',
+          mods: 'protected',
+          sig: 'doFindAllClassPathResources(java.lang.String)',
+          desc: ''/*'Find all class location resources with the given path via the ClassLoader.
+ Called by {@link #findAllClassPathResources(String)}.'*/,
+          params: [
+                          {
+                name: 'path',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'convertClassLoaderURL',
+          mods: 'protected',
+          sig: 'convertClassLoaderURL(java.net.URL)',
+          desc: ''/*'Convert the given URL as returned from the ClassLoader into a {@link Resource}.
+ <p>The default implementation simply creates a {@link UrlResource} instance.'*/,
+          params: [
+                          {
+                name: 'url',
+                dim: '',
+                type: 'URL',
+              },
+                      ]
+        },
+              {
+          name: 'addAllClassLoaderJarRoots',
+          mods: 'protected',
+          sig: 'addAllClassLoaderJarRoots(java.lang.ClassLoader, java.util.Set)',
+          desc: ''/*'Search all {@link URLClassLoader} URLs for jar file references and add them to the
+ given set of resources in the form of pointers to the root of the jar file content.'*/,
+          params: [
+                          {
+                name: 'classLoader',
+                dim: '',
+                type: 'ClassLoader',
+              },
+                          {
+                name: 'result',
+                dim: '',
+                type: 'Set',
+              },
+                      ]
+        },
+              {
+          name: 'addClassPathManifestEntries',
+          mods: 'protected',
+          sig: 'addClassPathManifestEntries(java.util.Set)',
+          desc: ''/*'Determine jar file references from the "java.class.path." manifest property and add them
+ to the given set of resources in the form of pointers to the root of the jar file content.'*/,
+          params: [
+                          {
+                name: 'result',
+                dim: '',
+                type: 'Set',
+              },
+                      ]
+        },
+              {
+          name: 'findPathMatchingResources',
+          mods: 'protected',
+          sig: 'findPathMatchingResources(java.lang.String)',
+          desc: ''/*'Find all resources that match the given location pattern via the
+ Ant-style PathMatcher. Supports resources in jar files and zip files
+ and in the file system.'*/,
+          params: [
+                          {
+                name: 'locationPattern',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'determineRootDir',
+          mods: 'protected',
+          sig: 'determineRootDir(java.lang.String)',
+          desc: ''/*'Determine the root directory for the given location.
+ <p>Used for determining the starting point for file matching,
+ resolving the root directory location to a {@code java.io.File}
+ and passing it into {@code retrieveMatchingFiles}, with the
+ remainder of the location as pattern.
+ <p>Will return "/WEB-INF/" for the pattern "/WEB-INF/*.xml",
+ for example.'*/,
+          params: [
+                          {
+                name: 'location',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'resolveRootDirResource',
+          mods: 'protected',
+          sig: 'resolveRootDirResource(org.springframework.core.io.Resource)',
+          desc: ''/*'Resolve the specified resource for path matching.
+ <p>By default, Equinox OSGi "bundleresource:" / "bundleentry:" URL will be
+ resolved into a standard jar file URL that be traversed using Spring's
+ standard jar file traversal algorithm. For any preceding custom resolution,
+ override this method and replace the resource handle accordingly.'*/,
+          params: [
+                          {
+                name: 'original',
+                dim: '',
+                type: 'Resource',
+              },
+                      ]
+        },
+              {
+          name: 'isJarResource',
+          mods: 'protected',
+          sig: 'isJarResource(org.springframework.core.io.Resource)',
+          desc: ''/*'Return whether the given resource handle indicates a jar resource
+ that the {@code doFindPathMatchingJarResources} method can handle.
+ <p>By default, the URL protocols "jar", "zip", "vfszip and "wsjar"
+ will be treated as jar resources. This template method allows for
+ detecting further kinds of jar-like resources, e.g. through
+ {@code instanceof} checks on the resource handle type.'*/,
+          params: [
+                          {
+                name: 'resource',
+                dim: '',
+                type: 'Resource',
+              },
+                      ]
+        },
+              {
+          name: 'doFindPathMatchingJarResources',
+          mods: 'protected',
+          sig: 'doFindPathMatchingJarResources(org.springframework.core.io.Resource, java.net.URL, java.lang.String)',
+          desc: ''/*'Find all resources in jar files that match the given location pattern
+ via the Ant-style PathMatcher.'*/,
+          params: [
+                          {
+                name: 'rootDirResource',
+                dim: '',
+                type: 'Resource',
+              },
+                          {
+                name: 'rootDirURL',
+                dim: '',
+                type: 'URL',
+              },
+                          {
+                name: 'subPattern',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'getJarFile',
+          mods: 'protected',
+          sig: 'getJarFile(java.lang.String)',
+          desc: ''/*'Resolve the given jar file URL into a JarFile object.'*/,
+          params: [
+                          {
+                name: 'jarFileUrl',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'doFindPathMatchingFileResources',
+          mods: 'protected',
+          sig: 'doFindPathMatchingFileResources(org.springframework.core.io.Resource, java.lang.String)',
+          desc: ''/*'Find all resources in the file system that match the given location pattern
+ via the Ant-style PathMatcher.'*/,
+          params: [
+                          {
+                name: 'rootDirResource',
+                dim: '',
+                type: 'Resource',
+              },
+                          {
+                name: 'subPattern',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'doFindMatchingFileSystemResources',
+          mods: 'protected',
+          sig: 'doFindMatchingFileSystemResources(java.io.File, java.lang.String)',
+          desc: ''/*'Find all resources in the file system that match the given location pattern
+ via the Ant-style PathMatcher.'*/,
+          params: [
+                          {
+                name: 'rootDir',
+                dim: '',
+                type: 'File',
+              },
+                          {
+                name: 'subPattern',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'retrieveMatchingFiles',
+          mods: 'protected',
+          sig: 'retrieveMatchingFiles(java.io.File, java.lang.String)',
+          desc: ''/*'Retrieve files that match the given path pattern,
+ checking the given directory and its subdirectories.'*/,
+          params: [
+                          {
+                name: 'rootDir',
+                dim: '',
+                type: 'File',
+              },
+                          {
+                name: 'pattern',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'doRetrieveMatchingFiles',
+          mods: 'protected',
+          sig: 'doRetrieveMatchingFiles(java.lang.String, java.io.File, java.util.Set)',
+          desc: ''/*'Recursively retrieve files that match the given pattern,
+ adding them to the given result list.'*/,
+          params: [
+                          {
+                name: 'fullPattern',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'dir',
+                dim: '',
+                type: 'File',
+              },
+                          {
+                name: 'result',
+                dim: '',
+                type: 'Set',
+              },
+                      ]
+        },
+          ]
+  },
+  methods: {
+    show: function() {
+      alert(this.message);
+    }
+  },
+  computed: {
+    up: function() {
+      return this.message.toUpperCase();
+    },
+    matchedMethods: function() {
+      var a = this;
+      return this.methods.filter(function(m) {
+        return m.name.toLowerCase().indexOf(a.message.toLowerCase()) !== -1;
+      });
+    }
+  }
+});  
+  </script>
+</body>
+</html>
+

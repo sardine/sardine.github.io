@@ -1,0 +1,210 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width" />
+  <title>PropertyResolver</title>
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <h1>PropertyResolver</h1>
+
+  org.springframework.core.env.PropertyResolver
+
+
+  <div id="test">
+    <input type="text" v-model="message">
+
+    <template v-for="m in matchedMethods" :key="m.sig">
+      <h3>{{ m.name }}</h3>
+      <pre><code>{{ m.mods }} {{ m.name }}(<template v-for="(p, pi) in m.params" :key="p.name"><template v-if="pi != 0">, </template>{{ p.type }}{{ p.dim }} {{ p.name }}</template>)</code></pre>
+      <div><p>{{ m.desc }}</p></div>
+    </template>
+  </div>
+
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script>
+  var app = new Vue({
+  el: '#test',
+  data: {
+    message: '',
+    methods: [
+              {
+          name: 'containsProperty',
+          mods: 'public',
+          sig: 'containsProperty(java.lang.String)',
+          desc: ''/*'Return whether the given property key is available for resolution,
+ i.e. if the value for the given key is not {@code null}.'*/,
+          params: [
+                          {
+                name: 'key',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'getProperty',
+          mods: 'public',
+          sig: 'getProperty(java.lang.String)',
+          desc: ''/*'Return the property value associated with the given key,
+ or {@code null} if the key cannot be resolved.'*/,
+          params: [
+                          {
+                name: 'key',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'getProperty',
+          mods: 'public',
+          sig: 'getProperty(java.lang.String, java.lang.String)',
+          desc: ''/*'Return the property value associated with the given key, or
+ {@code defaultValue} if the key cannot be resolved.'*/,
+          params: [
+                          {
+                name: 'key',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'defaultValue',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'getProperty',
+          mods: 'public',
+          sig: 'getProperty(java.lang.String, java.lang.Class)',
+          desc: ''/*'Return the property value associated with the given key,
+ or {@code null} if the key cannot be resolved.'*/,
+          params: [
+                          {
+                name: 'key',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'targetType',
+                dim: '',
+                type: 'Class',
+              },
+                      ]
+        },
+              {
+          name: 'getProperty',
+          mods: 'public',
+          sig: 'getProperty(java.lang.String, java.lang.Class, T)',
+          desc: ''/*'Return the property value associated with the given key,
+ or {@code defaultValue} if the key cannot be resolved.'*/,
+          params: [
+                          {
+                name: 'key',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'targetType',
+                dim: '',
+                type: 'Class',
+              },
+                          {
+                name: 'defaultValue',
+                dim: '',
+                type: 'Object',
+              },
+                      ]
+        },
+              {
+          name: 'getRequiredProperty',
+          mods: 'public',
+          sig: 'getRequiredProperty(java.lang.String)',
+          desc: ''/*'Return the property value associated with the given key (never {@code null}).'*/,
+          params: [
+                          {
+                name: 'key',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'getRequiredProperty',
+          mods: 'public',
+          sig: 'getRequiredProperty(java.lang.String, java.lang.Class)',
+          desc: ''/*'Return the property value associated with the given key, converted to the given
+ targetType (never {@code null}).'*/,
+          params: [
+                          {
+                name: 'key',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'targetType',
+                dim: '',
+                type: 'Class',
+              },
+                      ]
+        },
+              {
+          name: 'resolvePlaceholders',
+          mods: 'public',
+          sig: 'resolvePlaceholders(java.lang.String)',
+          desc: ''/*'Resolve ${...} placeholders in the given text, replacing them with corresponding
+ property values as resolved by {@link #getProperty}. Unresolvable placeholders with
+ no default value are ignored and passed through unchanged.'*/,
+          params: [
+                          {
+                name: 'text',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'resolveRequiredPlaceholders',
+          mods: 'public',
+          sig: 'resolveRequiredPlaceholders(java.lang.String)',
+          desc: ''/*'Resolve ${...} placeholders in the given text, replacing them with corresponding
+ property values as resolved by {@link #getProperty}. Unresolvable placeholders with
+ no default value will cause an IllegalArgumentException to be thrown.'*/,
+          params: [
+                          {
+                name: 'text',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+          ]
+  },
+  methods: {
+    show: function() {
+      alert(this.message);
+    }
+  },
+  computed: {
+    up: function() {
+      return this.message.toUpperCase();
+    },
+    matchedMethods: function() {
+      var a = this;
+      return this.methods.filter(function(m) {
+        return m.name.toLowerCase().indexOf(a.message.toLowerCase()) !== -1;
+      });
+    }
+  }
+});  
+  </script>
+</body>
+</html>
+

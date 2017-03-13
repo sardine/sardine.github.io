@@ -1,0 +1,234 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width" />
+  <title>StreamUtils</title>
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <h1>StreamUtils</h1>
+
+  org.springframework.util.StreamUtils
+
+
+  <div id="test">
+    <input type="text" v-model="message">
+
+    <template v-for="m in matchedMethods" :key="m.sig">
+      <h3>{{ m.name }}</h3>
+      <pre><code>{{ m.mods }} {{ m.name }}(<template v-for="(p, pi) in m.params" :key="p.name"><template v-if="pi != 0">, </template>{{ p.type }}{{ p.dim }} {{ p.name }}</template>)</code></pre>
+      <div><p>{{ m.desc }}</p></div>
+    </template>
+  </div>
+
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script>
+  var app = new Vue({
+  el: '#test',
+  data: {
+    message: '',
+    methods: [
+              {
+          name: 'copyToByteArray',
+          mods: 'public static',
+          sig: 'copyToByteArray(java.io.InputStream)',
+          desc: ''/*'Copy the contents of the given InputStream into a new byte array.
+ Leaves the stream open when done.'*/,
+          params: [
+                          {
+                name: 'in',
+                dim: '',
+                type: 'InputStream',
+              },
+                      ]
+        },
+              {
+          name: 'copyToString',
+          mods: 'public static',
+          sig: 'copyToString(java.io.InputStream, java.nio.charset.Charset)',
+          desc: ''/*'Copy the contents of the given InputStream into a String.
+ Leaves the stream open when done.'*/,
+          params: [
+                          {
+                name: 'in',
+                dim: '',
+                type: 'InputStream',
+              },
+                          {
+                name: 'charset',
+                dim: '',
+                type: 'Charset',
+              },
+                      ]
+        },
+              {
+          name: 'copy',
+          mods: 'public static',
+          sig: 'copy(byte[], java.io.OutputStream)',
+          desc: ''/*'Copy the contents of the given byte array to the given OutputStream.
+ Leaves the stream open when done.'*/,
+          params: [
+                          {
+                name: 'in',
+                dim: '[]',
+                type: 'byte',
+              },
+                          {
+                name: 'out',
+                dim: '',
+                type: 'OutputStream',
+              },
+                      ]
+        },
+              {
+          name: 'copy',
+          mods: 'public static',
+          sig: 'copy(java.lang.String, java.nio.charset.Charset, java.io.OutputStream)',
+          desc: ''/*'Copy the contents of the given String to the given output OutputStream.
+ Leaves the stream open when done.'*/,
+          params: [
+                          {
+                name: 'in',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'charset',
+                dim: '',
+                type: 'Charset',
+              },
+                          {
+                name: 'out',
+                dim: '',
+                type: 'OutputStream',
+              },
+                      ]
+        },
+              {
+          name: 'copy',
+          mods: 'public static',
+          sig: 'copy(java.io.InputStream, java.io.OutputStream)',
+          desc: ''/*'Copy the contents of the given InputStream to the given OutputStream.
+ Leaves both streams open when done.'*/,
+          params: [
+                          {
+                name: 'in',
+                dim: '',
+                type: 'InputStream',
+              },
+                          {
+                name: 'out',
+                dim: '',
+                type: 'OutputStream',
+              },
+                      ]
+        },
+              {
+          name: 'copyRange',
+          mods: 'public static',
+          sig: 'copyRange(java.io.InputStream, java.io.OutputStream, long, long)',
+          desc: ''/*'Copy a range of content of the given InputStream to the given OutputStream.
+ <p>If the specified range exceeds the length of the InputStream, this copies
+ up to the end of the stream and returns the actual number of copied bytes.
+ <p>Leaves both streams open when done.'*/,
+          params: [
+                          {
+                name: 'in',
+                dim: '',
+                type: 'InputStream',
+              },
+                          {
+                name: 'out',
+                dim: '',
+                type: 'OutputStream',
+              },
+                          {
+                name: 'start',
+                dim: '',
+                type: 'long',
+              },
+                          {
+                name: 'end',
+                dim: '',
+                type: 'long',
+              },
+                      ]
+        },
+              {
+          name: 'drain',
+          mods: 'public static',
+          sig: 'drain(java.io.InputStream)',
+          desc: ''/*'Drain the remaining content of the given InputStream.
+ Leaves the InputStream open when done.'*/,
+          params: [
+                          {
+                name: 'in',
+                dim: '',
+                type: 'InputStream',
+              },
+                      ]
+        },
+              {
+          name: 'emptyInput',
+          mods: 'public static',
+          sig: 'emptyInput()',
+          desc: ''/*'Return an efficient empty {@link InputStream}.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'nonClosing',
+          mods: 'public static',
+          sig: 'nonClosing(java.io.InputStream)',
+          desc: ''/*'Return a variant of the given {@link InputStream} where calling
+ {@link InputStream#close() close()} has no effect.'*/,
+          params: [
+                          {
+                name: 'in',
+                dim: '',
+                type: 'InputStream',
+              },
+                      ]
+        },
+              {
+          name: 'nonClosing',
+          mods: 'public static',
+          sig: 'nonClosing(java.io.OutputStream)',
+          desc: ''/*'Return a variant of the given {@link OutputStream} where calling
+ {@link OutputStream#close() close()} has no effect.'*/,
+          params: [
+                          {
+                name: 'out',
+                dim: '',
+                type: 'OutputStream',
+              },
+                      ]
+        },
+          ]
+  },
+  methods: {
+    show: function() {
+      alert(this.message);
+    }
+  },
+  computed: {
+    up: function() {
+      return this.message.toUpperCase();
+    },
+    matchedMethods: function() {
+      var a = this;
+      return this.methods.filter(function(m) {
+        return m.name.toLowerCase().indexOf(a.message.toLowerCase()) !== -1;
+      });
+    }
+  }
+});  
+  </script>
+</body>
+</html>
+

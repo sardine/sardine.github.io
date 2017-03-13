@@ -1,0 +1,272 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width" />
+  <title>LinkedCaseInsensitiveMap</title>
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <h1>LinkedCaseInsensitiveMap</h1>
+
+  org.springframework.util.LinkedCaseInsensitiveMap
+
+
+  <div id="test">
+    <input type="text" v-model="message">
+
+    <template v-for="m in matchedMethods" :key="m.sig">
+      <h3>{{ m.name }}</h3>
+      <pre><code>{{ m.mods }} {{ m.name }}(<template v-for="(p, pi) in m.params" :key="p.name"><template v-if="pi != 0">, </template>{{ p.type }}{{ p.dim }} {{ p.name }}</template>)</code></pre>
+      <div><p>{{ m.desc }}</p></div>
+    </template>
+  </div>
+
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script>
+  var app = new Vue({
+  el: '#test',
+  data: {
+    message: '',
+    methods: [
+              {
+          name: 'size',
+          mods: 'public',
+          sig: 'size()',
+          desc: ''/*''*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'isEmpty',
+          mods: 'public',
+          sig: 'isEmpty()',
+          desc: ''/*''*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'containsKey',
+          mods: 'public',
+          sig: 'containsKey(java.lang.Object)',
+          desc: ''/*''*/,
+          params: [
+                          {
+                name: 'key',
+                dim: '',
+                type: 'Object',
+              },
+                      ]
+        },
+              {
+          name: 'containsValue',
+          mods: 'public',
+          sig: 'containsValue(java.lang.Object)',
+          desc: ''/*''*/,
+          params: [
+                          {
+                name: 'value',
+                dim: '',
+                type: 'Object',
+              },
+                      ]
+        },
+              {
+          name: 'get',
+          mods: 'public',
+          sig: 'get(java.lang.Object)',
+          desc: ''/*''*/,
+          params: [
+                          {
+                name: 'key',
+                dim: '',
+                type: 'Object',
+              },
+                      ]
+        },
+              {
+          name: 'getOrDefault',
+          mods: 'public',
+          sig: 'getOrDefault(java.lang.Object, V)',
+          desc: ''/*''*/,
+          params: [
+                          {
+                name: 'key',
+                dim: '',
+                type: 'Object',
+              },
+                          {
+                name: 'defaultValue',
+                dim: '',
+                type: 'Object',
+              },
+                      ]
+        },
+              {
+          name: 'put',
+          mods: 'public',
+          sig: 'put(java.lang.String, V)',
+          desc: ''/*''*/,
+          params: [
+                          {
+                name: 'key',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'value',
+                dim: '',
+                type: 'Object',
+              },
+                      ]
+        },
+              {
+          name: 'putAll',
+          mods: 'public',
+          sig: 'putAll(java.util.Map)',
+          desc: ''/*''*/,
+          params: [
+                          {
+                name: 'map',
+                dim: '',
+                type: 'Map',
+              },
+                      ]
+        },
+              {
+          name: 'remove',
+          mods: 'public',
+          sig: 'remove(java.lang.Object)',
+          desc: ''/*''*/,
+          params: [
+                          {
+                name: 'key',
+                dim: '',
+                type: 'Object',
+              },
+                      ]
+        },
+              {
+          name: 'clear',
+          mods: 'public',
+          sig: 'clear()',
+          desc: ''/*''*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'keySet',
+          mods: 'public',
+          sig: 'keySet()',
+          desc: ''/*''*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'values',
+          mods: 'public',
+          sig: 'values()',
+          desc: ''/*''*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'entrySet',
+          mods: 'public',
+          sig: 'entrySet()',
+          desc: ''/*''*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'clone',
+          mods: 'public',
+          sig: 'clone()',
+          desc: ''/*''*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'equals',
+          mods: 'public',
+          sig: 'equals(java.lang.Object)',
+          desc: ''/*''*/,
+          params: [
+                          {
+                name: 'obj',
+                dim: '',
+                type: 'Object',
+              },
+                      ]
+        },
+              {
+          name: 'hashCode',
+          mods: 'public',
+          sig: 'hashCode()',
+          desc: ''/*''*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'toString',
+          mods: 'public',
+          sig: 'toString()',
+          desc: ''/*''*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'convertKey',
+          mods: 'protected',
+          sig: 'convertKey(java.lang.String)',
+          desc: ''/*'Convert the given key to a case-insensitive key.
+ <p>The default implementation converts the key
+ to lower-case according to this Map's Locale.'*/,
+          params: [
+                          {
+                name: 'key',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'removeEldestEntry',
+          mods: 'protected',
+          sig: 'removeEldestEntry(java.util.Map.Entry)',
+          desc: ''/*'Determine whether this map should remove the given eldest entry.'*/,
+          params: [
+                          {
+                name: 'eldest',
+                dim: '',
+                type: 'Entry',
+              },
+                      ]
+        },
+          ]
+  },
+  methods: {
+    show: function() {
+      alert(this.message);
+    }
+  },
+  computed: {
+    up: function() {
+      return this.message.toUpperCase();
+    },
+    matchedMethods: function() {
+      var a = this;
+      return this.methods.filter(function(m) {
+        return m.name.toLowerCase().indexOf(a.message.toLowerCase()) !== -1;
+      });
+    }
+  }
+});  
+  </script>
+</body>
+</html>
+

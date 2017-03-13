@@ -1,0 +1,190 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width" />
+  <title>Resource</title>
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <h1>Resource</h1>
+
+  org.springframework.core.io.Resource
+
+
+  <div id="test">
+    <input type="text" v-model="message">
+
+    <template v-for="m in matchedMethods" :key="m.sig">
+      <h3>{{ m.name }}</h3>
+      <pre><code>{{ m.mods }} {{ m.name }}(<template v-for="(p, pi) in m.params" :key="p.name"><template v-if="pi != 0">, </template>{{ p.type }}{{ p.dim }} {{ p.name }}</template>)</code></pre>
+      <div><p>{{ m.desc }}</p></div>
+    </template>
+  </div>
+
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script>
+  var app = new Vue({
+  el: '#test',
+  data: {
+    message: '',
+    methods: [
+              {
+          name: 'exists',
+          mods: 'public',
+          sig: 'exists()',
+          desc: ''/*'Determine whether this resource actually exists in physical form.
+ <p>This method performs a definitive existence check, whereas the
+ existence of a {@code Resource} handle only guarantees a valid
+ descriptor handle.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'isReadable',
+          mods: 'public',
+          sig: 'isReadable()',
+          desc: ''/*'Indicate whether the contents of this resource can be read via
+ {@link #getInputStream()}.
+ <p>Will be {@code true} for typical resource descriptors;
+ note that actual content reading may still fail when attempted.
+ However, a value of {@code false} is a definitive indication
+ that the resource content cannot be read.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'isOpen',
+          mods: 'public',
+          sig: 'isOpen()',
+          desc: ''/*'Indicate whether this resource represents a handle with an open stream.
+ If {@code true}, the InputStream cannot be read multiple times,
+ and must be read and closed to avoid resource leaks.
+ <p>Will be {@code false} for typical resource descriptors.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'isFile',
+          mods: 'public',
+          sig: 'isFile()',
+          desc: ''/*'Determine whether this resource represents a file in a file system.
+ A value of {@code true} strongly suggests (but does not guarantee)
+ that a {@link #getFile()} call will succeed.
+ <p>This is conservatively {@code false} by default.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'getURL',
+          mods: 'public',
+          sig: 'getURL()',
+          desc: ''/*'Return a URL handle for this resource.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'getURI',
+          mods: 'public',
+          sig: 'getURI()',
+          desc: ''/*'Return a URI handle for this resource.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'getFile',
+          mods: 'public',
+          sig: 'getFile()',
+          desc: ''/*'Return a File handle for this resource.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'readableChannel',
+          mods: 'public',
+          sig: 'readableChannel()',
+          desc: ''/*'Return a {@link ReadableByteChannel}.
+ <p>It is expected that each call creates a <i>fresh</i> channel.
+ <p>The default implementation returns {@link Channels#newChannel(InputStream)} with the
+ result of {@link #getInputStream()}.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'contentLength',
+          mods: 'public',
+          sig: 'contentLength()',
+          desc: ''/*'Determine the content length for this resource.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'lastModified',
+          mods: 'public',
+          sig: 'lastModified()',
+          desc: ''/*'Determine the last-modified timestamp for this resource.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'createRelative',
+          mods: 'public',
+          sig: 'createRelative(java.lang.String)',
+          desc: ''/*'Create a resource relative to this resource.'*/,
+          params: [
+                          {
+                name: 'relativePath',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'getFilename',
+          mods: 'public',
+          sig: 'getFilename()',
+          desc: ''/*'Determine a filename for this resource, i.e. typically the last
+ part of the path: for example, "myfile.txt".
+ <p>Returns {@code null} if this type of resource does not
+ have a filename.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'getDescription',
+          mods: 'public',
+          sig: 'getDescription()',
+          desc: ''/*'Return a description for this resource,
+ to be used for error output when working with the resource.
+ <p>Implementations are also encouraged to return this value
+ from their {@code toString} method.'*/,
+          params: [
+                      ]
+        },
+          ]
+  },
+  methods: {
+    show: function() {
+      alert(this.message);
+    }
+  },
+  computed: {
+    up: function() {
+      return this.message.toUpperCase();
+    },
+    matchedMethods: function() {
+      var a = this;
+      return this.methods.filter(function(m) {
+        return m.name.toLowerCase().indexOf(a.message.toLowerCase()) !== -1;
+      });
+    }
+  }
+});  
+  </script>
+</body>
+</html>
+

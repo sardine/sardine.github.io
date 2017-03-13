@@ -1,0 +1,223 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width" />
+  <title>ToStringCreator</title>
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <h1>ToStringCreator</h1>
+
+  org.springframework.core.style.ToStringCreator
+
+
+  <div id="test">
+    <input type="text" v-model="message">
+
+    <template v-for="m in matchedMethods" :key="m.sig">
+      <h3>{{ m.name }}</h3>
+      <pre><code>{{ m.mods }} {{ m.name }}(<template v-for="(p, pi) in m.params" :key="p.name"><template v-if="pi != 0">, </template>{{ p.type }}{{ p.dim }} {{ p.name }}</template>)</code></pre>
+      <div><p>{{ m.desc }}</p></div>
+    </template>
+  </div>
+
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script>
+  var app = new Vue({
+  el: '#test',
+  data: {
+    message: '',
+    methods: [
+              {
+          name: 'append',
+          mods: 'public',
+          sig: 'append(java.lang.String, byte)',
+          desc: ''/*'Append a byte field value.'*/,
+          params: [
+                          {
+                name: 'fieldName',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'value',
+                dim: '',
+                type: 'byte',
+              },
+                      ]
+        },
+              {
+          name: 'append',
+          mods: 'public',
+          sig: 'append(java.lang.String, short)',
+          desc: ''/*'Append a short field value.'*/,
+          params: [
+                          {
+                name: 'fieldName',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'value',
+                dim: '',
+                type: 'short',
+              },
+                      ]
+        },
+              {
+          name: 'append',
+          mods: 'public',
+          sig: 'append(java.lang.String, int)',
+          desc: ''/*'Append a integer field value.'*/,
+          params: [
+                          {
+                name: 'fieldName',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'value',
+                dim: '',
+                type: 'int',
+              },
+                      ]
+        },
+              {
+          name: 'append',
+          mods: 'public',
+          sig: 'append(java.lang.String, long)',
+          desc: ''/*'Append a long field value.'*/,
+          params: [
+                          {
+                name: 'fieldName',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'value',
+                dim: '',
+                type: 'long',
+              },
+                      ]
+        },
+              {
+          name: 'append',
+          mods: 'public',
+          sig: 'append(java.lang.String, float)',
+          desc: ''/*'Append a float field value.'*/,
+          params: [
+                          {
+                name: 'fieldName',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'value',
+                dim: '',
+                type: 'float',
+              },
+                      ]
+        },
+              {
+          name: 'append',
+          mods: 'public',
+          sig: 'append(java.lang.String, double)',
+          desc: ''/*'Append a double field value.'*/,
+          params: [
+                          {
+                name: 'fieldName',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'value',
+                dim: '',
+                type: 'double',
+              },
+                      ]
+        },
+              {
+          name: 'append',
+          mods: 'public',
+          sig: 'append(java.lang.String, boolean)',
+          desc: ''/*'Append a boolean field value.'*/,
+          params: [
+                          {
+                name: 'fieldName',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'value',
+                dim: '',
+                type: 'boolean',
+              },
+                      ]
+        },
+              {
+          name: 'append',
+          mods: 'public',
+          sig: 'append(java.lang.String, java.lang.Object)',
+          desc: ''/*'Append a field value.'*/,
+          params: [
+                          {
+                name: 'fieldName',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'value',
+                dim: '',
+                type: 'Object',
+              },
+                      ]
+        },
+              {
+          name: 'append',
+          mods: 'public',
+          sig: 'append(java.lang.Object)',
+          desc: ''/*'Append the provided value.'*/,
+          params: [
+                          {
+                name: 'value',
+                dim: '',
+                type: 'Object',
+              },
+                      ]
+        },
+              {
+          name: 'toString',
+          mods: 'public',
+          sig: 'toString()',
+          desc: ''/*'Return the String representation that this ToStringCreator built.'*/,
+          params: [
+                      ]
+        },
+          ]
+  },
+  methods: {
+    show: function() {
+      alert(this.message);
+    }
+  },
+  computed: {
+    up: function() {
+      return this.message.toUpperCase();
+    },
+    matchedMethods: function() {
+      var a = this;
+      return this.methods.filter(function(m) {
+        return m.name.toLowerCase().indexOf(a.message.toLowerCase()) !== -1;
+      });
+    }
+  }
+});  
+  </script>
+</body>
+</html>
+

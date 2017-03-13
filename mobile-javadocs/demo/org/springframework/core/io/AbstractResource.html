@@ -1,0 +1,208 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width" />
+  <title>AbstractResource</title>
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <h1>AbstractResource</h1>
+
+  org.springframework.core.io.AbstractResource
+
+
+  <div id="test">
+    <input type="text" v-model="message">
+
+    <template v-for="m in matchedMethods" :key="m.sig">
+      <h3>{{ m.name }}</h3>
+      <pre><code>{{ m.mods }} {{ m.name }}(<template v-for="(p, pi) in m.params" :key="p.name"><template v-if="pi != 0">, </template>{{ p.type }}{{ p.dim }} {{ p.name }}</template>)</code></pre>
+      <div><p>{{ m.desc }}</p></div>
+    </template>
+  </div>
+
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script>
+  var app = new Vue({
+  el: '#test',
+  data: {
+    message: '',
+    methods: [
+              {
+          name: 'exists',
+          mods: 'public',
+          sig: 'exists()',
+          desc: ''/*'This implementation checks whether a File can be opened,
+ falling back to whether an InputStream can be opened.
+ This will cover both directories and content resources.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'isReadable',
+          mods: 'public',
+          sig: 'isReadable()',
+          desc: ''/*'This implementation always returns {@code true}.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'isOpen',
+          mods: 'public',
+          sig: 'isOpen()',
+          desc: ''/*'This implementation always returns {@code false}.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'isFile',
+          mods: 'public',
+          sig: 'isFile()',
+          desc: ''/*'This implementation always returns {@code false}.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'getURL',
+          mods: 'public',
+          sig: 'getURL()',
+          desc: ''/*'This implementation throws a FileNotFoundException, assuming
+ that the resource cannot be resolved to a URL.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'getURI',
+          mods: 'public',
+          sig: 'getURI()',
+          desc: ''/*'This implementation builds a URI based on the URL returned
+ by {@link #getURL()}.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'getFile',
+          mods: 'public',
+          sig: 'getFile()',
+          desc: ''/*'This implementation throws a FileNotFoundException, assuming
+ that the resource cannot be resolved to an absolute file path.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'readableChannel',
+          mods: 'public',
+          sig: 'readableChannel()',
+          desc: ''/*'This implementation returns {@link Channels#newChannel(InputStream)} with the result of
+ {@link #getInputStream()}.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'contentLength',
+          mods: 'public',
+          sig: 'contentLength()',
+          desc: ''/*'This implementation reads the entire InputStream to calculate the
+ content length. Subclasses will almost always be able to provide
+ a more optimal version of this, e.g. checking a File length.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'lastModified',
+          mods: 'public',
+          sig: 'lastModified()',
+          desc: ''/*'This implementation checks the timestamp of the underlying File,
+ if available.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'getFileForLastModifiedCheck',
+          mods: 'protected',
+          sig: 'getFileForLastModifiedCheck()',
+          desc: ''/*'Determine the File to use for timestamp checking.
+ <p>The default implementation delegates to {@link #getFile()}.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'createRelative',
+          mods: 'public',
+          sig: 'createRelative(java.lang.String)',
+          desc: ''/*'This implementation throws a FileNotFoundException, assuming
+ that relative resources cannot be created for this resource.'*/,
+          params: [
+                          {
+                name: 'relativePath',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'getFilename',
+          mods: 'public',
+          sig: 'getFilename()',
+          desc: ''/*'This implementation always returns {@code null},
+ assuming that this resource type does not have a filename.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'toString',
+          mods: 'public',
+          sig: 'toString()',
+          desc: ''/*'This implementation returns the description of this resource.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'equals',
+          mods: 'public',
+          sig: 'equals(java.lang.Object)',
+          desc: ''/*'This implementation compares description strings.'*/,
+          params: [
+                          {
+                name: 'obj',
+                dim: '',
+                type: 'Object',
+              },
+                      ]
+        },
+              {
+          name: 'hashCode',
+          mods: 'public',
+          sig: 'hashCode()',
+          desc: ''/*'This implementation returns the description's hash code.'*/,
+          params: [
+                      ]
+        },
+          ]
+  },
+  methods: {
+    show: function() {
+      alert(this.message);
+    }
+  },
+  computed: {
+    up: function() {
+      return this.message.toUpperCase();
+    },
+    matchedMethods: function() {
+      var a = this;
+      return this.methods.filter(function(m) {
+        return m.name.toLowerCase().indexOf(a.message.toLowerCase()) !== -1;
+      });
+    }
+  }
+});  
+  </script>
+</body>
+</html>
+

@@ -1,0 +1,160 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width" />
+  <title>ClassPathResource</title>
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <h1>ClassPathResource</h1>
+
+  org.springframework.core.io.ClassPathResource
+
+
+  <div id="test">
+    <input type="text" v-model="message">
+
+    <template v-for="m in matchedMethods" :key="m.sig">
+      <h3>{{ m.name }}</h3>
+      <pre><code>{{ m.mods }} {{ m.name }}(<template v-for="(p, pi) in m.params" :key="p.name"><template v-if="pi != 0">, </template>{{ p.type }}{{ p.dim }} {{ p.name }}</template>)</code></pre>
+      <div><p>{{ m.desc }}</p></div>
+    </template>
+  </div>
+
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script>
+  var app = new Vue({
+  el: '#test',
+  data: {
+    message: '',
+    methods: [
+              {
+          name: 'getPath',
+          mods: 'public final',
+          sig: 'getPath()',
+          desc: ''/*'Return the path for this resource (as resource path within the class path).'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'getClassLoader',
+          mods: 'public final',
+          sig: 'getClassLoader()',
+          desc: ''/*'Return the ClassLoader that this resource will be obtained from.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'exists',
+          mods: 'public',
+          sig: 'exists()',
+          desc: ''/*'This implementation checks for the resolution of a resource URL.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'resolveURL',
+          mods: 'protected',
+          sig: 'resolveURL()',
+          desc: ''/*'Resolves a URL for the underlying class path resource.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'getInputStream',
+          mods: 'public',
+          sig: 'getInputStream()',
+          desc: ''/*'This implementation opens an InputStream for the given class path resource.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'getURL',
+          mods: 'public',
+          sig: 'getURL()',
+          desc: ''/*'This implementation returns a URL for the underlying class path resource,
+ if available.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'createRelative',
+          mods: 'public',
+          sig: 'createRelative(java.lang.String)',
+          desc: ''/*'This implementation creates a ClassPathResource, applying the given path
+ relative to the path of the underlying resource of this descriptor.'*/,
+          params: [
+                          {
+                name: 'relativePath',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'getFilename',
+          mods: 'public',
+          sig: 'getFilename()',
+          desc: ''/*'This implementation returns the name of the file that this class path
+ resource refers to.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'getDescription',
+          mods: 'public',
+          sig: 'getDescription()',
+          desc: ''/*'This implementation returns a description that includes the class path location.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'equals',
+          mods: 'public',
+          sig: 'equals(java.lang.Object)',
+          desc: ''/*'This implementation compares the underlying class path locations.'*/,
+          params: [
+                          {
+                name: 'obj',
+                dim: '',
+                type: 'Object',
+              },
+                      ]
+        },
+              {
+          name: 'hashCode',
+          mods: 'public',
+          sig: 'hashCode()',
+          desc: ''/*'This implementation returns the hash code of the underlying
+ class path location.'*/,
+          params: [
+                      ]
+        },
+          ]
+  },
+  methods: {
+    show: function() {
+      alert(this.message);
+    }
+  },
+  computed: {
+    up: function() {
+      return this.message.toUpperCase();
+    },
+    matchedMethods: function() {
+      var a = this;
+      return this.methods.filter(function(m) {
+        return m.name.toLowerCase().indexOf(a.message.toLowerCase()) !== -1;
+      });
+    }
+  }
+});  
+  </script>
+</body>
+</html>
+

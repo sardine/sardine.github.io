@@ -1,0 +1,192 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width" />
+  <title>Generated javadoc</title>
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
+</head>
+
+<body>
+  <h1>Generated javadoc</h1>
+
+  <div id="test">
+      <input type="text" v-model="message">
+
+      <dl>
+        <template v-for="p in matchedPackages" :key="p.name">
+          <dt><a v-bind:href="p.href">{{ p.name }}</a></dt>
+          <dd v-html="p.desc"></dd>
+        </template>
+      </dl>
+    </div>
+  
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script>
+          var app = new Vue({
+        el: '#test',
+        data: {
+          message: '',
+          packages: [
+                          {
+                name: 'org.springframework.asm',
+                desc: 'Spring\u0027s repackaging of\u000A \u003Ca href=\u0022http:\u002F\u002Fasm.ow2.org\u0022\u003Eorg.objectweb.asm 5.0\u003C\u002Fa\u003E\u000A (for internal use only).',
+                href: 'org\u002Fspringframework\u002Fasm/package-summary.html'
+              },
+                          {
+                name: 'org.springframework.cglib',
+                desc: 'Spring\u0027s repackaging of\u000A \u003Ca href=\u0022http:\u002F\u002Fcglib.sourceforge.net\u0022\u003Enet.sf.cglib 3.2\u003C\u002Fa\u003E\u000A (for internal use only).',
+                href: 'org\u002Fspringframework\u002Fcglib/package-summary.html'
+              },
+                          {
+                name: 'org.springframework.cglib.core',
+                desc: '',
+                href: 'org\u002Fspringframework\u002Fcglib\u002Fcore/package-summary.html'
+              },
+                          {
+                name: 'org.springframework.core',
+                desc: 'Provides basic classes for exception handling and version detection,\u000A and other core helpers that are not specific to any part of the framework.',
+                href: 'org\u002Fspringframework\u002Fcore/package-summary.html'
+              },
+                          {
+                name: 'org.springframework.core.annotation',
+                desc: 'Core support package for annotations, meta-annotations, and composed\u000A annotations with attribute overrides.',
+                href: 'org\u002Fspringframework\u002Fcore\u002Fannotation/package-summary.html'
+              },
+                          {
+                name: 'org.springframework.core.codec',
+                desc: 'org.springframework.core.codec.Encoder and\u000A org.springframework.core.codec.Decoder abstractions to convert\u000A between a reactive stream of bytes and Java objects.',
+                href: 'org\u002Fspringframework\u002Fcore\u002Fcodec/package-summary.html'
+              },
+                          {
+                name: 'org.springframework.core.convert',
+                desc: 'Type conversion system API.',
+                href: 'org\u002Fspringframework\u002Fcore\u002Fconvert/package-summary.html'
+              },
+                          {
+                name: 'org.springframework.core.convert.converter',
+                desc: 'SPI to implement Converters for the type conversion system.',
+                href: 'org\u002Fspringframework\u002Fcore\u002Fconvert\u002Fconverter/package-summary.html'
+              },
+                          {
+                name: 'org.springframework.core.convert.support',
+                desc: 'Default implementation of the type conversion system.',
+                href: 'org\u002Fspringframework\u002Fcore\u002Fconvert\u002Fsupport/package-summary.html'
+              },
+                          {
+                name: 'org.springframework.core.env',
+                desc: 'Spring\u0027s environment abstraction consisting of bean definition\u000A profile and hierarchical property source support.',
+                href: 'org\u002Fspringframework\u002Fcore\u002Fenv/package-summary.html'
+              },
+                          {
+                name: 'org.springframework.core.io',
+                desc: 'Generic abstraction for (file-based) resources, used throughout the framework.',
+                href: 'org\u002Fspringframework\u002Fcore\u002Fio/package-summary.html'
+              },
+                          {
+                name: 'org.springframework.core.io.buffer',
+                desc: 'Generic abstraction for working with byte buffer implementations.',
+                href: 'org\u002Fspringframework\u002Fcore\u002Fio\u002Fbuffer/package-summary.html'
+              },
+                          {
+                name: 'org.springframework.core.io.support',
+                desc: 'Support classes for Spring\u0027s resource abstraction.',
+                href: 'org\u002Fspringframework\u002Fcore\u002Fio\u002Fsupport/package-summary.html'
+              },
+                          {
+                name: 'org.springframework.core.serializer',
+                desc: 'Root package for Spring\u0027s serializer interfaces and implementations.',
+                href: 'org\u002Fspringframework\u002Fcore\u002Fserializer/package-summary.html'
+              },
+                          {
+                name: 'org.springframework.core.serializer.support',
+                desc: 'Support classes for Spring\u0027s serializer abstraction.',
+                href: 'org\u002Fspringframework\u002Fcore\u002Fserializer\u002Fsupport/package-summary.html'
+              },
+                          {
+                name: 'org.springframework.core.style',
+                desc: 'Support for styling values as Strings, with ToStringCreator as central class.',
+                href: 'org\u002Fspringframework\u002Fcore\u002Fstyle/package-summary.html'
+              },
+                          {
+                name: 'org.springframework.core.task',
+                desc: 'This package defines Spring\u0027s core TaskExecutor abstraction,\u000A and provides SyncTaskExecutor and SimpleAsyncTaskExecutor implementations.',
+                href: 'org\u002Fspringframework\u002Fcore\u002Ftask/package-summary.html'
+              },
+                          {
+                name: 'org.springframework.core.task.support',
+                desc: 'Support classes for Spring\u0027s TaskExecutor abstraction.',
+                href: 'org\u002Fspringframework\u002Fcore\u002Ftask\u002Fsupport/package-summary.html'
+              },
+                          {
+                name: 'org.springframework.core.type',
+                desc: 'Core support package for type introspection.',
+                href: 'org\u002Fspringframework\u002Fcore\u002Ftype/package-summary.html'
+              },
+                          {
+                name: 'org.springframework.core.type.classreading',
+                desc: 'Support classes for reading annotation and class-level metadata.',
+                href: 'org\u002Fspringframework\u002Fcore\u002Ftype\u002Fclassreading/package-summary.html'
+              },
+                          {
+                name: 'org.springframework.core.type.filter',
+                desc: 'Core support package for type filtering (e.g. for classpath scanning).',
+                href: 'org\u002Fspringframework\u002Fcore\u002Ftype\u002Ffilter/package-summary.html'
+              },
+                          {
+                name: 'org.springframework.lang',
+                desc: 'Annotations indicating the use of core Java\u002FJDK API beyond the API level of JDK 6 update 18.',
+                href: 'org\u002Fspringframework\u002Flang/package-summary.html'
+              },
+                          {
+                name: 'org.springframework.objenesis',
+                desc: 'Spring\u0027s repackaging of\u000A \u003Ca href=\u0022http:\u002F\u002Fobjenesis.org\u0022\u003EObjenesis 2.1\u003C\u002Fa\u003E\u000A (for internal use only).',
+                href: 'org\u002Fspringframework\u002Fobjenesis/package-summary.html'
+              },
+                          {
+                name: 'org.springframework.util',
+                desc: 'Miscellaneous utility classes, such as String manipulation utilities,\u000A a Log4J configurer, and a state holder for paged lists of objects.',
+                href: 'org\u002Fspringframework\u002Futil/package-summary.html'
+              },
+                          {
+                name: 'org.springframework.util.backoff',
+                desc: 'A generic back-off abstraction.',
+                href: 'org\u002Fspringframework\u002Futil\u002Fbackoff/package-summary.html'
+              },
+                          {
+                name: 'org.springframework.util.comparator',
+                desc: 'Useful generic java.util.Comparator implementations,\u000A such as an invertible comparator and a compound comparator.',
+                href: 'org\u002Fspringframework\u002Futil\u002Fcomparator/package-summary.html'
+              },
+                          {
+                name: 'org.springframework.util.concurrent',
+                desc: 'Useful generic java.util.concurrent.Future extension.',
+                href: 'org\u002Fspringframework\u002Futil\u002Fconcurrent/package-summary.html'
+              },
+                          {
+                name: 'org.springframework.util.xml',
+                desc: 'Miscellaneous utility classes for XML parsing and transformation,\u000A such as error handlers that log warnings via Commons Logging.',
+                href: 'org\u002Fspringframework\u002Futil\u002Fxml/package-summary.html'
+              },
+                      ]
+        },
+        methods: {
+        },
+        computed: {
+          up: function() {
+            return this.message.toUpperCase();
+          },
+          matchedPackages: function() {
+            var a = this;
+            return this.packages.filter(function(p) {
+              return p.name.toLowerCase().indexOf(a.message.toLowerCase()) !== -1;
+            });
+          }
+        }
+      });  
+      </script>
+</body>
+</html>
+
