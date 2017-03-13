@@ -1,0 +1,245 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width" />
+  <title>GenericTypeResolver</title>
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <h1>GenericTypeResolver</h1>
+
+  org.springframework.core.GenericTypeResolver
+
+
+  <div id="test">
+    <input type="text" v-model="message">
+
+    <template v-for="m in matchedMethods" :key="m.sig">
+      <h3>{{ m.name }}</h3>
+      <pre><code>{{ m.mods }} {{ m.name }}(<template v-for="(p, pi) in m.params" :key="p.name"><template v-if="pi != 0">, </template>{{ p.type }}{{ p.dim }} {{ p.name }}</template>)</code></pre>
+      <div><p>{{ m.desc }}</p></div>
+    </template>
+  </div>
+
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script>
+  var app = new Vue({
+  el: '#test',
+  data: {
+    message: '',
+    methods: [
+              {
+          name: 'getTargetType',
+          mods: 'public static',
+          sig: 'getTargetType(org.springframework.core.MethodParameter)',
+          desc: ''/*'Determine the target type for the given parameter specification.'*/,
+          params: [
+                          {
+                name: 'methodParameter',
+                dim: '',
+                type: 'MethodParameter',
+              },
+                      ]
+        },
+              {
+          name: 'resolveParameterType',
+          mods: 'public static',
+          sig: 'resolveParameterType(org.springframework.core.MethodParameter, java.lang.Class)',
+          desc: ''/*'Determine the target type for the given generic parameter type.'*/,
+          params: [
+                          {
+                name: 'methodParameter',
+                dim: '',
+                type: 'MethodParameter',
+              },
+                          {
+                name: 'implementationClass',
+                dim: '',
+                type: 'Class',
+              },
+                      ]
+        },
+              {
+          name: 'resolveReturnType',
+          mods: 'public static',
+          sig: 'resolveReturnType(java.lang.reflect.Method, java.lang.Class)',
+          desc: ''/*'Determine the target type for the generic return type of the given method,
+ where formal type variables are declared on the given class.'*/,
+          params: [
+                          {
+                name: 'method',
+                dim: '',
+                type: 'Method',
+              },
+                          {
+                name: 'clazz',
+                dim: '',
+                type: 'Class',
+              },
+                      ]
+        },
+              {
+          name: 'resolveReturnTypeForGenericMethod',
+          mods: 'public static',
+          sig: 'resolveReturnTypeForGenericMethod(java.lang.reflect.Method, java.lang.Object[], java.lang.ClassLoader)',
+          desc: ''/*'Determine the target type for the generic return type of the given
+ <em>generic method</em>, where formal type variables are declared on
+ the given method itself.
+ <p>For example, given a factory method with the following signature,
+ if {@code resolveReturnTypeForGenericMethod()} is invoked with the reflected
+ method for {@code creatProxy()} and an {@code Object[]} array containing
+ {@code MyService.class}, {@code resolveReturnTypeForGenericMethod()} will
+ infer that the target return type is {@code MyService}.
+ <pre class="code">{@code public static <T> T createProxy(Class<T> clazz)}</pre>
+ <h4>Possible Return Values</h4>
+ <ul>
+ <li>the target return type, if it can be inferred</li>
+ <li>the {@linkplain Method#getReturnType() standard return type}, if
+ the given {@code method} does not declare any {@linkplain
+ Method#getTypeParameters() formal type variables}</li>
+ <li>the {@linkplain Method#getReturnType() standard return type}, if the
+ target return type cannot be inferred (e.g., due to type erasure)</li>
+ <li>{@code null}, if the length of the given arguments array is shorter
+ than the length of the {@linkplain
+ Method#getGenericParameterTypes() formal argument list} for the given
+ method</li>
+ </ul>'*/,
+          params: [
+                          {
+                name: 'method',
+                dim: '',
+                type: 'Method',
+              },
+                          {
+                name: 'args',
+                dim: '[]',
+                type: 'Object',
+              },
+                          {
+                name: 'classLoader',
+                dim: '',
+                type: 'ClassLoader',
+              },
+                      ]
+        },
+              {
+          name: 'resolveReturnTypeArgument',
+          mods: 'public static',
+          sig: 'resolveReturnTypeArgument(java.lang.reflect.Method, java.lang.Class)',
+          desc: ''/*'Resolve the single type argument of the given generic interface against the given
+ target method which is assumed to return the given interface or an implementation
+ of it.'*/,
+          params: [
+                          {
+                name: 'method',
+                dim: '',
+                type: 'Method',
+              },
+                          {
+                name: 'genericIfc',
+                dim: '',
+                type: 'Class',
+              },
+                      ]
+        },
+              {
+          name: 'resolveTypeArgument',
+          mods: 'public static',
+          sig: 'resolveTypeArgument(java.lang.Class, java.lang.Class)',
+          desc: ''/*'Resolve the single type argument of the given generic interface against
+ the given target class which is assumed to implement the generic interface
+ and possibly declare a concrete type for its type variable.'*/,
+          params: [
+                          {
+                name: 'clazz',
+                dim: '',
+                type: 'Class',
+              },
+                          {
+                name: 'genericIfc',
+                dim: '',
+                type: 'Class',
+              },
+                      ]
+        },
+              {
+          name: 'resolveTypeArguments',
+          mods: 'public static',
+          sig: 'resolveTypeArguments(java.lang.Class, java.lang.Class)',
+          desc: ''/*'Resolve the type arguments of the given generic interface against the given
+ target class which is assumed to implement the generic interface and possibly
+ declare concrete types for its type variables.'*/,
+          params: [
+                          {
+                name: 'clazz',
+                dim: '',
+                type: 'Class',
+              },
+                          {
+                name: 'genericIfc',
+                dim: '',
+                type: 'Class',
+              },
+                      ]
+        },
+              {
+          name: 'resolveType',
+          mods: 'public static',
+          sig: 'resolveType(java.lang.reflect.Type, java.util.Map)',
+          desc: ''/*'Resolve the specified generic type against the given TypeVariable map.'*/,
+          params: [
+                          {
+                name: 'genericType',
+                dim: '',
+                type: 'Type',
+              },
+                          {
+                name: 'map',
+                dim: '',
+                type: 'Map',
+              },
+                      ]
+        },
+              {
+          name: 'getTypeVariableMap',
+          mods: 'public static',
+          sig: 'getTypeVariableMap(java.lang.Class)',
+          desc: ''/*'Build a mapping of {@link TypeVariable#getName TypeVariable names} to
+ {@link Class concrete classes} for the specified {@link Class}. Searches
+ all super types, enclosing types and interfaces.'*/,
+          params: [
+                          {
+                name: 'clazz',
+                dim: '',
+                type: 'Class',
+              },
+                      ]
+        },
+          ]
+  },
+  methods: {
+    show: function() {
+      alert(this.message);
+    }
+  },
+  computed: {
+    up: function() {
+      return this.message.toUpperCase();
+    },
+    matchedMethods: function() {
+      var a = this;
+      return this.methods.filter(function(m) {
+        return m.name.toLowerCase().indexOf(a.message.toLowerCase()) !== -1;
+      });
+    }
+  }
+});  
+  </script>
+</body>
+</html>
+

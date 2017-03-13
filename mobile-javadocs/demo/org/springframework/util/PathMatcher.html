@@ -1,0 +1,204 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width" />
+  <title>PathMatcher</title>
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <h1>PathMatcher</h1>
+
+  org.springframework.util.PathMatcher
+
+
+  <div id="test">
+    <input type="text" v-model="message">
+
+    <template v-for="m in matchedMethods" :key="m.sig">
+      <h3>{{ m.name }}</h3>
+      <pre><code>{{ m.mods }} {{ m.name }}(<template v-for="(p, pi) in m.params" :key="p.name"><template v-if="pi != 0">, </template>{{ p.type }}{{ p.dim }} {{ p.name }}</template>)</code></pre>
+      <div><p>{{ m.desc }}</p></div>
+    </template>
+  </div>
+
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script>
+  var app = new Vue({
+  el: '#test',
+  data: {
+    message: '',
+    methods: [
+              {
+          name: 'isPattern',
+          mods: 'public',
+          sig: 'isPattern(java.lang.String)',
+          desc: ''/*'Does the given {@code path} represent a pattern that can be matched
+ by an implementation of this interface?
+ <p>If the return value is {@code false}, then the {@link #match}
+ method does not have to be used because direct equality comparisons
+ on the static path Strings will lead to the same result.'*/,
+          params: [
+                          {
+                name: 'path',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'match',
+          mods: 'public',
+          sig: 'match(java.lang.String, java.lang.String)',
+          desc: ''/*'Match the given {@code path} against the given {@code pattern},
+ according to this PathMatcher's matching strategy.'*/,
+          params: [
+                          {
+                name: 'pattern',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'path',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'matchStart',
+          mods: 'public',
+          sig: 'matchStart(java.lang.String, java.lang.String)',
+          desc: ''/*'Match the given {@code path} against the corresponding part of the given
+ {@code pattern}, according to this PathMatcher's matching strategy.
+ <p>Determines whether the pattern at least matches as far as the given base
+ path goes, assuming that a full path may then match as well.'*/,
+          params: [
+                          {
+                name: 'pattern',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'path',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'extractPathWithinPattern',
+          mods: 'public',
+          sig: 'extractPathWithinPattern(java.lang.String, java.lang.String)',
+          desc: ''/*'Given a pattern and a full path, determine the pattern-mapped part.
+ <p>This method is supposed to find out which part of the path is matched
+ dynamically through an actual pattern, that is, it strips off a statically
+ defined leading path from the given full path, returning only the actually
+ pattern-matched part of the path.
+ <p>For example: For "myroot/*.html" as pattern and "myroot/myfile.html"
+ as full path, this method should return "myfile.html". The detailed
+ determination rules are specified to this PathMatcher's matching strategy.
+ <p>A simple implementation may return the given full path as-is in case
+ of an actual pattern, and the empty String in case of the pattern not
+ containing any dynamic parts (i.e. the {@code pattern} parameter being
+ a static path that wouldn't qualify as an actual {@link #isPattern pattern}).
+ A sophisticated implementation will differentiate between the static parts
+ and the dynamic parts of the given path pattern.'*/,
+          params: [
+                          {
+                name: 'pattern',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'path',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'extractUriTemplateVariables',
+          mods: 'public',
+          sig: 'extractUriTemplateVariables(java.lang.String, java.lang.String)',
+          desc: ''/*'Given a pattern and a full path, extract the URI template variables. URI template
+ variables are expressed through curly brackets ('{' and '}').
+ <p>For example: For pattern "/hotels/{hotel}" and path "/hotels/1", this method will
+ return a map containing "hotel"->"1".'*/,
+          params: [
+                          {
+                name: 'pattern',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'path',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'getPatternComparator',
+          mods: 'public',
+          sig: 'getPatternComparator(java.lang.String)',
+          desc: ''/*'Given a full path, returns a {@link Comparator} suitable for sorting patterns
+ in order of explicitness for that path.
+ <p>The full algorithm used depends on the underlying implementation, but generally,
+ the returned {@code Comparator} will
+ {@linkplain java.util.Collections#sort(java.util.List, java.util.Comparator) sort}
+ a list so that more specific patterns come before generic patterns.'*/,
+          params: [
+                          {
+                name: 'path',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'combine',
+          mods: 'public',
+          sig: 'combine(java.lang.String, java.lang.String)',
+          desc: ''/*'Combines two patterns into a new pattern that is returned.
+ <p>The full algorithm used for combining the two pattern depends on the underlying implementation.'*/,
+          params: [
+                          {
+                name: 'pattern1',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'pattern2',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+          ]
+  },
+  methods: {
+    show: function() {
+      alert(this.message);
+    }
+  },
+  computed: {
+    up: function() {
+      return this.message.toUpperCase();
+    },
+    matchedMethods: function() {
+      var a = this;
+      return this.methods.filter(function(m) {
+        return m.name.toLowerCase().indexOf(a.message.toLowerCase()) !== -1;
+      });
+    }
+  }
+});  
+  </script>
+</body>
+</html>
+

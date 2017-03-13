@@ -1,0 +1,130 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width" />
+  <title>AttributeAccessor</title>
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <h1>AttributeAccessor</h1>
+
+  org.springframework.core.AttributeAccessor
+
+
+  <div id="test">
+    <input type="text" v-model="message">
+
+    <template v-for="m in matchedMethods" :key="m.sig">
+      <h3>{{ m.name }}</h3>
+      <pre><code>{{ m.mods }} {{ m.name }}(<template v-for="(p, pi) in m.params" :key="p.name"><template v-if="pi != 0">, </template>{{ p.type }}{{ p.dim }} {{ p.name }}</template>)</code></pre>
+      <div><p>{{ m.desc }}</p></div>
+    </template>
+  </div>
+
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script>
+  var app = new Vue({
+  el: '#test',
+  data: {
+    message: '',
+    methods: [
+              {
+          name: 'setAttribute',
+          mods: 'public',
+          sig: 'setAttribute(java.lang.String, java.lang.Object)',
+          desc: ''/*'Set the attribute defined by {@code name} to the supplied	{@code value}.
+ If {@code value} is {@code null}, the attribute is {@link #removeAttribute removed}.
+ <p>In general, users should take care to prevent overlaps with other
+ metadata attributes by using fully-qualified names, perhaps using
+ class or package names as prefix.'*/,
+          params: [
+                          {
+                name: 'name',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'value',
+                dim: '',
+                type: 'Object',
+              },
+                      ]
+        },
+              {
+          name: 'getAttribute',
+          mods: 'public',
+          sig: 'getAttribute(java.lang.String)',
+          desc: ''/*'Get the value of the attribute identified by {@code name}.
+ Return {@code null} if the attribute doesn't exist.'*/,
+          params: [
+                          {
+                name: 'name',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'removeAttribute',
+          mods: 'public',
+          sig: 'removeAttribute(java.lang.String)',
+          desc: ''/*'Remove the attribute identified by {@code name} and return its value.
+ Return {@code null} if no attribute under {@code name} is found.'*/,
+          params: [
+                          {
+                name: 'name',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'hasAttribute',
+          mods: 'public',
+          sig: 'hasAttribute(java.lang.String)',
+          desc: ''/*'Return {@code true} if the attribute identified by {@code name} exists.
+ Otherwise return {@code false}.'*/,
+          params: [
+                          {
+                name: 'name',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'attributeNames',
+          mods: 'public',
+          sig: 'attributeNames()',
+          desc: ''/*'Return the names of all attributes.'*/,
+          params: [
+                      ]
+        },
+          ]
+  },
+  methods: {
+    show: function() {
+      alert(this.message);
+    }
+  },
+  computed: {
+    up: function() {
+      return this.message.toUpperCase();
+    },
+    matchedMethods: function() {
+      var a = this;
+      return this.methods.filter(function(m) {
+        return m.name.toLowerCase().indexOf(a.message.toLowerCase()) !== -1;
+      });
+    }
+  }
+});  
+  </script>
+</body>
+</html>
+

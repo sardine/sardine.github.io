@@ -1,0 +1,431 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width" />
+  <title>Type</title>
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <h1>Type</h1>
+
+  org.springframework.asm.Type
+
+
+  <div id="test">
+    <input type="text" v-model="message">
+
+    <template v-for="m in matchedMethods" :key="m.sig">
+      <h3>{{ m.name }}</h3>
+      <pre><code>{{ m.mods }} {{ m.name }}(<template v-for="(p, pi) in m.params" :key="p.name"><template v-if="pi != 0">, </template>{{ p.type }}{{ p.dim }} {{ p.name }}</template>)</code></pre>
+      <div><p>{{ m.desc }}</p></div>
+    </template>
+  </div>
+
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script>
+  var app = new Vue({
+  el: '#test',
+  data: {
+    message: '',
+    methods: [
+              {
+          name: 'getType',
+          mods: 'public static',
+          sig: 'getType(java.lang.String)',
+          desc: ''/*'Returns the Java type corresponding to the given type descriptor.'*/,
+          params: [
+                          {
+                name: 'typeDescriptor',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'getObjectType',
+          mods: 'public static',
+          sig: 'getObjectType(java.lang.String)',
+          desc: ''/*'Returns the Java type corresponding to the given internal name.'*/,
+          params: [
+                          {
+                name: 'internalName',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'getMethodType',
+          mods: 'public static',
+          sig: 'getMethodType(java.lang.String)',
+          desc: ''/*'Returns the Java type corresponding to the given method descriptor.
+ Equivalent to <code>Type.getType(methodDescriptor)</code>.'*/,
+          params: [
+                          {
+                name: 'methodDescriptor',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'getMethodType',
+          mods: 'public static',
+          sig: 'getMethodType(org.springframework.asm.Type, org.springframework.asm.Type[])',
+          desc: ''/*'Returns the Java method type corresponding to the given argument and
+ return types.'*/,
+          params: [
+                          {
+                name: 'returnType',
+                dim: '',
+                type: 'Type',
+              },
+                          {
+                name: 'argumentTypes',
+                dim: '[]',
+                type: 'Type',
+              },
+                      ]
+        },
+              {
+          name: 'getType',
+          mods: 'public static',
+          sig: 'getType(java.lang.Class)',
+          desc: ''/*'Returns the Java type corresponding to the given class.'*/,
+          params: [
+                          {
+                name: 'c',
+                dim: '',
+                type: 'Class',
+              },
+                      ]
+        },
+              {
+          name: 'getType',
+          mods: 'public static',
+          sig: 'getType(java.lang.reflect.Constructor)',
+          desc: ''/*'Returns the Java method type corresponding to the given constructor.'*/,
+          params: [
+                          {
+                name: 'c',
+                dim: '',
+                type: 'Constructor',
+              },
+                      ]
+        },
+              {
+          name: 'getType',
+          mods: 'public static',
+          sig: 'getType(java.lang.reflect.Method)',
+          desc: ''/*'Returns the Java method type corresponding to the given method.'*/,
+          params: [
+                          {
+                name: 'm',
+                dim: '',
+                type: 'Method',
+              },
+                      ]
+        },
+              {
+          name: 'getArgumentTypes',
+          mods: 'public static',
+          sig: 'getArgumentTypes(java.lang.String)',
+          desc: ''/*'Returns the Java types corresponding to the argument types of the given
+ method descriptor.'*/,
+          params: [
+                          {
+                name: 'methodDescriptor',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'getArgumentTypes',
+          mods: 'public static',
+          sig: 'getArgumentTypes(java.lang.reflect.Method)',
+          desc: ''/*'Returns the Java types corresponding to the argument types of the given
+ method.'*/,
+          params: [
+                          {
+                name: 'method',
+                dim: '',
+                type: 'Method',
+              },
+                      ]
+        },
+              {
+          name: 'getReturnType',
+          mods: 'public static',
+          sig: 'getReturnType(java.lang.String)',
+          desc: ''/*'Returns the Java type corresponding to the return type of the given
+ method descriptor.'*/,
+          params: [
+                          {
+                name: 'methodDescriptor',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'getReturnType',
+          mods: 'public static',
+          sig: 'getReturnType(java.lang.reflect.Method)',
+          desc: ''/*'Returns the Java type corresponding to the return type of the given
+ method.'*/,
+          params: [
+                          {
+                name: 'method',
+                dim: '',
+                type: 'Method',
+              },
+                      ]
+        },
+              {
+          name: 'getArgumentsAndReturnSizes',
+          mods: 'public static',
+          sig: 'getArgumentsAndReturnSizes(java.lang.String)',
+          desc: ''/*'Computes the size of the arguments and of the return value of a method.'*/,
+          params: [
+                          {
+                name: 'desc',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'getSort',
+          mods: 'public',
+          sig: 'getSort()',
+          desc: ''/*'Returns the sort of this Java type.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'getDimensions',
+          mods: 'public',
+          sig: 'getDimensions()',
+          desc: ''/*'Returns the number of dimensions of this array type. This method should
+ only be used for an array type.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'getElementType',
+          mods: 'public',
+          sig: 'getElementType()',
+          desc: ''/*'Returns the type of the elements of this array type. This method should
+ only be used for an array type.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'getClassName',
+          mods: 'public',
+          sig: 'getClassName()',
+          desc: ''/*'Returns the binary name of the class corresponding to this type. This
+ method must not be used on method types.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'getInternalName',
+          mods: 'public',
+          sig: 'getInternalName()',
+          desc: ''/*'Returns the internal name of the class corresponding to this object or
+ array type. The internal name of a class is its fully qualified name (as
+ returned by Class.getName(), where '.' are replaced by '/'. This method
+ should only be used for an object or array type.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'getArgumentTypes',
+          mods: 'public',
+          sig: 'getArgumentTypes()',
+          desc: ''/*'Returns the argument types of methods of this type. This method should
+ only be used for method types.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'getReturnType',
+          mods: 'public',
+          sig: 'getReturnType()',
+          desc: ''/*'Returns the return type of methods of this type. This method should only
+ be used for method types.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'getArgumentsAndReturnSizes',
+          mods: 'public',
+          sig: 'getArgumentsAndReturnSizes()',
+          desc: ''/*'Returns the size of the arguments and of the return value of methods of
+ this type. This method should only be used for method types.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'getDescriptor',
+          mods: 'public',
+          sig: 'getDescriptor()',
+          desc: ''/*'Returns the descriptor corresponding to this Java type.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'getMethodDescriptor',
+          mods: 'public static',
+          sig: 'getMethodDescriptor(org.springframework.asm.Type, org.springframework.asm.Type[])',
+          desc: ''/*'Returns the descriptor corresponding to the given argument and return
+ types.'*/,
+          params: [
+                          {
+                name: 'returnType',
+                dim: '',
+                type: 'Type',
+              },
+                          {
+                name: 'argumentTypes',
+                dim: '[]',
+                type: 'Type',
+              },
+                      ]
+        },
+              {
+          name: 'getInternalName',
+          mods: 'public static',
+          sig: 'getInternalName(java.lang.Class)',
+          desc: ''/*'Returns the internal name of the given class. The internal name of a
+ class is its fully qualified name, as returned by Class.getName(), where
+ '.' are replaced by '/'.'*/,
+          params: [
+                          {
+                name: 'c',
+                dim: '',
+                type: 'Class',
+              },
+                      ]
+        },
+              {
+          name: 'getDescriptor',
+          mods: 'public static',
+          sig: 'getDescriptor(java.lang.Class)',
+          desc: ''/*'Returns the descriptor corresponding to the given Java type.'*/,
+          params: [
+                          {
+                name: 'c',
+                dim: '',
+                type: 'Class',
+              },
+                      ]
+        },
+              {
+          name: 'getConstructorDescriptor',
+          mods: 'public static',
+          sig: 'getConstructorDescriptor(java.lang.reflect.Constructor)',
+          desc: ''/*'Returns the descriptor corresponding to the given constructor.'*/,
+          params: [
+                          {
+                name: 'c',
+                dim: '',
+                type: 'Constructor',
+              },
+                      ]
+        },
+              {
+          name: 'getMethodDescriptor',
+          mods: 'public static',
+          sig: 'getMethodDescriptor(java.lang.reflect.Method)',
+          desc: ''/*'Returns the descriptor corresponding to the given method.'*/,
+          params: [
+                          {
+                name: 'm',
+                dim: '',
+                type: 'Method',
+              },
+                      ]
+        },
+              {
+          name: 'getSize',
+          mods: 'public',
+          sig: 'getSize()',
+          desc: ''/*'Returns the size of values of this type. This method must not be used for
+ method types.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'getOpcode',
+          mods: 'public',
+          sig: 'getOpcode(int)',
+          desc: ''/*'Returns a JVM instruction opcode adapted to this Java type. This method
+ must not be used for method types.'*/,
+          params: [
+                          {
+                name: 'opcode',
+                dim: '',
+                type: 'int',
+              },
+                      ]
+        },
+              {
+          name: 'equals',
+          mods: 'public',
+          sig: 'equals(java.lang.Object)',
+          desc: ''/*'Tests if the given object is equal to this type.'*/,
+          params: [
+                          {
+                name: 'o',
+                dim: '',
+                type: 'Object',
+              },
+                      ]
+        },
+              {
+          name: 'hashCode',
+          mods: 'public',
+          sig: 'hashCode()',
+          desc: ''/*'Returns a hash code value for this type.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'toString',
+          mods: 'public',
+          sig: 'toString()',
+          desc: ''/*'Returns a string representation of this type.'*/,
+          params: [
+                      ]
+        },
+          ]
+  },
+  methods: {
+    show: function() {
+      alert(this.message);
+    }
+  },
+  computed: {
+    up: function() {
+      return this.message.toUpperCase();
+    },
+    matchedMethods: function() {
+      var a = this;
+      return this.methods.filter(function(m) {
+        return m.name.toLowerCase().indexOf(a.message.toLowerCase()) !== -1;
+      });
+    }
+  }
+});  
+  </script>
+</body>
+</html>
+

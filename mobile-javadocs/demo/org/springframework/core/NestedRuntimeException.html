@@ -1,0 +1,101 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width" />
+  <title>NestedRuntimeException</title>
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <h1>NestedRuntimeException</h1>
+
+  org.springframework.core.NestedRuntimeException
+
+
+  <div id="test">
+    <input type="text" v-model="message">
+
+    <template v-for="m in matchedMethods" :key="m.sig">
+      <h3>{{ m.name }}</h3>
+      <pre><code>{{ m.mods }} {{ m.name }}(<template v-for="(p, pi) in m.params" :key="p.name"><template v-if="pi != 0">, </template>{{ p.type }}{{ p.dim }} {{ p.name }}</template>)</code></pre>
+      <div><p>{{ m.desc }}</p></div>
+    </template>
+  </div>
+
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script>
+  var app = new Vue({
+  el: '#test',
+  data: {
+    message: '',
+    methods: [
+              {
+          name: 'getMessage',
+          mods: 'public',
+          sig: 'getMessage()',
+          desc: ''/*'Return the detail message, including the message from the nested exception
+ if there is one.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'getRootCause',
+          mods: 'public',
+          sig: 'getRootCause()',
+          desc: ''/*'Retrieve the innermost cause of this exception, if any.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'getMostSpecificCause',
+          mods: 'public',
+          sig: 'getMostSpecificCause()',
+          desc: ''/*'Retrieve the most specific cause of this exception, that is,
+ either the innermost cause (root cause) or this exception itself.
+ <p>Differs from {@link #getRootCause()} in that it falls back
+ to the present exception if there is no root cause.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'contains',
+          mods: 'public',
+          sig: 'contains(java.lang.Class)',
+          desc: ''/*'Check whether this exception contains an exception of the given type:
+ either it is of the given class itself or it contains a nested cause
+ of the given type.'*/,
+          params: [
+                          {
+                name: 'exType',
+                dim: '',
+                type: 'Class',
+              },
+                      ]
+        },
+          ]
+  },
+  methods: {
+    show: function() {
+      alert(this.message);
+    }
+  },
+  computed: {
+    up: function() {
+      return this.message.toUpperCase();
+    },
+    matchedMethods: function() {
+      var a = this;
+      return this.methods.filter(function(m) {
+        return m.name.toLowerCase().indexOf(a.message.toLowerCase()) !== -1;
+      });
+    }
+  }
+});  
+  </script>
+</body>
+</html>
+

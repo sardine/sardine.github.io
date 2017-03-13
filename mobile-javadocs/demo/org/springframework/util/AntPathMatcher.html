@@ -1,0 +1,354 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width" />
+  <title>AntPathMatcher</title>
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <h1>AntPathMatcher</h1>
+
+  org.springframework.util.AntPathMatcher
+
+
+  <div id="test">
+    <input type="text" v-model="message">
+
+    <template v-for="m in matchedMethods" :key="m.sig">
+      <h3>{{ m.name }}</h3>
+      <pre><code>{{ m.mods }} {{ m.name }}(<template v-for="(p, pi) in m.params" :key="p.name"><template v-if="pi != 0">, </template>{{ p.type }}{{ p.dim }} {{ p.name }}</template>)</code></pre>
+      <div><p>{{ m.desc }}</p></div>
+    </template>
+  </div>
+
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script>
+  var app = new Vue({
+  el: '#test',
+  data: {
+    message: '',
+    methods: [
+              {
+          name: 'setPathSeparator',
+          mods: 'public',
+          sig: 'setPathSeparator(java.lang.String)',
+          desc: ''/*'Set the path separator to use for pattern parsing.
+ <p>Default is "/", as in Ant.'*/,
+          params: [
+                          {
+                name: 'pathSeparator',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'setCaseSensitive',
+          mods: 'public',
+          sig: 'setCaseSensitive(boolean)',
+          desc: ''/*'Specify whether to perform pattern matching in a case-sensitive fashion.
+ <p>Default is {@code true}. Switch this to {@code false} for case-insensitive matching.'*/,
+          params: [
+                          {
+                name: 'caseSensitive',
+                dim: '',
+                type: 'boolean',
+              },
+                      ]
+        },
+              {
+          name: 'setTrimTokens',
+          mods: 'public',
+          sig: 'setTrimTokens(boolean)',
+          desc: ''/*'Specify whether to trim tokenized paths and patterns.
+ <p>Default is {@code false}.'*/,
+          params: [
+                          {
+                name: 'trimTokens',
+                dim: '',
+                type: 'boolean',
+              },
+                      ]
+        },
+              {
+          name: 'setCachePatterns',
+          mods: 'public',
+          sig: 'setCachePatterns(boolean)',
+          desc: ''/*'Specify whether to cache parsed pattern metadata for patterns passed
+ into this matcher's {@link #match} method. A value of {@code true}
+ activates an unlimited pattern cache; a value of {@code false} turns
+ the pattern cache off completely.
+ <p>Default is for the cache to be on, but with the variant to automatically
+ turn it off when encountering too many patterns to cache at runtime
+ (the threshold is 65536), assuming that arbitrary permutations of patterns
+ are coming in, with little chance for encountering a recurring pattern.'*/,
+          params: [
+                          {
+                name: 'cachePatterns',
+                dim: '',
+                type: 'boolean',
+              },
+                      ]
+        },
+              {
+          name: 'isPattern',
+          mods: 'public',
+          sig: 'isPattern(java.lang.String)',
+          desc: ''/*''*/,
+          params: [
+                          {
+                name: 'path',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'match',
+          mods: 'public',
+          sig: 'match(java.lang.String, java.lang.String)',
+          desc: ''/*''*/,
+          params: [
+                          {
+                name: 'pattern',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'path',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'matchStart',
+          mods: 'public',
+          sig: 'matchStart(java.lang.String, java.lang.String)',
+          desc: ''/*''*/,
+          params: [
+                          {
+                name: 'pattern',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'path',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'doMatch',
+          mods: 'protected',
+          sig: 'doMatch(java.lang.String, java.lang.String, boolean, java.util.Map)',
+          desc: ''/*'Actually match the given {@code path} against the given {@code pattern}.'*/,
+          params: [
+                          {
+                name: 'pattern',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'path',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'fullMatch',
+                dim: '',
+                type: 'boolean',
+              },
+                          {
+                name: 'uriTemplateVariables',
+                dim: '',
+                type: 'Map',
+              },
+                      ]
+        },
+              {
+          name: 'tokenizePattern',
+          mods: 'protected',
+          sig: 'tokenizePattern(java.lang.String)',
+          desc: ''/*'Tokenize the given path pattern into parts, based on this matcher's settings.
+ <p>Performs caching based on {@link #setCachePatterns}, delegating to
+ {@link #tokenizePath(String)} for the actual tokenization algorithm.'*/,
+          params: [
+                          {
+                name: 'pattern',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'tokenizePath',
+          mods: 'protected',
+          sig: 'tokenizePath(java.lang.String)',
+          desc: ''/*'Tokenize the given path String into parts, based on this matcher's settings.'*/,
+          params: [
+                          {
+                name: 'path',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'getStringMatcher',
+          mods: 'protected',
+          sig: 'getStringMatcher(java.lang.String)',
+          desc: ''/*'Build or retrieve an {@link AntPathStringMatcher} for the given pattern.
+ <p>The default implementation checks this AntPathMatcher's internal cache
+ (see {@link #setCachePatterns}), creating a new AntPathStringMatcher instance
+ if no cached copy is found.
+ <p>When encountering too many patterns to cache at runtime (the threshold is 65536),
+ it turns the default cache off, assuming that arbitrary permutations of patterns
+ are coming in, with little chance for encountering a recurring pattern.
+ <p>This method may be overridden to implement a custom cache strategy.'*/,
+          params: [
+                          {
+                name: 'pattern',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'extractPathWithinPattern',
+          mods: 'public',
+          sig: 'extractPathWithinPattern(java.lang.String, java.lang.String)',
+          desc: ''/*'Given a pattern and a full path, determine the pattern-mapped part. <p>For example: <ul>
+ <li>'{@code /docs/cvs/commit.html}' and '{@code /docs/cvs/commit.html} -> ''</li>
+ <li>'{@code /docs/*}' and '{@code /docs/cvs/commit} -> '{@code cvs/commit}'</li>
+ <li>'{@code /docs/cvs/*.html}' and '{@code /docs/cvs/commit.html} -> '{@code commit.html}'</li>
+ <li>'{@code /docs/**}' and '{@code /docs/cvs/commit} -> '{@code cvs/commit}'</li>
+ <li>'{@code /docs/**\/*.html}' and '{@code /docs/cvs/commit.html} -> '{@code cvs/commit.html}'</li>
+ <li>'{@code /*.html}' and '{@code /docs/cvs/commit.html} -> '{@code docs/cvs/commit.html}'</li>
+ <li>'{@code *.html}' and '{@code /docs/cvs/commit.html} -> '{@code /docs/cvs/commit.html}'</li>
+ <li>'{@code *}' and '{@code /docs/cvs/commit.html} -> '{@code /docs/cvs/commit.html}'</li> </ul>
+ <p>Assumes that {@link #match} returns {@code true} for '{@code pattern}' and '{@code path}', but
+ does <strong>not</strong> enforce this.'*/,
+          params: [
+                          {
+                name: 'pattern',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'path',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'extractUriTemplateVariables',
+          mods: 'public',
+          sig: 'extractUriTemplateVariables(java.lang.String, java.lang.String)',
+          desc: ''/*''*/,
+          params: [
+                          {
+                name: 'pattern',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'path',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'combine',
+          mods: 'public',
+          sig: 'combine(java.lang.String, java.lang.String)',
+          desc: ''/*'Combine two patterns into a new pattern.
+ <p>This implementation simply concatenates the two patterns, unless
+ the first pattern contains a file extension match (e.g., {@code *.html}).
+ In that case, the second pattern will be merged into the first. Otherwise,
+ an {@code IllegalArgumentException} will be thrown.
+ <h3>Examples</h3>
+ <table border="1">
+ <tr><th>Pattern 1</th><th>Pattern 2</th><th>Result</th></tr>
+ <tr><td>{@code null}</td><td>{@code null}</td><td>&nbsp;</td></tr>
+ <tr><td>/hotels</td><td>{@code null}</td><td>/hotels</td></tr>
+ <tr><td>{@code null}</td><td>/hotels</td><td>/hotels</td></tr>
+ <tr><td>/hotels</td><td>/bookings</td><td>/hotels/bookings</td></tr>
+ <tr><td>/hotels</td><td>bookings</td><td>/hotels/bookings</td></tr>
+ <tr><td>/hotels/*</td><td>/bookings</td><td>/hotels/bookings</td></tr>
+ <tr><td>/hotels/&#42;&#42;</td><td>/bookings</td><td>/hotels/&#42;&#42;/bookings</td></tr>
+ <tr><td>/hotels</td><td>{hotel}</td><td>/hotels/{hotel}</td></tr>
+ <tr><td>/hotels/*</td><td>{hotel}</td><td>/hotels/{hotel}</td></tr>
+ <tr><td>/hotels/&#42;&#42;</td><td>{hotel}</td><td>/hotels/&#42;&#42;/{hotel}</td></tr>
+ <tr><td>/*.html</td><td>/hotels.html</td><td>/hotels.html</td></tr>
+ <tr><td>/*.html</td><td>/hotels</td><td>/hotels.html</td></tr>
+ <tr><td>/*.html</td><td>/*.txt</td><td>{@code IllegalArgumentException}</td></tr>
+ </table>'*/,
+          params: [
+                          {
+                name: 'pattern1',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'pattern2',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'getPatternComparator',
+          mods: 'public',
+          sig: 'getPatternComparator(java.lang.String)',
+          desc: ''/*'Given a full path, returns a {@link Comparator} suitable for sorting patterns in order of
+ explicitness.
+ <p>This{@code Comparator} will {@linkplain java.util.Collections#sort(List, Comparator) sort}
+ a list so that more specific patterns (without uri templates or wild cards) come before
+ generic patterns. So given a list with the following patterns:
+ <ol>
+ <li>{@code /hotels/new}</li>
+ <li>{@code /hotels/{hotel}}</li> <li>{@code /hotels/*}</li>
+ </ol>
+ the returned comparator will sort this list so that the order will be as indicated.
+ <p>The full path given as parameter is used to test for exact matches. So when the given path
+ is {@code /hotels/2}, the pattern {@code /hotels/2} will be sorted before {@code /hotels/1}.'*/,
+          params: [
+                          {
+                name: 'path',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+          ]
+  },
+  methods: {
+    show: function() {
+      alert(this.message);
+    }
+  },
+  computed: {
+    up: function() {
+      return this.message.toUpperCase();
+    },
+    matchedMethods: function() {
+      var a = this;
+      return this.methods.filter(function(m) {
+        return m.name.toLowerCase().indexOf(a.message.toLowerCase()) !== -1;
+      });
+    }
+  }
+});  
+  </script>
+</body>
+</html>
+

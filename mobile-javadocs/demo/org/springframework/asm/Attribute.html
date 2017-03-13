@@ -1,0 +1,157 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width" />
+  <title>Attribute</title>
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <h1>Attribute</h1>
+
+  org.springframework.asm.Attribute
+
+
+  <div id="test">
+    <input type="text" v-model="message">
+
+    <template v-for="m in matchedMethods" :key="m.sig">
+      <h3>{{ m.name }}</h3>
+      <pre><code>{{ m.mods }} {{ m.name }}(<template v-for="(p, pi) in m.params" :key="p.name"><template v-if="pi != 0">, </template>{{ p.type }}{{ p.dim }} {{ p.name }}</template>)</code></pre>
+      <div><p>{{ m.desc }}</p></div>
+    </template>
+  </div>
+
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script>
+  var app = new Vue({
+  el: '#test',
+  data: {
+    message: '',
+    methods: [
+              {
+          name: 'isUnknown',
+          mods: 'public',
+          sig: 'isUnknown()',
+          desc: ''/*'Returns <tt>true</tt> if this type of attribute is unknown. The default
+ implementation of this method always returns <tt>true</tt>.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'isCodeAttribute',
+          mods: 'public',
+          sig: 'isCodeAttribute()',
+          desc: ''/*'Returns <tt>true</tt> if this type of attribute is a code attribute.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'getLabels',
+          mods: 'protected',
+          sig: 'getLabels()',
+          desc: ''/*'Returns the labels corresponding to this attribute.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'read',
+          mods: 'protected',
+          sig: 'read(org.springframework.asm.ClassReader, int, int, char[], int, org.springframework.asm.Label[])',
+          desc: ''/*'Reads a {@link #type type} attribute. This method must return a
+ <i>new</i> {@link Attribute} object, of type {@link #type type},
+ corresponding to the <tt>len</tt> bytes starting at the given offset, in
+ the given class reader.'*/,
+          params: [
+                          {
+                name: 'cr',
+                dim: '',
+                type: 'ClassReader',
+              },
+                          {
+                name: 'off',
+                dim: '',
+                type: 'int',
+              },
+                          {
+                name: 'len',
+                dim: '',
+                type: 'int',
+              },
+                          {
+                name: 'buf',
+                dim: '[]',
+                type: 'char',
+              },
+                          {
+                name: 'codeOff',
+                dim: '',
+                type: 'int',
+              },
+                          {
+                name: 'labels',
+                dim: '[]',
+                type: 'Label',
+              },
+                      ]
+        },
+              {
+          name: 'write',
+          mods: 'protected',
+          sig: 'write(org.springframework.asm.ClassWriter, byte[], int, int, int)',
+          desc: ''/*'Returns the byte array form of this attribute.'*/,
+          params: [
+                          {
+                name: 'cw',
+                dim: '',
+                type: 'ClassWriter',
+              },
+                          {
+                name: 'code',
+                dim: '[]',
+                type: 'byte',
+              },
+                          {
+                name: 'len',
+                dim: '',
+                type: 'int',
+              },
+                          {
+                name: 'maxStack',
+                dim: '',
+                type: 'int',
+              },
+                          {
+                name: 'maxLocals',
+                dim: '',
+                type: 'int',
+              },
+                      ]
+        },
+          ]
+  },
+  methods: {
+    show: function() {
+      alert(this.message);
+    }
+  },
+  computed: {
+    up: function() {
+      return this.message.toUpperCase();
+    },
+    matchedMethods: function() {
+      var a = this;
+      return this.methods.filter(function(m) {
+        return m.name.toLowerCase().indexOf(a.message.toLowerCase()) !== -1;
+      });
+    }
+  }
+});  
+  </script>
+</body>
+</html>
+

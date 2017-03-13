@@ -1,0 +1,115 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width" />
+  <title>ConfigurableObjectInputStream</title>
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <h1>ConfigurableObjectInputStream</h1>
+
+  org.springframework.core.ConfigurableObjectInputStream
+
+
+  <div id="test">
+    <input type="text" v-model="message">
+
+    <template v-for="m in matchedMethods" :key="m.sig">
+      <h3>{{ m.name }}</h3>
+      <pre><code>{{ m.mods }} {{ m.name }}(<template v-for="(p, pi) in m.params" :key="p.name"><template v-if="pi != 0">, </template>{{ p.type }}{{ p.dim }} {{ p.name }}</template>)</code></pre>
+      <div><p>{{ m.desc }}</p></div>
+    </template>
+  </div>
+
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script>
+  var app = new Vue({
+  el: '#test',
+  data: {
+    message: '',
+    methods: [
+              {
+          name: 'resolveClass',
+          mods: 'protected',
+          sig: 'resolveClass(java.io.ObjectStreamClass)',
+          desc: ''/*''*/,
+          params: [
+                          {
+                name: 'classDesc',
+                dim: '',
+                type: 'ObjectStreamClass',
+              },
+                      ]
+        },
+              {
+          name: 'resolveProxyClass',
+          mods: 'protected',
+          sig: 'resolveProxyClass(java.lang.String[])',
+          desc: ''/*''*/,
+          params: [
+                          {
+                name: 'interfaces',
+                dim: '[]',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'resolveFallbackIfPossible',
+          mods: 'protected',
+          sig: 'resolveFallbackIfPossible(java.lang.String, java.lang.ClassNotFoundException)',
+          desc: ''/*'Resolve the given class name against a fallback class loader.
+ <p>The default implementation simply rethrows the original exception,
+ since there is no fallback available.'*/,
+          params: [
+                          {
+                name: 'className',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'ex',
+                dim: '',
+                type: 'ClassNotFoundException',
+              },
+                      ]
+        },
+              {
+          name: 'getFallbackClassLoader',
+          mods: 'protected',
+          sig: 'getFallbackClassLoader()',
+          desc: ''/*'Return the fallback ClassLoader to use when no ClassLoader was specified
+ and ObjectInputStream's own default class loader failed.
+ <p>The default implementation simply returns {@code null}, indicating
+ that no specific fallback is available.'*/,
+          params: [
+                      ]
+        },
+          ]
+  },
+  methods: {
+    show: function() {
+      alert(this.message);
+    }
+  },
+  computed: {
+    up: function() {
+      return this.message.toUpperCase();
+    },
+    matchedMethods: function() {
+      var a = this;
+      return this.methods.filter(function(m) {
+        return m.name.toLowerCase().indexOf(a.message.toLowerCase()) !== -1;
+      });
+    }
+  }
+});  
+  </script>
+</body>
+</html>
+

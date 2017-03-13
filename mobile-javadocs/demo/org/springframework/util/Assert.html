@@ -1,0 +1,815 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width" />
+  <title>Assert</title>
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <h1>Assert</h1>
+
+  org.springframework.util.Assert
+
+
+  <div id="test">
+    <input type="text" v-model="message">
+
+    <template v-for="m in matchedMethods" :key="m.sig">
+      <h3>{{ m.name }}</h3>
+      <pre><code>{{ m.mods }} {{ m.name }}(<template v-for="(p, pi) in m.params" :key="p.name"><template v-if="pi != 0">, </template>{{ p.type }}{{ p.dim }} {{ p.name }}</template>)</code></pre>
+      <div><p>{{ m.desc }}</p></div>
+    </template>
+  </div>
+
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script>
+  var app = new Vue({
+  el: '#test',
+  data: {
+    message: '',
+    methods: [
+              {
+          name: 'state',
+          mods: 'public static',
+          sig: 'state(boolean, java.lang.String)',
+          desc: ''/*'Assert a boolean expression, throwing an {@code IllegalStateException}
+ if the expression evaluates to {@code false}.
+ <p>Call {@link #isTrue} if you wish to throw an {@code IllegalArgumentException}
+ on an assertion failure.
+ <pre class="code">Assert.state(id == null, "The id property must not already be initialized");</pre>'*/,
+          params: [
+                          {
+                name: 'expression',
+                dim: '',
+                type: 'boolean',
+              },
+                          {
+                name: 'message',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'state',
+          mods: 'public static',
+          sig: 'state(boolean, java.util.function.Supplier)',
+          desc: ''/*'Assert a boolean expression, throwing an {@code IllegalStateException}
+ if the expression evaluates to {@code false}.
+ <p>Call {@link #isTrue} if you wish to throw an {@code IllegalArgumentException}
+ on an assertion failure.
+ <pre class="code">
+ Assert.state(id == null,
+     () -&gt; "ID for " + entity.getName() + " must not already be initialized");
+ </pre>'*/,
+          params: [
+                          {
+                name: 'expression',
+                dim: '',
+                type: 'boolean',
+              },
+                          {
+                name: 'messageSupplier',
+                dim: '',
+                type: 'Supplier',
+              },
+                      ]
+        },
+              {
+          name: 'state',
+          mods: 'public static',
+          sig: 'state(boolean)',
+          desc: ''/*''*/,
+          params: [
+                          {
+                name: 'expression',
+                dim: '',
+                type: 'boolean',
+              },
+                      ]
+        },
+              {
+          name: 'isTrue',
+          mods: 'public static',
+          sig: 'isTrue(boolean, java.lang.String)',
+          desc: ''/*'Assert a boolean expression, throwing an {@code IllegalArgumentException}
+ if the expression evaluates to {@code false}.
+ <pre class="code">Assert.isTrue(i &gt; 0, "The value must be greater than zero");</pre>'*/,
+          params: [
+                          {
+                name: 'expression',
+                dim: '',
+                type: 'boolean',
+              },
+                          {
+                name: 'message',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'isTrue',
+          mods: 'public static',
+          sig: 'isTrue(boolean, java.util.function.Supplier)',
+          desc: ''/*'Assert a boolean expression, throwing an {@code IllegalArgumentException}
+ if the expression evaluates to {@code false}.
+ <pre class="code">
+ Assert.isTrue(i &gt; 0, () -&gt; "The value '" + i + "' must be greater than zero");
+ </pre>'*/,
+          params: [
+                          {
+                name: 'expression',
+                dim: '',
+                type: 'boolean',
+              },
+                          {
+                name: 'messageSupplier',
+                dim: '',
+                type: 'Supplier',
+              },
+                      ]
+        },
+              {
+          name: 'isTrue',
+          mods: 'public static',
+          sig: 'isTrue(boolean)',
+          desc: ''/*''*/,
+          params: [
+                          {
+                name: 'expression',
+                dim: '',
+                type: 'boolean',
+              },
+                      ]
+        },
+              {
+          name: 'isNull',
+          mods: 'public static',
+          sig: 'isNull(java.lang.Object, java.lang.String)',
+          desc: ''/*'Assert that an object is {@code null}.
+ <pre class="code">Assert.isNull(value, "The value must be null");</pre>'*/,
+          params: [
+                          {
+                name: 'object',
+                dim: '',
+                type: 'Object',
+              },
+                          {
+                name: 'message',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'isNull',
+          mods: 'public static',
+          sig: 'isNull(java.lang.Object, java.util.function.Supplier)',
+          desc: ''/*'Assert that an object is {@code null}.
+ <pre class="code">
+ Assert.isNull(value, () -&gt; "The value '" + value + "' must be null");
+ </pre>'*/,
+          params: [
+                          {
+                name: 'object',
+                dim: '',
+                type: 'Object',
+              },
+                          {
+                name: 'messageSupplier',
+                dim: '',
+                type: 'Supplier',
+              },
+                      ]
+        },
+              {
+          name: 'isNull',
+          mods: 'public static',
+          sig: 'isNull(java.lang.Object)',
+          desc: ''/*''*/,
+          params: [
+                          {
+                name: 'object',
+                dim: '',
+                type: 'Object',
+              },
+                      ]
+        },
+              {
+          name: 'notNull',
+          mods: 'public static',
+          sig: 'notNull(java.lang.Object, java.lang.String)',
+          desc: ''/*'Assert that an object is not {@code null}.
+ <pre class="code">Assert.notNull(clazz, "The class must not be null");</pre>'*/,
+          params: [
+                          {
+                name: 'object',
+                dim: '',
+                type: 'Object',
+              },
+                          {
+                name: 'message',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'notNull',
+          mods: 'public static',
+          sig: 'notNull(java.lang.Object, java.util.function.Supplier)',
+          desc: ''/*'Assert that an object is not {@code null}.
+ <pre class="code">
+ Assert.notNull(clazz, () -&gt; "The class '" + clazz.getName() + "' must not be null");
+ </pre>'*/,
+          params: [
+                          {
+                name: 'object',
+                dim: '',
+                type: 'Object',
+              },
+                          {
+                name: 'messageSupplier',
+                dim: '',
+                type: 'Supplier',
+              },
+                      ]
+        },
+              {
+          name: 'notNull',
+          mods: 'public static',
+          sig: 'notNull(java.lang.Object)',
+          desc: ''/*''*/,
+          params: [
+                          {
+                name: 'object',
+                dim: '',
+                type: 'Object',
+              },
+                      ]
+        },
+              {
+          name: 'hasLength',
+          mods: 'public static',
+          sig: 'hasLength(java.lang.String, java.lang.String)',
+          desc: ''/*'Assert that the given String is not empty; that is,
+ it must not be {@code null} and not the empty String.
+ <pre class="code">Assert.hasLength(name, "Name must not be empty");</pre>'*/,
+          params: [
+                          {
+                name: 'text',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'message',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'hasLength',
+          mods: 'public static',
+          sig: 'hasLength(java.lang.String, java.util.function.Supplier)',
+          desc: ''/*'Assert that the given String is not empty; that is,
+ it must not be {@code null} and not the empty String.
+ <pre class="code">
+ Assert.hasLength(name, () -&gt; "Name for account '" + account.getId() + "' must not be empty");
+ </pre>'*/,
+          params: [
+                          {
+                name: 'text',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'messageSupplier',
+                dim: '',
+                type: 'Supplier',
+              },
+                      ]
+        },
+              {
+          name: 'hasLength',
+          mods: 'public static',
+          sig: 'hasLength(java.lang.String)',
+          desc: ''/*''*/,
+          params: [
+                          {
+                name: 'text',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'hasText',
+          mods: 'public static',
+          sig: 'hasText(java.lang.String, java.lang.String)',
+          desc: ''/*'Assert that the given String contains valid text content; that is, it must not
+ be {@code null} and must contain at least one non-whitespace character.
+ <pre class="code">Assert.hasText(name, "'name' must not be empty");</pre>'*/,
+          params: [
+                          {
+                name: 'text',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'message',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'hasText',
+          mods: 'public static',
+          sig: 'hasText(java.lang.String, java.util.function.Supplier)',
+          desc: ''/*'Assert that the given String contains valid text content; that is, it must not
+ be {@code null} and must contain at least one non-whitespace character.
+ <pre class="code">
+ Assert.hasText(name, () -&gt; "Name for account '" + account.getId() + "' must not be empty");
+ </pre>'*/,
+          params: [
+                          {
+                name: 'text',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'messageSupplier',
+                dim: '',
+                type: 'Supplier',
+              },
+                      ]
+        },
+              {
+          name: 'hasText',
+          mods: 'public static',
+          sig: 'hasText(java.lang.String)',
+          desc: ''/*''*/,
+          params: [
+                          {
+                name: 'text',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'doesNotContain',
+          mods: 'public static',
+          sig: 'doesNotContain(java.lang.String, java.lang.String, java.lang.String)',
+          desc: ''/*'Assert that the given text does not contain the given substring.
+ <pre class="code">Assert.doesNotContain(name, "rod", "Name must not contain 'rod'");</pre>'*/,
+          params: [
+                          {
+                name: 'textToSearch',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'substring',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'message',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'doesNotContain',
+          mods: 'public static',
+          sig: 'doesNotContain(java.lang.String, java.lang.String, java.util.function.Supplier)',
+          desc: ''/*'Assert that the given text does not contain the given substring.
+ <pre class="code">
+ Assert.doesNotContain(name, forbidden, () -&gt; "Name must not contain '" + forbidden + "'");
+ </pre>'*/,
+          params: [
+                          {
+                name: 'textToSearch',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'substring',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'messageSupplier',
+                dim: '',
+                type: 'Supplier',
+              },
+                      ]
+        },
+              {
+          name: 'doesNotContain',
+          mods: 'public static',
+          sig: 'doesNotContain(java.lang.String, java.lang.String)',
+          desc: ''/*''*/,
+          params: [
+                          {
+                name: 'textToSearch',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'substring',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'notEmpty',
+          mods: 'public static',
+          sig: 'notEmpty(java.lang.Object[], java.lang.String)',
+          desc: ''/*'Assert that an array contains elements; that is, it must not be
+ {@code null} and must contain at least one element.
+ <pre class="code">Assert.notEmpty(array, "The array must contain elements");</pre>'*/,
+          params: [
+                          {
+                name: 'array',
+                dim: '[]',
+                type: 'Object',
+              },
+                          {
+                name: 'message',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'notEmpty',
+          mods: 'public static',
+          sig: 'notEmpty(java.lang.Object[], java.util.function.Supplier)',
+          desc: ''/*'Assert that an array contains elements; that is, it must not be
+ {@code null} and must contain at least one element.
+ <pre class="code">
+ Assert.notEmpty(array, () -&gt; "The " + arrayType + " array must contain elements");
+ </pre>'*/,
+          params: [
+                          {
+                name: 'array',
+                dim: '[]',
+                type: 'Object',
+              },
+                          {
+                name: 'messageSupplier',
+                dim: '',
+                type: 'Supplier',
+              },
+                      ]
+        },
+              {
+          name: 'notEmpty',
+          mods: 'public static',
+          sig: 'notEmpty(java.lang.Object[])',
+          desc: ''/*''*/,
+          params: [
+                          {
+                name: 'array',
+                dim: '[]',
+                type: 'Object',
+              },
+                      ]
+        },
+              {
+          name: 'noNullElements',
+          mods: 'public static',
+          sig: 'noNullElements(java.lang.Object[], java.lang.String)',
+          desc: ''/*'Assert that an array contains no {@code null} elements.
+ <p>Note: Does not complain if the array is empty!
+ <pre class="code">Assert.noNullElements(array, "The array must contain non-null elements");</pre>'*/,
+          params: [
+                          {
+                name: 'array',
+                dim: '[]',
+                type: 'Object',
+              },
+                          {
+                name: 'message',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'noNullElements',
+          mods: 'public static',
+          sig: 'noNullElements(java.lang.Object[], java.util.function.Supplier)',
+          desc: ''/*'Assert that an array contains no {@code null} elements.
+ <p>Note: Does not complain if the array is empty!
+ <pre class="code">
+ Assert.noNullElements(array, () -&gt; "The " + arrayType + " array must contain non-null elements");
+ </pre>'*/,
+          params: [
+                          {
+                name: 'array',
+                dim: '[]',
+                type: 'Object',
+              },
+                          {
+                name: 'messageSupplier',
+                dim: '',
+                type: 'Supplier',
+              },
+                      ]
+        },
+              {
+          name: 'noNullElements',
+          mods: 'public static',
+          sig: 'noNullElements(java.lang.Object[])',
+          desc: ''/*''*/,
+          params: [
+                          {
+                name: 'array',
+                dim: '[]',
+                type: 'Object',
+              },
+                      ]
+        },
+              {
+          name: 'notEmpty',
+          mods: 'public static',
+          sig: 'notEmpty(java.util.Collection, java.lang.String)',
+          desc: ''/*'Assert that a collection contains elements; that is, it must not be
+ {@code null} and must contain at least one element.
+ <pre class="code">Assert.notEmpty(collection, "Collection must contain elements");</pre>'*/,
+          params: [
+                          {
+                name: 'collection',
+                dim: '',
+                type: 'Collection',
+              },
+                          {
+                name: 'message',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'notEmpty',
+          mods: 'public static',
+          sig: 'notEmpty(java.util.Collection, java.util.function.Supplier)',
+          desc: ''/*'Assert that a collection contains elements; that is, it must not be
+ {@code null} and must contain at least one element.
+ <pre class="code">
+ Assert.notEmpty(collection, () -&gt; "The " + collectionType + " collection must contain elements");
+ </pre>'*/,
+          params: [
+                          {
+                name: 'collection',
+                dim: '',
+                type: 'Collection',
+              },
+                          {
+                name: 'messageSupplier',
+                dim: '',
+                type: 'Supplier',
+              },
+                      ]
+        },
+              {
+          name: 'notEmpty',
+          mods: 'public static',
+          sig: 'notEmpty(java.util.Collection)',
+          desc: ''/*''*/,
+          params: [
+                          {
+                name: 'collection',
+                dim: '',
+                type: 'Collection',
+              },
+                      ]
+        },
+              {
+          name: 'notEmpty',
+          mods: 'public static',
+          sig: 'notEmpty(java.util.Map, java.lang.String)',
+          desc: ''/*'Assert that a Map contains entries; that is, it must not be {@code null}
+ and must contain at least one entry.
+ <pre class="code">Assert.notEmpty(map, "Map must contain entries");</pre>'*/,
+          params: [
+                          {
+                name: 'map',
+                dim: '',
+                type: 'Map',
+              },
+                          {
+                name: 'message',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'notEmpty',
+          mods: 'public static',
+          sig: 'notEmpty(java.util.Map, java.util.function.Supplier)',
+          desc: ''/*'Assert that a Map contains entries; that is, it must not be {@code null}
+ and must contain at least one entry.
+ <pre class="code">
+ Assert.notEmpty(map, () -&gt; "The " + mapType + " map must contain entries");
+ </pre>'*/,
+          params: [
+                          {
+                name: 'map',
+                dim: '',
+                type: 'Map',
+              },
+                          {
+                name: 'messageSupplier',
+                dim: '',
+                type: 'Supplier',
+              },
+                      ]
+        },
+              {
+          name: 'notEmpty',
+          mods: 'public static',
+          sig: 'notEmpty(java.util.Map)',
+          desc: ''/*''*/,
+          params: [
+                          {
+                name: 'map',
+                dim: '',
+                type: 'Map',
+              },
+                      ]
+        },
+              {
+          name: 'isInstanceOf',
+          mods: 'public static',
+          sig: 'isInstanceOf(java.lang.Class, java.lang.Object, java.lang.String)',
+          desc: ''/*'Assert that the provided object is an instance of the provided class.
+ <pre class="code">Assert.instanceOf(Foo.class, foo, "Foo expected");</pre>'*/,
+          params: [
+                          {
+                name: 'type',
+                dim: '',
+                type: 'Class',
+              },
+                          {
+                name: 'obj',
+                dim: '',
+                type: 'Object',
+              },
+                          {
+                name: 'message',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'isInstanceOf',
+          mods: 'public static',
+          sig: 'isInstanceOf(java.lang.Class, java.lang.Object, java.util.function.Supplier)',
+          desc: ''/*'Assert that the provided object is an instance of the provided class.
+ <pre class="code">
+ Assert.instanceOf(Foo.class, foo, () -&gt; "Processing " + Foo.class.getSimpleName() + ":");
+ </pre>'*/,
+          params: [
+                          {
+                name: 'type',
+                dim: '',
+                type: 'Class',
+              },
+                          {
+                name: 'obj',
+                dim: '',
+                type: 'Object',
+              },
+                          {
+                name: 'messageSupplier',
+                dim: '',
+                type: 'Supplier',
+              },
+                      ]
+        },
+              {
+          name: 'isInstanceOf',
+          mods: 'public static',
+          sig: 'isInstanceOf(java.lang.Class, java.lang.Object)',
+          desc: ''/*'Assert that the provided object is an instance of the provided class.
+ <pre class="code">Assert.instanceOf(Foo.class, foo);</pre>'*/,
+          params: [
+                          {
+                name: 'type',
+                dim: '',
+                type: 'Class',
+              },
+                          {
+                name: 'obj',
+                dim: '',
+                type: 'Object',
+              },
+                      ]
+        },
+              {
+          name: 'isAssignable',
+          mods: 'public static',
+          sig: 'isAssignable(java.lang.Class, java.lang.Class, java.lang.String)',
+          desc: ''/*'Assert that {@code superType.isAssignableFrom(subType)} is {@code true}.
+ <pre class="code">Assert.isAssignable(Number.class, myClass, "Number expected");</pre>'*/,
+          params: [
+                          {
+                name: 'superType',
+                dim: '',
+                type: 'Class',
+              },
+                          {
+                name: 'subType',
+                dim: '',
+                type: 'Class',
+              },
+                          {
+                name: 'message',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'isAssignable',
+          mods: 'public static',
+          sig: 'isAssignable(java.lang.Class, java.lang.Class, java.util.function.Supplier)',
+          desc: ''/*'Assert that {@code superType.isAssignableFrom(subType)} is {@code true}.
+ <pre class="code">
+ Assert.isAssignable(Number.class, myClass, () -&gt; "Processing " + myAttributeName + ":");
+ </pre>'*/,
+          params: [
+                          {
+                name: 'superType',
+                dim: '',
+                type: 'Class',
+              },
+                          {
+                name: 'subType',
+                dim: '',
+                type: 'Class',
+              },
+                          {
+                name: 'messageSupplier',
+                dim: '',
+                type: 'Supplier',
+              },
+                      ]
+        },
+              {
+          name: 'isAssignable',
+          mods: 'public static',
+          sig: 'isAssignable(java.lang.Class, java.lang.Class)',
+          desc: ''/*'Assert that {@code superType.isAssignableFrom(subType)} is {@code true}.
+ <pre class="code">Assert.isAssignable(Number.class, myClass);</pre>'*/,
+          params: [
+                          {
+                name: 'superType',
+                dim: '',
+                type: 'Class',
+              },
+                          {
+                name: 'subType',
+                dim: '',
+                type: 'Class',
+              },
+                      ]
+        },
+          ]
+  },
+  methods: {
+    show: function() {
+      alert(this.message);
+    }
+  },
+  computed: {
+    up: function() {
+      return this.message.toUpperCase();
+    },
+    matchedMethods: function() {
+      var a = this;
+      return this.methods.filter(function(m) {
+        return m.name.toLowerCase().indexOf(a.message.toLowerCase()) !== -1;
+      });
+    }
+  }
+});  
+  </script>
+</body>
+</html>
+

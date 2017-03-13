@@ -1,0 +1,226 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width" />
+  <title>DataBufferUtils</title>
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <h1>DataBufferUtils</h1>
+
+  org.springframework.core.io.buffer.DataBufferUtils
+
+
+  <div id="test">
+    <input type="text" v-model="message">
+
+    <template v-for="m in matchedMethods" :key="m.sig">
+      <h3>{{ m.name }}</h3>
+      <pre><code>{{ m.mods }} {{ m.name }}(<template v-for="(p, pi) in m.params" :key="p.name"><template v-if="pi != 0">, </template>{{ p.type }}{{ p.dim }} {{ p.name }}</template>)</code></pre>
+      <div><p>{{ m.desc }}</p></div>
+    </template>
+  </div>
+
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script>
+  var app = new Vue({
+  el: '#test',
+  data: {
+    message: '',
+    methods: [
+              {
+          name: 'read',
+          mods: 'public static',
+          sig: 'read(java.io.InputStream, org.springframework.core.io.buffer.DataBufferFactory, int)',
+          desc: ''/*'Read the given {@code InputStream} into a {@code Flux} of
+ {@code DataBuffer}s. Closes the input stream when the flux is terminated.'*/,
+          params: [
+                          {
+                name: 'inputStream',
+                dim: '',
+                type: 'InputStream',
+              },
+                          {
+                name: 'dataBufferFactory',
+                dim: '',
+                type: 'DataBufferFactory',
+              },
+                          {
+                name: 'bufferSize',
+                dim: '',
+                type: 'int',
+              },
+                      ]
+        },
+              {
+          name: 'read',
+          mods: 'public static',
+          sig: 'read(java.nio.channels.ReadableByteChannel, org.springframework.core.io.buffer.DataBufferFactory, int)',
+          desc: ''/*'Read the given {@code ReadableByteChannel} into a {@code Flux} of
+ {@code DataBuffer}s. Closes the channel when the flux is terminated.'*/,
+          params: [
+                          {
+                name: 'channel',
+                dim: '',
+                type: 'ReadableByteChannel',
+              },
+                          {
+                name: 'dataBufferFactory',
+                dim: '',
+                type: 'DataBufferFactory',
+              },
+                          {
+                name: 'bufferSize',
+                dim: '',
+                type: 'int',
+              },
+                      ]
+        },
+              {
+          name: 'read',
+          mods: 'public static',
+          sig: 'read(java.nio.channels.AsynchronousFileChannel, org.springframework.core.io.buffer.DataBufferFactory, int)',
+          desc: ''/*'Read the given {@code AsynchronousFileChannel} into a {@code Flux} of
+ {@code DataBuffer}s. Closes the channel when the flux is terminated.'*/,
+          params: [
+                          {
+                name: 'channel',
+                dim: '',
+                type: 'AsynchronousFileChannel',
+              },
+                          {
+                name: 'dataBufferFactory',
+                dim: '',
+                type: 'DataBufferFactory',
+              },
+                          {
+                name: 'bufferSize',
+                dim: '',
+                type: 'int',
+              },
+                      ]
+        },
+              {
+          name: 'read',
+          mods: 'public static',
+          sig: 'read(java.nio.channels.AsynchronousFileChannel, long, org.springframework.core.io.buffer.DataBufferFactory, int)',
+          desc: ''/*'Read the given {@code AsynchronousFileChannel} into a {@code Flux} of
+ {@code DataBuffer}s, starting at the given position. Closes the channel when the flux is
+ terminated.'*/,
+          params: [
+                          {
+                name: 'channel',
+                dim: '',
+                type: 'AsynchronousFileChannel',
+              },
+                          {
+                name: 'position',
+                dim: '',
+                type: 'long',
+              },
+                          {
+                name: 'dataBufferFactory',
+                dim: '',
+                type: 'DataBufferFactory',
+              },
+                          {
+                name: 'bufferSize',
+                dim: '',
+                type: 'int',
+              },
+                      ]
+        },
+              {
+          name: 'takeUntilByteCount',
+          mods: 'public static',
+          sig: 'takeUntilByteCount(&lt;any&gt;, long)',
+          desc: ''/*'Relay buffers from the given {@link Publisher} until the total
+ {@linkplain DataBuffer#readableByteCount() byte count} reaches
+ the given maximum byte count, or until the publisher is complete.'*/,
+          params: [
+                          {
+                name: 'publisher',
+                dim: '',
+                type: '&lt;any&gt;',
+              },
+                          {
+                name: 'maxByteCount',
+                dim: '',
+                type: 'long',
+              },
+                      ]
+        },
+              {
+          name: 'skipUntilByteCount',
+          mods: 'public static',
+          sig: 'skipUntilByteCount(&lt;any&gt;, long)',
+          desc: ''/*'Skip buffers from the given {@link Publisher} until the total
+ {@linkplain DataBuffer#readableByteCount() byte count} reaches
+ the given maximum byte count, or until the publisher is complete.'*/,
+          params: [
+                          {
+                name: 'publisher',
+                dim: '',
+                type: '&lt;any&gt;',
+              },
+                          {
+                name: 'maxByteCount',
+                dim: '',
+                type: 'long',
+              },
+                      ]
+        },
+              {
+          name: 'retain',
+          mods: 'public static',
+          sig: 'retain(T)',
+          desc: ''/*'Retain the given data buffer, it it is a {@link PooledDataBuffer}.'*/,
+          params: [
+                          {
+                name: 'dataBuffer',
+                dim: '',
+                type: 'DataBuffer',
+              },
+                      ]
+        },
+              {
+          name: 'release',
+          mods: 'public static',
+          sig: 'release(org.springframework.core.io.buffer.DataBuffer)',
+          desc: ''/*'Release the given data buffer, if it is a {@link PooledDataBuffer}.'*/,
+          params: [
+                          {
+                name: 'dataBuffer',
+                dim: '',
+                type: 'DataBuffer',
+              },
+                      ]
+        },
+          ]
+  },
+  methods: {
+    show: function() {
+      alert(this.message);
+    }
+  },
+  computed: {
+    up: function() {
+      return this.message.toUpperCase();
+    },
+    matchedMethods: function() {
+      var a = this;
+      return this.methods.filter(function(m) {
+        return m.name.toLowerCase().indexOf(a.message.toLowerCase()) !== -1;
+      });
+    }
+  }
+});  
+  </script>
+</body>
+</html>
+

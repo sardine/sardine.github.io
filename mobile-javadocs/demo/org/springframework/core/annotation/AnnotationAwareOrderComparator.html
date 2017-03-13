@@ -1,0 +1,136 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width" />
+  <title>AnnotationAwareOrderComparator</title>
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <h1>AnnotationAwareOrderComparator</h1>
+
+  org.springframework.core.annotation.AnnotationAwareOrderComparator
+
+
+  <div id="test">
+    <input type="text" v-model="message">
+
+    <template v-for="m in matchedMethods" :key="m.sig">
+      <h3>{{ m.name }}</h3>
+      <pre><code>{{ m.mods }} {{ m.name }}(<template v-for="(p, pi) in m.params" :key="p.name"><template v-if="pi != 0">, </template>{{ p.type }}{{ p.dim }} {{ p.name }}</template>)</code></pre>
+      <div><p>{{ m.desc }}</p></div>
+    </template>
+  </div>
+
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script>
+  var app = new Vue({
+  el: '#test',
+  data: {
+    message: '',
+    methods: [
+              {
+          name: 'findOrder',
+          mods: 'protected',
+          sig: 'findOrder(java.lang.Object)',
+          desc: ''/*'This implementation checks for {@link Order @Order} or
+ {@link javax.annotation.Priority @Priority} on various kinds of
+ elements, in addition to the {@link org.springframework.core.Ordered}
+ check in the superclass.'*/,
+          params: [
+                          {
+                name: 'obj',
+                dim: '',
+                type: 'Object',
+              },
+                      ]
+        },
+              {
+          name: 'getPriority',
+          mods: 'public',
+          sig: 'getPriority(java.lang.Object)',
+          desc: ''/*'This implementation retrieves an @{@link javax.annotation.Priority}
+ value, allowing for additional semantics over the regular @{@link Order}
+ annotation: typically, selecting one object over another in case of
+ multiple matches but only one object to be returned.'*/,
+          params: [
+                          {
+                name: 'obj',
+                dim: '',
+                type: 'Object',
+              },
+                      ]
+        },
+              {
+          name: 'sort',
+          mods: 'public static',
+          sig: 'sort(java.util.List)',
+          desc: ''/*'Sort the given List with a default AnnotationAwareOrderComparator.
+ <p>Optimized to skip sorting for lists with size 0 or 1,
+ in order to avoid unnecessary array extraction.'*/,
+          params: [
+                          {
+                name: 'list',
+                dim: '',
+                type: 'List',
+              },
+                      ]
+        },
+              {
+          name: 'sort',
+          mods: 'public static',
+          sig: 'sort(java.lang.Object[])',
+          desc: ''/*'Sort the given array with a default AnnotationAwareOrderComparator.
+ <p>Optimized to skip sorting for lists with size 0 or 1,
+ in order to avoid unnecessary array extraction.'*/,
+          params: [
+                          {
+                name: 'array',
+                dim: '[]',
+                type: 'Object',
+              },
+                      ]
+        },
+              {
+          name: 'sortIfNecessary',
+          mods: 'public static',
+          sig: 'sortIfNecessary(java.lang.Object)',
+          desc: ''/*'Sort the given array or List with a default AnnotationAwareOrderComparator,
+ if necessary. Simply skips sorting when given any other value.
+ <p>Optimized to skip sorting for lists with size 0 or 1,
+ in order to avoid unnecessary array extraction.'*/,
+          params: [
+                          {
+                name: 'value',
+                dim: '',
+                type: 'Object',
+              },
+                      ]
+        },
+          ]
+  },
+  methods: {
+    show: function() {
+      alert(this.message);
+    }
+  },
+  computed: {
+    up: function() {
+      return this.message.toUpperCase();
+    },
+    matchedMethods: function() {
+      var a = this;
+      return this.methods.filter(function(m) {
+        return m.name.toLowerCase().indexOf(a.message.toLowerCase()) !== -1;
+      });
+    }
+  }
+});  
+  </script>
+</body>
+</html>
+

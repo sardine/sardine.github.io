@@ -1,0 +1,285 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width" />
+  <title>TypeReference</title>
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <h1>TypeReference</h1>
+
+  org.springframework.asm.TypeReference
+
+
+  <div id="test">
+    <input type="text" v-model="message">
+
+    <template v-for="m in matchedMethods" :key="m.sig">
+      <h3>{{ m.name }}</h3>
+      <pre><code>{{ m.mods }} {{ m.name }}(<template v-for="(p, pi) in m.params" :key="p.name"><template v-if="pi != 0">, </template>{{ p.type }}{{ p.dim }} {{ p.name }}</template>)</code></pre>
+      <div><p>{{ m.desc }}</p></div>
+    </template>
+  </div>
+
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script>
+  var app = new Vue({
+  el: '#test',
+  data: {
+    message: '',
+    methods: [
+              {
+          name: 'newTypeReference',
+          mods: 'public static',
+          sig: 'newTypeReference(int)',
+          desc: ''/*'Returns a type reference of the given sort.'*/,
+          params: [
+                          {
+                name: 'sort',
+                dim: '',
+                type: 'int',
+              },
+                      ]
+        },
+              {
+          name: 'newTypeParameterReference',
+          mods: 'public static',
+          sig: 'newTypeParameterReference(int, int)',
+          desc: ''/*'Returns a reference to a type parameter of a generic class or method.'*/,
+          params: [
+                          {
+                name: 'sort',
+                dim: '',
+                type: 'int',
+              },
+                          {
+                name: 'paramIndex',
+                dim: '',
+                type: 'int',
+              },
+                      ]
+        },
+              {
+          name: 'newTypeParameterBoundReference',
+          mods: 'public static',
+          sig: 'newTypeParameterBoundReference(int, int, int)',
+          desc: ''/*'Returns a reference to a type parameter bound of a generic class or
+ method.'*/,
+          params: [
+                          {
+                name: 'sort',
+                dim: '',
+                type: 'int',
+              },
+                          {
+                name: 'paramIndex',
+                dim: '',
+                type: 'int',
+              },
+                          {
+                name: 'boundIndex',
+                dim: '',
+                type: 'int',
+              },
+                      ]
+        },
+              {
+          name: 'newSuperTypeReference',
+          mods: 'public static',
+          sig: 'newSuperTypeReference(int)',
+          desc: ''/*'Returns a reference to the super class or to an interface of the
+ 'implements' clause of a class.'*/,
+          params: [
+                          {
+                name: 'itfIndex',
+                dim: '',
+                type: 'int',
+              },
+                      ]
+        },
+              {
+          name: 'newFormalParameterReference',
+          mods: 'public static',
+          sig: 'newFormalParameterReference(int)',
+          desc: ''/*'Returns a reference to the type of a formal parameter of a method.'*/,
+          params: [
+                          {
+                name: 'paramIndex',
+                dim: '',
+                type: 'int',
+              },
+                      ]
+        },
+              {
+          name: 'newExceptionReference',
+          mods: 'public static',
+          sig: 'newExceptionReference(int)',
+          desc: ''/*'Returns a reference to the type of an exception, in a 'throws' clause of
+ a method.'*/,
+          params: [
+                          {
+                name: 'exceptionIndex',
+                dim: '',
+                type: 'int',
+              },
+                      ]
+        },
+              {
+          name: 'newTryCatchReference',
+          mods: 'public static',
+          sig: 'newTryCatchReference(int)',
+          desc: ''/*'Returns a reference to the type of the exception declared in a 'catch'
+ clause of a method.'*/,
+          params: [
+                          {
+                name: 'tryCatchBlockIndex',
+                dim: '',
+                type: 'int',
+              },
+                      ]
+        },
+              {
+          name: 'newTypeArgumentReference',
+          mods: 'public static',
+          sig: 'newTypeArgumentReference(int, int)',
+          desc: ''/*'Returns a reference to the type of a type argument in a constructor or
+ method call or reference.'*/,
+          params: [
+                          {
+                name: 'sort',
+                dim: '',
+                type: 'int',
+              },
+                          {
+                name: 'argIndex',
+                dim: '',
+                type: 'int',
+              },
+                      ]
+        },
+              {
+          name: 'getSort',
+          mods: 'public',
+          sig: 'getSort()',
+          desc: ''/*'Returns the sort of this type reference.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'getTypeParameterIndex',
+          mods: 'public',
+          sig: 'getTypeParameterIndex()',
+          desc: ''/*'Returns the index of the type parameter referenced by this type
+ reference. This method must only be used for type references whose sort
+ is {@link #CLASS_TYPE_PARAMETER CLASS_TYPE_PARAMETER},
+ {@link #METHOD_TYPE_PARAMETER METHOD_TYPE_PARAMETER},
+ {@link #CLASS_TYPE_PARAMETER_BOUND CLASS_TYPE_PARAMETER_BOUND} or
+ {@link #METHOD_TYPE_PARAMETER_BOUND METHOD_TYPE_PARAMETER_BOUND}.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'getTypeParameterBoundIndex',
+          mods: 'public',
+          sig: 'getTypeParameterBoundIndex()',
+          desc: ''/*'Returns the index of the type parameter bound, within the type parameter
+ {@link #getTypeParameterIndex}, referenced by this type reference. This
+ method must only be used for type references whose sort is
+ {@link #CLASS_TYPE_PARAMETER_BOUND CLASS_TYPE_PARAMETER_BOUND} or
+ {@link #METHOD_TYPE_PARAMETER_BOUND METHOD_TYPE_PARAMETER_BOUND}.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'getSuperTypeIndex',
+          mods: 'public',
+          sig: 'getSuperTypeIndex()',
+          desc: ''/*'Returns the index of the "super type" of a class that is referenced by
+ this type reference. This method must only be used for type references
+ whose sort is {@link #CLASS_EXTENDS CLASS_EXTENDS}.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'getFormalParameterIndex',
+          mods: 'public',
+          sig: 'getFormalParameterIndex()',
+          desc: ''/*'Returns the index of the formal parameter whose type is referenced by
+ this type reference. This method must only be used for type references
+ whose sort is {@link #METHOD_FORMAL_PARAMETER METHOD_FORMAL_PARAMETER}.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'getExceptionIndex',
+          mods: 'public',
+          sig: 'getExceptionIndex()',
+          desc: ''/*'Returns the index of the exception, in a 'throws' clause of a method,
+ whose type is referenced by this type reference. This method must only be
+ used for type references whose sort is {@link #THROWS THROWS}.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'getTryCatchBlockIndex',
+          mods: 'public',
+          sig: 'getTryCatchBlockIndex()',
+          desc: ''/*'Returns the index of the try catch block (using the order in which they
+ are visited with visitTryCatchBlock), whose 'catch' type is referenced by
+ this type reference. This method must only be used for type references
+ whose sort is {@link #EXCEPTION_PARAMETER EXCEPTION_PARAMETER} .'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'getTypeArgumentIndex',
+          mods: 'public',
+          sig: 'getTypeArgumentIndex()',
+          desc: ''/*'Returns the index of the type argument referenced by this type reference.
+ This method must only be used for type references whose sort is
+ {@link #CAST CAST}, {@link #CONSTRUCTOR_INVOCATION_TYPE_ARGUMENT
+ CONSTRUCTOR_INVOCATION_TYPE_ARGUMENT},
+ {@link #METHOD_INVOCATION_TYPE_ARGUMENT METHOD_INVOCATION_TYPE_ARGUMENT},
+ {@link #CONSTRUCTOR_REFERENCE_TYPE_ARGUMENT
+ CONSTRUCTOR_REFERENCE_TYPE_ARGUMENT}, or
+ {@link #METHOD_REFERENCE_TYPE_ARGUMENT METHOD_REFERENCE_TYPE_ARGUMENT}.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'getValue',
+          mods: 'public',
+          sig: 'getValue()',
+          desc: ''/*'Returns the int encoded value of this type reference, suitable for use in
+ visit methods related to type annotations, like visitTypeAnnotation.'*/,
+          params: [
+                      ]
+        },
+          ]
+  },
+  methods: {
+    show: function() {
+      alert(this.message);
+    }
+  },
+  computed: {
+    up: function() {
+      return this.message.toUpperCase();
+    },
+    matchedMethods: function() {
+      var a = this;
+      return this.methods.filter(function(m) {
+        return m.name.toLowerCase().indexOf(a.message.toLowerCase()) !== -1;
+      });
+    }
+  }
+});  
+  </script>
+</body>
+</html>
+

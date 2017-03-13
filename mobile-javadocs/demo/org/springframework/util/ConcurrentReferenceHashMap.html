@@ -1,0 +1,318 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width" />
+  <title>ConcurrentReferenceHashMap</title>
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <h1>ConcurrentReferenceHashMap</h1>
+
+  org.springframework.util.ConcurrentReferenceHashMap
+
+
+  <div id="test">
+    <input type="text" v-model="message">
+
+    <template v-for="m in matchedMethods" :key="m.sig">
+      <h3>{{ m.name }}</h3>
+      <pre><code>{{ m.mods }} {{ m.name }}(<template v-for="(p, pi) in m.params" :key="p.name"><template v-if="pi != 0">, </template>{{ p.type }}{{ p.dim }} {{ p.name }}</template>)</code></pre>
+      <div><p>{{ m.desc }}</p></div>
+    </template>
+  </div>
+
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script>
+  var app = new Vue({
+  el: '#test',
+  data: {
+    message: '',
+    methods: [
+              {
+          name: 'getLoadFactor',
+          mods: 'protected final',
+          sig: 'getLoadFactor()',
+          desc: ''/*''*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'getSegmentsSize',
+          mods: 'protected final',
+          sig: 'getSegmentsSize()',
+          desc: ''/*''*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'getSegment',
+          mods: 'protected final',
+          sig: 'getSegment(int)',
+          desc: ''/*''*/,
+          params: [
+                          {
+                name: 'index',
+                dim: '',
+                type: 'int',
+              },
+                      ]
+        },
+              {
+          name: 'createReferenceManager',
+          mods: 'protected',
+          sig: 'createReferenceManager()',
+          desc: ''/*'Factory method that returns the {@link ReferenceManager}.
+ This method will be called once for each {@link Segment}.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'getHash',
+          mods: 'protected',
+          sig: 'getHash(java.lang.Object)',
+          desc: ''/*'Get the hash for a given object, apply an additional hash function to reduce
+ collisions. This implementation uses the same Wang/Jenkins algorithm as
+ {@link ConcurrentHashMap}. Subclasses can override to provide alternative hashing.'*/,
+          params: [
+                          {
+                name: 'o',
+                dim: '',
+                type: 'Object',
+              },
+                      ]
+        },
+              {
+          name: 'get',
+          mods: 'public',
+          sig: 'get(java.lang.Object)',
+          desc: ''/*''*/,
+          params: [
+                          {
+                name: 'key',
+                dim: '',
+                type: 'Object',
+              },
+                      ]
+        },
+              {
+          name: 'containsKey',
+          mods: 'public',
+          sig: 'containsKey(java.lang.Object)',
+          desc: ''/*''*/,
+          params: [
+                          {
+                name: 'key',
+                dim: '',
+                type: 'Object',
+              },
+                      ]
+        },
+              {
+          name: 'getReference',
+          mods: 'protected final',
+          sig: 'getReference(java.lang.Object, org.springframework.util.ConcurrentReferenceHashMap.Restructure)',
+          desc: ''/*'Return a {@link Reference} to the {@link Entry} for the specified {@code key},
+ or {@code null} if not found.'*/,
+          params: [
+                          {
+                name: 'key',
+                dim: '',
+                type: 'Object',
+              },
+                          {
+                name: 'restructure',
+                dim: '',
+                type: 'Restructure',
+              },
+                      ]
+        },
+              {
+          name: 'put',
+          mods: 'public',
+          sig: 'put(K, V)',
+          desc: ''/*''*/,
+          params: [
+                          {
+                name: 'key',
+                dim: '',
+                type: 'Object',
+              },
+                          {
+                name: 'value',
+                dim: '',
+                type: 'Object',
+              },
+                      ]
+        },
+              {
+          name: 'putIfAbsent',
+          mods: 'public',
+          sig: 'putIfAbsent(K, V)',
+          desc: ''/*''*/,
+          params: [
+                          {
+                name: 'key',
+                dim: '',
+                type: 'Object',
+              },
+                          {
+                name: 'value',
+                dim: '',
+                type: 'Object',
+              },
+                      ]
+        },
+              {
+          name: 'remove',
+          mods: 'public',
+          sig: 'remove(java.lang.Object)',
+          desc: ''/*''*/,
+          params: [
+                          {
+                name: 'key',
+                dim: '',
+                type: 'Object',
+              },
+                      ]
+        },
+              {
+          name: 'remove',
+          mods: 'public',
+          sig: 'remove(java.lang.Object, java.lang.Object)',
+          desc: ''/*''*/,
+          params: [
+                          {
+                name: 'key',
+                dim: '',
+                type: 'Object',
+              },
+                          {
+                name: 'value',
+                dim: '',
+                type: 'Object',
+              },
+                      ]
+        },
+              {
+          name: 'replace',
+          mods: 'public',
+          sig: 'replace(K, V, V)',
+          desc: ''/*''*/,
+          params: [
+                          {
+                name: 'key',
+                dim: '',
+                type: 'Object',
+              },
+                          {
+                name: 'oldValue',
+                dim: '',
+                type: 'Object',
+              },
+                          {
+                name: 'newValue',
+                dim: '',
+                type: 'Object',
+              },
+                      ]
+        },
+              {
+          name: 'replace',
+          mods: 'public',
+          sig: 'replace(K, V)',
+          desc: ''/*''*/,
+          params: [
+                          {
+                name: 'key',
+                dim: '',
+                type: 'Object',
+              },
+                          {
+                name: 'value',
+                dim: '',
+                type: 'Object',
+              },
+                      ]
+        },
+              {
+          name: 'clear',
+          mods: 'public',
+          sig: 'clear()',
+          desc: ''/*''*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'purgeUnreferencedEntries',
+          mods: 'public',
+          sig: 'purgeUnreferencedEntries()',
+          desc: ''/*'Remove any entries that have been garbage collected and are no longer referenced.
+ Under normal circumstances garbage collected entries are automatically purged as
+ items are added or removed from the Map. This method can be used to force a purge,
+ and is useful when the Map is read frequently but updated less often.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'size',
+          mods: 'public',
+          sig: 'size()',
+          desc: ''/*''*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'entrySet',
+          mods: 'public',
+          sig: 'entrySet()',
+          desc: ''/*''*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'calculateShift',
+          mods: 'protected static',
+          sig: 'calculateShift(int, int)',
+          desc: ''/*'Calculate a shift value that can be used to create a power-of-two value between
+ the specified maximum and minimum values.'*/,
+          params: [
+                          {
+                name: 'minimumValue',
+                dim: '',
+                type: 'int',
+              },
+                          {
+                name: 'maximumValue',
+                dim: '',
+                type: 'int',
+              },
+                      ]
+        },
+          ]
+  },
+  methods: {
+    show: function() {
+      alert(this.message);
+    }
+  },
+  computed: {
+    up: function() {
+      return this.message.toUpperCase();
+    },
+    matchedMethods: function() {
+      var a = this;
+      return this.methods.filter(function(m) {
+        return m.name.toLowerCase().indexOf(a.message.toLowerCase()) !== -1;
+      });
+    }
+  }
+});  
+  </script>
+</body>
+</html>
+

@@ -1,0 +1,144 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width" />
+  <title>MimeTypeUtils</title>
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <h1>MimeTypeUtils</h1>
+
+  org.springframework.util.MimeTypeUtils
+
+
+  <div id="test">
+    <input type="text" v-model="message">
+
+    <template v-for="m in matchedMethods" :key="m.sig">
+      <h3>{{ m.name }}</h3>
+      <pre><code>{{ m.mods }} {{ m.name }}(<template v-for="(p, pi) in m.params" :key="p.name"><template v-if="pi != 0">, </template>{{ p.type }}{{ p.dim }} {{ p.name }}</template>)</code></pre>
+      <div><p>{{ m.desc }}</p></div>
+    </template>
+  </div>
+
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script>
+  var app = new Vue({
+  el: '#test',
+  data: {
+    message: '',
+    methods: [
+              {
+          name: 'parseMimeType',
+          mods: 'public static',
+          sig: 'parseMimeType(java.lang.String)',
+          desc: ''/*'Parse the given String into a single {@code MimeType}.'*/,
+          params: [
+                          {
+                name: 'mimeType',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'parseMimeTypes',
+          mods: 'public static',
+          sig: 'parseMimeTypes(java.lang.String)',
+          desc: ''/*'Parse the given, comma-separated string into a list of {@code MimeType} objects.'*/,
+          params: [
+                          {
+                name: 'mimeTypes',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'toString',
+          mods: 'public static',
+          sig: 'toString(java.util.Collection)',
+          desc: ''/*'Return a string representation of the given list of {@code MimeType} objects.'*/,
+          params: [
+                          {
+                name: 'mimeTypes',
+                dim: '',
+                type: 'Collection',
+              },
+                      ]
+        },
+              {
+          name: 'sortBySpecificity',
+          mods: 'public static',
+          sig: 'sortBySpecificity(java.util.List)',
+          desc: ''/*'Sorts the given list of {@code MimeType} objects by specificity.
+ <p>Given two mime types:
+ <ol>
+ <li>if either mime type has a {@linkplain MimeType#isWildcardType() wildcard type},
+ then the mime type without the wildcard is ordered before the other.</li>
+ <li>if the two mime types have different {@linkplain MimeType#getType() types},
+ then they are considered equal and remain their current order.</li>
+ <li>if either mime type has a {@linkplain MimeType#isWildcardSubtype() wildcard subtype}
+ , then the mime type without the wildcard is sorted before the other.</li>
+ <li>if the two mime types have different {@linkplain MimeType#getSubtype() subtypes},
+ then they are considered equal and remain their current order.</li>
+ <li>if the two mime types have a different amount of
+ {@linkplain MimeType#getParameter(String) parameters}, then the mime type with the most
+ parameters is ordered before the other.</li>
+ </ol>
+ <p>For example: <blockquote>audio/basic &lt; audio/* &lt; *&#047;*</blockquote>
+ <blockquote>audio/basic;level=1 &lt; audio/basic</blockquote>
+ <blockquote>audio/basic == text/html</blockquote> <blockquote>audio/basic ==
+ audio/wave</blockquote>'*/,
+          params: [
+                          {
+                name: 'mimeTypes',
+                dim: '',
+                type: 'List',
+              },
+                      ]
+        },
+              {
+          name: 'generateMultipartBoundary',
+          mods: 'public static',
+          sig: 'generateMultipartBoundary()',
+          desc: ''/*'Generate a random MIME boundary as bytes, often used in multipart mime types.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'generateMultipartBoundaryString',
+          mods: 'public static',
+          sig: 'generateMultipartBoundaryString()',
+          desc: ''/*'Generate a random MIME boundary as String, often used in multipart mime types.'*/,
+          params: [
+                      ]
+        },
+          ]
+  },
+  methods: {
+    show: function() {
+      alert(this.message);
+    }
+  },
+  computed: {
+    up: function() {
+      return this.message.toUpperCase();
+    },
+    matchedMethods: function() {
+      var a = this;
+      return this.methods.filter(function(m) {
+        return m.name.toLowerCase().indexOf(a.message.toLowerCase()) !== -1;
+      });
+    }
+  }
+});  
+  </script>
+</body>
+</html>
+

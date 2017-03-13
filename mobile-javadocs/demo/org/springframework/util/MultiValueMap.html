@@ -1,0 +1,146 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width" />
+  <title>MultiValueMap</title>
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <h1>MultiValueMap</h1>
+
+  org.springframework.util.MultiValueMap
+
+
+  <div id="test">
+    <input type="text" v-model="message">
+
+    <template v-for="m in matchedMethods" :key="m.sig">
+      <h3>{{ m.name }}</h3>
+      <pre><code>{{ m.mods }} {{ m.name }}(<template v-for="(p, pi) in m.params" :key="p.name"><template v-if="pi != 0">, </template>{{ p.type }}{{ p.dim }} {{ p.name }}</template>)</code></pre>
+      <div><p>{{ m.desc }}</p></div>
+    </template>
+  </div>
+
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script>
+  var app = new Vue({
+  el: '#test',
+  data: {
+    message: '',
+    methods: [
+              {
+          name: 'getFirst',
+          mods: 'public',
+          sig: 'getFirst(K)',
+          desc: ''/*'Return the first value for the given key.'*/,
+          params: [
+                          {
+                name: 'key',
+                dim: '',
+                type: 'Object',
+              },
+                      ]
+        },
+              {
+          name: 'add',
+          mods: 'public',
+          sig: 'add(K, V)',
+          desc: ''/*'Add the given single value to the current list of values for the given key.'*/,
+          params: [
+                          {
+                name: 'key',
+                dim: '',
+                type: 'Object',
+              },
+                          {
+                name: 'value',
+                dim: '',
+                type: 'Object',
+              },
+                      ]
+        },
+              {
+          name: 'addAll',
+          mods: 'public',
+          sig: 'addAll(K, java.util.List)',
+          desc: ''/*'Add all the values of the given list to the current list of values for the given key.'*/,
+          params: [
+                          {
+                name: 'key',
+                dim: '',
+                type: 'Object',
+              },
+                          {
+                name: 'values',
+                dim: '',
+                type: 'List',
+              },
+                      ]
+        },
+              {
+          name: 'set',
+          mods: 'public',
+          sig: 'set(K, V)',
+          desc: ''/*'Set the given single value under the given key.'*/,
+          params: [
+                          {
+                name: 'key',
+                dim: '',
+                type: 'Object',
+              },
+                          {
+                name: 'value',
+                dim: '',
+                type: 'Object',
+              },
+                      ]
+        },
+              {
+          name: 'setAll',
+          mods: 'public',
+          sig: 'setAll(java.util.Map)',
+          desc: ''/*'Set the given values under.'*/,
+          params: [
+                          {
+                name: 'values',
+                dim: '',
+                type: 'Map',
+              },
+                      ]
+        },
+              {
+          name: 'toSingleValueMap',
+          mods: 'public',
+          sig: 'toSingleValueMap()',
+          desc: ''/*'Returns the first values contained in this {@code MultiValueMap}.'*/,
+          params: [
+                      ]
+        },
+          ]
+  },
+  methods: {
+    show: function() {
+      alert(this.message);
+    }
+  },
+  computed: {
+    up: function() {
+      return this.message.toUpperCase();
+    },
+    matchedMethods: function() {
+      var a = this;
+      return this.methods.filter(function(m) {
+        return m.name.toLowerCase().indexOf(a.message.toLowerCase()) !== -1;
+      });
+    }
+  }
+});  
+  </script>
+</body>
+</html>
+

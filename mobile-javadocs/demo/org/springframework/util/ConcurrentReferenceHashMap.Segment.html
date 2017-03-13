@@ -1,0 +1,144 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width" />
+  <title>ConcurrentReferenceHashMap.Segment</title>
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <h1>ConcurrentReferenceHashMap.Segment</h1>
+
+  org.springframework.util.ConcurrentReferenceHashMap.Segment
+
+
+  <div id="test">
+    <input type="text" v-model="message">
+
+    <template v-for="m in matchedMethods" :key="m.sig">
+      <h3>{{ m.name }}</h3>
+      <pre><code>{{ m.mods }} {{ m.name }}(<template v-for="(p, pi) in m.params" :key="p.name"><template v-if="pi != 0">, </template>{{ p.type }}{{ p.dim }} {{ p.name }}</template>)</code></pre>
+      <div><p>{{ m.desc }}</p></div>
+    </template>
+  </div>
+
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script>
+  var app = new Vue({
+  el: '#test',
+  data: {
+    message: '',
+    methods: [
+              {
+          name: 'getReference',
+          mods: 'public',
+          sig: 'getReference(java.lang.Object, int, org.springframework.util.ConcurrentReferenceHashMap.Restructure)',
+          desc: ''/*''*/,
+          params: [
+                          {
+                name: 'key',
+                dim: '',
+                type: 'Object',
+              },
+                          {
+                name: 'hash',
+                dim: '',
+                type: 'int',
+              },
+                          {
+                name: 'restructure',
+                dim: '',
+                type: 'Restructure',
+              },
+                      ]
+        },
+              {
+          name: 'doTask',
+          mods: 'public',
+          sig: 'doTask(int, java.lang.Object, org.springframework.util.ConcurrentReferenceHashMap.Task)',
+          desc: ''/*'Apply an update operation to this segment.
+ The segment will be locked during the update.'*/,
+          params: [
+                          {
+                name: 'hash',
+                dim: '',
+                type: 'int',
+              },
+                          {
+                name: 'key',
+                dim: '',
+                type: 'Object',
+              },
+                          {
+                name: 'task',
+                dim: '',
+                type: 'Task',
+              },
+                      ]
+        },
+              {
+          name: 'clear',
+          mods: 'public',
+          sig: 'clear()',
+          desc: ''/*'Clear all items from this segment.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'restructureIfNecessary',
+          mods: 'protected final',
+          sig: 'restructureIfNecessary(boolean)',
+          desc: ''/*'Restructure the underlying data structure when it becomes necessary. This
+ method can increase the size of the references table as well as purge any
+ references that have been garbage collected.'*/,
+          params: [
+                          {
+                name: 'allowResize',
+                dim: '',
+                type: 'boolean',
+              },
+                      ]
+        },
+              {
+          name: 'getSize',
+          mods: 'public final',
+          sig: 'getSize()',
+          desc: ''/*''*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'getCount',
+          mods: 'public final',
+          sig: 'getCount()',
+          desc: ''/*''*/,
+          params: [
+                      ]
+        },
+          ]
+  },
+  methods: {
+    show: function() {
+      alert(this.message);
+    }
+  },
+  computed: {
+    up: function() {
+      return this.message.toUpperCase();
+    },
+    matchedMethods: function() {
+      var a = this;
+      return this.methods.filter(function(m) {
+        return m.name.toLowerCase().indexOf(a.message.toLowerCase()) !== -1;
+      });
+    }
+  }
+});  
+  </script>
+</body>
+</html>
+

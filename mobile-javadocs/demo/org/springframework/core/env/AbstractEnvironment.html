@@ -1,0 +1,568 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width" />
+  <title>AbstractEnvironment</title>
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <h1>AbstractEnvironment</h1>
+
+  org.springframework.core.env.AbstractEnvironment
+
+
+  <div id="test">
+    <input type="text" v-model="message">
+
+    <template v-for="m in matchedMethods" :key="m.sig">
+      <h3>{{ m.name }}</h3>
+      <pre><code>{{ m.mods }} {{ m.name }}(<template v-for="(p, pi) in m.params" :key="p.name"><template v-if="pi != 0">, </template>{{ p.type }}{{ p.dim }} {{ p.name }}</template>)</code></pre>
+      <div><p>{{ m.desc }}</p></div>
+    </template>
+  </div>
+
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script>
+  var app = new Vue({
+  el: '#test',
+  data: {
+    message: '',
+    methods: [
+              {
+          name: 'customizePropertySources',
+          mods: 'protected',
+          sig: 'customizePropertySources(org.springframework.core.env.MutablePropertySources)',
+          desc: ''/*'Customize the set of {@link PropertySource} objects to be searched by this
+ {@code Environment} during calls to {@link #getProperty(String)} and related
+ methods.
+
+ <p>Subclasses that override this method are encouraged to add property
+ sources using {@link MutablePropertySources#addLast(PropertySource)} such that
+ further subclasses may call {@code super.customizePropertySources()} with
+ predictable results. For example:
+ <pre class="code">
+ public class Level1Environment extends AbstractEnvironment {
+     &#064;Override
+     protected void customizePropertySources(MutablePropertySources propertySources) {
+         super.customizePropertySources(propertySources); // no-op from base class
+         propertySources.addLast(new PropertySourceA(...));
+         propertySources.addLast(new PropertySourceB(...));
+     }
+ }
+
+ public class Level2Environment extends Level1Environment {
+     &#064;Override
+     protected void customizePropertySources(MutablePropertySources propertySources) {
+         super.customizePropertySources(propertySources); // add all from superclass
+         propertySources.addLast(new PropertySourceC(...));
+         propertySources.addLast(new PropertySourceD(...));
+     }
+ }
+ </pre>
+ In this arrangement, properties will be resolved against sources A, B, C, D in that
+ order. That is to say that property source "A" has precedence over property source
+ "D". If the {@code Level2Environment} subclass wished to give property sources C
+ and D higher precedence than A and B, it could simply call
+ {@code super.customizePropertySources} after, rather than before adding its own:
+ <pre class="code">
+ public class Level2Environment extends Level1Environment {
+     &#064;Override
+     protected void customizePropertySources(MutablePropertySources propertySources) {
+         propertySources.addLast(new PropertySourceC(...));
+         propertySources.addLast(new PropertySourceD(...));
+         super.customizePropertySources(propertySources); // add all from superclass
+     }
+ }
+ </pre>
+ The search order is now C, D, A, B as desired.
+
+ <p>Beyond these recommendations, subclasses may use any of the {@code add&#42;},
+ {@code remove}, or {@code replace} methods exposed by {@link MutablePropertySources}
+ in order to create the exact arrangement of property sources desired.
+
+ <p>The base implementation registers no property sources.
+
+ <p>Note that clients of any {@link ConfigurableEnvironment} may further customize
+ property sources via the {@link #getPropertySources()} accessor, typically within
+ an {@link org.springframework.context.ApplicationContextInitializer
+ ApplicationContextInitializer}. For example:
+ <pre class="code">
+ ConfigurableEnvironment env = new StandardEnvironment();
+ env.getPropertySources().addLast(new PropertySourceX(...));
+ </pre>
+
+ <h2>A warning about instance variable access</h2>
+ Instance variables declared in subclasses and having default initial values should
+ <em>not</em> be accessed from within this method. Due to Java object creation
+ lifecycle constraints, any initial value will not yet be assigned when this
+ callback is invoked by the {@link #AbstractEnvironment()} constructor, which may
+ lead to a {@code NullPointerException} or other problems. If you need to access
+ default values of instance variables, leave this method as a no-op and perform
+ property source manipulation and instance variable access directly within the
+ subclass constructor. Note that <em>assigning</em> values to instance variables is
+ not problematic; it is only attempting to read default values that must be avoided.'*/,
+          params: [
+                          {
+                name: 'propertySources',
+                dim: '',
+                type: 'MutablePropertySources',
+              },
+                      ]
+        },
+              {
+          name: 'getReservedDefaultProfiles',
+          mods: 'protected',
+          sig: 'getReservedDefaultProfiles()',
+          desc: ''/*'Return the set of reserved default profile names. This implementation returns
+ {@value #RESERVED_DEFAULT_PROFILE_NAME}. Subclasses may override in order to
+ customize the set of reserved names.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'getActiveProfiles',
+          mods: 'public',
+          sig: 'getActiveProfiles()',
+          desc: ''/*''*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'doGetActiveProfiles',
+          mods: 'protected',
+          sig: 'doGetActiveProfiles()',
+          desc: ''/*'Return the set of active profiles as explicitly set through
+ {@link #setActiveProfiles} or if the current set of active profiles
+ is empty, check for the presence of the {@value #ACTIVE_PROFILES_PROPERTY_NAME}
+ property and assign its value to the set of active profiles.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'setActiveProfiles',
+          mods: 'public',
+          sig: 'setActiveProfiles(java.lang.String[])',
+          desc: ''/*''*/,
+          params: [
+                          {
+                name: 'profiles',
+                dim: '[]',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'addActiveProfile',
+          mods: 'public',
+          sig: 'addActiveProfile(java.lang.String)',
+          desc: ''/*''*/,
+          params: [
+                          {
+                name: 'profile',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'getDefaultProfiles',
+          mods: 'public',
+          sig: 'getDefaultProfiles()',
+          desc: ''/*''*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'doGetDefaultProfiles',
+          mods: 'protected',
+          sig: 'doGetDefaultProfiles()',
+          desc: ''/*'Return the set of default profiles explicitly set via
+ {@link #setDefaultProfiles(String...)} or if the current set of default profiles
+ consists only of {@linkplain #getReservedDefaultProfiles() reserved default
+ profiles}, then check for the presence of the
+ {@value #DEFAULT_PROFILES_PROPERTY_NAME} property and assign its value (if any)
+ to the set of default profiles.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'setDefaultProfiles',
+          mods: 'public',
+          sig: 'setDefaultProfiles(java.lang.String[])',
+          desc: ''/*'Specify the set of profiles to be made active by default if no other profiles
+ are explicitly made active through {@link #setActiveProfiles}.
+ <p>Calling this method removes overrides any reserved default profiles
+ that may have been added during construction of the environment.'*/,
+          params: [
+                          {
+                name: 'profiles',
+                dim: '[]',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'acceptsProfiles',
+          mods: 'public',
+          sig: 'acceptsProfiles(java.lang.String[])',
+          desc: ''/*''*/,
+          params: [
+                          {
+                name: 'profiles',
+                dim: '[]',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'isProfileActive',
+          mods: 'protected',
+          sig: 'isProfileActive(java.lang.String)',
+          desc: ''/*'Return whether the given profile is active, or if active profiles are empty
+ whether the profile should be active by default.'*/,
+          params: [
+                          {
+                name: 'profile',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'validateProfile',
+          mods: 'protected',
+          sig: 'validateProfile(java.lang.String)',
+          desc: ''/*'Validate the given profile, called internally prior to adding to the set of
+ active or default profiles.
+ <p>Subclasses may override to impose further restrictions on profile syntax.'*/,
+          params: [
+                          {
+                name: 'profile',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'getPropertySources',
+          mods: 'public',
+          sig: 'getPropertySources()',
+          desc: ''/*''*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'getSystemEnvironment',
+          mods: 'public',
+          sig: 'getSystemEnvironment()',
+          desc: ''/*''*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'suppressGetenvAccess',
+          mods: 'protected',
+          sig: 'suppressGetenvAccess()',
+          desc: ''/*'Determine whether to suppress {@link System#getenv()}/{@link System#getenv(String)}
+ access for the purposes of {@link #getSystemEnvironment()}.
+ <p>If this method returns {@code true}, an empty dummy Map will be used instead
+ of the regular system environment Map, never even trying to call {@code getenv}
+ and therefore avoiding security manager warnings (if any).
+ <p>The default implementation checks for the "spring.getenv.ignore" system property,
+ returning {@code true} if its value equals "true" in any case.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'getSystemProperties',
+          mods: 'public',
+          sig: 'getSystemProperties()',
+          desc: ''/*''*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'merge',
+          mods: 'public',
+          sig: 'merge(org.springframework.core.env.ConfigurableEnvironment)',
+          desc: ''/*''*/,
+          params: [
+                          {
+                name: 'parent',
+                dim: '',
+                type: 'ConfigurableEnvironment',
+              },
+                      ]
+        },
+              {
+          name: 'getConversionService',
+          mods: 'public',
+          sig: 'getConversionService()',
+          desc: ''/*''*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'setConversionService',
+          mods: 'public',
+          sig: 'setConversionService(org.springframework.core.convert.support.ConfigurableConversionService)',
+          desc: ''/*''*/,
+          params: [
+                          {
+                name: 'conversionService',
+                dim: '',
+                type: 'ConfigurableConversionService',
+              },
+                      ]
+        },
+              {
+          name: 'setPlaceholderPrefix',
+          mods: 'public',
+          sig: 'setPlaceholderPrefix(java.lang.String)',
+          desc: ''/*''*/,
+          params: [
+                          {
+                name: 'placeholderPrefix',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'setPlaceholderSuffix',
+          mods: 'public',
+          sig: 'setPlaceholderSuffix(java.lang.String)',
+          desc: ''/*''*/,
+          params: [
+                          {
+                name: 'placeholderSuffix',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'setValueSeparator',
+          mods: 'public',
+          sig: 'setValueSeparator(java.lang.String)',
+          desc: ''/*''*/,
+          params: [
+                          {
+                name: 'valueSeparator',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'setIgnoreUnresolvableNestedPlaceholders',
+          mods: 'public',
+          sig: 'setIgnoreUnresolvableNestedPlaceholders(boolean)',
+          desc: ''/*''*/,
+          params: [
+                          {
+                name: 'ignoreUnresolvableNestedPlaceholders',
+                dim: '',
+                type: 'boolean',
+              },
+                      ]
+        },
+              {
+          name: 'setRequiredProperties',
+          mods: 'public',
+          sig: 'setRequiredProperties(java.lang.String[])',
+          desc: ''/*''*/,
+          params: [
+                          {
+                name: 'requiredProperties',
+                dim: '[]',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'validateRequiredProperties',
+          mods: 'public',
+          sig: 'validateRequiredProperties()',
+          desc: ''/*''*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'containsProperty',
+          mods: 'public',
+          sig: 'containsProperty(java.lang.String)',
+          desc: ''/*''*/,
+          params: [
+                          {
+                name: 'key',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'getProperty',
+          mods: 'public',
+          sig: 'getProperty(java.lang.String)',
+          desc: ''/*''*/,
+          params: [
+                          {
+                name: 'key',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'getProperty',
+          mods: 'public',
+          sig: 'getProperty(java.lang.String, java.lang.String)',
+          desc: ''/*''*/,
+          params: [
+                          {
+                name: 'key',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'defaultValue',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'getProperty',
+          mods: 'public',
+          sig: 'getProperty(java.lang.String, java.lang.Class)',
+          desc: ''/*''*/,
+          params: [
+                          {
+                name: 'key',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'targetType',
+                dim: '',
+                type: 'Class',
+              },
+                      ]
+        },
+              {
+          name: 'getProperty',
+          mods: 'public',
+          sig: 'getProperty(java.lang.String, java.lang.Class, T)',
+          desc: ''/*''*/,
+          params: [
+                          {
+                name: 'key',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'targetType',
+                dim: '',
+                type: 'Class',
+              },
+                          {
+                name: 'defaultValue',
+                dim: '',
+                type: 'Object',
+              },
+                      ]
+        },
+              {
+          name: 'getRequiredProperty',
+          mods: 'public',
+          sig: 'getRequiredProperty(java.lang.String)',
+          desc: ''/*''*/,
+          params: [
+                          {
+                name: 'key',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'getRequiredProperty',
+          mods: 'public',
+          sig: 'getRequiredProperty(java.lang.String, java.lang.Class)',
+          desc: ''/*''*/,
+          params: [
+                          {
+                name: 'key',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'targetType',
+                dim: '',
+                type: 'Class',
+              },
+                      ]
+        },
+              {
+          name: 'resolvePlaceholders',
+          mods: 'public',
+          sig: 'resolvePlaceholders(java.lang.String)',
+          desc: ''/*''*/,
+          params: [
+                          {
+                name: 'text',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'resolveRequiredPlaceholders',
+          mods: 'public',
+          sig: 'resolveRequiredPlaceholders(java.lang.String)',
+          desc: ''/*''*/,
+          params: [
+                          {
+                name: 'text',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'toString',
+          mods: 'public',
+          sig: 'toString()',
+          desc: ''/*''*/,
+          params: [
+                      ]
+        },
+          ]
+  },
+  methods: {
+    show: function() {
+      alert(this.message);
+    }
+  },
+  computed: {
+    up: function() {
+      return this.message.toUpperCase();
+    },
+    matchedMethods: function() {
+      var a = this;
+      return this.methods.filter(function(m) {
+        return m.name.toLowerCase().indexOf(a.message.toLowerCase()) !== -1;
+      });
+    }
+  }
+});  
+  </script>
+</body>
+</html>
+

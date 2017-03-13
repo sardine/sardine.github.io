@@ -1,0 +1,328 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width" />
+  <title>GenericConversionService</title>
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <h1>GenericConversionService</h1>
+
+  org.springframework.core.convert.support.GenericConversionService
+
+
+  <div id="test">
+    <input type="text" v-model="message">
+
+    <template v-for="m in matchedMethods" :key="m.sig">
+      <h3>{{ m.name }}</h3>
+      <pre><code>{{ m.mods }} {{ m.name }}(<template v-for="(p, pi) in m.params" :key="p.name"><template v-if="pi != 0">, </template>{{ p.type }}{{ p.dim }} {{ p.name }}</template>)</code></pre>
+      <div><p>{{ m.desc }}</p></div>
+    </template>
+  </div>
+
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script>
+  var app = new Vue({
+  el: '#test',
+  data: {
+    message: '',
+    methods: [
+              {
+          name: 'addConverter',
+          mods: 'public',
+          sig: 'addConverter(org.springframework.core.convert.converter.Converter)',
+          desc: ''/*''*/,
+          params: [
+                          {
+                name: 'converter',
+                dim: '',
+                type: 'Converter',
+              },
+                      ]
+        },
+              {
+          name: 'addConverter',
+          mods: 'public',
+          sig: 'addConverter(java.lang.Class, java.lang.Class, org.springframework.core.convert.converter.Converter)',
+          desc: ''/*''*/,
+          params: [
+                          {
+                name: 'sourceType',
+                dim: '',
+                type: 'Class',
+              },
+                          {
+                name: 'targetType',
+                dim: '',
+                type: 'Class',
+              },
+                          {
+                name: 'converter',
+                dim: '',
+                type: 'Converter',
+              },
+                      ]
+        },
+              {
+          name: 'addConverter',
+          mods: 'public',
+          sig: 'addConverter(org.springframework.core.convert.converter.GenericConverter)',
+          desc: ''/*''*/,
+          params: [
+                          {
+                name: 'converter',
+                dim: '',
+                type: 'GenericConverter',
+              },
+                      ]
+        },
+              {
+          name: 'addConverterFactory',
+          mods: 'public',
+          sig: 'addConverterFactory(org.springframework.core.convert.converter.ConverterFactory)',
+          desc: ''/*''*/,
+          params: [
+                          {
+                name: 'factory',
+                dim: '',
+                type: 'ConverterFactory',
+              },
+                      ]
+        },
+              {
+          name: 'removeConvertible',
+          mods: 'public',
+          sig: 'removeConvertible(java.lang.Class, java.lang.Class)',
+          desc: ''/*''*/,
+          params: [
+                          {
+                name: 'sourceType',
+                dim: '',
+                type: 'Class',
+              },
+                          {
+                name: 'targetType',
+                dim: '',
+                type: 'Class',
+              },
+                      ]
+        },
+              {
+          name: 'canConvert',
+          mods: 'public',
+          sig: 'canConvert(java.lang.Class, java.lang.Class)',
+          desc: ''/*''*/,
+          params: [
+                          {
+                name: 'sourceType',
+                dim: '',
+                type: 'Class',
+              },
+                          {
+                name: 'targetType',
+                dim: '',
+                type: 'Class',
+              },
+                      ]
+        },
+              {
+          name: 'canConvert',
+          mods: 'public',
+          sig: 'canConvert(org.springframework.core.convert.TypeDescriptor, org.springframework.core.convert.TypeDescriptor)',
+          desc: ''/*''*/,
+          params: [
+                          {
+                name: 'sourceType',
+                dim: '',
+                type: 'TypeDescriptor',
+              },
+                          {
+                name: 'targetType',
+                dim: '',
+                type: 'TypeDescriptor',
+              },
+                      ]
+        },
+              {
+          name: 'canBypassConvert',
+          mods: 'public',
+          sig: 'canBypassConvert(org.springframework.core.convert.TypeDescriptor, org.springframework.core.convert.TypeDescriptor)',
+          desc: ''/*'Return whether conversion between the source type and the target type can be bypassed.
+ <p>More precisely, this method will return true if objects of sourceType can be
+ converted to the target type by returning the source object unchanged.'*/,
+          params: [
+                          {
+                name: 'sourceType',
+                dim: '',
+                type: 'TypeDescriptor',
+              },
+                          {
+                name: 'targetType',
+                dim: '',
+                type: 'TypeDescriptor',
+              },
+                      ]
+        },
+              {
+          name: 'convert',
+          mods: 'public',
+          sig: 'convert(java.lang.Object, java.lang.Class)',
+          desc: ''/*''*/,
+          params: [
+                          {
+                name: 'source',
+                dim: '',
+                type: 'Object',
+              },
+                          {
+                name: 'targetType',
+                dim: '',
+                type: 'Class',
+              },
+                      ]
+        },
+              {
+          name: 'convert',
+          mods: 'public',
+          sig: 'convert(java.lang.Object, org.springframework.core.convert.TypeDescriptor, org.springframework.core.convert.TypeDescriptor)',
+          desc: ''/*''*/,
+          params: [
+                          {
+                name: 'source',
+                dim: '',
+                type: 'Object',
+              },
+                          {
+                name: 'sourceType',
+                dim: '',
+                type: 'TypeDescriptor',
+              },
+                          {
+                name: 'targetType',
+                dim: '',
+                type: 'TypeDescriptor',
+              },
+                      ]
+        },
+              {
+          name: 'convert',
+          mods: 'public',
+          sig: 'convert(java.lang.Object, org.springframework.core.convert.TypeDescriptor)',
+          desc: ''/*'Convenience operation for converting a source object to the specified targetType,
+ where the target type is a descriptor that provides additional conversion context.
+ Simply delegates to {@link #convert(Object, TypeDescriptor, TypeDescriptor)} and
+ encapsulates the construction of the source type descriptor using
+ {@link TypeDescriptor#forObject(Object)}.'*/,
+          params: [
+                          {
+                name: 'source',
+                dim: '',
+                type: 'Object',
+              },
+                          {
+                name: 'targetType',
+                dim: '',
+                type: 'TypeDescriptor',
+              },
+                      ]
+        },
+              {
+          name: 'toString',
+          mods: 'public',
+          sig: 'toString()',
+          desc: ''/*''*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'convertNullSource',
+          mods: 'protected',
+          sig: 'convertNullSource(org.springframework.core.convert.TypeDescriptor, org.springframework.core.convert.TypeDescriptor)',
+          desc: ''/*'Template method to convert a {@code null} source.
+ <p>The default implementation returns {@code null} or the Java 8
+ {@link java.util.Optional#empty()} instance if the target type is
+ {@code java.util.Optional}. Subclasses may override this to return
+ custom {@code null} objects for specific target types.'*/,
+          params: [
+                          {
+                name: 'sourceType',
+                dim: '',
+                type: 'TypeDescriptor',
+              },
+                          {
+                name: 'targetType',
+                dim: '',
+                type: 'TypeDescriptor',
+              },
+                      ]
+        },
+              {
+          name: 'getConverter',
+          mods: 'protected',
+          sig: 'getConverter(org.springframework.core.convert.TypeDescriptor, org.springframework.core.convert.TypeDescriptor)',
+          desc: ''/*'Hook method to lookup the converter for a given sourceType/targetType pair.
+ First queries this ConversionService's converter cache.
+ On a cache miss, then performs an exhaustive search for a matching converter.
+ If no converter matches, returns the default converter.'*/,
+          params: [
+                          {
+                name: 'sourceType',
+                dim: '',
+                type: 'TypeDescriptor',
+              },
+                          {
+                name: 'targetType',
+                dim: '',
+                type: 'TypeDescriptor',
+              },
+                      ]
+        },
+              {
+          name: 'getDefaultConverter',
+          mods: 'protected',
+          sig: 'getDefaultConverter(org.springframework.core.convert.TypeDescriptor, org.springframework.core.convert.TypeDescriptor)',
+          desc: ''/*'Return the default converter if no converter is found for the given sourceType/targetType pair.
+ <p>Returns a NO_OP Converter if the source type is assignable to the target type.
+ Returns {@code null} otherwise, indicating no suitable converter could be found.'*/,
+          params: [
+                          {
+                name: 'sourceType',
+                dim: '',
+                type: 'TypeDescriptor',
+              },
+                          {
+                name: 'targetType',
+                dim: '',
+                type: 'TypeDescriptor',
+              },
+                      ]
+        },
+          ]
+  },
+  methods: {
+    show: function() {
+      alert(this.message);
+    }
+  },
+  computed: {
+    up: function() {
+      return this.message.toUpperCase();
+    },
+    matchedMethods: function() {
+      var a = this;
+      return this.methods.filter(function(m) {
+        return m.name.toLowerCase().indexOf(a.message.toLowerCase()) !== -1;
+      });
+    }
+  }
+});  
+  </script>
+</body>
+</html>
+

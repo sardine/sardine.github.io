@@ -1,0 +1,98 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width" />
+  <title>DefaultConversionService</title>
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <h1>DefaultConversionService</h1>
+
+  org.springframework.core.convert.support.DefaultConversionService
+
+
+  <div id="test">
+    <input type="text" v-model="message">
+
+    <template v-for="m in matchedMethods" :key="m.sig">
+      <h3>{{ m.name }}</h3>
+      <pre><code>{{ m.mods }} {{ m.name }}(<template v-for="(p, pi) in m.params" :key="p.name"><template v-if="pi != 0">, </template>{{ p.type }}{{ p.dim }} {{ p.name }}</template>)</code></pre>
+      <div><p>{{ m.desc }}</p></div>
+    </template>
+  </div>
+
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script>
+  var app = new Vue({
+  el: '#test',
+  data: {
+    message: '',
+    methods: [
+              {
+          name: 'getSharedInstance',
+          mods: 'public static',
+          sig: 'getSharedInstance()',
+          desc: ''/*'Return a shared default {@code ConversionService} instance,
+ lazily building it once needed.
+ <p><b>NOTE:</b> We highly recommend constructing individual
+ {@code ConversionService} instances for customization purposes.
+ This accessor is only meant as a fallback for code paths which
+ need simple type coercion but cannot access a longer-lived
+ {@code ConversionService} instance any other way.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'addDefaultConverters',
+          mods: 'public static',
+          sig: 'addDefaultConverters(org.springframework.core.convert.converter.ConverterRegistry)',
+          desc: ''/*'Add converters appropriate for most environments.'*/,
+          params: [
+                          {
+                name: 'converterRegistry',
+                dim: '',
+                type: 'ConverterRegistry',
+              },
+                      ]
+        },
+              {
+          name: 'addCollectionConverters',
+          mods: 'public static',
+          sig: 'addCollectionConverters(org.springframework.core.convert.converter.ConverterRegistry)',
+          desc: ''/*'Add collection converters.'*/,
+          params: [
+                          {
+                name: 'converterRegistry',
+                dim: '',
+                type: 'ConverterRegistry',
+              },
+                      ]
+        },
+          ]
+  },
+  methods: {
+    show: function() {
+      alert(this.message);
+    }
+  },
+  computed: {
+    up: function() {
+      return this.message.toUpperCase();
+    },
+    matchedMethods: function() {
+      var a = this;
+      return this.methods.filter(function(m) {
+        return m.name.toLowerCase().indexOf(a.message.toLowerCase()) !== -1;
+      });
+    }
+  }
+});  
+  </script>
+</body>
+</html>
+

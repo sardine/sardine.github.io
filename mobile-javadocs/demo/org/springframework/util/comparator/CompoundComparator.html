@@ -1,0 +1,237 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width" />
+  <title>CompoundComparator</title>
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <h1>CompoundComparator</h1>
+
+  org.springframework.util.comparator.CompoundComparator
+
+
+  <div id="test">
+    <input type="text" v-model="message">
+
+    <template v-for="m in matchedMethods" :key="m.sig">
+      <h3>{{ m.name }}</h3>
+      <pre><code>{{ m.mods }} {{ m.name }}(<template v-for="(p, pi) in m.params" :key="p.name"><template v-if="pi != 0">, </template>{{ p.type }}{{ p.dim }} {{ p.name }}</template>)</code></pre>
+      <div><p>{{ m.desc }}</p></div>
+    </template>
+  </div>
+
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script>
+  var app = new Vue({
+  el: '#test',
+  data: {
+    message: '',
+    methods: [
+              {
+          name: 'addComparator',
+          mods: 'public',
+          sig: 'addComparator(java.util.Comparator)',
+          desc: ''/*'Add a Comparator to the end of the chain.
+ <p>The Comparator will default to ascending sort order,
+ unless it is a InvertibleComparator.'*/,
+          params: [
+                          {
+                name: 'comparator',
+                dim: '',
+                type: 'Comparator',
+              },
+                      ]
+        },
+              {
+          name: 'addComparator',
+          mods: 'public',
+          sig: 'addComparator(java.util.Comparator, boolean)',
+          desc: ''/*'Add a Comparator to the end of the chain using the provided sort order.'*/,
+          params: [
+                          {
+                name: 'comparator',
+                dim: '',
+                type: 'Comparator',
+              },
+                          {
+                name: 'ascending',
+                dim: '',
+                type: 'boolean',
+              },
+                      ]
+        },
+              {
+          name: 'setComparator',
+          mods: 'public',
+          sig: 'setComparator(int, java.util.Comparator)',
+          desc: ''/*'Replace the Comparator at the given index.
+ <p>The Comparator will default to ascending sort order,
+ unless it is a InvertibleComparator.'*/,
+          params: [
+                          {
+                name: 'index',
+                dim: '',
+                type: 'int',
+              },
+                          {
+                name: 'comparator',
+                dim: '',
+                type: 'Comparator',
+              },
+                      ]
+        },
+              {
+          name: 'setComparator',
+          mods: 'public',
+          sig: 'setComparator(int, java.util.Comparator, boolean)',
+          desc: ''/*'Replace the Comparator at the given index using the given sort order.'*/,
+          params: [
+                          {
+                name: 'index',
+                dim: '',
+                type: 'int',
+              },
+                          {
+                name: 'comparator',
+                dim: '',
+                type: 'Comparator',
+              },
+                          {
+                name: 'ascending',
+                dim: '',
+                type: 'boolean',
+              },
+                      ]
+        },
+              {
+          name: 'invertOrder',
+          mods: 'public',
+          sig: 'invertOrder()',
+          desc: ''/*'Invert the sort order of each sort definition contained by this compound
+ comparator.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'invertOrder',
+          mods: 'public',
+          sig: 'invertOrder(int)',
+          desc: ''/*'Invert the sort order of the sort definition at the specified index.'*/,
+          params: [
+                          {
+                name: 'index',
+                dim: '',
+                type: 'int',
+              },
+                      ]
+        },
+              {
+          name: 'setAscendingOrder',
+          mods: 'public',
+          sig: 'setAscendingOrder(int)',
+          desc: ''/*'Change the sort order at the given index to ascending.'*/,
+          params: [
+                          {
+                name: 'index',
+                dim: '',
+                type: 'int',
+              },
+                      ]
+        },
+              {
+          name: 'setDescendingOrder',
+          mods: 'public',
+          sig: 'setDescendingOrder(int)',
+          desc: ''/*'Change the sort order at the given index to descending sort.'*/,
+          params: [
+                          {
+                name: 'index',
+                dim: '',
+                type: 'int',
+              },
+                      ]
+        },
+              {
+          name: 'getComparatorCount',
+          mods: 'public',
+          sig: 'getComparatorCount()',
+          desc: ''/*'Returns the number of aggregated comparators.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'compare',
+          mods: 'public',
+          sig: 'compare(T, T)',
+          desc: ''/*''*/,
+          params: [
+                          {
+                name: 'o1',
+                dim: '',
+                type: 'Object',
+              },
+                          {
+                name: 'o2',
+                dim: '',
+                type: 'Object',
+              },
+                      ]
+        },
+              {
+          name: 'equals',
+          mods: 'public',
+          sig: 'equals(java.lang.Object)',
+          desc: ''/*''*/,
+          params: [
+                          {
+                name: 'obj',
+                dim: '',
+                type: 'Object',
+              },
+                      ]
+        },
+              {
+          name: 'hashCode',
+          mods: 'public',
+          sig: 'hashCode()',
+          desc: ''/*''*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'toString',
+          mods: 'public',
+          sig: 'toString()',
+          desc: ''/*''*/,
+          params: [
+                      ]
+        },
+          ]
+  },
+  methods: {
+    show: function() {
+      alert(this.message);
+    }
+  },
+  computed: {
+    up: function() {
+      return this.message.toUpperCase();
+    },
+    matchedMethods: function() {
+      var a = this;
+      return this.methods.filter(function(m) {
+        return m.name.toLowerCase().indexOf(a.message.toLowerCase()) !== -1;
+      });
+    }
+  }
+});  
+  </script>
+</body>
+</html>
+

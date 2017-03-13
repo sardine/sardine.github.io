@@ -1,0 +1,92 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width" />
+  <title>ConcurrentReferenceHashMap.Reference</title>
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <h1>ConcurrentReferenceHashMap.Reference</h1>
+
+  org.springframework.util.ConcurrentReferenceHashMap.Reference
+
+
+  <div id="test">
+    <input type="text" v-model="message">
+
+    <template v-for="m in matchedMethods" :key="m.sig">
+      <h3>{{ m.name }}</h3>
+      <pre><code>{{ m.mods }} {{ m.name }}(<template v-for="(p, pi) in m.params" :key="p.name"><template v-if="pi != 0">, </template>{{ p.type }}{{ p.dim }} {{ p.name }}</template>)</code></pre>
+      <div><p>{{ m.desc }}</p></div>
+    </template>
+  </div>
+
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script>
+  var app = new Vue({
+  el: '#test',
+  data: {
+    message: '',
+    methods: [
+              {
+          name: 'get',
+          mods: 'public',
+          sig: 'get()',
+          desc: ''/*'Returns the referenced entry or {@code null} if the entry is no longer
+ available.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'getHash',
+          mods: 'public',
+          sig: 'getHash()',
+          desc: ''/*'Returns the hash for the reference.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'getNext',
+          mods: 'public',
+          sig: 'getNext()',
+          desc: ''/*'Returns the next reference in the chain or {@code null}'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'release',
+          mods: 'public',
+          sig: 'release()',
+          desc: ''/*'Release this entry and ensure that it will be returned from
+ {@code ReferenceManager#pollForPurge()}.'*/,
+          params: [
+                      ]
+        },
+          ]
+  },
+  methods: {
+    show: function() {
+      alert(this.message);
+    }
+  },
+  computed: {
+    up: function() {
+      return this.message.toUpperCase();
+    },
+    matchedMethods: function() {
+      var a = this;
+      return this.methods.filter(function(m) {
+        return m.name.toLowerCase().indexOf(a.message.toLowerCase()) !== -1;
+      });
+    }
+  }
+});  
+  </script>
+</body>
+</html>
+

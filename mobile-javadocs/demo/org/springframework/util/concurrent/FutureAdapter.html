@@ -1,0 +1,134 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width" />
+  <title>FutureAdapter</title>
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <h1>FutureAdapter</h1>
+
+  org.springframework.util.concurrent.FutureAdapter
+
+
+  <div id="test">
+    <input type="text" v-model="message">
+
+    <template v-for="m in matchedMethods" :key="m.sig">
+      <h3>{{ m.name }}</h3>
+      <pre><code>{{ m.mods }} {{ m.name }}(<template v-for="(p, pi) in m.params" :key="p.name"><template v-if="pi != 0">, </template>{{ p.type }}{{ p.dim }} {{ p.name }}</template>)</code></pre>
+      <div><p>{{ m.desc }}</p></div>
+    </template>
+  </div>
+
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script>
+  var app = new Vue({
+  el: '#test',
+  data: {
+    message: '',
+    methods: [
+              {
+          name: 'getAdaptee',
+          mods: 'protected',
+          sig: 'getAdaptee()',
+          desc: ''/*'Returns the adaptee.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'cancel',
+          mods: 'public',
+          sig: 'cancel(boolean)',
+          desc: ''/*''*/,
+          params: [
+                          {
+                name: 'mayInterruptIfRunning',
+                dim: '',
+                type: 'boolean',
+              },
+                      ]
+        },
+              {
+          name: 'isCancelled',
+          mods: 'public',
+          sig: 'isCancelled()',
+          desc: ''/*''*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'isDone',
+          mods: 'public',
+          sig: 'isDone()',
+          desc: ''/*''*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'get',
+          mods: 'public',
+          sig: 'get()',
+          desc: ''/*''*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'get',
+          mods: 'public',
+          sig: 'get(long, java.util.concurrent.TimeUnit)',
+          desc: ''/*''*/,
+          params: [
+                          {
+                name: 'timeout',
+                dim: '',
+                type: 'long',
+              },
+                          {
+                name: 'unit',
+                dim: '',
+                type: 'TimeUnit',
+              },
+                      ]
+        },
+              {
+          name: 'adapt',
+          mods: 'protected abstract',
+          sig: 'adapt(S)',
+          desc: ''/*'Adapts the given adaptee's result into T.'*/,
+          params: [
+                          {
+                name: 'adapteeResult',
+                dim: '',
+                type: 'Object',
+              },
+                      ]
+        },
+          ]
+  },
+  methods: {
+    show: function() {
+      alert(this.message);
+    }
+  },
+  computed: {
+    up: function() {
+      return this.message.toUpperCase();
+    },
+    matchedMethods: function() {
+      var a = this;
+      return this.methods.filter(function(m) {
+        return m.name.toLowerCase().indexOf(a.message.toLowerCase()) !== -1;
+      });
+    }
+  }
+});  
+  </script>
+</body>
+</html>
+

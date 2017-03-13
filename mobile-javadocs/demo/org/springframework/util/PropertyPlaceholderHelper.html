@@ -1,0 +1,119 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width" />
+  <title>PropertyPlaceholderHelper</title>
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <h1>PropertyPlaceholderHelper</h1>
+
+  org.springframework.util.PropertyPlaceholderHelper
+
+
+  <div id="test">
+    <input type="text" v-model="message">
+
+    <template v-for="m in matchedMethods" :key="m.sig">
+      <h3>{{ m.name }}</h3>
+      <pre><code>{{ m.mods }} {{ m.name }}(<template v-for="(p, pi) in m.params" :key="p.name"><template v-if="pi != 0">, </template>{{ p.type }}{{ p.dim }} {{ p.name }}</template>)</code></pre>
+      <div><p>{{ m.desc }}</p></div>
+    </template>
+  </div>
+
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script>
+  var app = new Vue({
+  el: '#test',
+  data: {
+    message: '',
+    methods: [
+              {
+          name: 'replacePlaceholders',
+          mods: 'public',
+          sig: 'replacePlaceholders(java.lang.String, java.util.Properties)',
+          desc: ''/*'Replaces all placeholders of format {@code ${name}} with the corresponding
+ property from the supplied {@link Properties}.'*/,
+          params: [
+                          {
+                name: 'value',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'properties',
+                dim: '',
+                type: 'Properties',
+              },
+                      ]
+        },
+              {
+          name: 'replacePlaceholders',
+          mods: 'public',
+          sig: 'replacePlaceholders(java.lang.String, org.springframework.util.PropertyPlaceholderHelper.PlaceholderResolver)',
+          desc: ''/*'Replaces all placeholders of format {@code ${name}} with the value returned
+ from the supplied {@link PlaceholderResolver}.'*/,
+          params: [
+                          {
+                name: 'value',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'placeholderResolver',
+                dim: '',
+                type: 'PlaceholderResolver',
+              },
+                      ]
+        },
+              {
+          name: 'parseStringValue',
+          mods: 'protected',
+          sig: 'parseStringValue(java.lang.String, org.springframework.util.PropertyPlaceholderHelper.PlaceholderResolver, java.util.Set)',
+          desc: ''/*''*/,
+          params: [
+                          {
+                name: 'value',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'placeholderResolver',
+                dim: '',
+                type: 'PlaceholderResolver',
+              },
+                          {
+                name: 'visitedPlaceholders',
+                dim: '',
+                type: 'Set',
+              },
+                      ]
+        },
+          ]
+  },
+  methods: {
+    show: function() {
+      alert(this.message);
+    }
+  },
+  computed: {
+    up: function() {
+      return this.message.toUpperCase();
+    },
+    matchedMethods: function() {
+      var a = this;
+      return this.methods.filter(function(m) {
+        return m.name.toLowerCase().indexOf(a.message.toLowerCase()) !== -1;
+      });
+    }
+  }
+});  
+  </script>
+</body>
+</html>
+

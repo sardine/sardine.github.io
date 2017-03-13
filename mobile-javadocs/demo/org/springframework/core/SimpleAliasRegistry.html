@@ -1,0 +1,191 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width" />
+  <title>SimpleAliasRegistry</title>
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <h1>SimpleAliasRegistry</h1>
+
+  org.springframework.core.SimpleAliasRegistry
+
+
+  <div id="test">
+    <input type="text" v-model="message">
+
+    <template v-for="m in matchedMethods" :key="m.sig">
+      <h3>{{ m.name }}</h3>
+      <pre><code>{{ m.mods }} {{ m.name }}(<template v-for="(p, pi) in m.params" :key="p.name"><template v-if="pi != 0">, </template>{{ p.type }}{{ p.dim }} {{ p.name }}</template>)</code></pre>
+      <div><p>{{ m.desc }}</p></div>
+    </template>
+  </div>
+
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script>
+  var app = new Vue({
+  el: '#test',
+  data: {
+    message: '',
+    methods: [
+              {
+          name: 'registerAlias',
+          mods: 'public',
+          sig: 'registerAlias(java.lang.String, java.lang.String)',
+          desc: ''/*''*/,
+          params: [
+                          {
+                name: 'name',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'alias',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'allowAliasOverriding',
+          mods: 'protected',
+          sig: 'allowAliasOverriding()',
+          desc: ''/*'Return whether alias overriding is allowed.
+ Default is {@code true}.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'hasAlias',
+          mods: 'public',
+          sig: 'hasAlias(java.lang.String, java.lang.String)',
+          desc: ''/*'Determine whether the given name has the given alias registered.'*/,
+          params: [
+                          {
+                name: 'name',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'alias',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'removeAlias',
+          mods: 'public',
+          sig: 'removeAlias(java.lang.String)',
+          desc: ''/*''*/,
+          params: [
+                          {
+                name: 'alias',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'isAlias',
+          mods: 'public',
+          sig: 'isAlias(java.lang.String)',
+          desc: ''/*''*/,
+          params: [
+                          {
+                name: 'name',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'getAliases',
+          mods: 'public',
+          sig: 'getAliases(java.lang.String)',
+          desc: ''/*''*/,
+          params: [
+                          {
+                name: 'name',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'resolveAliases',
+          mods: 'public',
+          sig: 'resolveAliases(org.springframework.util.StringValueResolver)',
+          desc: ''/*'Resolve all alias target names and aliases registered in this
+ factory, applying the given StringValueResolver to them.
+ <p>The value resolver may for example resolve placeholders
+ in target bean names and even in alias names.'*/,
+          params: [
+                          {
+                name: 'valueResolver',
+                dim: '',
+                type: 'StringValueResolver',
+              },
+                      ]
+        },
+              {
+          name: 'checkForAliasCircle',
+          mods: 'protected',
+          sig: 'checkForAliasCircle(java.lang.String, java.lang.String)',
+          desc: ''/*'Check whether the given name points back to the given alias as an alias
+ in the other direction already, catching a circular reference upfront
+ and throwing a corresponding IllegalStateException.'*/,
+          params: [
+                          {
+                name: 'name',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'alias',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'canonicalName',
+          mods: 'public',
+          sig: 'canonicalName(java.lang.String)',
+          desc: ''/*'Determine the raw name, resolving aliases to canonical names.'*/,
+          params: [
+                          {
+                name: 'name',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+          ]
+  },
+  methods: {
+    show: function() {
+      alert(this.message);
+    }
+  },
+  computed: {
+    up: function() {
+      return this.message.toUpperCase();
+    },
+    matchedMethods: function() {
+      var a = this;
+      return this.methods.filter(function(m) {
+        return m.name.toLowerCase().indexOf(a.message.toLowerCase()) !== -1;
+      });
+    }
+  }
+});  
+  </script>
+</body>
+</html>
+

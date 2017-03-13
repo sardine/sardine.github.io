@@ -1,0 +1,183 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width" />
+  <title>OrderComparator</title>
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <h1>OrderComparator</h1>
+
+  org.springframework.core.OrderComparator
+
+
+  <div id="test">
+    <input type="text" v-model="message">
+
+    <template v-for="m in matchedMethods" :key="m.sig">
+      <h3>{{ m.name }}</h3>
+      <pre><code>{{ m.mods }} {{ m.name }}(<template v-for="(p, pi) in m.params" :key="p.name"><template v-if="pi != 0">, </template>{{ p.type }}{{ p.dim }} {{ p.name }}</template>)</code></pre>
+      <div><p>{{ m.desc }}</p></div>
+    </template>
+  </div>
+
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script>
+  var app = new Vue({
+  el: '#test',
+  data: {
+    message: '',
+    methods: [
+              {
+          name: 'withSourceProvider',
+          mods: 'public',
+          sig: 'withSourceProvider(org.springframework.core.OrderComparator.OrderSourceProvider)',
+          desc: ''/*'Build an adapted order comparator with the given source provider.'*/,
+          params: [
+                          {
+                name: 'sourceProvider',
+                dim: '',
+                type: 'OrderSourceProvider',
+              },
+                      ]
+        },
+              {
+          name: 'compare',
+          mods: 'public',
+          sig: 'compare(java.lang.Object, java.lang.Object)',
+          desc: ''/*''*/,
+          params: [
+                          {
+                name: 'o1',
+                dim: '',
+                type: 'Object',
+              },
+                          {
+                name: 'o2',
+                dim: '',
+                type: 'Object',
+              },
+                      ]
+        },
+              {
+          name: 'getOrder',
+          mods: 'protected',
+          sig: 'getOrder(java.lang.Object)',
+          desc: ''/*'Determine the order value for the given object.
+ <p>The default implementation checks against the {@link Ordered} interface
+ through delegating to {@link #findOrder}. Can be overridden in subclasses.'*/,
+          params: [
+                          {
+                name: 'obj',
+                dim: '',
+                type: 'Object',
+              },
+                      ]
+        },
+              {
+          name: 'findOrder',
+          mods: 'protected',
+          sig: 'findOrder(java.lang.Object)',
+          desc: ''/*'Find an order value indicated by the given object.
+ <p>The default implementation checks against the {@link Ordered} interface.
+ Can be overridden in subclasses.'*/,
+          params: [
+                          {
+                name: 'obj',
+                dim: '',
+                type: 'Object',
+              },
+                      ]
+        },
+              {
+          name: 'getPriority',
+          mods: 'public',
+          sig: 'getPriority(java.lang.Object)',
+          desc: ''/*'Determine a priority value for the given object, if any.
+ <p>The default implementation always returns {@code null}.
+ Subclasses may override this to give specific kinds of values a
+ 'priority' characteristic, in addition to their 'order' semantics.
+ A priority indicates that it may be used for selecting one object over
+ another, in addition to serving for ordering purposes in a list/array.'*/,
+          params: [
+                          {
+                name: 'obj',
+                dim: '',
+                type: 'Object',
+              },
+                      ]
+        },
+              {
+          name: 'sort',
+          mods: 'public static',
+          sig: 'sort(java.util.List)',
+          desc: ''/*'Sort the given List with a default OrderComparator.
+ <p>Optimized to skip sorting for lists with size 0 or 1,
+ in order to avoid unnecessary array extraction.'*/,
+          params: [
+                          {
+                name: 'list',
+                dim: '',
+                type: 'List',
+              },
+                      ]
+        },
+              {
+          name: 'sort',
+          mods: 'public static',
+          sig: 'sort(java.lang.Object[])',
+          desc: ''/*'Sort the given array with a default OrderComparator.
+ <p>Optimized to skip sorting for lists with size 0 or 1,
+ in order to avoid unnecessary array extraction.'*/,
+          params: [
+                          {
+                name: 'array',
+                dim: '[]',
+                type: 'Object',
+              },
+                      ]
+        },
+              {
+          name: 'sortIfNecessary',
+          mods: 'public static',
+          sig: 'sortIfNecessary(java.lang.Object)',
+          desc: ''/*'Sort the given array or List with a default OrderComparator,
+ if necessary. Simply skips sorting when given any other value.
+ <p>Optimized to skip sorting for lists with size 0 or 1,
+ in order to avoid unnecessary array extraction.'*/,
+          params: [
+                          {
+                name: 'value',
+                dim: '',
+                type: 'Object',
+              },
+                      ]
+        },
+          ]
+  },
+  methods: {
+    show: function() {
+      alert(this.message);
+    }
+  },
+  computed: {
+    up: function() {
+      return this.message.toUpperCase();
+    },
+    matchedMethods: function() {
+      var a = this;
+      return this.methods.filter(function(m) {
+        return m.name.toLowerCase().indexOf(a.message.toLowerCase()) !== -1;
+      });
+    }
+  }
+});  
+  </script>
+</body>
+</html>
+

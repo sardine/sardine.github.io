@@ -1,0 +1,168 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width" />
+  <title>OverridingClassLoader</title>
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <h1>OverridingClassLoader</h1>
+
+  org.springframework.core.OverridingClassLoader
+
+
+  <div id="test">
+    <input type="text" v-model="message">
+
+    <template v-for="m in matchedMethods" :key="m.sig">
+      <h3>{{ m.name }}</h3>
+      <pre><code>{{ m.mods }} {{ m.name }}(<template v-for="(p, pi) in m.params" :key="p.name"><template v-if="pi != 0">, </template>{{ p.type }}{{ p.dim }} {{ p.name }}</template>)</code></pre>
+      <div><p>{{ m.desc }}</p></div>
+    </template>
+  </div>
+
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script>
+  var app = new Vue({
+  el: '#test',
+  data: {
+    message: '',
+    methods: [
+              {
+          name: 'loadClass',
+          mods: 'public',
+          sig: 'loadClass(java.lang.String)',
+          desc: ''/*''*/,
+          params: [
+                          {
+                name: 'name',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'loadClass',
+          mods: 'protected',
+          sig: 'loadClass(java.lang.String, boolean)',
+          desc: ''/*''*/,
+          params: [
+                          {
+                name: 'name',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'resolve',
+                dim: '',
+                type: 'boolean',
+              },
+                      ]
+        },
+              {
+          name: 'isEligibleForOverriding',
+          mods: 'protected',
+          sig: 'isEligibleForOverriding(java.lang.String)',
+          desc: ''/*'Determine whether the specified class is eligible for overriding
+ by this class loader.'*/,
+          params: [
+                          {
+                name: 'className',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'loadClassForOverriding',
+          mods: 'protected',
+          sig: 'loadClassForOverriding(java.lang.String)',
+          desc: ''/*'Load the specified class for overriding purposes in this ClassLoader.
+ <p>The default implementation delegates to {@link #findLoadedClass},
+ {@link #loadBytesForClass} and {@link #defineClass}.'*/,
+          params: [
+                          {
+                name: 'name',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'loadBytesForClass',
+          mods: 'protected',
+          sig: 'loadBytesForClass(java.lang.String)',
+          desc: ''/*'Load the defining bytes for the given class,
+ to be turned into a Class object through a {@link #defineClass} call.
+ <p>The default implementation delegates to {@link #openStreamForClass}
+ and {@link #transformIfNecessary}.'*/,
+          params: [
+                          {
+                name: 'name',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'openStreamForClass',
+          mods: 'protected',
+          sig: 'openStreamForClass(java.lang.String)',
+          desc: ''/*'Open an InputStream for the specified class.
+ <p>The default implementation loads a standard class file through
+ the parent ClassLoader's {@code getResourceAsStream} method.'*/,
+          params: [
+                          {
+                name: 'name',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'transformIfNecessary',
+          mods: 'protected',
+          sig: 'transformIfNecessary(java.lang.String, byte[])',
+          desc: ''/*'Transformation hook to be implemented by subclasses.
+ <p>The default implementation simply returns the given bytes as-is.'*/,
+          params: [
+                          {
+                name: 'name',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'bytes',
+                dim: '[]',
+                type: 'byte',
+              },
+                      ]
+        },
+          ]
+  },
+  methods: {
+    show: function() {
+      alert(this.message);
+    }
+  },
+  computed: {
+    up: function() {
+      return this.message.toUpperCase();
+    },
+    matchedMethods: function() {
+      var a = this;
+      return this.methods.filter(function(m) {
+        return m.name.toLowerCase().indexOf(a.message.toLowerCase()) !== -1;
+      });
+    }
+  }
+});  
+  </script>
+</body>
+</html>
+

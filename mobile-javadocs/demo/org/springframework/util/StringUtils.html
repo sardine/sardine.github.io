@@ -1,0 +1,1090 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width" />
+  <title>StringUtils</title>
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <h1>StringUtils</h1>
+
+  org.springframework.util.StringUtils
+
+
+  <div id="test">
+    <input type="text" v-model="message">
+
+    <template v-for="m in matchedMethods" :key="m.sig">
+      <h3>{{ m.name }}</h3>
+      <pre><code>{{ m.mods }} {{ m.name }}(<template v-for="(p, pi) in m.params" :key="p.name"><template v-if="pi != 0">, </template>{{ p.type }}{{ p.dim }} {{ p.name }}</template>)</code></pre>
+      <div><p>{{ m.desc }}</p></div>
+    </template>
+  </div>
+
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script>
+  var app = new Vue({
+  el: '#test',
+  data: {
+    message: '',
+    methods: [
+              {
+          name: 'isEmpty',
+          mods: 'public static',
+          sig: 'isEmpty(java.lang.Object)',
+          desc: ''/*'Check whether the given {@code String} is empty.
+ <p>This method accepts any Object as an argument, comparing it to
+ {@code null} and the empty String. As a consequence, this method
+ will never return {@code true} for a non-null non-String object.
+ <p>The Object signature is useful for general attribute handling code
+ that commonly deals with Strings but generally has to iterate over
+ Objects since attributes may e.g. be primitive value objects as well.'*/,
+          params: [
+                          {
+                name: 'str',
+                dim: '',
+                type: 'Object',
+              },
+                      ]
+        },
+              {
+          name: 'hasLength',
+          mods: 'public static',
+          sig: 'hasLength(java.lang.CharSequence)',
+          desc: ''/*'Check that the given {@code CharSequence} is neither {@code null} nor
+ of length 0.
+ <p>Note: this method returns {@code true} for a {@code CharSequence}
+ that purely consists of whitespace.
+ <p><pre class="code">
+ StringUtils.hasLength(null) = false
+ StringUtils.hasLength("") = false
+ StringUtils.hasLength(" ") = true
+ StringUtils.hasLength("Hello") = true
+ </pre>'*/,
+          params: [
+                          {
+                name: 'str',
+                dim: '',
+                type: 'CharSequence',
+              },
+                      ]
+        },
+              {
+          name: 'hasLength',
+          mods: 'public static',
+          sig: 'hasLength(java.lang.String)',
+          desc: ''/*'Check that the given {@code String} is neither {@code null} nor of length 0.
+ <p>Note: this method returns {@code true} for a {@code String} that
+ purely consists of whitespace.'*/,
+          params: [
+                          {
+                name: 'str',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'hasText',
+          mods: 'public static',
+          sig: 'hasText(java.lang.CharSequence)',
+          desc: ''/*'Check whether the given {@code CharSequence} contains actual <em>text</em>.
+ <p>More specifically, this method returns {@code true} if the
+ {@code CharSequence} is not {@code null}, its length is greater than
+ 0, and it contains at least one non-whitespace character.
+ <p><pre class="code">
+ StringUtils.hasText(null) = false
+ StringUtils.hasText("") = false
+ StringUtils.hasText(" ") = false
+ StringUtils.hasText("12345") = true
+ StringUtils.hasText(" 12345 ") = true
+ </pre>'*/,
+          params: [
+                          {
+                name: 'str',
+                dim: '',
+                type: 'CharSequence',
+              },
+                      ]
+        },
+              {
+          name: 'hasText',
+          mods: 'public static',
+          sig: 'hasText(java.lang.String)',
+          desc: ''/*'Check whether the given {@code String} contains actual <em>text</em>.
+ <p>More specifically, this method returns {@code true} if the
+ {@code String} is not {@code null}, its length is greater than 0,
+ and it contains at least one non-whitespace character.'*/,
+          params: [
+                          {
+                name: 'str',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'containsWhitespace',
+          mods: 'public static',
+          sig: 'containsWhitespace(java.lang.CharSequence)',
+          desc: ''/*'Check whether the given {@code CharSequence} contains any whitespace characters.'*/,
+          params: [
+                          {
+                name: 'str',
+                dim: '',
+                type: 'CharSequence',
+              },
+                      ]
+        },
+              {
+          name: 'containsWhitespace',
+          mods: 'public static',
+          sig: 'containsWhitespace(java.lang.String)',
+          desc: ''/*'Check whether the given {@code String} contains any whitespace characters.'*/,
+          params: [
+                          {
+                name: 'str',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'trimWhitespace',
+          mods: 'public static',
+          sig: 'trimWhitespace(java.lang.String)',
+          desc: ''/*'Trim leading and trailing whitespace from the given {@code String}.'*/,
+          params: [
+                          {
+                name: 'str',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'trimAllWhitespace',
+          mods: 'public static',
+          sig: 'trimAllWhitespace(java.lang.String)',
+          desc: ''/*'Trim <i>all</i> whitespace from the given {@code String}:
+ leading, trailing, and in between characters.'*/,
+          params: [
+                          {
+                name: 'str',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'trimLeadingWhitespace',
+          mods: 'public static',
+          sig: 'trimLeadingWhitespace(java.lang.String)',
+          desc: ''/*'Trim leading whitespace from the given {@code String}.'*/,
+          params: [
+                          {
+                name: 'str',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'trimTrailingWhitespace',
+          mods: 'public static',
+          sig: 'trimTrailingWhitespace(java.lang.String)',
+          desc: ''/*'Trim trailing whitespace from the given {@code String}.'*/,
+          params: [
+                          {
+                name: 'str',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'trimLeadingCharacter',
+          mods: 'public static',
+          sig: 'trimLeadingCharacter(java.lang.String, char)',
+          desc: ''/*'Trim all occurrences of the supplied leading character from the given {@code String}.'*/,
+          params: [
+                          {
+                name: 'str',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'leadingCharacter',
+                dim: '',
+                type: 'char',
+              },
+                      ]
+        },
+              {
+          name: 'trimTrailingCharacter',
+          mods: 'public static',
+          sig: 'trimTrailingCharacter(java.lang.String, char)',
+          desc: ''/*'Trim all occurrences of the supplied trailing character from the given {@code String}.'*/,
+          params: [
+                          {
+                name: 'str',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'trailingCharacter',
+                dim: '',
+                type: 'char',
+              },
+                      ]
+        },
+              {
+          name: 'startsWithIgnoreCase',
+          mods: 'public static',
+          sig: 'startsWithIgnoreCase(java.lang.String, java.lang.String)',
+          desc: ''/*'Test if the given {@code String} starts with the specified prefix,
+ ignoring upper/lower case.'*/,
+          params: [
+                          {
+                name: 'str',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'prefix',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'endsWithIgnoreCase',
+          mods: 'public static',
+          sig: 'endsWithIgnoreCase(java.lang.String, java.lang.String)',
+          desc: ''/*'Test if the given {@code String} ends with the specified suffix,
+ ignoring upper/lower case.'*/,
+          params: [
+                          {
+                name: 'str',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'suffix',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'substringMatch',
+          mods: 'public static',
+          sig: 'substringMatch(java.lang.CharSequence, int, java.lang.CharSequence)',
+          desc: ''/*'Test whether the given string matches the given substring
+ at the given index.'*/,
+          params: [
+                          {
+                name: 'str',
+                dim: '',
+                type: 'CharSequence',
+              },
+                          {
+                name: 'index',
+                dim: '',
+                type: 'int',
+              },
+                          {
+                name: 'substring',
+                dim: '',
+                type: 'CharSequence',
+              },
+                      ]
+        },
+              {
+          name: 'countOccurrencesOf',
+          mods: 'public static',
+          sig: 'countOccurrencesOf(java.lang.String, java.lang.String)',
+          desc: ''/*'Count the occurrences of the substring {@code sub} in string {@code str}.'*/,
+          params: [
+                          {
+                name: 'str',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'sub',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'replace',
+          mods: 'public static',
+          sig: 'replace(java.lang.String, java.lang.String, java.lang.String)',
+          desc: ''/*'Replace all occurrences of a substring within a string with
+ another string.'*/,
+          params: [
+                          {
+                name: 'inString',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'oldPattern',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'newPattern',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'delete',
+          mods: 'public static',
+          sig: 'delete(java.lang.String, java.lang.String)',
+          desc: ''/*'Delete all occurrences of the given substring.'*/,
+          params: [
+                          {
+                name: 'inString',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'pattern',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'deleteAny',
+          mods: 'public static',
+          sig: 'deleteAny(java.lang.String, java.lang.String)',
+          desc: ''/*'Delete any character in a given {@code String}.'*/,
+          params: [
+                          {
+                name: 'inString',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'charsToDelete',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'quote',
+          mods: 'public static',
+          sig: 'quote(java.lang.String)',
+          desc: ''/*'Quote the given {@code String} with single quotes.'*/,
+          params: [
+                          {
+                name: 'str',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'quoteIfString',
+          mods: 'public static',
+          sig: 'quoteIfString(java.lang.Object)',
+          desc: ''/*'Turn the given Object into a {@code String} with single quotes
+ if it is a {@code String}; keeping the Object as-is else.'*/,
+          params: [
+                          {
+                name: 'obj',
+                dim: '',
+                type: 'Object',
+              },
+                      ]
+        },
+              {
+          name: 'unqualify',
+          mods: 'public static',
+          sig: 'unqualify(java.lang.String)',
+          desc: ''/*'Unqualify a string qualified by a '.' dot character. For example,
+ "this.name.is.qualified", returns "qualified".'*/,
+          params: [
+                          {
+                name: 'qualifiedName',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'unqualify',
+          mods: 'public static',
+          sig: 'unqualify(java.lang.String, char)',
+          desc: ''/*'Unqualify a string qualified by a separator character. For example,
+ "this:name:is:qualified" returns "qualified" if using a ':' separator.'*/,
+          params: [
+                          {
+                name: 'qualifiedName',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'separator',
+                dim: '',
+                type: 'char',
+              },
+                      ]
+        },
+              {
+          name: 'capitalize',
+          mods: 'public static',
+          sig: 'capitalize(java.lang.String)',
+          desc: ''/*'Capitalize a {@code String}, changing the first letter to
+ upper case as per {@link Character#toUpperCase(char)}.
+ No other letters are changed.'*/,
+          params: [
+                          {
+                name: 'str',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'uncapitalize',
+          mods: 'public static',
+          sig: 'uncapitalize(java.lang.String)',
+          desc: ''/*'Uncapitalize a {@code String}, changing the first letter to
+ lower case as per {@link Character#toLowerCase(char)}.
+ No other letters are changed.'*/,
+          params: [
+                          {
+                name: 'str',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'getFilename',
+          mods: 'public static',
+          sig: 'getFilename(java.lang.String)',
+          desc: ''/*'Extract the filename from the given Java resource path,
+ e.g. {@code "mypath/myfile.txt" -> "myfile.txt"}.'*/,
+          params: [
+                          {
+                name: 'path',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'getFilenameExtension',
+          mods: 'public static',
+          sig: 'getFilenameExtension(java.lang.String)',
+          desc: ''/*'Extract the filename extension from the given Java resource path,
+ e.g. "mypath/myfile.txt" -> "txt".'*/,
+          params: [
+                          {
+                name: 'path',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'stripFilenameExtension',
+          mods: 'public static',
+          sig: 'stripFilenameExtension(java.lang.String)',
+          desc: ''/*'Strip the filename extension from the given Java resource path,
+ e.g. "mypath/myfile.txt" -> "mypath/myfile".'*/,
+          params: [
+                          {
+                name: 'path',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'applyRelativePath',
+          mods: 'public static',
+          sig: 'applyRelativePath(java.lang.String, java.lang.String)',
+          desc: ''/*'Apply the given relative path to the given Java resource path,
+ assuming standard Java folder separation (i.e. "/" separators).'*/,
+          params: [
+                          {
+                name: 'path',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'relativePath',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'cleanPath',
+          mods: 'public static',
+          sig: 'cleanPath(java.lang.String)',
+          desc: ''/*'Normalize the path by suppressing sequences like "path/.." and
+ inner simple dots.
+ <p>The result is convenient for path comparison. For other uses,
+ notice that Windows separators ("\") are replaced by simple slashes.'*/,
+          params: [
+                          {
+                name: 'path',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'pathEquals',
+          mods: 'public static',
+          sig: 'pathEquals(java.lang.String, java.lang.String)',
+          desc: ''/*'Compare two paths after normalization of them.'*/,
+          params: [
+                          {
+                name: 'path1',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'path2',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'uriDecode',
+          mods: 'public static',
+          sig: 'uriDecode(java.lang.String, java.nio.charset.Charset)',
+          desc: ''/*'Decode the given encoded URI component value. Based on the following rules:
+ <ul>
+ <li>Alphanumeric characters {@code "a"} through {@code "z"}, {@code "A"} through {@code "Z"},
+ and {@code "0"} through {@code "9"} stay the same.</li>
+ <li>Special characters {@code "-"}, {@code "_"}, {@code "."}, and {@code "*"} stay the same.</li>
+ <li>A sequence "{@code %<i>xy</i>}" is interpreted as a hexadecimal representation of the character.</li>
+ </ul>'*/,
+          params: [
+                          {
+                name: 'source',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'charset',
+                dim: '',
+                type: 'Charset',
+              },
+                      ]
+        },
+              {
+          name: 'parseLocaleString',
+          mods: 'public static',
+          sig: 'parseLocaleString(java.lang.String)',
+          desc: ''/*'Parse the given {@code localeString} value into a {@link Locale}.
+ <p>This is the inverse operation of {@link Locale#toString Locale's toString}.'*/,
+          params: [
+                          {
+                name: 'localeString',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'toLanguageTag',
+          mods: 'public static',
+          sig: 'toLanguageTag(java.util.Locale)',
+          desc: ''/*'Determine the RFC 3066 compliant language tag,
+ as used for the HTTP "Accept-Language" header.'*/,
+          params: [
+                          {
+                name: 'locale',
+                dim: '',
+                type: 'Locale',
+              },
+                      ]
+        },
+              {
+          name: 'parseTimeZoneString',
+          mods: 'public static',
+          sig: 'parseTimeZoneString(java.lang.String)',
+          desc: ''/*'Parse the given {@code timeZoneString} value into a {@link TimeZone}.'*/,
+          params: [
+                          {
+                name: 'timeZoneString',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'addStringToArray',
+          mods: 'public static',
+          sig: 'addStringToArray(java.lang.String[], java.lang.String)',
+          desc: ''/*'Append the given {@code String} to the given {@code String} array,
+ returning a new array consisting of the input array contents plus
+ the given {@code String}.'*/,
+          params: [
+                          {
+                name: 'array',
+                dim: '[]',
+                type: 'String',
+              },
+                          {
+                name: 'str',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'concatenateStringArrays',
+          mods: 'public static',
+          sig: 'concatenateStringArrays(java.lang.String[], java.lang.String[])',
+          desc: ''/*'Concatenate the given {@code String} arrays into one,
+ with overlapping array elements included twice.
+ <p>The order of elements in the original arrays is preserved.'*/,
+          params: [
+                          {
+                name: 'array1',
+                dim: '[]',
+                type: 'String',
+              },
+                          {
+                name: 'array2',
+                dim: '[]',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'mergeStringArrays',
+          mods: 'public static',
+          sig: 'mergeStringArrays(java.lang.String[], java.lang.String[])',
+          desc: ''/*'Merge the given {@code String} arrays into one, with overlapping
+ array elements only included once.
+ <p>The order of elements in the original arrays is preserved
+ (with the exception of overlapping elements, which are only
+ included on their first occurrence).'*/,
+          params: [
+                          {
+                name: 'array1',
+                dim: '[]',
+                type: 'String',
+              },
+                          {
+                name: 'array2',
+                dim: '[]',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'sortStringArray',
+          mods: 'public static',
+          sig: 'sortStringArray(java.lang.String[])',
+          desc: ''/*'Turn given source {@code String} array into sorted array.'*/,
+          params: [
+                          {
+                name: 'array',
+                dim: '[]',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'toStringArray',
+          mods: 'public static',
+          sig: 'toStringArray(java.util.Collection)',
+          desc: ''/*'Copy the given {@code Collection} into a {@code String} array.
+ <p>The {@code Collection} must contain {@code String} elements only.'*/,
+          params: [
+                          {
+                name: 'collection',
+                dim: '',
+                type: 'Collection',
+              },
+                      ]
+        },
+              {
+          name: 'toStringArray',
+          mods: 'public static',
+          sig: 'toStringArray(java.util.Enumeration)',
+          desc: ''/*'Copy the given Enumeration into a {@code String} array.
+ The Enumeration must contain {@code String} elements only.'*/,
+          params: [
+                          {
+                name: 'enumeration',
+                dim: '',
+                type: 'Enumeration',
+              },
+                      ]
+        },
+              {
+          name: 'trimArrayElements',
+          mods: 'public static',
+          sig: 'trimArrayElements(java.lang.String[])',
+          desc: ''/*'Trim the elements of the given {@code String} array,
+ calling {@code String.trim()} on each of them.'*/,
+          params: [
+                          {
+                name: 'array',
+                dim: '[]',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'removeDuplicateStrings',
+          mods: 'public static',
+          sig: 'removeDuplicateStrings(java.lang.String[])',
+          desc: ''/*'Remove duplicate strings from the given array.
+ <p>As of 4.2, it preserves the original order, as it uses a {@link LinkedHashSet}.'*/,
+          params: [
+                          {
+                name: 'array',
+                dim: '[]',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'split',
+          mods: 'public static',
+          sig: 'split(java.lang.String, java.lang.String)',
+          desc: ''/*'Split a {@code String} at the first occurrence of the delimiter.
+ Does not include the delimiter in the result.'*/,
+          params: [
+                          {
+                name: 'toSplit',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'delimiter',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'splitArrayElementsIntoProperties',
+          mods: 'public static',
+          sig: 'splitArrayElementsIntoProperties(java.lang.String[], java.lang.String)',
+          desc: ''/*'Take an array of strings and split each element based on the given delimiter.
+ A {@code Properties} instance is then generated, with the left of the
+ delimiter providing the key, and the right of the delimiter providing the value.
+ <p>Will trim both the key and value before adding them to the
+ {@code Properties} instance.'*/,
+          params: [
+                          {
+                name: 'array',
+                dim: '[]',
+                type: 'String',
+              },
+                          {
+                name: 'delimiter',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'splitArrayElementsIntoProperties',
+          mods: 'public static',
+          sig: 'splitArrayElementsIntoProperties(java.lang.String[], java.lang.String, java.lang.String)',
+          desc: ''/*'Take an array of strings and split each element based on the given delimiter.
+ A {@code Properties} instance is then generated, with the left of the
+ delimiter providing the key, and the right of the delimiter providing the value.
+ <p>Will trim both the key and value before adding them to the
+ {@code Properties} instance.'*/,
+          params: [
+                          {
+                name: 'array',
+                dim: '[]',
+                type: 'String',
+              },
+                          {
+                name: 'delimiter',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'charsToDelete',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'tokenizeToStringArray',
+          mods: 'public static',
+          sig: 'tokenizeToStringArray(java.lang.String, java.lang.String)',
+          desc: ''/*'Tokenize the given {@code String} into a {@code String} array via a
+ {@link StringTokenizer}.
+ <p>Trims tokens and omits empty tokens.
+ <p>The given {@code delimiters} string can consist of any number of
+ delimiter characters. Each of those characters can be used to separate
+ tokens. A delimiter is always a single character; for multi-character
+ delimiters, consider using {@link #delimitedListToStringArray}.'*/,
+          params: [
+                          {
+                name: 'str',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'delimiters',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'tokenizeToStringArray',
+          mods: 'public static',
+          sig: 'tokenizeToStringArray(java.lang.String, java.lang.String, boolean, boolean)',
+          desc: ''/*'Tokenize the given {@code String} into a {@code String} array via a
+ {@link StringTokenizer}.
+ <p>The given {@code delimiters} string can consist of any number of
+ delimiter characters. Each of those characters can be used to separate
+ tokens. A delimiter is always a single character; for multi-character
+ delimiters, consider using {@link #delimitedListToStringArray}.'*/,
+          params: [
+                          {
+                name: 'str',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'delimiters',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'trimTokens',
+                dim: '',
+                type: 'boolean',
+              },
+                          {
+                name: 'ignoreEmptyTokens',
+                dim: '',
+                type: 'boolean',
+              },
+                      ]
+        },
+              {
+          name: 'delimitedListToStringArray',
+          mods: 'public static',
+          sig: 'delimitedListToStringArray(java.lang.String, java.lang.String)',
+          desc: ''/*'Take a {@code String} that is a delimited list and convert it into a
+ {@code String} array.
+ <p>A single {@code delimiter} may consist of more than one character,
+ but it will still be considered as a single delimiter string, rather
+ than as bunch of potential delimiter characters, in contrast to
+ {@link #tokenizeToStringArray}.'*/,
+          params: [
+                          {
+                name: 'str',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'delimiter',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'delimitedListToStringArray',
+          mods: 'public static',
+          sig: 'delimitedListToStringArray(java.lang.String, java.lang.String, java.lang.String)',
+          desc: ''/*'Take a {@code String} that is a delimited list and convert it into
+ a {@code String} array.
+ <p>A single {@code delimiter} may consist of more than one character,
+ but it will still be considered as a single delimiter string, rather
+ than as bunch of potential delimiter characters, in contrast to
+ {@link #tokenizeToStringArray}.'*/,
+          params: [
+                          {
+                name: 'str',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'delimiter',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'charsToDelete',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'commaDelimitedListToStringArray',
+          mods: 'public static',
+          sig: 'commaDelimitedListToStringArray(java.lang.String)',
+          desc: ''/*'Convert a comma delimited list (e.g., a row from a CSV file) into an
+ array of strings.'*/,
+          params: [
+                          {
+                name: 'str',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'commaDelimitedListToSet',
+          mods: 'public static',
+          sig: 'commaDelimitedListToSet(java.lang.String)',
+          desc: ''/*'Convert a comma delimited list (e.g., a row from a CSV file) into a set.
+ <p>Note that this will suppress duplicates, and as of 4.2, the elements in
+ the returned set will preserve the original order in a {@link LinkedHashSet}.'*/,
+          params: [
+                          {
+                name: 'str',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'collectionToDelimitedString',
+          mods: 'public static',
+          sig: 'collectionToDelimitedString(java.util.Collection, java.lang.String, java.lang.String, java.lang.String)',
+          desc: ''/*'Convert a {@link Collection} to a delimited {@code String} (e.g. CSV).
+ <p>Useful for {@code toString()} implementations.'*/,
+          params: [
+                          {
+                name: 'coll',
+                dim: '',
+                type: 'Collection',
+              },
+                          {
+                name: 'delim',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'prefix',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'suffix',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'collectionToDelimitedString',
+          mods: 'public static',
+          sig: 'collectionToDelimitedString(java.util.Collection, java.lang.String)',
+          desc: ''/*'Convert a {@code Collection} into a delimited {@code String} (e.g. CSV).
+ <p>Useful for {@code toString()} implementations.'*/,
+          params: [
+                          {
+                name: 'coll',
+                dim: '',
+                type: 'Collection',
+              },
+                          {
+                name: 'delim',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'collectionToCommaDelimitedString',
+          mods: 'public static',
+          sig: 'collectionToCommaDelimitedString(java.util.Collection)',
+          desc: ''/*'Convert a {@code Collection} into a delimited {@code String} (e.g., CSV).
+ <p>Useful for {@code toString()} implementations.'*/,
+          params: [
+                          {
+                name: 'coll',
+                dim: '',
+                type: 'Collection',
+              },
+                      ]
+        },
+              {
+          name: 'arrayToDelimitedString',
+          mods: 'public static',
+          sig: 'arrayToDelimitedString(java.lang.Object[], java.lang.String)',
+          desc: ''/*'Convert a {@code String} array into a delimited {@code String} (e.g. CSV).
+ <p>Useful for {@code toString()} implementations.'*/,
+          params: [
+                          {
+                name: 'arr',
+                dim: '[]',
+                type: 'Object',
+              },
+                          {
+                name: 'delim',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'arrayToCommaDelimitedString',
+          mods: 'public static',
+          sig: 'arrayToCommaDelimitedString(java.lang.Object[])',
+          desc: ''/*'Convert a {@code String} array into a comma delimited {@code String}
+ (i.e., CSV).
+ <p>Useful for {@code toString()} implementations.'*/,
+          params: [
+                          {
+                name: 'arr',
+                dim: '[]',
+                type: 'Object',
+              },
+                      ]
+        },
+          ]
+  },
+  methods: {
+    show: function() {
+      alert(this.message);
+    }
+  },
+  computed: {
+    up: function() {
+      return this.message.toUpperCase();
+    },
+    matchedMethods: function() {
+      var a = this;
+      return this.methods.filter(function(m) {
+        return m.name.toLowerCase().indexOf(a.message.toLowerCase()) !== -1;
+      });
+    }
+  }
+});  
+  </script>
+</body>
+</html>
+

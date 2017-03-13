@@ -1,0 +1,825 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width" />
+  <title>ResolvableType</title>
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <h1>ResolvableType</h1>
+
+  org.springframework.core.ResolvableType
+
+
+  <div id="test">
+    <input type="text" v-model="message">
+
+    <template v-for="m in matchedMethods" :key="m.sig">
+      <h3>{{ m.name }}</h3>
+      <pre><code>{{ m.mods }} {{ m.name }}(<template v-for="(p, pi) in m.params" :key="p.name"><template v-if="pi != 0">, </template>{{ p.type }}{{ p.dim }} {{ p.name }}</template>)</code></pre>
+      <div><p>{{ m.desc }}</p></div>
+    </template>
+  </div>
+
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script>
+  var app = new Vue({
+  el: '#test',
+  data: {
+    message: '',
+    methods: [
+              {
+          name: 'getType',
+          mods: 'public',
+          sig: 'getType()',
+          desc: ''/*'Return the underling Java {@link Type} being managed. With the exception of
+ the {@link #NONE} constant, this method will never return {@code null}.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'getRawClass',
+          mods: 'public',
+          sig: 'getRawClass()',
+          desc: ''/*'Return the underlying Java {@link Class} being managed, if available;
+ otherwise {@code null}.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'getSource',
+          mods: 'public',
+          sig: 'getSource()',
+          desc: ''/*'Return the underlying source of the resolvable type. Will return a {@link Field},
+ {@link MethodParameter} or {@link Type} depending on how the {@link ResolvableType}
+ was constructed. With the exception of the {@link #NONE} constant, this method will
+ never return {@code null}. This method is primarily to provide access to additional
+ type information or meta-data that alternative JVM languages may provide.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'isInstance',
+          mods: 'public',
+          sig: 'isInstance(java.lang.Object)',
+          desc: ''/*'Determine whether the given object is an instance of this {@code ResolvableType}.'*/,
+          params: [
+                          {
+                name: 'obj',
+                dim: '',
+                type: 'Object',
+              },
+                      ]
+        },
+              {
+          name: 'isAssignableFrom',
+          mods: 'public',
+          sig: 'isAssignableFrom(java.lang.Class)',
+          desc: ''/*'Determine whether this {@code ResolvableType} is assignable from the
+ specified other type.'*/,
+          params: [
+                          {
+                name: 'other',
+                dim: '',
+                type: 'Class',
+              },
+                      ]
+        },
+              {
+          name: 'isAssignableFrom',
+          mods: 'public',
+          sig: 'isAssignableFrom(org.springframework.core.ResolvableType)',
+          desc: ''/*'Determine whether this {@code ResolvableType} is assignable from the
+ specified other type.
+ <p>Attempts to follow the same rules as the Java compiler, considering
+ whether both the {@link #resolve() resolved} {@code Class} is
+ {@link Class#isAssignableFrom(Class) assignable from} the given type
+ as well as whether all {@link #getGenerics() generics} are assignable.'*/,
+          params: [
+                          {
+                name: 'other',
+                dim: '',
+                type: 'ResolvableType',
+              },
+                      ]
+        },
+              {
+          name: 'isArray',
+          mods: 'public',
+          sig: 'isArray()',
+          desc: ''/*'Return {@code true} if this type resolves to a Class that represents an array.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'getComponentType',
+          mods: 'public',
+          sig: 'getComponentType()',
+          desc: ''/*'Return the ResolvableType representing the component type of the array or
+ {@link #NONE} if this type does not represent an array.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'asCollection',
+          mods: 'public',
+          sig: 'asCollection()',
+          desc: ''/*'Convenience method to return this type as a resolvable {@link Collection} type.
+ Returns {@link #NONE} if this type does not implement or extend
+ {@link Collection}.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'asMap',
+          mods: 'public',
+          sig: 'asMap()',
+          desc: ''/*'Convenience method to return this type as a resolvable {@link Map} type.
+ Returns {@link #NONE} if this type does not implement or extend
+ {@link Map}.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'as',
+          mods: 'public',
+          sig: 'as(java.lang.Class)',
+          desc: ''/*'Return this type as a {@link ResolvableType} of the specified class. Searches
+ {@link #getSuperType() supertype} and {@link #getInterfaces() interface}
+ hierarchies to find a match, returning {@link #NONE} if this type does not
+ implement or extend the specified class.'*/,
+          params: [
+                          {
+                name: 'type',
+                dim: '',
+                type: 'Class',
+              },
+                      ]
+        },
+              {
+          name: 'getSuperType',
+          mods: 'public',
+          sig: 'getSuperType()',
+          desc: ''/*'Return a {@link ResolvableType} representing the direct supertype of this type.
+ If no supertype is available this method returns {@link #NONE}.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'getInterfaces',
+          mods: 'public',
+          sig: 'getInterfaces()',
+          desc: ''/*'Return a {@link ResolvableType} array representing the direct interfaces
+ implemented by this type. If this type does not implement any interfaces an
+ empty array is returned.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'hasGenerics',
+          mods: 'public',
+          sig: 'hasGenerics()',
+          desc: ''/*'Return {@code true} if this type contains generic parameters.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'hasUnresolvableGenerics',
+          mods: 'public',
+          sig: 'hasUnresolvableGenerics()',
+          desc: ''/*'Determine whether the underlying type has any unresolvable generics:
+ either through an unresolvable type variable on the type itself
+ or through implementing a generic interface in a raw fashion,
+ i.e. without substituting that interface's type variables.
+ The result will be {@code true} only in those two scenarios.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'getNested',
+          mods: 'public',
+          sig: 'getNested(int)',
+          desc: ''/*'Return a {@link ResolvableType} for the specified nesting level. See
+ {@link #getNested(int, Map)} for details.'*/,
+          params: [
+                          {
+                name: 'nestingLevel',
+                dim: '',
+                type: 'int',
+              },
+                      ]
+        },
+              {
+          name: 'getNested',
+          mods: 'public',
+          sig: 'getNested(int, java.util.Map)',
+          desc: ''/*'Return a {@link ResolvableType} for the specified nesting level. The nesting level
+ refers to the specific generic parameter that should be returned. A nesting level
+ of 1 indicates this type; 2 indicates the first nested generic; 3 the second; and so
+ on. For example, given {@code List<Set<Integer>>} level 1 refers to the
+ {@code List}, level 2 the {@code Set}, and level 3 the {@code Integer}.
+ <p>The {@code typeIndexesPerLevel} map can be used to reference a specific generic
+ for the given level. For example, an index of 0 would refer to a {@code Map} key;
+ whereas, 1 would refer to the value. If the map does not contain a value for a
+ specific level the last generic will be used (e.g. a {@code Map} value).
+ <p>Nesting levels may also apply to array types; for example given
+ {@code String[]}, a nesting level of 2 refers to {@code String}.
+ <p>If a type does not {@link #hasGenerics() contain} generics the
+ {@link #getSuperType() supertype} hierarchy will be considered.'*/,
+          params: [
+                          {
+                name: 'nestingLevel',
+                dim: '',
+                type: 'int',
+              },
+                          {
+                name: 'typeIndexesPerLevel',
+                dim: '',
+                type: 'Map',
+              },
+                      ]
+        },
+              {
+          name: 'getGeneric',
+          mods: 'public',
+          sig: 'getGeneric(int[])',
+          desc: ''/*'Return a {@link ResolvableType} representing the generic parameter for the given
+ indexes. Indexes are zero based; for example given the type
+ {@code Map<Integer, List<String>>}, {@code getGeneric(0)} will access the
+ {@code Integer}. Nested generics can be accessed by specifying multiple indexes;
+ for example {@code getGeneric(1, 0)} will access the {@code String} from the nested
+ {@code List}. For convenience, if no indexes are specified the first generic is
+ returned.
+ <p>If no generic is available at the specified indexes {@link #NONE} is returned.'*/,
+          params: [
+                          {
+                name: 'indexes',
+                dim: '[]',
+                type: 'int',
+              },
+                      ]
+        },
+              {
+          name: 'getGenerics',
+          mods: 'public',
+          sig: 'getGenerics()',
+          desc: ''/*'Return an array of {@link ResolvableType}s representing the generic parameters of
+ this type. If no generics are available an empty array is returned. If you need to
+ access a specific generic consider using the {@link #getGeneric(int...)} method as
+ it allows access to nested generics and protects against
+ {@code IndexOutOfBoundsExceptions}.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'resolveGenerics',
+          mods: 'public',
+          sig: 'resolveGenerics()',
+          desc: ''/*'Convenience method that will {@link #getGenerics() get} and
+ {@link #resolve() resolve} generic parameters.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'resolveGenerics',
+          mods: 'public',
+          sig: 'resolveGenerics(java.lang.Class)',
+          desc: ''/*'Convenience method that will {@link #getGenerics() get} and {@link #resolve()
+ resolve} generic parameters, using the specified {@code fallback} if any type
+ cannot be resolved.'*/,
+          params: [
+                          {
+                name: 'fallback',
+                dim: '',
+                type: 'Class',
+              },
+                      ]
+        },
+              {
+          name: 'resolveGeneric',
+          mods: 'public',
+          sig: 'resolveGeneric(int[])',
+          desc: ''/*'Convenience method that will {@link #getGeneric(int...) get} and
+ {@link #resolve() resolve} a specific generic parameters.'*/,
+          params: [
+                          {
+                name: 'indexes',
+                dim: '[]',
+                type: 'int',
+              },
+                      ]
+        },
+              {
+          name: 'resolve',
+          mods: 'public',
+          sig: 'resolve()',
+          desc: ''/*'Resolve this type to a {@link java.lang.Class}, returning {@code null}
+ if the type cannot be resolved. This method will consider bounds of
+ {@link TypeVariable}s and {@link WildcardType}s if direct resolution fails;
+ however, bounds of {@code Object.class} will be ignored.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'resolve',
+          mods: 'public',
+          sig: 'resolve(java.lang.Class)',
+          desc: ''/*'Resolve this type to a {@link java.lang.Class}, returning the specified
+ {@code fallback} if the type cannot be resolved. This method will consider bounds
+ of {@link TypeVariable}s and {@link WildcardType}s if direct resolution fails;
+ however, bounds of {@code Object.class} will be ignored.'*/,
+          params: [
+                          {
+                name: 'fallback',
+                dim: '',
+                type: 'Class',
+              },
+                      ]
+        },
+              {
+          name: 'equals',
+          mods: 'public',
+          sig: 'equals(java.lang.Object)',
+          desc: ''/*''*/,
+          params: [
+                          {
+                name: 'other',
+                dim: '',
+                type: 'Object',
+              },
+                      ]
+        },
+              {
+          name: 'hashCode',
+          mods: 'public',
+          sig: 'hashCode()',
+          desc: ''/*''*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'toString',
+          mods: 'public',
+          sig: 'toString()',
+          desc: ''/*'Return a String representation of this type in its fully resolved form
+ (including any generic parameters).'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'forClass',
+          mods: 'public static',
+          sig: 'forClass(java.lang.Class)',
+          desc: ''/*'Return a {@link ResolvableType} for the specified {@link Class},
+ using the full generic type information for assignability checks.
+ For example: {@code ResolvableType.forClass(MyArrayList.class)}.'*/,
+          params: [
+                          {
+                name: 'clazz',
+                dim: '',
+                type: 'Class',
+              },
+                      ]
+        },
+              {
+          name: 'forRawClass',
+          mods: 'public static',
+          sig: 'forRawClass(java.lang.Class)',
+          desc: ''/*'Return a {@link ResolvableType} for the specified {@link Class}, doing
+ assignability checks against the raw class only (analogous to
+ {@link Class#isAssignableFrom}, which this serves as a wrapper for.
+ For example: {@code ResolvableType.forRawClass(List.class)}.'*/,
+          params: [
+                          {
+                name: 'clazz',
+                dim: '',
+                type: 'Class',
+              },
+                      ]
+        },
+              {
+          name: 'forClass',
+          mods: 'public static',
+          sig: 'forClass(java.lang.Class, java.lang.Class)',
+          desc: ''/*'Return a {@link ResolvableType} for the specified base type
+ (interface or base class) with a given implementation class.
+ For example: {@code ResolvableType.forClass(List.class, MyArrayList.class)}.'*/,
+          params: [
+                          {
+                name: 'baseType',
+                dim: '',
+                type: 'Class',
+              },
+                          {
+                name: 'implementationClass',
+                dim: '',
+                type: 'Class',
+              },
+                      ]
+        },
+              {
+          name: 'forClassWithGenerics',
+          mods: 'public static',
+          sig: 'forClassWithGenerics(java.lang.Class, java.lang.Class[])',
+          desc: ''/*'Return a {@link ResolvableType} for the specified {@link Class} with pre-declared generics.'*/,
+          params: [
+                          {
+                name: 'clazz',
+                dim: '',
+                type: 'Class',
+              },
+                          {
+                name: 'generics',
+                dim: '[]',
+                type: 'Class',
+              },
+                      ]
+        },
+              {
+          name: 'forClassWithGenerics',
+          mods: 'public static',
+          sig: 'forClassWithGenerics(java.lang.Class, org.springframework.core.ResolvableType[])',
+          desc: ''/*'Return a {@link ResolvableType} for the specified {@link Class} with pre-declared generics.'*/,
+          params: [
+                          {
+                name: 'clazz',
+                dim: '',
+                type: 'Class',
+              },
+                          {
+                name: 'generics',
+                dim: '[]',
+                type: 'ResolvableType',
+              },
+                      ]
+        },
+              {
+          name: 'forInstance',
+          mods: 'public static',
+          sig: 'forInstance(java.lang.Object)',
+          desc: ''/*'Return a {@link ResolvableType} for the specified instance. The instance does not
+ convey generic information but if it implements {@link ResolvableTypeProvider} a
+ more precise {@link ResolvableType} can be used than the simple one based on
+ the {@link #forClass(Class) Class instance}.'*/,
+          params: [
+                          {
+                name: 'instance',
+                dim: '',
+                type: 'Object',
+              },
+                      ]
+        },
+              {
+          name: 'forField',
+          mods: 'public static',
+          sig: 'forField(java.lang.reflect.Field)',
+          desc: ''/*'Return a {@link ResolvableType} for the specified {@link Field}.'*/,
+          params: [
+                          {
+                name: 'field',
+                dim: '',
+                type: 'Field',
+              },
+                      ]
+        },
+              {
+          name: 'forField',
+          mods: 'public static',
+          sig: 'forField(java.lang.reflect.Field, java.lang.Class)',
+          desc: ''/*'Return a {@link ResolvableType} for the specified {@link Field} with a given
+ implementation.
+ <p>Use this variant when the class that declares the field includes generic
+ parameter variables that are satisfied by the implementation class.'*/,
+          params: [
+                          {
+                name: 'field',
+                dim: '',
+                type: 'Field',
+              },
+                          {
+                name: 'implementationClass',
+                dim: '',
+                type: 'Class',
+              },
+                      ]
+        },
+              {
+          name: 'forField',
+          mods: 'public static',
+          sig: 'forField(java.lang.reflect.Field, org.springframework.core.ResolvableType)',
+          desc: ''/*'Return a {@link ResolvableType} for the specified {@link Field} with a given
+ implementation.
+ <p>Use this variant when the class that declares the field includes generic
+ parameter variables that are satisfied by the implementation type.'*/,
+          params: [
+                          {
+                name: 'field',
+                dim: '',
+                type: 'Field',
+              },
+                          {
+                name: 'implementationType',
+                dim: '',
+                type: 'ResolvableType',
+              },
+                      ]
+        },
+              {
+          name: 'forField',
+          mods: 'public static',
+          sig: 'forField(java.lang.reflect.Field, int)',
+          desc: ''/*'Return a {@link ResolvableType} for the specified {@link Field} with the
+ given nesting level.'*/,
+          params: [
+                          {
+                name: 'field',
+                dim: '',
+                type: 'Field',
+              },
+                          {
+                name: 'nestingLevel',
+                dim: '',
+                type: 'int',
+              },
+                      ]
+        },
+              {
+          name: 'forField',
+          mods: 'public static',
+          sig: 'forField(java.lang.reflect.Field, int, java.lang.Class)',
+          desc: ''/*'Return a {@link ResolvableType} for the specified {@link Field} with a given
+ implementation and the given nesting level.
+ <p>Use this variant when the class that declares the field includes generic
+ parameter variables that are satisfied by the implementation class.'*/,
+          params: [
+                          {
+                name: 'field',
+                dim: '',
+                type: 'Field',
+              },
+                          {
+                name: 'nestingLevel',
+                dim: '',
+                type: 'int',
+              },
+                          {
+                name: 'implementationClass',
+                dim: '',
+                type: 'Class',
+              },
+                      ]
+        },
+              {
+          name: 'forConstructorParameter',
+          mods: 'public static',
+          sig: 'forConstructorParameter(java.lang.reflect.Constructor, int)',
+          desc: ''/*'Return a {@link ResolvableType} for the specified {@link Constructor} parameter.'*/,
+          params: [
+                          {
+                name: 'constructor',
+                dim: '',
+                type: 'Constructor',
+              },
+                          {
+                name: 'parameterIndex',
+                dim: '',
+                type: 'int',
+              },
+                      ]
+        },
+              {
+          name: 'forConstructorParameter',
+          mods: 'public static',
+          sig: 'forConstructorParameter(java.lang.reflect.Constructor, int, java.lang.Class)',
+          desc: ''/*'Return a {@link ResolvableType} for the specified {@link Constructor} parameter
+ with a given implementation. Use this variant when the class that declares the
+ constructor includes generic parameter variables that are satisfied by the
+ implementation class.'*/,
+          params: [
+                          {
+                name: 'constructor',
+                dim: '',
+                type: 'Constructor',
+              },
+                          {
+                name: 'parameterIndex',
+                dim: '',
+                type: 'int',
+              },
+                          {
+                name: 'implementationClass',
+                dim: '',
+                type: 'Class',
+              },
+                      ]
+        },
+              {
+          name: 'forMethodReturnType',
+          mods: 'public static',
+          sig: 'forMethodReturnType(java.lang.reflect.Method)',
+          desc: ''/*'Return a {@link ResolvableType} for the specified {@link Method} return type.'*/,
+          params: [
+                          {
+                name: 'method',
+                dim: '',
+                type: 'Method',
+              },
+                      ]
+        },
+              {
+          name: 'forMethodReturnType',
+          mods: 'public static',
+          sig: 'forMethodReturnType(java.lang.reflect.Method, java.lang.Class)',
+          desc: ''/*'Return a {@link ResolvableType} for the specified {@link Method} return type.
+ Use this variant when the class that declares the method includes generic
+ parameter variables that are satisfied by the implementation class.'*/,
+          params: [
+                          {
+                name: 'method',
+                dim: '',
+                type: 'Method',
+              },
+                          {
+                name: 'implementationClass',
+                dim: '',
+                type: 'Class',
+              },
+                      ]
+        },
+              {
+          name: 'forMethodParameter',
+          mods: 'public static',
+          sig: 'forMethodParameter(java.lang.reflect.Method, int)',
+          desc: ''/*'Return a {@link ResolvableType} for the specified {@link Method} parameter.'*/,
+          params: [
+                          {
+                name: 'method',
+                dim: '',
+                type: 'Method',
+              },
+                          {
+                name: 'parameterIndex',
+                dim: '',
+                type: 'int',
+              },
+                      ]
+        },
+              {
+          name: 'forMethodParameter',
+          mods: 'public static',
+          sig: 'forMethodParameter(java.lang.reflect.Method, int, java.lang.Class)',
+          desc: ''/*'Return a {@link ResolvableType} for the specified {@link Method} parameter with a
+ given implementation. Use this variant when the class that declares the method
+ includes generic parameter variables that are satisfied by the implementation class.'*/,
+          params: [
+                          {
+                name: 'method',
+                dim: '',
+                type: 'Method',
+              },
+                          {
+                name: 'parameterIndex',
+                dim: '',
+                type: 'int',
+              },
+                          {
+                name: 'implementationClass',
+                dim: '',
+                type: 'Class',
+              },
+                      ]
+        },
+              {
+          name: 'forMethodParameter',
+          mods: 'public static',
+          sig: 'forMethodParameter(org.springframework.core.MethodParameter)',
+          desc: ''/*'Return a {@link ResolvableType} for the specified {@link MethodParameter}.'*/,
+          params: [
+                          {
+                name: 'methodParameter',
+                dim: '',
+                type: 'MethodParameter',
+              },
+                      ]
+        },
+              {
+          name: 'forMethodParameter',
+          mods: 'public static',
+          sig: 'forMethodParameter(org.springframework.core.MethodParameter, org.springframework.core.ResolvableType)',
+          desc: ''/*'Return a {@link ResolvableType} for the specified {@link MethodParameter} with a
+ given implementation type. Use this variant when the class that declares the method
+ includes generic parameter variables that are satisfied by the implementation type.'*/,
+          params: [
+                          {
+                name: 'methodParameter',
+                dim: '',
+                type: 'MethodParameter',
+              },
+                          {
+                name: 'implementationType',
+                dim: '',
+                type: 'ResolvableType',
+              },
+                      ]
+        },
+              {
+          name: 'forMethodParameter',
+          mods: 'public static',
+          sig: 'forMethodParameter(org.springframework.core.MethodParameter, java.lang.reflect.Type)',
+          desc: ''/*'Return a {@link ResolvableType} for the specified {@link MethodParameter},
+ overriding the target type to resolve with a specific given type.'*/,
+          params: [
+                          {
+                name: 'methodParameter',
+                dim: '',
+                type: 'MethodParameter',
+              },
+                          {
+                name: 'targetType',
+                dim: '',
+                type: 'Type',
+              },
+                      ]
+        },
+              {
+          name: 'forArrayComponent',
+          mods: 'public static',
+          sig: 'forArrayComponent(org.springframework.core.ResolvableType)',
+          desc: ''/*'Return a {@link ResolvableType} as a array of the specified {@code componentType}.'*/,
+          params: [
+                          {
+                name: 'componentType',
+                dim: '',
+                type: 'ResolvableType',
+              },
+                      ]
+        },
+              {
+          name: 'forType',
+          mods: 'public static',
+          sig: 'forType(java.lang.reflect.Type)',
+          desc: ''/*'Return a {@link ResolvableType} for the specified {@link Type}.
+ Note: The resulting {@link ResolvableType} may not be {@link Serializable}.'*/,
+          params: [
+                          {
+                name: 'type',
+                dim: '',
+                type: 'Type',
+              },
+                      ]
+        },
+              {
+          name: 'forType',
+          mods: 'public static',
+          sig: 'forType(java.lang.reflect.Type, org.springframework.core.ResolvableType)',
+          desc: ''/*'Return a {@link ResolvableType} for the specified {@link Type} backed by the given
+ owner type. Note: The resulting {@link ResolvableType} may not be {@link Serializable}.'*/,
+          params: [
+                          {
+                name: 'type',
+                dim: '',
+                type: 'Type',
+              },
+                          {
+                name: 'owner',
+                dim: '',
+                type: 'ResolvableType',
+              },
+                      ]
+        },
+              {
+          name: 'clearCache',
+          mods: 'public static',
+          sig: 'clearCache()',
+          desc: ''/*'Clear the internal {@code ResolvableType} cache.'*/,
+          params: [
+                      ]
+        },
+          ]
+  },
+  methods: {
+    show: function() {
+      alert(this.message);
+    }
+  },
+  computed: {
+    up: function() {
+      return this.message.toUpperCase();
+    },
+    matchedMethods: function() {
+      var a = this;
+      return this.methods.filter(function(m) {
+        return m.name.toLowerCase().indexOf(a.message.toLowerCase()) !== -1;
+      });
+    }
+  }
+});  
+  </script>
+</body>
+</html>
+

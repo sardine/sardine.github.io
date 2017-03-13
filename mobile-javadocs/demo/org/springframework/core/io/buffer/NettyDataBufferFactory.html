@@ -1,0 +1,142 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width" />
+  <title>NettyDataBufferFactory</title>
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <h1>NettyDataBufferFactory</h1>
+
+  org.springframework.core.io.buffer.NettyDataBufferFactory
+
+
+  <div id="test">
+    <input type="text" v-model="message">
+
+    <template v-for="m in matchedMethods" :key="m.sig">
+      <h3>{{ m.name }}</h3>
+      <pre><code>{{ m.mods }} {{ m.name }}(<template v-for="(p, pi) in m.params" :key="p.name"><template v-if="pi != 0">, </template>{{ p.type }}{{ p.dim }} {{ p.name }}</template>)</code></pre>
+      <div><p>{{ m.desc }}</p></div>
+    </template>
+  </div>
+
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script>
+  var app = new Vue({
+  el: '#test',
+  data: {
+    message: '',
+    methods: [
+              {
+          name: 'allocateBuffer',
+          mods: 'public',
+          sig: 'allocateBuffer()',
+          desc: ''/*''*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'allocateBuffer',
+          mods: 'public',
+          sig: 'allocateBuffer(int)',
+          desc: ''/*''*/,
+          params: [
+                          {
+                name: 'initialCapacity',
+                dim: '',
+                type: 'int',
+              },
+                      ]
+        },
+              {
+          name: 'wrap',
+          mods: 'public',
+          sig: 'wrap(java.nio.ByteBuffer)',
+          desc: ''/*''*/,
+          params: [
+                          {
+                name: 'byteBuffer',
+                dim: '',
+                type: 'ByteBuffer',
+              },
+                      ]
+        },
+              {
+          name: 'wrap',
+          mods: 'public',
+          sig: 'wrap(byte[])',
+          desc: ''/*''*/,
+          params: [
+                          {
+                name: 'bytes',
+                dim: '[]',
+                type: 'byte',
+              },
+                      ]
+        },
+              {
+          name: 'wrap',
+          mods: 'public',
+          sig: 'wrap(ByteBuf)',
+          desc: ''/*'Wrap the given Netty {@link ByteBuf} in a {@code NettyDataBuffer}.'*/,
+          params: [
+                          {
+                name: 'byteBuf',
+                dim: '',
+                type: 'ByteBuf',
+              },
+                      ]
+        },
+              {
+          name: 'toByteBuf',
+          mods: 'public static',
+          sig: 'toByteBuf(org.springframework.core.io.buffer.DataBuffer)',
+          desc: ''/*'Return the given Netty {@link DataBuffer} as a {@link ByteBuf}. Returns the
+ {@linkplain NettyDataBuffer#getNativeBuffer() native buffer} if {@code buffer} is
+ a {@link NettyDataBuffer}; returns {@link Unpooled#wrappedBuffer(ByteBuffer)}
+ otherwise.'*/,
+          params: [
+                          {
+                name: 'buffer',
+                dim: '',
+                type: 'DataBuffer',
+              },
+                      ]
+        },
+              {
+          name: 'toString',
+          mods: 'public',
+          sig: 'toString()',
+          desc: ''/*''*/,
+          params: [
+                      ]
+        },
+          ]
+  },
+  methods: {
+    show: function() {
+      alert(this.message);
+    }
+  },
+  computed: {
+    up: function() {
+      return this.message.toUpperCase();
+    },
+    matchedMethods: function() {
+      var a = this;
+      return this.methods.filter(function(m) {
+        return m.name.toLowerCase().indexOf(a.message.toLowerCase()) !== -1;
+      });
+    }
+  }
+});  
+  </script>
+</body>
+</html>
+

@@ -1,0 +1,578 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width" />
+  <title>ClassWriter</title>
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <h1>ClassWriter</h1>
+
+  org.springframework.asm.ClassWriter
+
+
+  <div id="test">
+    <input type="text" v-model="message">
+
+    <template v-for="m in matchedMethods" :key="m.sig">
+      <h3>{{ m.name }}</h3>
+      <pre><code>{{ m.mods }} {{ m.name }}(<template v-for="(p, pi) in m.params" :key="p.name"><template v-if="pi != 0">, </template>{{ p.type }}{{ p.dim }} {{ p.name }}</template>)</code></pre>
+      <div><p>{{ m.desc }}</p></div>
+    </template>
+  </div>
+
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script>
+  var app = new Vue({
+  el: '#test',
+  data: {
+    message: '',
+    methods: [
+              {
+          name: 'visit',
+          mods: 'public final',
+          sig: 'visit(int, int, java.lang.String, java.lang.String, java.lang.String, java.lang.String[])',
+          desc: ''/*''*/,
+          params: [
+                          {
+                name: 'version',
+                dim: '',
+                type: 'int',
+              },
+                          {
+                name: 'access',
+                dim: '',
+                type: 'int',
+              },
+                          {
+                name: 'name',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'signature',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'superName',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'interfaces',
+                dim: '[]',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'visitSource',
+          mods: 'public final',
+          sig: 'visitSource(java.lang.String, java.lang.String)',
+          desc: ''/*''*/,
+          params: [
+                          {
+                name: 'file',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'debug',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'visitOuterClass',
+          mods: 'public final',
+          sig: 'visitOuterClass(java.lang.String, java.lang.String, java.lang.String)',
+          desc: ''/*''*/,
+          params: [
+                          {
+                name: 'owner',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'name',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'desc',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'visitAnnotation',
+          mods: 'public final',
+          sig: 'visitAnnotation(java.lang.String, boolean)',
+          desc: ''/*''*/,
+          params: [
+                          {
+                name: 'desc',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'visible',
+                dim: '',
+                type: 'boolean',
+              },
+                      ]
+        },
+              {
+          name: 'visitTypeAnnotation',
+          mods: 'public final',
+          sig: 'visitTypeAnnotation(int, org.springframework.asm.TypePath, java.lang.String, boolean)',
+          desc: ''/*''*/,
+          params: [
+                          {
+                name: 'typeRef',
+                dim: '',
+                type: 'int',
+              },
+                          {
+                name: 'typePath',
+                dim: '',
+                type: 'TypePath',
+              },
+                          {
+                name: 'desc',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'visible',
+                dim: '',
+                type: 'boolean',
+              },
+                      ]
+        },
+              {
+          name: 'visitAttribute',
+          mods: 'public final',
+          sig: 'visitAttribute(org.springframework.asm.Attribute)',
+          desc: ''/*''*/,
+          params: [
+                          {
+                name: 'attr',
+                dim: '',
+                type: 'Attribute',
+              },
+                      ]
+        },
+              {
+          name: 'visitInnerClass',
+          mods: 'public final',
+          sig: 'visitInnerClass(java.lang.String, java.lang.String, java.lang.String, int)',
+          desc: ''/*''*/,
+          params: [
+                          {
+                name: 'name',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'outerName',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'innerName',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'access',
+                dim: '',
+                type: 'int',
+              },
+                      ]
+        },
+              {
+          name: 'visitField',
+          mods: 'public final',
+          sig: 'visitField(int, java.lang.String, java.lang.String, java.lang.String, java.lang.Object)',
+          desc: ''/*''*/,
+          params: [
+                          {
+                name: 'access',
+                dim: '',
+                type: 'int',
+              },
+                          {
+                name: 'name',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'desc',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'signature',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'value',
+                dim: '',
+                type: 'Object',
+              },
+                      ]
+        },
+              {
+          name: 'visitMethod',
+          mods: 'public final',
+          sig: 'visitMethod(int, java.lang.String, java.lang.String, java.lang.String, java.lang.String[])',
+          desc: ''/*''*/,
+          params: [
+                          {
+                name: 'access',
+                dim: '',
+                type: 'int',
+              },
+                          {
+                name: 'name',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'desc',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'signature',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'exceptions',
+                dim: '[]',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'visitEnd',
+          mods: 'public final',
+          sig: 'visitEnd()',
+          desc: ''/*''*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'toByteArray',
+          mods: 'public',
+          sig: 'toByteArray()',
+          desc: ''/*'Returns the bytecode of the class that was build with this class writer.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'newConst',
+          mods: 'public',
+          sig: 'newConst(java.lang.Object)',
+          desc: ''/*'Adds a number or string constant to the constant pool of the class being
+ build. Does nothing if the constant pool already contains a similar item.
+ <i>This method is intended for {@link Attribute} sub classes, and is
+ normally not needed by class generators or adapters.</i>'*/,
+          params: [
+                          {
+                name: 'cst',
+                dim: '',
+                type: 'Object',
+              },
+                      ]
+        },
+              {
+          name: 'newUTF8',
+          mods: 'public',
+          sig: 'newUTF8(java.lang.String)',
+          desc: ''/*'Adds an UTF8 string to the constant pool of the class being build. Does
+ nothing if the constant pool already contains a similar item. <i>This
+ method is intended for {@link Attribute} sub classes, and is normally not
+ needed by class generators or adapters.</i>'*/,
+          params: [
+                          {
+                name: 'value',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'newClass',
+          mods: 'public',
+          sig: 'newClass(java.lang.String)',
+          desc: ''/*'Adds a class reference to the constant pool of the class being build.
+ Does nothing if the constant pool already contains a similar item.
+ <i>This method is intended for {@link Attribute} sub classes, and is
+ normally not needed by class generators or adapters.</i>'*/,
+          params: [
+                          {
+                name: 'value',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'newMethodType',
+          mods: 'public',
+          sig: 'newMethodType(java.lang.String)',
+          desc: ''/*'Adds a method type reference to the constant pool of the class being
+ build. Does nothing if the constant pool already contains a similar item.
+ <i>This method is intended for {@link Attribute} sub classes, and is
+ normally not needed by class generators or adapters.</i>'*/,
+          params: [
+                          {
+                name: 'methodDesc',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'newHandle',
+          mods: 'public',
+          sig: 'newHandle(int, java.lang.String, java.lang.String, java.lang.String)',
+          desc: ''/*'Adds a handle to the constant pool of the class being build. Does nothing
+ if the constant pool already contains a similar item. <i>This method is
+ intended for {@link Attribute} sub classes, and is normally not needed by
+ class generators or adapters.</i>'*/,
+          params: [
+                          {
+                name: 'tag',
+                dim: '',
+                type: 'int',
+              },
+                          {
+                name: 'owner',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'name',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'desc',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'newHandle',
+          mods: 'public',
+          sig: 'newHandle(int, java.lang.String, java.lang.String, java.lang.String, boolean)',
+          desc: ''/*'Adds a handle to the constant pool of the class being build. Does nothing
+ if the constant pool already contains a similar item. <i>This method is
+ intended for {@link Attribute} sub classes, and is normally not needed by
+ class generators or adapters.</i>'*/,
+          params: [
+                          {
+                name: 'tag',
+                dim: '',
+                type: 'int',
+              },
+                          {
+                name: 'owner',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'name',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'desc',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'itf',
+                dim: '',
+                type: 'boolean',
+              },
+                      ]
+        },
+              {
+          name: 'newInvokeDynamic',
+          mods: 'public',
+          sig: 'newInvokeDynamic(java.lang.String, java.lang.String, org.springframework.asm.Handle, java.lang.Object[])',
+          desc: ''/*'Adds an invokedynamic reference to the constant pool of the class being
+ build. Does nothing if the constant pool already contains a similar item.
+ <i>This method is intended for {@link Attribute} sub classes, and is
+ normally not needed by class generators or adapters.</i>'*/,
+          params: [
+                          {
+                name: 'name',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'desc',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'bsm',
+                dim: '',
+                type: 'Handle',
+              },
+                          {
+                name: 'bsmArgs',
+                dim: '[]',
+                type: 'Object',
+              },
+                      ]
+        },
+              {
+          name: 'newField',
+          mods: 'public',
+          sig: 'newField(java.lang.String, java.lang.String, java.lang.String)',
+          desc: ''/*'Adds a field reference to the constant pool of the class being build.
+ Does nothing if the constant pool already contains a similar item.
+ <i>This method is intended for {@link Attribute} sub classes, and is
+ normally not needed by class generators or adapters.</i>'*/,
+          params: [
+                          {
+                name: 'owner',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'name',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'desc',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'newMethod',
+          mods: 'public',
+          sig: 'newMethod(java.lang.String, java.lang.String, java.lang.String, boolean)',
+          desc: ''/*'Adds a method reference to the constant pool of the class being build.
+ Does nothing if the constant pool already contains a similar item.
+ <i>This method is intended for {@link Attribute} sub classes, and is
+ normally not needed by class generators or adapters.</i>'*/,
+          params: [
+                          {
+                name: 'owner',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'name',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'desc',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'itf',
+                dim: '',
+                type: 'boolean',
+              },
+                      ]
+        },
+              {
+          name: 'newNameType',
+          mods: 'public',
+          sig: 'newNameType(java.lang.String, java.lang.String)',
+          desc: ''/*'Adds a name and type to the constant pool of the class being build. Does
+ nothing if the constant pool already contains a similar item. <i>This
+ method is intended for {@link Attribute} sub classes, and is normally not
+ needed by class generators or adapters.</i>'*/,
+          params: [
+                          {
+                name: 'name',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'desc',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'getCommonSuperClass',
+          mods: 'protected',
+          sig: 'getCommonSuperClass(java.lang.String, java.lang.String)',
+          desc: ''/*'Returns the common super type of the two given types. The default
+ implementation of this method <i>loads</i> the two given classes and uses
+ the java.lang.Class methods to find the common super class. It can be
+ overridden to compute this common super type in other ways, in particular
+ without actually loading any class, or to take into account the class
+ that is currently being generated by this ClassWriter, which can of
+ course not be loaded since it is under construction.'*/,
+          params: [
+                          {
+                name: 'type1',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'type2',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'getClassLoader',
+          mods: 'protected',
+          sig: 'getClassLoader()',
+          desc: ''/*''*/,
+          params: [
+                      ]
+        },
+          ]
+  },
+  methods: {
+    show: function() {
+      alert(this.message);
+    }
+  },
+  computed: {
+    up: function() {
+      return this.message.toUpperCase();
+    },
+    matchedMethods: function() {
+      var a = this;
+      return this.methods.filter(function(m) {
+        return m.name.toLowerCase().indexOf(a.message.toLowerCase()) !== -1;
+      });
+    }
+  }
+});  
+  </script>
+</body>
+</html>
+

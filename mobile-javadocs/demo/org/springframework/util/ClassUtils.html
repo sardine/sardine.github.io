@@ -1,0 +1,1027 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width" />
+  <title>ClassUtils</title>
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <h1>ClassUtils</h1>
+
+  org.springframework.util.ClassUtils
+
+
+  <div id="test">
+    <input type="text" v-model="message">
+
+    <template v-for="m in matchedMethods" :key="m.sig">
+      <h3>{{ m.name }}</h3>
+      <pre><code>{{ m.mods }} {{ m.name }}(<template v-for="(p, pi) in m.params" :key="p.name"><template v-if="pi != 0">, </template>{{ p.type }}{{ p.dim }} {{ p.name }}</template>)</code></pre>
+      <div><p>{{ m.desc }}</p></div>
+    </template>
+  </div>
+
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script>
+  var app = new Vue({
+  el: '#test',
+  data: {
+    message: '',
+    methods: [
+              {
+          name: 'getDefaultClassLoader',
+          mods: 'public static',
+          sig: 'getDefaultClassLoader()',
+          desc: ''/*'Return the default ClassLoader to use: typically the thread context
+ ClassLoader, if available; the ClassLoader that loaded the ClassUtils
+ class will be used as fallback.
+ <p>Call this method if you intend to use the thread context ClassLoader
+ in a scenario where you clearly prefer a non-null ClassLoader reference:
+ for example, for class path resource loading (but not necessarily for
+ {@code Class.forName}, which accepts a {@code null} ClassLoader
+ reference as well).'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'overrideThreadContextClassLoader',
+          mods: 'public static',
+          sig: 'overrideThreadContextClassLoader(java.lang.ClassLoader)',
+          desc: ''/*'Override the thread context ClassLoader with the environment's bean ClassLoader
+ if necessary, i.e. if the bean ClassLoader is not equivalent to the thread
+ context ClassLoader already.'*/,
+          params: [
+                          {
+                name: 'classLoaderToUse',
+                dim: '',
+                type: 'ClassLoader',
+              },
+                      ]
+        },
+              {
+          name: 'forName',
+          mods: 'public static',
+          sig: 'forName(java.lang.String, java.lang.ClassLoader)',
+          desc: ''/*'Replacement for {@code Class.forName()} that also returns Class instances
+ for primitives (e.g. "int") and array class names (e.g. "String[]").
+ Furthermore, it is also capable of resolving inner class names in Java source
+ style (e.g. "java.lang.Thread.State" instead of "java.lang.Thread$State").'*/,
+          params: [
+                          {
+                name: 'name',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'classLoader',
+                dim: '',
+                type: 'ClassLoader',
+              },
+                      ]
+        },
+              {
+          name: 'resolveClassName',
+          mods: 'public static',
+          sig: 'resolveClassName(java.lang.String, java.lang.ClassLoader)',
+          desc: ''/*'Resolve the given class name into a Class instance. Supports
+ primitives (like "int") and array class names (like "String[]").
+ <p>This is effectively equivalent to the {@code forName}
+ method with the same arguments, with the only difference being
+ the exceptions thrown in case of class loading failure.'*/,
+          params: [
+                          {
+                name: 'className',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'classLoader',
+                dim: '',
+                type: 'ClassLoader',
+              },
+                      ]
+        },
+              {
+          name: 'resolvePrimitiveClassName',
+          mods: 'public static',
+          sig: 'resolvePrimitiveClassName(java.lang.String)',
+          desc: ''/*'Resolve the given class name as primitive class, if appropriate,
+ according to the JVM's naming rules for primitive classes.
+ <p>Also supports the JVM's internal class names for primitive arrays.
+ Does <i>not</i> support the "[]" suffix notation for primitive arrays;
+ this is only supported by {@link #forName(String, ClassLoader)}.'*/,
+          params: [
+                          {
+                name: 'name',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'isPresent',
+          mods: 'public static',
+          sig: 'isPresent(java.lang.String, java.lang.ClassLoader)',
+          desc: ''/*'Determine whether the {@link Class} identified by the supplied name is present
+ and can be loaded. Will return {@code false} if either the class or
+ one of its dependencies is not present or cannot be loaded.'*/,
+          params: [
+                          {
+                name: 'className',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'classLoader',
+                dim: '',
+                type: 'ClassLoader',
+              },
+                      ]
+        },
+              {
+          name: 'getUserClass',
+          mods: 'public static',
+          sig: 'getUserClass(java.lang.Object)',
+          desc: ''/*'Return the user-defined class for the given instance: usually simply
+ the class of the given instance, but the original class in case of a
+ CGLIB-generated subclass.'*/,
+          params: [
+                          {
+                name: 'instance',
+                dim: '',
+                type: 'Object',
+              },
+                      ]
+        },
+              {
+          name: 'getUserClass',
+          mods: 'public static',
+          sig: 'getUserClass(java.lang.Class)',
+          desc: ''/*'Return the user-defined class for the given class: usually simply the given
+ class, but the original class in case of a CGLIB-generated subclass.'*/,
+          params: [
+                          {
+                name: 'clazz',
+                dim: '',
+                type: 'Class',
+              },
+                      ]
+        },
+              {
+          name: 'isCacheSafe',
+          mods: 'public static',
+          sig: 'isCacheSafe(java.lang.Class, java.lang.ClassLoader)',
+          desc: ''/*'Check whether the given class is cache-safe in the given context,
+ i.e. whether it is loaded by the given ClassLoader or a parent of it.'*/,
+          params: [
+                          {
+                name: 'clazz',
+                dim: '',
+                type: 'Class',
+              },
+                          {
+                name: 'classLoader',
+                dim: '',
+                type: 'ClassLoader',
+              },
+                      ]
+        },
+              {
+          name: 'getShortName',
+          mods: 'public static',
+          sig: 'getShortName(java.lang.String)',
+          desc: ''/*'Get the class name without the qualified package name.'*/,
+          params: [
+                          {
+                name: 'className',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'getShortName',
+          mods: 'public static',
+          sig: 'getShortName(java.lang.Class)',
+          desc: ''/*'Get the class name without the qualified package name.'*/,
+          params: [
+                          {
+                name: 'clazz',
+                dim: '',
+                type: 'Class',
+              },
+                      ]
+        },
+              {
+          name: 'getShortNameAsProperty',
+          mods: 'public static',
+          sig: 'getShortNameAsProperty(java.lang.Class)',
+          desc: ''/*'Return the short string name of a Java class in uncapitalized JavaBeans
+ property format. Strips the outer class name in case of an inner class.'*/,
+          params: [
+                          {
+                name: 'clazz',
+                dim: '',
+                type: 'Class',
+              },
+                      ]
+        },
+              {
+          name: 'getClassFileName',
+          mods: 'public static',
+          sig: 'getClassFileName(java.lang.Class)',
+          desc: ''/*'Determine the name of the class file, relative to the containing
+ package: e.g. "String.class"'*/,
+          params: [
+                          {
+                name: 'clazz',
+                dim: '',
+                type: 'Class',
+              },
+                      ]
+        },
+              {
+          name: 'getPackageName',
+          mods: 'public static',
+          sig: 'getPackageName(java.lang.Class)',
+          desc: ''/*'Determine the name of the package of the given class,
+ e.g. "java.lang" for the {@code java.lang.String} class.'*/,
+          params: [
+                          {
+                name: 'clazz',
+                dim: '',
+                type: 'Class',
+              },
+                      ]
+        },
+              {
+          name: 'getPackageName',
+          mods: 'public static',
+          sig: 'getPackageName(java.lang.String)',
+          desc: ''/*'Determine the name of the package of the given fully-qualified class name,
+ e.g. "java.lang" for the {@code java.lang.String} class name.'*/,
+          params: [
+                          {
+                name: 'fqClassName',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'getQualifiedName',
+          mods: 'public static',
+          sig: 'getQualifiedName(java.lang.Class)',
+          desc: ''/*'Return the qualified name of the given class: usually simply
+ the class name, but component type class name + "[]" for arrays.'*/,
+          params: [
+                          {
+                name: 'clazz',
+                dim: '',
+                type: 'Class',
+              },
+                      ]
+        },
+              {
+          name: 'getQualifiedMethodName',
+          mods: 'public static',
+          sig: 'getQualifiedMethodName(java.lang.reflect.Method)',
+          desc: ''/*'Return the qualified name of the given method, consisting of
+ fully qualified interface/class name + "." + method name.'*/,
+          params: [
+                          {
+                name: 'method',
+                dim: '',
+                type: 'Method',
+              },
+                      ]
+        },
+              {
+          name: 'getQualifiedMethodName',
+          mods: 'public static',
+          sig: 'getQualifiedMethodName(java.lang.reflect.Method, java.lang.Class)',
+          desc: ''/*'Return the qualified name of the given method, consisting of
+ fully qualified interface/class name + "." + method name.'*/,
+          params: [
+                          {
+                name: 'method',
+                dim: '',
+                type: 'Method',
+              },
+                          {
+                name: 'clazz',
+                dim: '',
+                type: 'Class',
+              },
+                      ]
+        },
+              {
+          name: 'getDescriptiveType',
+          mods: 'public static',
+          sig: 'getDescriptiveType(java.lang.Object)',
+          desc: ''/*'Return a descriptive name for the given object's type: usually simply
+ the class name, but component type class name + "[]" for arrays,
+ and an appended list of implemented interfaces for JDK proxies.'*/,
+          params: [
+                          {
+                name: 'value',
+                dim: '',
+                type: 'Object',
+              },
+                      ]
+        },
+              {
+          name: 'matchesTypeName',
+          mods: 'public static',
+          sig: 'matchesTypeName(java.lang.Class, java.lang.String)',
+          desc: ''/*'Check whether the given class matches the user-specified type name.'*/,
+          params: [
+                          {
+                name: 'clazz',
+                dim: '',
+                type: 'Class',
+              },
+                          {
+                name: 'typeName',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'hasConstructor',
+          mods: 'public static',
+          sig: 'hasConstructor(java.lang.Class, java.lang.Class[])',
+          desc: ''/*'Determine whether the given class has a public constructor with the given signature.
+ <p>Essentially translates {@code NoSuchMethodException} to "false".'*/,
+          params: [
+                          {
+                name: 'clazz',
+                dim: '',
+                type: 'Class',
+              },
+                          {
+                name: 'paramTypes',
+                dim: '[]',
+                type: 'Class',
+              },
+                      ]
+        },
+              {
+          name: 'getConstructorIfAvailable',
+          mods: 'public static',
+          sig: 'getConstructorIfAvailable(java.lang.Class, java.lang.Class[])',
+          desc: ''/*'Determine whether the given class has a public constructor with the given signature,
+ and return it if available (else return {@code null}).
+ <p>Essentially translates {@code NoSuchMethodException} to {@code null}.'*/,
+          params: [
+                          {
+                name: 'clazz',
+                dim: '',
+                type: 'Class',
+              },
+                          {
+                name: 'paramTypes',
+                dim: '[]',
+                type: 'Class',
+              },
+                      ]
+        },
+              {
+          name: 'hasMethod',
+          mods: 'public static',
+          sig: 'hasMethod(java.lang.Class, java.lang.String, java.lang.Class[])',
+          desc: ''/*'Determine whether the given class has a public method with the given signature.
+ <p>Essentially translates {@code NoSuchMethodException} to "false".'*/,
+          params: [
+                          {
+                name: 'clazz',
+                dim: '',
+                type: 'Class',
+              },
+                          {
+                name: 'methodName',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'paramTypes',
+                dim: '[]',
+                type: 'Class',
+              },
+                      ]
+        },
+              {
+          name: 'getMethod',
+          mods: 'public static',
+          sig: 'getMethod(java.lang.Class, java.lang.String, java.lang.Class[])',
+          desc: ''/*'Determine whether the given class has a public method with the given signature,
+ and return it if available (else throws an {@code IllegalStateException}).
+ <p>In case of any signature specified, only returns the method if there is a
+ unique candidate, i.e. a single public method with the specified name.
+ <p>Essentially translates {@code NoSuchMethodException} to {@code IllegalStateException}.'*/,
+          params: [
+                          {
+                name: 'clazz',
+                dim: '',
+                type: 'Class',
+              },
+                          {
+                name: 'methodName',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'paramTypes',
+                dim: '[]',
+                type: 'Class',
+              },
+                      ]
+        },
+              {
+          name: 'getMethodIfAvailable',
+          mods: 'public static',
+          sig: 'getMethodIfAvailable(java.lang.Class, java.lang.String, java.lang.Class[])',
+          desc: ''/*'Determine whether the given class has a public method with the given signature,
+ and return it if available (else return {@code null}).
+ <p>In case of any signature specified, only returns the method if there is a
+ unique candidate, i.e. a single public method with the specified name.
+ <p>Essentially translates {@code NoSuchMethodException} to {@code null}.'*/,
+          params: [
+                          {
+                name: 'clazz',
+                dim: '',
+                type: 'Class',
+              },
+                          {
+                name: 'methodName',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'paramTypes',
+                dim: '[]',
+                type: 'Class',
+              },
+                      ]
+        },
+              {
+          name: 'getMethodCountForName',
+          mods: 'public static',
+          sig: 'getMethodCountForName(java.lang.Class, java.lang.String)',
+          desc: ''/*'Return the number of methods with a given name (with any argument types),
+ for the given class and/or its superclasses. Includes non-public methods.'*/,
+          params: [
+                          {
+                name: 'clazz',
+                dim: '',
+                type: 'Class',
+              },
+                          {
+                name: 'methodName',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'hasAtLeastOneMethodWithName',
+          mods: 'public static',
+          sig: 'hasAtLeastOneMethodWithName(java.lang.Class, java.lang.String)',
+          desc: ''/*'Does the given class or one of its superclasses at least have one or more
+ methods with the supplied name (with any argument types)?
+ Includes non-public methods.'*/,
+          params: [
+                          {
+                name: 'clazz',
+                dim: '',
+                type: 'Class',
+              },
+                          {
+                name: 'methodName',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'getMostSpecificMethod',
+          mods: 'public static',
+          sig: 'getMostSpecificMethod(java.lang.reflect.Method, java.lang.Class)',
+          desc: ''/*'Given a method, which may come from an interface, and a target class used
+ in the current reflective invocation, find the corresponding target method
+ if there is one. E.g. the method may be {@code IFoo.bar()} and the
+ target class may be {@code DefaultFoo}. In this case, the method may be
+ {@code DefaultFoo.bar()}. This enables attributes on that method to be found.
+ <p><b>NOTE:</b> In contrast to {@link org.springframework.aop.support.AopUtils#getMostSpecificMethod},
+ this method does <i>not</i> resolve Java 5 bridge methods automatically.
+ Call {@link org.springframework.core.BridgeMethodResolver#findBridgedMethod}
+ if bridge method resolution is desirable (e.g. for obtaining metadata from
+ the original method definition).
+ <p><b>NOTE:</b> Since Spring 3.1.1, if Java security settings disallow reflective
+ access (e.g. calls to {@code Class#getDeclaredMethods} etc, this implementation
+ will fall back to returning the originally provided method.'*/,
+          params: [
+                          {
+                name: 'method',
+                dim: '',
+                type: 'Method',
+              },
+                          {
+                name: 'targetClass',
+                dim: '',
+                type: 'Class',
+              },
+                      ]
+        },
+              {
+          name: 'isUserLevelMethod',
+          mods: 'public static',
+          sig: 'isUserLevelMethod(java.lang.reflect.Method)',
+          desc: ''/*'Determine whether the given method is declared by the user or at least pointing to
+ a user-declared method.
+ <p>Checks {@link Method#isSynthetic()} (for implementation methods) as well as the
+ {@code GroovyObject} interface (for interface methods; on an implementation class,
+ implementations of the {@code GroovyObject} methods will be marked as synthetic anyway).
+ Note that, despite being synthetic, bridge methods ({@link Method#isBridge()}) are considered
+ as user-level methods since they are eventually pointing to a user-declared generic method.'*/,
+          params: [
+                          {
+                name: 'method',
+                dim: '',
+                type: 'Method',
+              },
+                      ]
+        },
+              {
+          name: 'getStaticMethod',
+          mods: 'public static',
+          sig: 'getStaticMethod(java.lang.Class, java.lang.String, java.lang.Class[])',
+          desc: ''/*'Return a public static method of a class.'*/,
+          params: [
+                          {
+                name: 'clazz',
+                dim: '',
+                type: 'Class',
+              },
+                          {
+                name: 'methodName',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'args',
+                dim: '[]',
+                type: 'Class',
+              },
+                      ]
+        },
+              {
+          name: 'isPrimitiveWrapper',
+          mods: 'public static',
+          sig: 'isPrimitiveWrapper(java.lang.Class)',
+          desc: ''/*'Check if the given class represents a primitive wrapper,
+ i.e. Boolean, Byte, Character, Short, Integer, Long, Float, or Double.'*/,
+          params: [
+                          {
+                name: 'clazz',
+                dim: '',
+                type: 'Class',
+              },
+                      ]
+        },
+              {
+          name: 'isPrimitiveOrWrapper',
+          mods: 'public static',
+          sig: 'isPrimitiveOrWrapper(java.lang.Class)',
+          desc: ''/*'Check if the given class represents a primitive (i.e. boolean, byte,
+ char, short, int, long, float, or double) or a primitive wrapper
+ (i.e. Boolean, Byte, Character, Short, Integer, Long, Float, or Double).'*/,
+          params: [
+                          {
+                name: 'clazz',
+                dim: '',
+                type: 'Class',
+              },
+                      ]
+        },
+              {
+          name: 'isPrimitiveArray',
+          mods: 'public static',
+          sig: 'isPrimitiveArray(java.lang.Class)',
+          desc: ''/*'Check if the given class represents an array of primitives,
+ i.e. boolean, byte, char, short, int, long, float, or double.'*/,
+          params: [
+                          {
+                name: 'clazz',
+                dim: '',
+                type: 'Class',
+              },
+                      ]
+        },
+              {
+          name: 'isPrimitiveWrapperArray',
+          mods: 'public static',
+          sig: 'isPrimitiveWrapperArray(java.lang.Class)',
+          desc: ''/*'Check if the given class represents an array of primitive wrappers,
+ i.e. Boolean, Byte, Character, Short, Integer, Long, Float, or Double.'*/,
+          params: [
+                          {
+                name: 'clazz',
+                dim: '',
+                type: 'Class',
+              },
+                      ]
+        },
+              {
+          name: 'resolvePrimitiveIfNecessary',
+          mods: 'public static',
+          sig: 'resolvePrimitiveIfNecessary(java.lang.Class)',
+          desc: ''/*'Resolve the given class if it is a primitive class,
+ returning the corresponding primitive wrapper type instead.'*/,
+          params: [
+                          {
+                name: 'clazz',
+                dim: '',
+                type: 'Class',
+              },
+                      ]
+        },
+              {
+          name: 'isAssignable',
+          mods: 'public static',
+          sig: 'isAssignable(java.lang.Class, java.lang.Class)',
+          desc: ''/*'Check if the right-hand side type may be assigned to the left-hand side
+ type, assuming setting by reflection. Considers primitive wrapper
+ classes as assignable to the corresponding primitive types.'*/,
+          params: [
+                          {
+                name: 'lhsType',
+                dim: '',
+                type: 'Class',
+              },
+                          {
+                name: 'rhsType',
+                dim: '',
+                type: 'Class',
+              },
+                      ]
+        },
+              {
+          name: 'isAssignableValue',
+          mods: 'public static',
+          sig: 'isAssignableValue(java.lang.Class, java.lang.Object)',
+          desc: ''/*'Determine if the given type is assignable from the given value,
+ assuming setting by reflection. Considers primitive wrapper classes
+ as assignable to the corresponding primitive types.'*/,
+          params: [
+                          {
+                name: 'type',
+                dim: '',
+                type: 'Class',
+              },
+                          {
+                name: 'value',
+                dim: '',
+                type: 'Object',
+              },
+                      ]
+        },
+              {
+          name: 'convertResourcePathToClassName',
+          mods: 'public static',
+          sig: 'convertResourcePathToClassName(java.lang.String)',
+          desc: ''/*'Convert a "/"-based resource path to a "."-based fully qualified class name.'*/,
+          params: [
+                          {
+                name: 'resourcePath',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'convertClassNameToResourcePath',
+          mods: 'public static',
+          sig: 'convertClassNameToResourcePath(java.lang.String)',
+          desc: ''/*'Convert a "."-based fully qualified class name to a "/"-based resource path.'*/,
+          params: [
+                          {
+                name: 'className',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'addResourcePathToPackagePath',
+          mods: 'public static',
+          sig: 'addResourcePathToPackagePath(java.lang.Class, java.lang.String)',
+          desc: ''/*'Return a path suitable for use with {@code ClassLoader.getResource}
+ (also suitable for use with {@code Class.getResource} by prepending a
+ slash ('/') to the return value). Built by taking the package of the specified
+ class file, converting all dots ('.') to slashes ('/'), adding a trailing slash
+ if necessary, and concatenating the specified resource name to this.
+ <br/>As such, this function may be used to build a path suitable for
+ loading a resource file that is in the same package as a class file,
+ although {@link org.springframework.core.io.ClassPathResource} is usually
+ even more convenient.'*/,
+          params: [
+                          {
+                name: 'clazz',
+                dim: '',
+                type: 'Class',
+              },
+                          {
+                name: 'resourceName',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'classPackageAsResourcePath',
+          mods: 'public static',
+          sig: 'classPackageAsResourcePath(java.lang.Class)',
+          desc: ''/*'Given an input class object, return a string which consists of the
+ class's package name as a pathname, i.e., all dots ('.') are replaced by
+ slashes ('/'). Neither a leading nor trailing slash is added. The result
+ could be concatenated with a slash and the name of a resource and fed
+ directly to {@code ClassLoader.getResource()}. For it to be fed to
+ {@code Class.getResource} instead, a leading slash would also have
+ to be prepended to the returned value.'*/,
+          params: [
+                          {
+                name: 'clazz',
+                dim: '',
+                type: 'Class',
+              },
+                      ]
+        },
+              {
+          name: 'classNamesToString',
+          mods: 'public static',
+          sig: 'classNamesToString(java.lang.Class[])',
+          desc: ''/*'Build a String that consists of the names of the classes/interfaces
+ in the given array.
+ <p>Basically like {@code AbstractCollection.toString()}, but stripping
+ the "class "/"interface " prefix before every class name.'*/,
+          params: [
+                          {
+                name: 'classes',
+                dim: '[]',
+                type: 'Class',
+              },
+                      ]
+        },
+              {
+          name: 'classNamesToString',
+          mods: 'public static',
+          sig: 'classNamesToString(java.util.Collection)',
+          desc: ''/*'Build a String that consists of the names of the classes/interfaces
+ in the given collection.
+ <p>Basically like {@code AbstractCollection.toString()}, but stripping
+ the "class "/"interface " prefix before every class name.'*/,
+          params: [
+                          {
+                name: 'classes',
+                dim: '',
+                type: 'Collection',
+              },
+                      ]
+        },
+              {
+          name: 'toClassArray',
+          mods: 'public static',
+          sig: 'toClassArray(java.util.Collection)',
+          desc: ''/*'Copy the given Collection into a Class array.
+ The Collection must contain Class elements only.'*/,
+          params: [
+                          {
+                name: 'collection',
+                dim: '',
+                type: 'Collection',
+              },
+                      ]
+        },
+              {
+          name: 'getAllInterfaces',
+          mods: 'public static',
+          sig: 'getAllInterfaces(java.lang.Object)',
+          desc: ''/*'Return all interfaces that the given instance implements as array,
+ including ones implemented by superclasses.'*/,
+          params: [
+                          {
+                name: 'instance',
+                dim: '',
+                type: 'Object',
+              },
+                      ]
+        },
+              {
+          name: 'getAllInterfacesForClass',
+          mods: 'public static',
+          sig: 'getAllInterfacesForClass(java.lang.Class)',
+          desc: ''/*'Return all interfaces that the given class implements as array,
+ including ones implemented by superclasses.
+ <p>If the class itself is an interface, it gets returned as sole interface.'*/,
+          params: [
+                          {
+                name: 'clazz',
+                dim: '',
+                type: 'Class',
+              },
+                      ]
+        },
+              {
+          name: 'getAllInterfacesForClass',
+          mods: 'public static',
+          sig: 'getAllInterfacesForClass(java.lang.Class, java.lang.ClassLoader)',
+          desc: ''/*'Return all interfaces that the given class implements as array,
+ including ones implemented by superclasses.
+ <p>If the class itself is an interface, it gets returned as sole interface.'*/,
+          params: [
+                          {
+                name: 'clazz',
+                dim: '',
+                type: 'Class',
+              },
+                          {
+                name: 'classLoader',
+                dim: '',
+                type: 'ClassLoader',
+              },
+                      ]
+        },
+              {
+          name: 'getAllInterfacesAsSet',
+          mods: 'public static',
+          sig: 'getAllInterfacesAsSet(java.lang.Object)',
+          desc: ''/*'Return all interfaces that the given instance implements as Set,
+ including ones implemented by superclasses.'*/,
+          params: [
+                          {
+                name: 'instance',
+                dim: '',
+                type: 'Object',
+              },
+                      ]
+        },
+              {
+          name: 'getAllInterfacesForClassAsSet',
+          mods: 'public static',
+          sig: 'getAllInterfacesForClassAsSet(java.lang.Class)',
+          desc: ''/*'Return all interfaces that the given class implements as Set,
+ including ones implemented by superclasses.
+ <p>If the class itself is an interface, it gets returned as sole interface.'*/,
+          params: [
+                          {
+                name: 'clazz',
+                dim: '',
+                type: 'Class',
+              },
+                      ]
+        },
+              {
+          name: 'getAllInterfacesForClassAsSet',
+          mods: 'public static',
+          sig: 'getAllInterfacesForClassAsSet(java.lang.Class, java.lang.ClassLoader)',
+          desc: ''/*'Return all interfaces that the given class implements as Set,
+ including ones implemented by superclasses.
+ <p>If the class itself is an interface, it gets returned as sole interface.'*/,
+          params: [
+                          {
+                name: 'clazz',
+                dim: '',
+                type: 'Class',
+              },
+                          {
+                name: 'classLoader',
+                dim: '',
+                type: 'ClassLoader',
+              },
+                      ]
+        },
+              {
+          name: 'createCompositeInterface',
+          mods: 'public static',
+          sig: 'createCompositeInterface(java.lang.Class[], java.lang.ClassLoader)',
+          desc: ''/*'Create a composite interface Class for the given interfaces,
+ implementing the given interfaces in one single Class.
+ <p>This implementation builds a JDK proxy class for the given interfaces.'*/,
+          params: [
+                          {
+                name: 'interfaces',
+                dim: '[]',
+                type: 'Class',
+              },
+                          {
+                name: 'classLoader',
+                dim: '',
+                type: 'ClassLoader',
+              },
+                      ]
+        },
+              {
+          name: 'determineCommonAncestor',
+          mods: 'public static',
+          sig: 'determineCommonAncestor(java.lang.Class, java.lang.Class)',
+          desc: ''/*'Determine the common ancestor of the given classes, if any.'*/,
+          params: [
+                          {
+                name: 'clazz1',
+                dim: '',
+                type: 'Class',
+              },
+                          {
+                name: 'clazz2',
+                dim: '',
+                type: 'Class',
+              },
+                      ]
+        },
+              {
+          name: 'isVisible',
+          mods: 'public static',
+          sig: 'isVisible(java.lang.Class, java.lang.ClassLoader)',
+          desc: ''/*'Check whether the given class is visible in the given ClassLoader.'*/,
+          params: [
+                          {
+                name: 'clazz',
+                dim: '',
+                type: 'Class',
+              },
+                          {
+                name: 'classLoader',
+                dim: '',
+                type: 'ClassLoader',
+              },
+                      ]
+        },
+              {
+          name: 'isCglibProxy',
+          mods: 'public static',
+          sig: 'isCglibProxy(java.lang.Object)',
+          desc: ''/*'Check whether the given object is a CGLIB proxy.'*/,
+          params: [
+                          {
+                name: 'object',
+                dim: '',
+                type: 'Object',
+              },
+                      ]
+        },
+              {
+          name: 'isCglibProxyClass',
+          mods: 'public static',
+          sig: 'isCglibProxyClass(java.lang.Class)',
+          desc: ''/*'Check whether the specified class is a CGLIB-generated class.'*/,
+          params: [
+                          {
+                name: 'clazz',
+                dim: '',
+                type: 'Class',
+              },
+                      ]
+        },
+              {
+          name: 'isCglibProxyClassName',
+          mods: 'public static',
+          sig: 'isCglibProxyClassName(java.lang.String)',
+          desc: ''/*'Check whether the specified class name is a CGLIB-generated class.'*/,
+          params: [
+                          {
+                name: 'className',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+          ]
+  },
+  methods: {
+    show: function() {
+      alert(this.message);
+    }
+  },
+  computed: {
+    up: function() {
+      return this.message.toUpperCase();
+    },
+    matchedMethods: function() {
+      var a = this;
+      return this.methods.filter(function(m) {
+        return m.name.toLowerCase().indexOf(a.message.toLowerCase()) !== -1;
+      });
+    }
+  }
+});  
+  </script>
+</body>
+</html>
+

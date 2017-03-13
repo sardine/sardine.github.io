@@ -1,0 +1,171 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width" />
+  <title>SimpleNamespaceContext</title>
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <h1>SimpleNamespaceContext</h1>
+
+  org.springframework.util.xml.SimpleNamespaceContext
+
+
+  <div id="test">
+    <input type="text" v-model="message">
+
+    <template v-for="m in matchedMethods" :key="m.sig">
+      <h3>{{ m.name }}</h3>
+      <pre><code>{{ m.mods }} {{ m.name }}(<template v-for="(p, pi) in m.params" :key="p.name"><template v-if="pi != 0">, </template>{{ p.type }}{{ p.dim }} {{ p.name }}</template>)</code></pre>
+      <div><p>{{ m.desc }}</p></div>
+    </template>
+  </div>
+
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script>
+  var app = new Vue({
+  el: '#test',
+  data: {
+    message: '',
+    methods: [
+              {
+          name: 'getNamespaceURI',
+          mods: 'public',
+          sig: 'getNamespaceURI(java.lang.String)',
+          desc: ''/*''*/,
+          params: [
+                          {
+                name: 'prefix',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'getPrefix',
+          mods: 'public',
+          sig: 'getPrefix(java.lang.String)',
+          desc: ''/*''*/,
+          params: [
+                          {
+                name: 'namespaceUri',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'getPrefixes',
+          mods: 'public',
+          sig: 'getPrefixes(java.lang.String)',
+          desc: ''/*''*/,
+          params: [
+                          {
+                name: 'namespaceUri',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'setBindings',
+          mods: 'public',
+          sig: 'setBindings(java.util.Map)',
+          desc: ''/*'Set the bindings for this namespace context.
+ The supplied map must consist of string key value pairs.'*/,
+          params: [
+                          {
+                name: 'bindings',
+                dim: '',
+                type: 'Map',
+              },
+                      ]
+        },
+              {
+          name: 'bindDefaultNamespaceUri',
+          mods: 'public',
+          sig: 'bindDefaultNamespaceUri(java.lang.String)',
+          desc: ''/*'Bind the given namespace as default namespace.'*/,
+          params: [
+                          {
+                name: 'namespaceUri',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'bindNamespaceUri',
+          mods: 'public',
+          sig: 'bindNamespaceUri(java.lang.String, java.lang.String)',
+          desc: ''/*'Bind the given prefix to the given namespace.'*/,
+          params: [
+                          {
+                name: 'prefix',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'namespaceUri',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'removeBinding',
+          mods: 'public',
+          sig: 'removeBinding(java.lang.String)',
+          desc: ''/*'Remove the given prefix from this context.'*/,
+          params: [
+                          {
+                name: 'prefix',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'clear',
+          mods: 'public',
+          sig: 'clear()',
+          desc: ''/*'Remove all declared prefixes.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'getBoundPrefixes',
+          mods: 'public',
+          sig: 'getBoundPrefixes()',
+          desc: ''/*'Return all declared prefixes.'*/,
+          params: [
+                      ]
+        },
+          ]
+  },
+  methods: {
+    show: function() {
+      alert(this.message);
+    }
+  },
+  computed: {
+    up: function() {
+      return this.message.toUpperCase();
+    },
+    matchedMethods: function() {
+      var a = this;
+      return this.methods.filter(function(m) {
+        return m.name.toLowerCase().indexOf(a.message.toLowerCase()) !== -1;
+      });
+    }
+  }
+});  
+  </script>
+</body>
+</html>
+

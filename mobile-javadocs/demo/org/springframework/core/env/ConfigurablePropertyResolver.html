@@ -1,0 +1,176 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width" />
+  <title>ConfigurablePropertyResolver</title>
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <h1>ConfigurablePropertyResolver</h1>
+
+  org.springframework.core.env.ConfigurablePropertyResolver
+
+
+  <div id="test">
+    <input type="text" v-model="message">
+
+    <template v-for="m in matchedMethods" :key="m.sig">
+      <h3>{{ m.name }}</h3>
+      <pre><code>{{ m.mods }} {{ m.name }}(<template v-for="(p, pi) in m.params" :key="p.name"><template v-if="pi != 0">, </template>{{ p.type }}{{ p.dim }} {{ p.name }}</template>)</code></pre>
+      <div><p>{{ m.desc }}</p></div>
+    </template>
+  </div>
+
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script>
+  var app = new Vue({
+  el: '#test',
+  data: {
+    message: '',
+    methods: [
+              {
+          name: 'getConversionService',
+          mods: 'public',
+          sig: 'getConversionService()',
+          desc: ''/*'Return the {@link ConfigurableConversionService} used when performing type
+ conversions on properties.
+ <p>The configurable nature of the returned conversion service allows for
+ the convenient addition and removal of individual {@code Converter} instances:
+ <pre class="code">
+ ConfigurableConversionService cs = env.getConversionService();
+ cs.addConverter(new FooConverter());
+ </pre>'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'setConversionService',
+          mods: 'public',
+          sig: 'setConversionService(org.springframework.core.convert.support.ConfigurableConversionService)',
+          desc: ''/*'Set the {@link ConfigurableConversionService} to be used when performing type
+ conversions on properties.
+ <p><strong>Note:</strong> as an alternative to fully replacing the
+ {@code ConversionService}, consider adding or removing individual
+ {@code Converter} instances by drilling into {@link #getConversionService()}
+ and calling methods such as {@code #addConverter}.'*/,
+          params: [
+                          {
+                name: 'conversionService',
+                dim: '',
+                type: 'ConfigurableConversionService',
+              },
+                      ]
+        },
+              {
+          name: 'setPlaceholderPrefix',
+          mods: 'public',
+          sig: 'setPlaceholderPrefix(java.lang.String)',
+          desc: ''/*'Set the prefix that placeholders replaced by this resolver must begin with.'*/,
+          params: [
+                          {
+                name: 'placeholderPrefix',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'setPlaceholderSuffix',
+          mods: 'public',
+          sig: 'setPlaceholderSuffix(java.lang.String)',
+          desc: ''/*'Set the suffix that placeholders replaced by this resolver must end with.'*/,
+          params: [
+                          {
+                name: 'placeholderSuffix',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'setValueSeparator',
+          mods: 'public',
+          sig: 'setValueSeparator(java.lang.String)',
+          desc: ''/*'Specify the separating character between the placeholders replaced by this
+ resolver and their associated default value, or {@code null} if no such
+ special character should be processed as a value separator.'*/,
+          params: [
+                          {
+                name: 'valueSeparator',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'setIgnoreUnresolvableNestedPlaceholders',
+          mods: 'public',
+          sig: 'setIgnoreUnresolvableNestedPlaceholders(boolean)',
+          desc: ''/*'Set whether to throw an exception when encountering an unresolvable placeholder
+ nested within the value of a given property. A {@code false} value indicates strict
+ resolution, i.e. that an exception will be thrown. A {@code true} value indicates
+ that unresolvable nested placeholders should be passed through in their unresolved
+ ${...} form.
+ <p>Implementations of {@link #getProperty(String)} and its variants must inspect
+ the value set here to determine correct behavior when property values contain
+ unresolvable placeholders.'*/,
+          params: [
+                          {
+                name: 'ignoreUnresolvableNestedPlaceholders',
+                dim: '',
+                type: 'boolean',
+              },
+                      ]
+        },
+              {
+          name: 'setRequiredProperties',
+          mods: 'public',
+          sig: 'setRequiredProperties(java.lang.String[])',
+          desc: ''/*'Specify which properties must be present, to be verified by
+ {@link #validateRequiredProperties()}.'*/,
+          params: [
+                          {
+                name: 'requiredProperties',
+                dim: '[]',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'validateRequiredProperties',
+          mods: 'public',
+          sig: 'validateRequiredProperties()',
+          desc: ''/*'Validate that each of the properties specified by
+ {@link #setRequiredProperties} is present and resolves to a
+ non-{@code null} value.'*/,
+          params: [
+                      ]
+        },
+          ]
+  },
+  methods: {
+    show: function() {
+      alert(this.message);
+    }
+  },
+  computed: {
+    up: function() {
+      return this.message.toUpperCase();
+    },
+    matchedMethods: function() {
+      var a = this;
+      return this.methods.filter(function(m) {
+        return m.name.toLowerCase().indexOf(a.message.toLowerCase()) !== -1;
+      });
+    }
+  }
+});  
+  </script>
+</body>
+</html>
+

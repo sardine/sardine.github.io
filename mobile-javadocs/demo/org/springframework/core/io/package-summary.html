@@ -1,0 +1,259 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width" />
+  <title>org.springframework.core.io</title>
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
+</head>
+
+<body>
+  <a class="button" href="../../../../index.html">Index</a>
+  <hr>
+  
+  <h1>org.springframework.core.io</h1>
+
+  <div id="test">
+    <input type="text" v-model="message">
+
+    <div v-if="matchedInterfaces.length != 0">
+        <h2>インタフェース</h2>
+        <dl>
+          <template v-for="c in matchedInterfaces" :key="c.name">
+            <dt><a v-bind:href="c.href">{{ c.name }}</a></dt>
+            <dd v-html="c.desc"></dd>
+          </template>
+        </dl>
+      </div>
+      
+      <div v-if="matchedClasses.length != 0">
+        <h2>クラス</h2>
+        <dl>
+          <template v-for="c in matchedClasses" :key="c.name">
+            <dt><a v-bind:href="c.href">{{ c.name }}</a></dt>
+            <dd v-html="c.desc"></dd>
+          </template>
+        </dl>
+      </div>
+        
+      <div v-if="matchedEnums.length != 0">
+        <h2>列挙型</h2>
+        <dl>
+          <template v-for="c in matchedEnums" :key="c.name">
+            <dt><a v-bind:href="c.href">{{ c.name }}</a></dt>
+            <dd v-html="c.desc"></dd>
+          </template>
+        </dl>
+      </div>
+        
+      <div v-if="matchedExceptions.length != 0">
+        <h2>例外</h2>
+        <dl>
+          <template v-for="c in matchedExceptions" :key="c.name">
+            <dt><a v-bind:href="c.href">{{ c.name }}</a></dt>
+            <dd v-html="c.desc"></dd>
+          </template>
+        </dl>
+      </div>
+        
+      <div v-if="matchedErrors.length != 0">
+        <h2>エラー</h2>
+        <dl>
+          <template v-for="c in matchedErrors" :key="c.name">
+            <dt><a v-bind:href="c.href">{{ c.name }}</a></dt>
+            <dd v-html="c.desc"></dd>
+          </template>
+        </dl>
+      </div>
+        
+      <div v-if="matchedAnnotations.length != 0">
+        <h2>アノテーション</h2>
+        <dl>
+          <template v-for="c in matchedAnnotations" :key="c.name">
+            <dt><a v-bind:href="c.href">{{ c.name }}</a></dt>
+            <dd v-html="c.desc"></dd>
+          </template>
+        </dl>
+      </div>
+      </div>
+  
+
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script>
+          var app = new Vue({
+        el: '#test',
+        data: {
+          message: '',
+          interfaces: [
+                          {
+                name: 'WritableResource',
+                desc: 'Extended interface for a resource that supports writing to it.',
+                href: 'WritableResource.html'
+              },
+                          {
+                name: 'ResourceLoader',
+                desc: 'Strategy interface for loading resources (e.. class path or file system\u000A resources).',
+                href: 'ResourceLoader.html'
+              },
+                          {
+                name: 'Resource',
+                desc: 'Interface for a resource descriptor that abstracts from the actual\u000A type of underlying resource, such as a file or class path resource.',
+                href: 'Resource.html'
+              },
+                          {
+                name: 'ProtocolResolver',
+                desc: 'A resolution strategy for protocol-specific resource handles.',
+                href: 'ProtocolResolver.html'
+              },
+                          {
+                name: 'InputStreamSource',
+                desc: 'Simple interface for objects that are sources for an InputStream.',
+                href: 'InputStreamSource.html'
+              },
+                          {
+                name: 'ContextResource',
+                desc: 'Extended interface for a resource that is loaded from an enclosing\u000A \u0027context\u0027, e.g. from a javax.servlet.ServletContext but also\u000A from plain classpath paths or relative file system paths (specified\u000A without an explicit prefix, hence applying relative to the local\u000A ResourceLoader\u0027s context).',
+                href: 'ContextResource.html'
+              },
+                      ],
+          classes: [
+                          {
+                name: 'VfsUtils',
+                desc: 'Utility for detecting and accessing JBoss VFS in the classpath.',
+                href: 'VfsUtils.html'
+              },
+                          {
+                name: 'VfsResource',
+                desc: 'JBoss VFS based Resource implementation.',
+                href: 'VfsResource.html'
+              },
+                          {
+                name: 'UrlResource',
+                desc: 'Resource implementation for java.net.URL locators.',
+                href: 'UrlResource.html'
+              },
+                          {
+                name: 'ResourceEditor',
+                desc: 'java.beans.PropertyEditor Editor for Resource\u000A descriptors, to automatically convert String locations\u000A e.g.',
+                href: 'ResourceEditor.html'
+              },
+                          {
+                name: 'PathResource',
+                desc: 'Resource implementation for java.nio.file.Path handles.',
+                href: 'PathResource.html'
+              },
+                          {
+                name: 'InputStreamResource',
+                desc: 'Resource implementation for a given InputStream.',
+                href: 'InputStreamResource.html'
+              },
+                          {
+                name: 'FileSystemResourceLoader',
+                desc: 'ResourceLoader implementation that resolves plain paths as\u000A file system resources rather than as class path resources\u000A (the latter is DefaultResourceLoader\u0027s default strategy).',
+                href: 'FileSystemResourceLoader.html'
+              },
+                          {
+                name: 'FileSystemResource',
+                desc: 'Resource implementation for java.io.File handles.',
+                href: 'FileSystemResource.html'
+              },
+                          {
+                name: 'DescriptiveResource',
+                desc: 'Simple Resource implementation that holds a resource description\u000A but does not point to an actually readable resource.',
+                href: 'DescriptiveResource.html'
+              },
+                          {
+                name: 'DefaultResourceLoader',
+                desc: 'Default implementation of the ResourceLoader interface.',
+                href: 'DefaultResourceLoader.html'
+              },
+                          {
+                name: 'DefaultResourceLoader.ClassPathContextResource',
+                desc: 'ClassPathResource that explicitly expresses a context-relative path\u000A through implementing the ContextResource interface.',
+                href: 'DefaultResourceLoader.ClassPathContextResource.html'
+              },
+                          {
+                name: 'ClassRelativeResourceLoader',
+                desc: 'ResourceLoader implementation that interprets plain resource paths\u000A as relative to a given java.lang.Class.',
+                href: 'ClassRelativeResourceLoader.html'
+              },
+                          {
+                name: 'ClassPathResource',
+                desc: 'Resource implementation for class path resources.',
+                href: 'ClassPathResource.html'
+              },
+                          {
+                name: 'ByteArrayResource',
+                desc: 'Resource implementation for a given byte array.',
+                href: 'ByteArrayResource.html'
+              },
+                          {
+                name: 'AbstractResource',
+                desc: 'Convenience base class for Resource implementations,\u000A pre-implementing typical behavior.',
+                href: 'AbstractResource.html'
+              },
+                          {
+                name: 'AbstractFileResolvingResource',
+                desc: 'Abstract base class for resources which resolve URLs into File references,\u000A such as UrlResource or ClassPathResource.',
+                href: 'AbstractFileResolvingResource.html'
+              },
+                      ],
+          enums: [
+                      ],
+          exceptions: [
+                      ],
+          errors: [
+                      ],
+          annotations: [
+                      ]
+        },
+        methods: {
+        },
+        computed: {
+          up: function() {
+            return this.message.toUpperCase();
+          },
+          matchedInterfaces: function() {
+            var a = this;
+            return this.interfaces.filter(function(c) {
+              return c.name.toLowerCase().indexOf(a.message.toLowerCase()) !== -1;
+            });
+          },
+          matchedClasses: function() {
+            var a = this;
+            return this.classes.filter(function(c) {
+              return c.name.toLowerCase().indexOf(a.message.toLowerCase()) !== -1;
+            });
+          },
+          matchedEnums: function() {
+            var a = this;
+            return this.enums.filter(function(c) {
+              return c.name.toLowerCase().indexOf(a.message.toLowerCase()) !== -1;
+            });
+          },
+          matchedExceptions: function() {
+            var a = this;
+            return this.exceptions.filter(function(c) {
+              return c.name.toLowerCase().indexOf(a.message.toLowerCase()) !== -1;
+            });
+          },
+          matchedErrors: function() {
+            var a = this;
+            return this.errors.filter(function(c) {
+              return c.name.toLowerCase().indexOf(a.message.toLowerCase()) !== -1;
+            });
+          },
+          matchedAnnotations: function() {
+            var a = this;
+            return this.annotations.filter(function(c) {
+              return c.name.toLowerCase().indexOf(a.message.toLowerCase()) !== -1;
+            });
+          }
+        }
+      });  
+      </script>
+</body>
+</html>
+

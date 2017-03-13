@@ -1,0 +1,369 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width" />
+  <title>org.springframework.core</title>
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
+</head>
+
+<body>
+  <a class="button" href="../../../index.html">Index</a>
+  <hr>
+  
+  <h1>org.springframework.core</h1>
+
+  <div id="test">
+    <input type="text" v-model="message">
+
+    <div v-if="matchedInterfaces.length != 0">
+        <h2>インタフェース</h2>
+        <dl>
+          <template v-for="c in matchedInterfaces" :key="c.name">
+            <dt><a v-bind:href="c.href">{{ c.name }}</a></dt>
+            <dd v-html="c.desc"></dd>
+          </template>
+        </dl>
+      </div>
+      
+      <div v-if="matchedClasses.length != 0">
+        <h2>クラス</h2>
+        <dl>
+          <template v-for="c in matchedClasses" :key="c.name">
+            <dt><a v-bind:href="c.href">{{ c.name }}</a></dt>
+            <dd v-html="c.desc"></dd>
+          </template>
+        </dl>
+      </div>
+        
+      <div v-if="matchedEnums.length != 0">
+        <h2>列挙型</h2>
+        <dl>
+          <template v-for="c in matchedEnums" :key="c.name">
+            <dt><a v-bind:href="c.href">{{ c.name }}</a></dt>
+            <dd v-html="c.desc"></dd>
+          </template>
+        </dl>
+      </div>
+        
+      <div v-if="matchedExceptions.length != 0">
+        <h2>例外</h2>
+        <dl>
+          <template v-for="c in matchedExceptions" :key="c.name">
+            <dt><a v-bind:href="c.href">{{ c.name }}</a></dt>
+            <dd v-html="c.desc"></dd>
+          </template>
+        </dl>
+      </div>
+        
+      <div v-if="matchedErrors.length != 0">
+        <h2>エラー</h2>
+        <dl>
+          <template v-for="c in matchedErrors" :key="c.name">
+            <dt><a v-bind:href="c.href">{{ c.name }}</a></dt>
+            <dd v-html="c.desc"></dd>
+          </template>
+        </dl>
+      </div>
+        
+      <div v-if="matchedAnnotations.length != 0">
+        <h2>アノテーション</h2>
+        <dl>
+          <template v-for="c in matchedAnnotations" :key="c.name">
+            <dt><a v-bind:href="c.href">{{ c.name }}</a></dt>
+            <dd v-html="c.desc"></dd>
+          </template>
+        </dl>
+      </div>
+      </div>
+  
+
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script>
+          var app = new Vue({
+        el: '#test',
+        data: {
+          message: '',
+          interfaces: [
+                          {
+                name: 'SmartClassLoader',
+                desc: 'Interface to be implemented by a reloading-aware ClassLoader\u000A (e.g. a Groovy-based ClassLoader).',
+                href: 'SmartClassLoader.html'
+              },
+                          {
+                name: 'ResolvableTypeProvider',
+                desc: 'Any object can implement this interface to provide its actual ResolvableType.',
+                href: 'ResolvableTypeProvider.html'
+              },
+                          {
+                name: 'PriorityOrdered',
+                desc: 'Extension of the Ordered interface, expressing a \u003Cem\u003Epriority\u003C\u002Fem\u003E\u000A ordering: order values expressed by PriorityOrdered objects\u000A always apply before same order values expressed by \u003Cem\u003Eplain\u003C\u002Fem\u003E\u000A Ordered objects.',
+                href: 'PriorityOrdered.html'
+              },
+                          {
+                name: 'ParameterNameDiscoverer',
+                desc: 'Interface to discover parameter names for methods and constructors.',
+                href: 'ParameterNameDiscoverer.html'
+              },
+                          {
+                name: 'Ordered',
+                desc: 'Ordered is an interface that can be implemented by objects that\u000A should be \u003Cem\u003Eorderable\u003C\u002Fem\u003E, for example in a Collection.',
+                href: 'Ordered.html'
+              },
+                          {
+                name: 'OrderComparator.OrderSourceProvider',
+                desc: 'Strategy interface to provide an order source for a given object.',
+                href: 'OrderComparator.OrderSourceProvider.html'
+              },
+                          {
+                name: 'MethodIntrospector.MetadataLookup',
+                desc: 'A callback interface for metadata lookup on a given method.',
+                href: 'MethodIntrospector.MetadataLookup.html'
+              },
+                          {
+                name: 'InfrastructureProxy',
+                desc: 'Interface to be implemented by transparent resource proxies that need to be\u000A considered as equal to the underlying resource, for example for consistent\u000A lookup key comparisons.',
+                href: 'InfrastructureProxy.html'
+              },
+                          {
+                name: 'DecoratingProxy',
+                desc: 'Interface to be implemented by decorating proxies, in particular Spring AOP\u000A proxies but potentially also custom proxies with decorator semantics.',
+                href: 'DecoratingProxy.html'
+              },
+                          {
+                name: 'AttributeAccessor',
+                desc: 'Interface defining a generic contract for attaching and accessing metadata\u000A to\u002Ffrom arbitrary objects.',
+                href: 'AttributeAccessor.html'
+              },
+                          {
+                name: 'AliasRegistry',
+                desc: 'Common interface for managing aliases.',
+                href: 'AliasRegistry.html'
+              },
+                      ],
+          classes: [
+                          {
+                name: 'StandardReflectionParameterNameDiscoverer',
+                desc: 'ParameterNameDiscoverer implementation which uses JDK 8\u0027s reflection facilities\u000A for introspecting parameter names (based on the \u0022-parameters\u0022 compiler flag).',
+                href: 'StandardReflectionParameterNameDiscoverer.html'
+              },
+                          {
+                name: 'SpringVersion',
+                desc: 'Class that exposes the Spring version.',
+                href: 'SpringVersion.html'
+              },
+                          {
+                name: 'SpringProperties',
+                desc: 'Static holder for local Spring properties, i.e. defined at the Spring library level.',
+                href: 'SpringProperties.html'
+              },
+                          {
+                name: 'SimpleAliasRegistry',
+                desc: 'Simple implementation of the AliasRegistry interface.',
+                href: 'SimpleAliasRegistry.html'
+              },
+                          {
+                name: 'ResolvableType',
+                desc: 'Encapsulates a Java java.lang.reflect.Type, providing access to\u000A #getSuperType() supertypes, #getInterfaces() interfaces, and\u000A #getGeneric(int...) generic parameters along with the ability to ultimately\u000A #resolve() resolve to a java.lang.Class.',
+                href: 'ResolvableType.html'
+              },
+                          {
+                name: 'ReactiveTypeDescriptor',
+                desc: 'Descriptor for a reactive type with information its stream semantics, i.e.',
+                href: 'ReactiveTypeDescriptor.html'
+              },
+                          {
+                name: 'ReactiveAdapterRegistry',
+                desc: 'A registry of adapters to adapt a Reactive Streams Publisher to\u002Ffrom\u000A various async\u002Freactive types such as CompletableFuture, RxJava\u000A Observable, and others.',
+                href: 'ReactiveAdapterRegistry.html'
+              },
+                          {
+                name: 'ReactiveAdapter',
+                desc: 'Adapt a Reactive Streams Publisher to and from an async\u002Freactive type\u000A such as CompletableFuture, an RxJava Observable, etc.',
+                href: 'ReactiveAdapter.html'
+              },
+                          {
+                name: 'PrioritizedParameterNameDiscoverer',
+                desc: 'ParameterNameDiscoverer implementation that tries several discoverer\u000A delegates in succession.',
+                href: 'PrioritizedParameterNameDiscoverer.html'
+              },
+                          {
+                name: 'ParameterizedTypeReference',
+                desc: 'The purpose of this class is to enable capturing and passing a generic\u000A Type.',
+                href: 'ParameterizedTypeReference.html'
+              },
+                          {
+                name: 'OverridingClassLoader',
+                desc: 'ClassLoader that does \u003Ci\u003Enot\u003C\u002Fi\u003E always delegate to the parent loader\u000A as normal class loaders do.',
+                href: 'OverridingClassLoader.html'
+              },
+                          {
+                name: 'OrderComparator',
+                desc: 'Comparator implementation for Ordered objects, sorting\u000A by order value ascending, respectively by priority descending.',
+                href: 'OrderComparator.html'
+              },
+                          {
+                name: 'NestedExceptionUtils',
+                desc: 'Helper class for implementing exception classes which are capable of\u000A holding nested exceptions.',
+                href: 'NestedExceptionUtils.html'
+              },
+                          {
+                name: 'NamedThreadLocal',
+                desc: 'ThreadLocal subclass that exposes a specified name\u000A as #toString() result (allowing for introspection).',
+                href: 'NamedThreadLocal.html'
+              },
+                          {
+                name: 'NamedInheritableThreadLocal',
+                desc: 'InheritableThreadLocal subclass that exposes a specified name\u000A as #toString() result (allowing for introspection).',
+                href: 'NamedInheritableThreadLocal.html'
+              },
+                          {
+                name: 'MethodParameter',
+                desc: 'Helper class that encapsulates the specification of a method parameter, i.e. a Method\u000A or Constructor plus a parameter index and a nested type index for a declared generic\u000A type.',
+                href: 'MethodParameter.html'
+              },
+                          {
+                name: 'MethodIntrospector',
+                desc: 'Defines the algorithm for searching for metadata-associated methods exhaustively\u000A including interfaces and parent classes while also dealing with parameterized methods\u000A as well as common scenarios encountered with interface and class-based proxies.',
+                href: 'MethodIntrospector.html'
+              },
+                          {
+                name: 'MethodClassKey',
+                desc: 'A common key class for a method against a specific target class,\u000A including #toString() representation and Comparable\u000A support (as suggested for custom HashMap keys as of Java 8).',
+                href: 'MethodClassKey.html'
+              },
+                          {
+                name: 'LocalVariableTableParameterNameDiscoverer',
+                desc: 'Implementation of ParameterNameDiscoverer that uses the LocalVariableTable\u000A information in the method attributes to discover parameter names.',
+                href: 'LocalVariableTableParameterNameDiscoverer.html'
+              },
+                          {
+                name: 'GenericTypeResolver',
+                desc: 'Helper class for resolving generic types against type variables.',
+                href: 'GenericTypeResolver.html'
+              },
+                          {
+                name: 'ExceptionDepthComparator',
+                desc: 'Comparator capable of sorting exceptions based on their depth from the thrown exception type.',
+                href: 'ExceptionDepthComparator.html'
+              },
+                          {
+                name: 'DefaultParameterNameDiscoverer',
+                desc: 'Default implementation of the ParameterNameDiscoverer strategy interface,\u000A using the Java 8 standard reflection mechanism (if available), and falling back\u000A to the ASM-based LocalVariableTableParameterNameDiscoverer for checking\u000A debug information in the class file.',
+                href: 'DefaultParameterNameDiscoverer.html'
+              },
+                          {
+                name: 'DecoratingClassLoader',
+                desc: 'Base class for decorating ClassLoaders such as OverridingClassLoader\u000A and org.springframework.instrument.classloading.ShadowingClassLoader,\u000A providing common handling of excluded packages and classes.',
+                href: 'DecoratingClassLoader.html'
+              },
+                          {
+                name: 'Conventions',
+                desc: 'Provides methods to support various naming and other conventions used\u000A throughout the framework.',
+                href: 'Conventions.html'
+              },
+                          {
+                name: 'Constants',
+                desc: 'This class can be used to parse other classes containing constant definitions\u000A in public static final members.',
+                href: 'Constants.html'
+              },
+                          {
+                name: 'ConfigurableObjectInputStream',
+                desc: 'Special ObjectInputStream subclass that resolves class names\u000A against a specific ClassLoader.',
+                href: 'ConfigurableObjectInputStream.html'
+              },
+                          {
+                name: 'CollectionFactory',
+                desc: 'Factory for collections that is aware of Java 5, Java 6, and Spring collection types.',
+                href: 'CollectionFactory.html'
+              },
+                          {
+                name: 'BridgeMethodResolver',
+                desc: 'Helper for resolving synthetic Method#isBridge bridge Methods to the\u000A Method being bridged.',
+                href: 'BridgeMethodResolver.html'
+              },
+                          {
+                name: 'AttributeAccessorSupport',
+                desc: 'Support class for AttributeAccessor AttributeAccessors, providing\u000A a base implementation of all methods.',
+                href: 'AttributeAccessorSupport.html'
+              },
+                      ],
+          enums: [
+                      ],
+          exceptions: [
+                          {
+                name: 'NestedRuntimeException',
+                desc: 'Handy class for wrapping runtime Exceptions with a root cause.',
+                href: 'NestedRuntimeException.html'
+              },
+                          {
+                name: 'NestedIOException',
+                desc: 'Subclass of IOException that properly handles a root cause,\u000A exposing the root cause just like NestedChecked\u002FRuntimeException does.',
+                href: 'NestedIOException.html'
+              },
+                          {
+                name: 'NestedCheckedException',
+                desc: 'Handy class for wrapping checked Exceptions with a root cause.',
+                href: 'NestedCheckedException.html'
+              },
+                          {
+                name: 'Constants.ConstantException',
+                desc: 'Exception thrown when the Constants class is asked for\u000A an invalid constant name.',
+                href: 'Constants.ConstantException.html'
+              },
+                      ],
+          errors: [
+                      ],
+          annotations: [
+                      ]
+        },
+        methods: {
+        },
+        computed: {
+          up: function() {
+            return this.message.toUpperCase();
+          },
+          matchedInterfaces: function() {
+            var a = this;
+            return this.interfaces.filter(function(c) {
+              return c.name.toLowerCase().indexOf(a.message.toLowerCase()) !== -1;
+            });
+          },
+          matchedClasses: function() {
+            var a = this;
+            return this.classes.filter(function(c) {
+              return c.name.toLowerCase().indexOf(a.message.toLowerCase()) !== -1;
+            });
+          },
+          matchedEnums: function() {
+            var a = this;
+            return this.enums.filter(function(c) {
+              return c.name.toLowerCase().indexOf(a.message.toLowerCase()) !== -1;
+            });
+          },
+          matchedExceptions: function() {
+            var a = this;
+            return this.exceptions.filter(function(c) {
+              return c.name.toLowerCase().indexOf(a.message.toLowerCase()) !== -1;
+            });
+          },
+          matchedErrors: function() {
+            var a = this;
+            return this.errors.filter(function(c) {
+              return c.name.toLowerCase().indexOf(a.message.toLowerCase()) !== -1;
+            });
+          },
+          matchedAnnotations: function() {
+            var a = this;
+            return this.annotations.filter(function(c) {
+              return c.name.toLowerCase().indexOf(a.message.toLowerCase()) !== -1;
+            });
+          }
+        }
+      });  
+      </script>
+</body>
+</html>
+

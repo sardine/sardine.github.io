@@ -1,0 +1,209 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width" />
+  <title>DefaultPropertiesPersister</title>
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <h1>DefaultPropertiesPersister</h1>
+
+  org.springframework.util.DefaultPropertiesPersister
+
+
+  <div id="test">
+    <input type="text" v-model="message">
+
+    <template v-for="m in matchedMethods" :key="m.sig">
+      <h3>{{ m.name }}</h3>
+      <pre><code>{{ m.mods }} {{ m.name }}(<template v-for="(p, pi) in m.params" :key="p.name"><template v-if="pi != 0">, </template>{{ p.type }}{{ p.dim }} {{ p.name }}</template>)</code></pre>
+      <div><p>{{ m.desc }}</p></div>
+    </template>
+  </div>
+
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script>
+  var app = new Vue({
+  el: '#test',
+  data: {
+    message: '',
+    methods: [
+              {
+          name: 'load',
+          mods: 'public',
+          sig: 'load(java.util.Properties, java.io.InputStream)',
+          desc: ''/*''*/,
+          params: [
+                          {
+                name: 'props',
+                dim: '',
+                type: 'Properties',
+              },
+                          {
+                name: 'is',
+                dim: '',
+                type: 'InputStream',
+              },
+                      ]
+        },
+              {
+          name: 'load',
+          mods: 'public',
+          sig: 'load(java.util.Properties, java.io.Reader)',
+          desc: ''/*''*/,
+          params: [
+                          {
+                name: 'props',
+                dim: '',
+                type: 'Properties',
+              },
+                          {
+                name: 'reader',
+                dim: '',
+                type: 'Reader',
+              },
+                      ]
+        },
+              {
+          name: 'store',
+          mods: 'public',
+          sig: 'store(java.util.Properties, java.io.OutputStream, java.lang.String)',
+          desc: ''/*''*/,
+          params: [
+                          {
+                name: 'props',
+                dim: '',
+                type: 'Properties',
+              },
+                          {
+                name: 'os',
+                dim: '',
+                type: 'OutputStream',
+              },
+                          {
+                name: 'header',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'store',
+          mods: 'public',
+          sig: 'store(java.util.Properties, java.io.Writer, java.lang.String)',
+          desc: ''/*''*/,
+          params: [
+                          {
+                name: 'props',
+                dim: '',
+                type: 'Properties',
+              },
+                          {
+                name: 'writer',
+                dim: '',
+                type: 'Writer',
+              },
+                          {
+                name: 'header',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'loadFromXml',
+          mods: 'public',
+          sig: 'loadFromXml(java.util.Properties, java.io.InputStream)',
+          desc: ''/*''*/,
+          params: [
+                          {
+                name: 'props',
+                dim: '',
+                type: 'Properties',
+              },
+                          {
+                name: 'is',
+                dim: '',
+                type: 'InputStream',
+              },
+                      ]
+        },
+              {
+          name: 'storeToXml',
+          mods: 'public',
+          sig: 'storeToXml(java.util.Properties, java.io.OutputStream, java.lang.String)',
+          desc: ''/*''*/,
+          params: [
+                          {
+                name: 'props',
+                dim: '',
+                type: 'Properties',
+              },
+                          {
+                name: 'os',
+                dim: '',
+                type: 'OutputStream',
+              },
+                          {
+                name: 'header',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'storeToXml',
+          mods: 'public',
+          sig: 'storeToXml(java.util.Properties, java.io.OutputStream, java.lang.String, java.lang.String)',
+          desc: ''/*''*/,
+          params: [
+                          {
+                name: 'props',
+                dim: '',
+                type: 'Properties',
+              },
+                          {
+                name: 'os',
+                dim: '',
+                type: 'OutputStream',
+              },
+                          {
+                name: 'header',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'encoding',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+          ]
+  },
+  methods: {
+    show: function() {
+      alert(this.message);
+    }
+  },
+  computed: {
+    up: function() {
+      return this.message.toUpperCase();
+    },
+    matchedMethods: function() {
+      var a = this;
+      return this.methods.filter(function(m) {
+        return m.name.toLowerCase().indexOf(a.message.toLowerCase()) !== -1;
+      });
+    }
+  }
+});  
+  </script>
+</body>
+</html>
+

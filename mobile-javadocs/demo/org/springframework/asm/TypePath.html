@@ -1,0 +1,120 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width" />
+  <title>TypePath</title>
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <h1>TypePath</h1>
+
+  org.springframework.asm.TypePath
+
+
+  <div id="test">
+    <input type="text" v-model="message">
+
+    <template v-for="m in matchedMethods" :key="m.sig">
+      <h3>{{ m.name }}</h3>
+      <pre><code>{{ m.mods }} {{ m.name }}(<template v-for="(p, pi) in m.params" :key="p.name"><template v-if="pi != 0">, </template>{{ p.type }}{{ p.dim }} {{ p.name }}</template>)</code></pre>
+      <div><p>{{ m.desc }}</p></div>
+    </template>
+  </div>
+
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script>
+  var app = new Vue({
+  el: '#test',
+  data: {
+    message: '',
+    methods: [
+              {
+          name: 'getLength',
+          mods: 'public',
+          sig: 'getLength()',
+          desc: ''/*'Returns the length of this path.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'getStep',
+          mods: 'public',
+          sig: 'getStep(int)',
+          desc: ''/*'Returns the value of the given step of this path.'*/,
+          params: [
+                          {
+                name: 'index',
+                dim: '',
+                type: 'int',
+              },
+                      ]
+        },
+              {
+          name: 'getStepArgument',
+          mods: 'public',
+          sig: 'getStepArgument(int)',
+          desc: ''/*'Returns the index of the type argument that the given step is stepping
+ into. This method should only be used for steps whose value is
+ {@link #TYPE_ARGUMENT TYPE_ARGUMENT}.'*/,
+          params: [
+                          {
+                name: 'index',
+                dim: '',
+                type: 'int',
+              },
+                      ]
+        },
+              {
+          name: 'fromString',
+          mods: 'public static',
+          sig: 'fromString(java.lang.String)',
+          desc: ''/*'Converts a type path in string form, in the format used by
+ {@link #toString()}, into a TypePath object.'*/,
+          params: [
+                          {
+                name: 'typePath',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'toString',
+          mods: 'public',
+          sig: 'toString()',
+          desc: ''/*'Returns a string representation of this type path. {@link #ARRAY_ELEMENT
+ ARRAY_ELEMENT} steps are represented with '[', {@link #INNER_TYPE
+ INNER_TYPE} steps with '.', {@link #WILDCARD_BOUND WILDCARD_BOUND} steps
+ with '*' and {@link #TYPE_ARGUMENT TYPE_ARGUMENT} steps with their type
+ argument index in decimal form followed by ';'.'*/,
+          params: [
+                      ]
+        },
+          ]
+  },
+  methods: {
+    show: function() {
+      alert(this.message);
+    }
+  },
+  computed: {
+    up: function() {
+      return this.message.toUpperCase();
+    },
+    matchedMethods: function() {
+      var a = this;
+      return this.methods.filter(function(m) {
+        return m.name.toLowerCase().indexOf(a.message.toLowerCase()) !== -1;
+      });
+    }
+  }
+});  
+  </script>
+</body>
+</html>
+

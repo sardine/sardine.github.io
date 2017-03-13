@@ -1,0 +1,159 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width" />
+  <title>PropertiesLoaderUtils</title>
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <h1>PropertiesLoaderUtils</h1>
+
+  org.springframework.core.io.support.PropertiesLoaderUtils
+
+
+  <div id="test">
+    <input type="text" v-model="message">
+
+    <template v-for="m in matchedMethods" :key="m.sig">
+      <h3>{{ m.name }}</h3>
+      <pre><code>{{ m.mods }} {{ m.name }}(<template v-for="(p, pi) in m.params" :key="p.name"><template v-if="pi != 0">, </template>{{ p.type }}{{ p.dim }} {{ p.name }}</template>)</code></pre>
+      <div><p>{{ m.desc }}</p></div>
+    </template>
+  </div>
+
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script>
+  var app = new Vue({
+  el: '#test',
+  data: {
+    message: '',
+    methods: [
+              {
+          name: 'loadProperties',
+          mods: 'public static',
+          sig: 'loadProperties(org.springframework.core.io.support.EncodedResource)',
+          desc: ''/*'Load properties from the given EncodedResource,
+ potentially defining a specific encoding for the properties file.'*/,
+          params: [
+                          {
+                name: 'resource',
+                dim: '',
+                type: 'EncodedResource',
+              },
+                      ]
+        },
+              {
+          name: 'fillProperties',
+          mods: 'public static',
+          sig: 'fillProperties(java.util.Properties, org.springframework.core.io.support.EncodedResource)',
+          desc: ''/*'Fill the given properties from the given EncodedResource,
+ potentially defining a specific encoding for the properties file.'*/,
+          params: [
+                          {
+                name: 'props',
+                dim: '',
+                type: 'Properties',
+              },
+                          {
+                name: 'resource',
+                dim: '',
+                type: 'EncodedResource',
+              },
+                      ]
+        },
+              {
+          name: 'loadProperties',
+          mods: 'public static',
+          sig: 'loadProperties(org.springframework.core.io.Resource)',
+          desc: ''/*'Load properties from the given resource (in ISO-8859-1 encoding).'*/,
+          params: [
+                          {
+                name: 'resource',
+                dim: '',
+                type: 'Resource',
+              },
+                      ]
+        },
+              {
+          name: 'fillProperties',
+          mods: 'public static',
+          sig: 'fillProperties(java.util.Properties, org.springframework.core.io.Resource)',
+          desc: ''/*'Fill the given properties from the given resource (in ISO-8859-1 encoding).'*/,
+          params: [
+                          {
+                name: 'props',
+                dim: '',
+                type: 'Properties',
+              },
+                          {
+                name: 'resource',
+                dim: '',
+                type: 'Resource',
+              },
+                      ]
+        },
+              {
+          name: 'loadAllProperties',
+          mods: 'public static',
+          sig: 'loadAllProperties(java.lang.String)',
+          desc: ''/*'Load all properties from the specified class path resource
+ (in ISO-8859-1 encoding), using the default class loader.
+ <p>Merges properties if more than one resource of the same name
+ found in the class path.'*/,
+          params: [
+                          {
+                name: 'resourceName',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'loadAllProperties',
+          mods: 'public static',
+          sig: 'loadAllProperties(java.lang.String, java.lang.ClassLoader)',
+          desc: ''/*'Load all properties from the specified class path resource
+ (in ISO-8859-1 encoding), using the given class loader.
+ <p>Merges properties if more than one resource of the same name
+ found in the class path.'*/,
+          params: [
+                          {
+                name: 'resourceName',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'classLoader',
+                dim: '',
+                type: 'ClassLoader',
+              },
+                      ]
+        },
+          ]
+  },
+  methods: {
+    show: function() {
+      alert(this.message);
+    }
+  },
+  computed: {
+    up: function() {
+      return this.message.toUpperCase();
+    },
+    matchedMethods: function() {
+      var a = this;
+      return this.methods.filter(function(m) {
+        return m.name.toLowerCase().indexOf(a.message.toLowerCase()) !== -1;
+      });
+    }
+  }
+});  
+  </script>
+</body>
+</html>
+

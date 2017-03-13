@@ -1,0 +1,257 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width" />
+  <title>AnnotationMetadataReadingVisitor</title>
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <h1>AnnotationMetadataReadingVisitor</h1>
+
+  org.springframework.core.type.classreading.AnnotationMetadataReadingVisitor
+
+
+  <div id="test">
+    <input type="text" v-model="message">
+
+    <template v-for="m in matchedMethods" :key="m.sig">
+      <h3>{{ m.name }}</h3>
+      <pre><code>{{ m.mods }} {{ m.name }}(<template v-for="(p, pi) in m.params" :key="p.name"><template v-if="pi != 0">, </template>{{ p.type }}{{ p.dim }} {{ p.name }}</template>)</code></pre>
+      <div><p>{{ m.desc }}</p></div>
+    </template>
+  </div>
+
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script>
+  var app = new Vue({
+  el: '#test',
+  data: {
+    message: '',
+    methods: [
+              {
+          name: 'visitMethod',
+          mods: 'public',
+          sig: 'visitMethod(int, java.lang.String, java.lang.String, java.lang.String, java.lang.String[])',
+          desc: ''/*''*/,
+          params: [
+                          {
+                name: 'access',
+                dim: '',
+                type: 'int',
+              },
+                          {
+                name: 'name',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'desc',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'signature',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'exceptions',
+                dim: '[]',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'visitAnnotation',
+          mods: 'public',
+          sig: 'visitAnnotation(java.lang.String, boolean)',
+          desc: ''/*''*/,
+          params: [
+                          {
+                name: 'desc',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'visible',
+                dim: '',
+                type: 'boolean',
+              },
+                      ]
+        },
+              {
+          name: 'getAnnotationTypes',
+          mods: 'public',
+          sig: 'getAnnotationTypes()',
+          desc: ''/*''*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'getMetaAnnotationTypes',
+          mods: 'public',
+          sig: 'getMetaAnnotationTypes(java.lang.String)',
+          desc: ''/*''*/,
+          params: [
+                          {
+                name: 'annotationName',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'hasAnnotation',
+          mods: 'public',
+          sig: 'hasAnnotation(java.lang.String)',
+          desc: ''/*''*/,
+          params: [
+                          {
+                name: 'annotationName',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'hasMetaAnnotation',
+          mods: 'public',
+          sig: 'hasMetaAnnotation(java.lang.String)',
+          desc: ''/*''*/,
+          params: [
+                          {
+                name: 'metaAnnotationType',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'isAnnotated',
+          mods: 'public',
+          sig: 'isAnnotated(java.lang.String)',
+          desc: ''/*''*/,
+          params: [
+                          {
+                name: 'annotationName',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'getAnnotationAttributes',
+          mods: 'public',
+          sig: 'getAnnotationAttributes(java.lang.String)',
+          desc: ''/*''*/,
+          params: [
+                          {
+                name: 'annotationName',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'getAnnotationAttributes',
+          mods: 'public',
+          sig: 'getAnnotationAttributes(java.lang.String, boolean)',
+          desc: ''/*''*/,
+          params: [
+                          {
+                name: 'annotationName',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'classValuesAsString',
+                dim: '',
+                type: 'boolean',
+              },
+                      ]
+        },
+              {
+          name: 'getAllAnnotationAttributes',
+          mods: 'public',
+          sig: 'getAllAnnotationAttributes(java.lang.String)',
+          desc: ''/*''*/,
+          params: [
+                          {
+                name: 'annotationName',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'getAllAnnotationAttributes',
+          mods: 'public',
+          sig: 'getAllAnnotationAttributes(java.lang.String, boolean)',
+          desc: ''/*''*/,
+          params: [
+                          {
+                name: 'annotationName',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'classValuesAsString',
+                dim: '',
+                type: 'boolean',
+              },
+                      ]
+        },
+              {
+          name: 'hasAnnotatedMethods',
+          mods: 'public',
+          sig: 'hasAnnotatedMethods(java.lang.String)',
+          desc: ''/*''*/,
+          params: [
+                          {
+                name: 'annotationName',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'getAnnotatedMethods',
+          mods: 'public',
+          sig: 'getAnnotatedMethods(java.lang.String)',
+          desc: ''/*''*/,
+          params: [
+                          {
+                name: 'annotationName',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+          ]
+  },
+  methods: {
+    show: function() {
+      alert(this.message);
+    }
+  },
+  computed: {
+    up: function() {
+      return this.message.toUpperCase();
+    },
+    matchedMethods: function() {
+      var a = this;
+      return this.methods.filter(function(m) {
+        return m.name.toLowerCase().indexOf(a.message.toLowerCase()) !== -1;
+      });
+    }
+  }
+});  
+  </script>
+</body>
+</html>
+

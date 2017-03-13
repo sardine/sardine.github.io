@@ -1,0 +1,144 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width" />
+  <title>AnnotatedTypeMetadata</title>
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <h1>AnnotatedTypeMetadata</h1>
+
+  org.springframework.core.type.AnnotatedTypeMetadata
+
+
+  <div id="test">
+    <input type="text" v-model="message">
+
+    <template v-for="m in matchedMethods" :key="m.sig">
+      <h3>{{ m.name }}</h3>
+      <pre><code>{{ m.mods }} {{ m.name }}(<template v-for="(p, pi) in m.params" :key="p.name"><template v-if="pi != 0">, </template>{{ p.type }}{{ p.dim }} {{ p.name }}</template>)</code></pre>
+      <div><p>{{ m.desc }}</p></div>
+    </template>
+  </div>
+
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script>
+  var app = new Vue({
+  el: '#test',
+  data: {
+    message: '',
+    methods: [
+              {
+          name: 'isAnnotated',
+          mods: 'public',
+          sig: 'isAnnotated(java.lang.String)',
+          desc: ''/*'Determine whether the underlying element has an annotation or meta-annotation
+ of the given type defined.
+ <p>If this method returns {@code true}, then
+ {@link #getAnnotationAttributes} will return a non-null Map.'*/,
+          params: [
+                          {
+                name: 'annotationName',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'getAnnotationAttributes',
+          mods: 'public',
+          sig: 'getAnnotationAttributes(java.lang.String)',
+          desc: ''/*'Retrieve the attributes of the annotation of the given type, if any (i.e. if
+ defined on the underlying element, as direct annotation or meta-annotation),
+ also taking attribute overrides on composed annotations into account.'*/,
+          params: [
+                          {
+                name: 'annotationName',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'getAnnotationAttributes',
+          mods: 'public',
+          sig: 'getAnnotationAttributes(java.lang.String, boolean)',
+          desc: ''/*'Retrieve the attributes of the annotation of the given type, if any (i.e. if
+ defined on the underlying element, as direct annotation or meta-annotation),
+ also taking attribute overrides on composed annotations into account.'*/,
+          params: [
+                          {
+                name: 'annotationName',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'classValuesAsString',
+                dim: '',
+                type: 'boolean',
+              },
+                      ]
+        },
+              {
+          name: 'getAllAnnotationAttributes',
+          mods: 'public',
+          sig: 'getAllAnnotationAttributes(java.lang.String)',
+          desc: ''/*'Retrieve all attributes of all annotations of the given type, if any (i.e. if
+ defined on the underlying element, as direct annotation or meta-annotation).
+ Note that this variant does <i>not</i> take attribute overrides into account.'*/,
+          params: [
+                          {
+                name: 'annotationName',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'getAllAnnotationAttributes',
+          mods: 'public',
+          sig: 'getAllAnnotationAttributes(java.lang.String, boolean)',
+          desc: ''/*'Retrieve all attributes of all annotations of the given type, if any (i.e. if
+ defined on the underlying element, as direct annotation or meta-annotation).
+ Note that this variant does <i>not</i> take attribute overrides into account.'*/,
+          params: [
+                          {
+                name: 'annotationName',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'classValuesAsString',
+                dim: '',
+                type: 'boolean',
+              },
+                      ]
+        },
+          ]
+  },
+  methods: {
+    show: function() {
+      alert(this.message);
+    }
+  },
+  computed: {
+    up: function() {
+      return this.message.toUpperCase();
+    },
+    matchedMethods: function() {
+      var a = this;
+      return this.methods.filter(function(m) {
+        return m.name.toLowerCase().indexOf(a.message.toLowerCase()) !== -1;
+      });
+    }
+  }
+});  
+  </script>
+</body>
+</html>
+

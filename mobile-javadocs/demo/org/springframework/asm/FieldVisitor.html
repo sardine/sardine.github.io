@@ -1,0 +1,127 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width" />
+  <title>FieldVisitor</title>
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <h1>FieldVisitor</h1>
+
+  org.springframework.asm.FieldVisitor
+
+
+  <div id="test">
+    <input type="text" v-model="message">
+
+    <template v-for="m in matchedMethods" :key="m.sig">
+      <h3>{{ m.name }}</h3>
+      <pre><code>{{ m.mods }} {{ m.name }}(<template v-for="(p, pi) in m.params" :key="p.name"><template v-if="pi != 0">, </template>{{ p.type }}{{ p.dim }} {{ p.name }}</template>)</code></pre>
+      <div><p>{{ m.desc }}</p></div>
+    </template>
+  </div>
+
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script>
+  var app = new Vue({
+  el: '#test',
+  data: {
+    message: '',
+    methods: [
+              {
+          name: 'visitAnnotation',
+          mods: 'public',
+          sig: 'visitAnnotation(java.lang.String, boolean)',
+          desc: ''/*'Visits an annotation of the field.'*/,
+          params: [
+                          {
+                name: 'desc',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'visible',
+                dim: '',
+                type: 'boolean',
+              },
+                      ]
+        },
+              {
+          name: 'visitTypeAnnotation',
+          mods: 'public',
+          sig: 'visitTypeAnnotation(int, org.springframework.asm.TypePath, java.lang.String, boolean)',
+          desc: ''/*'Visits an annotation on the type of the field.'*/,
+          params: [
+                          {
+                name: 'typeRef',
+                dim: '',
+                type: 'int',
+              },
+                          {
+                name: 'typePath',
+                dim: '',
+                type: 'TypePath',
+              },
+                          {
+                name: 'desc',
+                dim: '',
+                type: 'String',
+              },
+                          {
+                name: 'visible',
+                dim: '',
+                type: 'boolean',
+              },
+                      ]
+        },
+              {
+          name: 'visitAttribute',
+          mods: 'public',
+          sig: 'visitAttribute(org.springframework.asm.Attribute)',
+          desc: ''/*'Visits a non standard attribute of the field.'*/,
+          params: [
+                          {
+                name: 'attr',
+                dim: '',
+                type: 'Attribute',
+              },
+                      ]
+        },
+              {
+          name: 'visitEnd',
+          mods: 'public',
+          sig: 'visitEnd()',
+          desc: ''/*'Visits the end of the field. This method, which is the last one to be
+ called, is used to inform the visitor that all the annotations and
+ attributes of the field have been visited.'*/,
+          params: [
+                      ]
+        },
+          ]
+  },
+  methods: {
+    show: function() {
+      alert(this.message);
+    }
+  },
+  computed: {
+    up: function() {
+      return this.message.toUpperCase();
+    },
+    matchedMethods: function() {
+      var a = this;
+      return this.methods.filter(function(m) {
+        return m.name.toLowerCase().indexOf(a.message.toLowerCase()) !== -1;
+      });
+    }
+  }
+});  
+  </script>
+</body>
+</html>
+

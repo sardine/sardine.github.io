@@ -1,0 +1,115 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width" />
+  <title>ReactiveAdapterRegistry</title>
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <h1>ReactiveAdapterRegistry</h1>
+
+  org.springframework.core.ReactiveAdapterRegistry
+
+
+  <div id="test">
+    <input type="text" v-model="message">
+
+    <template v-for="m in matchedMethods" :key="m.sig">
+      <h3>{{ m.name }}</h3>
+      <pre><code>{{ m.mods }} {{ m.name }}(<template v-for="(p, pi) in m.params" :key="p.name"><template v-if="pi != 0">, </template>{{ p.type }}{{ p.dim }} {{ p.name }}</template>)</code></pre>
+      <div><p>{{ m.desc }}</p></div>
+    </template>
+  </div>
+
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script>
+  var app = new Vue({
+  el: '#test',
+  data: {
+    message: '',
+    methods: [
+              {
+          name: 'registerReactiveType',
+          mods: 'public',
+          sig: 'registerReactiveType(org.springframework.core.ReactiveTypeDescriptor, java.util.function.Function, java.util.function.Function)',
+          desc: ''/*'Register a reactive type along with functions to adapt to and from a
+ Reactive Streams {@link Publisher}. The functions can assume their
+ input is never be {@code null} nor {@link Optional}.'*/,
+          params: [
+                          {
+                name: 'descriptor',
+                dim: '',
+                type: 'ReactiveTypeDescriptor',
+              },
+                          {
+                name: 'toAdapter',
+                dim: '',
+                type: 'Function',
+              },
+                          {
+                name: 'fromAdapter',
+                dim: '',
+                type: 'Function',
+              },
+                      ]
+        },
+              {
+          name: 'getAdapter',
+          mods: 'public',
+          sig: 'getAdapter(java.lang.Class)',
+          desc: ''/*'Get the adapter for the given reactive type.'*/,
+          params: [
+                          {
+                name: 'reactiveType',
+                dim: '',
+                type: 'Class',
+              },
+                      ]
+        },
+              {
+          name: 'getAdapter',
+          mods: 'public',
+          sig: 'getAdapter(java.lang.Class, java.lang.Object)',
+          desc: ''/*'Get the adapter for the given reactive type. Or if a "source" object is
+ provided, its actual type is used instead.'*/,
+          params: [
+                          {
+                name: 'reactiveType',
+                dim: '',
+                type: 'Class',
+              },
+                          {
+                name: 'source',
+                dim: '',
+                type: 'Object',
+              },
+                      ]
+        },
+          ]
+  },
+  methods: {
+    show: function() {
+      alert(this.message);
+    }
+  },
+  computed: {
+    up: function() {
+      return this.message.toUpperCase();
+    },
+    matchedMethods: function() {
+      var a = this;
+      return this.methods.filter(function(m) {
+        return m.name.toLowerCase().indexOf(a.message.toLowerCase()) !== -1;
+      });
+    }
+  }
+});  
+  </script>
+</body>
+</html>
+

@@ -1,0 +1,127 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width" />
+  <title>SpringObjenesis</title>
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <h1>SpringObjenesis</h1>
+
+  org.springframework.objenesis.SpringObjenesis
+
+
+  <div id="test">
+    <input type="text" v-model="message">
+
+    <template v-for="m in matchedMethods" :key="m.sig">
+      <h3>{{ m.name }}</h3>
+      <pre><code>{{ m.mods }} {{ m.name }}(<template v-for="(p, pi) in m.params" :key="p.name"><template v-if="pi != 0">, </template>{{ p.type }}{{ p.dim }} {{ p.name }}</template>)</code></pre>
+      <div><p>{{ m.desc }}</p></div>
+    </template>
+  </div>
+
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script>
+  var app = new Vue({
+  el: '#test',
+  data: {
+    message: '',
+    methods: [
+              {
+          name: 'isWorthTrying',
+          mods: 'public',
+          sig: 'isWorthTrying()',
+          desc: ''/*'Return whether this Objenesis instance is worth trying for instance creation,
+ i.e. whether it hasn't been used yet or is known to work.
+ <p>If the configured Objenesis instantiator strategy has been identified to not
+ work on the current JVM at all or if the "spring.objenesis.ignore" property has
+ been set to "true", this method returns {@code false}.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'newInstance',
+          mods: 'public',
+          sig: 'newInstance(java.lang.Class, boolean)',
+          desc: ''/*'Create a new instance of the given class via Objenesis.'*/,
+          params: [
+                          {
+                name: 'clazz',
+                dim: '',
+                type: 'Class',
+              },
+                          {
+                name: 'useCache',
+                dim: '',
+                type: 'boolean',
+              },
+                      ]
+        },
+              {
+          name: 'newInstance',
+          mods: 'public',
+          sig: 'newInstance(java.lang.Class)',
+          desc: ''/*''*/,
+          params: [
+                          {
+                name: 'clazz',
+                dim: '',
+                type: 'Class',
+              },
+                      ]
+        },
+              {
+          name: 'getInstantiatorOf',
+          mods: 'public',
+          sig: 'getInstantiatorOf(java.lang.Class)',
+          desc: ''/*''*/,
+          params: [
+                          {
+                name: 'clazz',
+                dim: '',
+                type: 'Class',
+              },
+                      ]
+        },
+              {
+          name: 'newInstantiatorOf',
+          mods: 'protected',
+          sig: 'newInstantiatorOf(java.lang.Class)',
+          desc: ''/*''*/,
+          params: [
+                          {
+                name: 'clazz',
+                dim: '',
+                type: 'Class',
+              },
+                      ]
+        },
+          ]
+  },
+  methods: {
+    show: function() {
+      alert(this.message);
+    }
+  },
+  computed: {
+    up: function() {
+      return this.message.toUpperCase();
+    },
+    matchedMethods: function() {
+      var a = this;
+      return this.methods.filter(function(m) {
+        return m.name.toLowerCase().indexOf(a.message.toLowerCase()) !== -1;
+      });
+    }
+  }
+});  
+  </script>
+</body>
+</html>
+

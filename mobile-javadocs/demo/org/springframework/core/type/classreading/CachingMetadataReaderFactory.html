@@ -1,0 +1,103 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width" />
+  <title>CachingMetadataReaderFactory</title>
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <h1>CachingMetadataReaderFactory</h1>
+
+  org.springframework.core.type.classreading.CachingMetadataReaderFactory
+
+
+  <div id="test">
+    <input type="text" v-model="message">
+
+    <template v-for="m in matchedMethods" :key="m.sig">
+      <h3>{{ m.name }}</h3>
+      <pre><code>{{ m.mods }} {{ m.name }}(<template v-for="(p, pi) in m.params" :key="p.name"><template v-if="pi != 0">, </template>{{ p.type }}{{ p.dim }} {{ p.name }}</template>)</code></pre>
+      <div><p>{{ m.desc }}</p></div>
+    </template>
+  </div>
+
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script>
+  var app = new Vue({
+  el: '#test',
+  data: {
+    message: '',
+    methods: [
+              {
+          name: 'setCacheLimit',
+          mods: 'public',
+          sig: 'setCacheLimit(int)',
+          desc: ''/*'Specify the maximum number of entries for the MetadataReader cache.
+ <p>Default is 256 for a local cache, whereas a shared cache is
+ typically unbounded. This method enforces a local resource cache,
+ even if the {@link ResourceLoader} supports a shared resource cache.'*/,
+          params: [
+                          {
+                name: 'cacheLimit',
+                dim: '',
+                type: 'int',
+              },
+                      ]
+        },
+              {
+          name: 'getCacheLimit',
+          mods: 'public',
+          sig: 'getCacheLimit()',
+          desc: ''/*'Return the maximum number of entries for the MetadataReader cache.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'getMetadataReader',
+          mods: 'public',
+          sig: 'getMetadataReader(org.springframework.core.io.Resource)',
+          desc: ''/*''*/,
+          params: [
+                          {
+                name: 'resource',
+                dim: '',
+                type: 'Resource',
+              },
+                      ]
+        },
+              {
+          name: 'clearCache',
+          mods: 'public',
+          sig: 'clearCache()',
+          desc: ''/*'Clear the local MetadataReader cache, if any, removing all cached class metadata.'*/,
+          params: [
+                      ]
+        },
+          ]
+  },
+  methods: {
+    show: function() {
+      alert(this.message);
+    }
+  },
+  computed: {
+    up: function() {
+      return this.message.toUpperCase();
+    },
+    matchedMethods: function() {
+      var a = this;
+      return this.methods.filter(function(m) {
+        return m.name.toLowerCase().indexOf(a.message.toLowerCase()) !== -1;
+      });
+    }
+  }
+});  
+  </script>
+</body>
+</html>
+

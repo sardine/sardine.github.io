@@ -1,0 +1,328 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width" />
+  <title>ClassReader</title>
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <h1>ClassReader</h1>
+
+  org.springframework.asm.ClassReader
+
+
+  <div id="test">
+    <input type="text" v-model="message">
+
+    <template v-for="m in matchedMethods" :key="m.sig">
+      <h3>{{ m.name }}</h3>
+      <pre><code>{{ m.mods }} {{ m.name }}(<template v-for="(p, pi) in m.params" :key="p.name"><template v-if="pi != 0">, </template>{{ p.type }}{{ p.dim }} {{ p.name }}</template>)</code></pre>
+      <div><p>{{ m.desc }}</p></div>
+    </template>
+  </div>
+
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script>
+  var app = new Vue({
+  el: '#test',
+  data: {
+    message: '',
+    methods: [
+              {
+          name: 'getAccess',
+          mods: 'public',
+          sig: 'getAccess()',
+          desc: ''/*'Returns the class's access flags (see {@link Opcodes}). This value may
+ not reflect Deprecated and Synthetic flags when bytecode is before 1.5
+ and those flags are represented by attributes.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'getClassName',
+          mods: 'public',
+          sig: 'getClassName()',
+          desc: ''/*'Returns the internal name of the class (see
+ {@link Type#getInternalName() getInternalName}).'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'getSuperName',
+          mods: 'public',
+          sig: 'getSuperName()',
+          desc: ''/*'Returns the internal of name of the super class (see
+ {@link Type#getInternalName() getInternalName}). For interfaces, the
+ super class is {@link Object}.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'getInterfaces',
+          mods: 'public',
+          sig: 'getInterfaces()',
+          desc: ''/*'Returns the internal names of the class's interfaces (see
+ {@link Type#getInternalName() getInternalName}).'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'accept',
+          mods: 'public',
+          sig: 'accept(org.springframework.asm.ClassVisitor, int)',
+          desc: ''/*'Makes the given visitor visit the Java class of this {@link ClassReader}
+ . This class is the one specified in the constructor (see
+ {@link #ClassReader(byte[]) ClassReader}).'*/,
+          params: [
+                          {
+                name: 'classVisitor',
+                dim: '',
+                type: 'ClassVisitor',
+              },
+                          {
+                name: 'flags',
+                dim: '',
+                type: 'int',
+              },
+                      ]
+        },
+              {
+          name: 'accept',
+          mods: 'public',
+          sig: 'accept(org.springframework.asm.ClassVisitor, org.springframework.asm.Attribute[], int)',
+          desc: ''/*'Makes the given visitor visit the Java class of this {@link ClassReader}.
+ This class is the one specified in the constructor (see
+ {@link #ClassReader(byte[]) ClassReader}).'*/,
+          params: [
+                          {
+                name: 'classVisitor',
+                dim: '',
+                type: 'ClassVisitor',
+              },
+                          {
+                name: 'attrs',
+                dim: '[]',
+                type: 'Attribute',
+              },
+                          {
+                name: 'flags',
+                dim: '',
+                type: 'int',
+              },
+                      ]
+        },
+              {
+          name: 'readLabel',
+          mods: 'protected',
+          sig: 'readLabel(int, org.springframework.asm.Label[])',
+          desc: ''/*'Returns the label corresponding to the given offset. The default
+ implementation of this method creates a label for the given offset if it
+ has not been already created.'*/,
+          params: [
+                          {
+                name: 'offset',
+                dim: '',
+                type: 'int',
+              },
+                          {
+                name: 'labels',
+                dim: '[]',
+                type: 'Label',
+              },
+                      ]
+        },
+              {
+          name: 'getItemCount',
+          mods: 'public',
+          sig: 'getItemCount()',
+          desc: ''/*'Returns the number of constant pool items in {@link #b b}.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'getItem',
+          mods: 'public',
+          sig: 'getItem(int)',
+          desc: ''/*'Returns the start index of the constant pool item in {@link #b b}, plus
+ one. <i>This method is intended for {@link Attribute} sub classes, and is
+ normally not needed by class generators or adapters.</i>'*/,
+          params: [
+                          {
+                name: 'item',
+                dim: '',
+                type: 'int',
+              },
+                      ]
+        },
+              {
+          name: 'getMaxStringLength',
+          mods: 'public',
+          sig: 'getMaxStringLength()',
+          desc: ''/*'Returns the maximum length of the strings contained in the constant pool
+ of the class.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'readByte',
+          mods: 'public',
+          sig: 'readByte(int)',
+          desc: ''/*'Reads a byte value in {@link #b b}. <i>This method is intended for
+ {@link Attribute} sub classes, and is normally not needed by class
+ generators or adapters.</i>'*/,
+          params: [
+                          {
+                name: 'index',
+                dim: '',
+                type: 'int',
+              },
+                      ]
+        },
+              {
+          name: 'readUnsignedShort',
+          mods: 'public',
+          sig: 'readUnsignedShort(int)',
+          desc: ''/*'Reads an unsigned short value in {@link #b b}. <i>This method is intended
+ for {@link Attribute} sub classes, and is normally not needed by class
+ generators or adapters.</i>'*/,
+          params: [
+                          {
+                name: 'index',
+                dim: '',
+                type: 'int',
+              },
+                      ]
+        },
+              {
+          name: 'readShort',
+          mods: 'public',
+          sig: 'readShort(int)',
+          desc: ''/*'Reads a signed short value in {@link #b b}. <i>This method is intended
+ for {@link Attribute} sub classes, and is normally not needed by class
+ generators or adapters.</i>'*/,
+          params: [
+                          {
+                name: 'index',
+                dim: '',
+                type: 'int',
+              },
+                      ]
+        },
+              {
+          name: 'readInt',
+          mods: 'public',
+          sig: 'readInt(int)',
+          desc: ''/*'Reads a signed int value in {@link #b b}. <i>This method is intended for
+ {@link Attribute} sub classes, and is normally not needed by class
+ generators or adapters.</i>'*/,
+          params: [
+                          {
+                name: 'index',
+                dim: '',
+                type: 'int',
+              },
+                      ]
+        },
+              {
+          name: 'readLong',
+          mods: 'public',
+          sig: 'readLong(int)',
+          desc: ''/*'Reads a signed long value in {@link #b b}. <i>This method is intended for
+ {@link Attribute} sub classes, and is normally not needed by class
+ generators or adapters.</i>'*/,
+          params: [
+                          {
+                name: 'index',
+                dim: '',
+                type: 'int',
+              },
+                      ]
+        },
+              {
+          name: 'readUTF8',
+          mods: 'public',
+          sig: 'readUTF8(int, char[])',
+          desc: ''/*'Reads an UTF8 string constant pool item in {@link #b b}. <i>This method
+ is intended for {@link Attribute} sub classes, and is normally not needed
+ by class generators or adapters.</i>'*/,
+          params: [
+                          {
+                name: 'index',
+                dim: '',
+                type: 'int',
+              },
+                          {
+                name: 'buf',
+                dim: '[]',
+                type: 'char',
+              },
+                      ]
+        },
+              {
+          name: 'readClass',
+          mods: 'public',
+          sig: 'readClass(int, char[])',
+          desc: ''/*'Reads a class constant pool item in {@link #b b}. <i>This method is
+ intended for {@link Attribute} sub classes, and is normally not needed by
+ class generators or adapters.</i>'*/,
+          params: [
+                          {
+                name: 'index',
+                dim: '',
+                type: 'int',
+              },
+                          {
+                name: 'buf',
+                dim: '[]',
+                type: 'char',
+              },
+                      ]
+        },
+              {
+          name: 'readConst',
+          mods: 'public',
+          sig: 'readConst(int, char[])',
+          desc: ''/*'Reads a numeric or string constant pool item in {@link #b b}. <i>This
+ method is intended for {@link Attribute} sub classes, and is normally not
+ needed by class generators or adapters.</i>'*/,
+          params: [
+                          {
+                name: 'item',
+                dim: '',
+                type: 'int',
+              },
+                          {
+                name: 'buf',
+                dim: '[]',
+                type: 'char',
+              },
+                      ]
+        },
+          ]
+  },
+  methods: {
+    show: function() {
+      alert(this.message);
+    }
+  },
+  computed: {
+    up: function() {
+      return this.message.toUpperCase();
+    },
+    matchedMethods: function() {
+      var a = this;
+      return this.methods.filter(function(m) {
+        return m.name.toLowerCase().indexOf(a.message.toLowerCase()) !== -1;
+      });
+    }
+  }
+});  
+  </script>
+</body>
+</html>
+

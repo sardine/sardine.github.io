@@ -1,0 +1,300 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width" />
+  <title>Constants</title>
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <h1>Constants</h1>
+
+  org.springframework.core.Constants
+
+
+  <div id="test">
+    <input type="text" v-model="message">
+
+    <template v-for="m in matchedMethods" :key="m.sig">
+      <h3>{{ m.name }}</h3>
+      <pre><code>{{ m.mods }} {{ m.name }}(<template v-for="(p, pi) in m.params" :key="p.name"><template v-if="pi != 0">, </template>{{ p.type }}{{ p.dim }} {{ p.name }}</template>)</code></pre>
+      <div><p>{{ m.desc }}</p></div>
+    </template>
+  </div>
+
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script>
+  var app = new Vue({
+  el: '#test',
+  data: {
+    message: '',
+    methods: [
+              {
+          name: 'getClassName',
+          mods: 'public final',
+          sig: 'getClassName()',
+          desc: ''/*'Return the name of the analyzed class.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'getSize',
+          mods: 'public final',
+          sig: 'getSize()',
+          desc: ''/*'Return the number of constants exposed.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'getFieldCache',
+          mods: 'protected final',
+          sig: 'getFieldCache()',
+          desc: ''/*'Exposes the field cache to subclasses:
+ a Map from String field name to object value.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'asNumber',
+          mods: 'public',
+          sig: 'asNumber(java.lang.String)',
+          desc: ''/*'Return a constant value cast to a Number.'*/,
+          params: [
+                          {
+                name: 'code',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'asString',
+          mods: 'public',
+          sig: 'asString(java.lang.String)',
+          desc: ''/*'Return a constant value as a String.'*/,
+          params: [
+                          {
+                name: 'code',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'asObject',
+          mods: 'public',
+          sig: 'asObject(java.lang.String)',
+          desc: ''/*'Parse the given String (upper or lower case accepted) and return
+ the appropriate value if it's the name of a constant field in the
+ class that we're analysing.'*/,
+          params: [
+                          {
+                name: 'code',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'getNames',
+          mods: 'public',
+          sig: 'getNames(java.lang.String)',
+          desc: ''/*'Return all names of the given group of constants.
+ <p>Note that this method assumes that constants are named
+ in accordance with the standard Java convention for constant
+ values (i.e. all uppercase). The supplied {@code namePrefix}
+ will be uppercased (in a locale-insensitive fashion) prior to
+ the main logic of this method kicking in.'*/,
+          params: [
+                          {
+                name: 'namePrefix',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'getNamesForProperty',
+          mods: 'public',
+          sig: 'getNamesForProperty(java.lang.String)',
+          desc: ''/*'Return all names of the group of constants for the
+ given bean property name.'*/,
+          params: [
+                          {
+                name: 'propertyName',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'getNamesForSuffix',
+          mods: 'public',
+          sig: 'getNamesForSuffix(java.lang.String)',
+          desc: ''/*'Return all names of the given group of constants.
+ <p>Note that this method assumes that constants are named
+ in accordance with the standard Java convention for constant
+ values (i.e. all uppercase). The supplied {@code nameSuffix}
+ will be uppercased (in a locale-insensitive fashion) prior to
+ the main logic of this method kicking in.'*/,
+          params: [
+                          {
+                name: 'nameSuffix',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'getValues',
+          mods: 'public',
+          sig: 'getValues(java.lang.String)',
+          desc: ''/*'Return all values of the given group of constants.
+ <p>Note that this method assumes that constants are named
+ in accordance with the standard Java convention for constant
+ values (i.e. all uppercase). The supplied {@code namePrefix}
+ will be uppercased (in a locale-insensitive fashion) prior to
+ the main logic of this method kicking in.'*/,
+          params: [
+                          {
+                name: 'namePrefix',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'getValuesForProperty',
+          mods: 'public',
+          sig: 'getValuesForProperty(java.lang.String)',
+          desc: ''/*'Return all values of the group of constants for the
+ given bean property name.'*/,
+          params: [
+                          {
+                name: 'propertyName',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'getValuesForSuffix',
+          mods: 'public',
+          sig: 'getValuesForSuffix(java.lang.String)',
+          desc: ''/*'Return all values of the given group of constants.
+ <p>Note that this method assumes that constants are named
+ in accordance with the standard Java convention for constant
+ values (i.e. all uppercase). The supplied {@code nameSuffix}
+ will be uppercased (in a locale-insensitive fashion) prior to
+ the main logic of this method kicking in.'*/,
+          params: [
+                          {
+                name: 'nameSuffix',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'toCode',
+          mods: 'public',
+          sig: 'toCode(java.lang.Object, java.lang.String)',
+          desc: ''/*'Look up the given value within the given group of constants.
+ <p>Will return the first match.'*/,
+          params: [
+                          {
+                name: 'value',
+                dim: '',
+                type: 'Object',
+              },
+                          {
+                name: 'namePrefix',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'toCodeForProperty',
+          mods: 'public',
+          sig: 'toCodeForProperty(java.lang.Object, java.lang.String)',
+          desc: ''/*'Look up the given value within the group of constants for
+ the given bean property name. Will return the first match.'*/,
+          params: [
+                          {
+                name: 'value',
+                dim: '',
+                type: 'Object',
+              },
+                          {
+                name: 'propertyName',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'toCodeForSuffix',
+          mods: 'public',
+          sig: 'toCodeForSuffix(java.lang.Object, java.lang.String)',
+          desc: ''/*'Look up the given value within the given group of constants.
+ <p>Will return the first match.'*/,
+          params: [
+                          {
+                name: 'value',
+                dim: '',
+                type: 'Object',
+              },
+                          {
+                name: 'nameSuffix',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+              {
+          name: 'propertyToConstantNamePrefix',
+          mods: 'public',
+          sig: 'propertyToConstantNamePrefix(java.lang.String)',
+          desc: ''/*'Convert the given bean property name to a constant name prefix.
+ <p>Uses a common naming idiom: turning all lower case characters to
+ upper case, and prepending upper case characters with an underscore.
+ <p>Example: "imageSize" -> "IMAGE_SIZE"<br>
+ Example: "imagesize" -> "IMAGESIZE".<br>
+ Example: "ImageSize" -> "_IMAGE_SIZE".<br>
+ Example: "IMAGESIZE" -> "_I_M_A_G_E_S_I_Z_E"'*/,
+          params: [
+                          {
+                name: 'propertyName',
+                dim: '',
+                type: 'String',
+              },
+                      ]
+        },
+          ]
+  },
+  methods: {
+    show: function() {
+      alert(this.message);
+    }
+  },
+  computed: {
+    up: function() {
+      return this.message.toUpperCase();
+    },
+    matchedMethods: function() {
+      var a = this;
+      return this.methods.filter(function(m) {
+        return m.name.toLowerCase().indexOf(a.message.toLowerCase()) !== -1;
+      });
+    }
+  }
+});  
+  </script>
+</body>
+</html>
+

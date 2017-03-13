@@ -1,0 +1,247 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width" />
+  <title>CollectionFactory</title>
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <h1>CollectionFactory</h1>
+
+  org.springframework.core.CollectionFactory
+
+
+  <div id="test">
+    <input type="text" v-model="message">
+
+    <template v-for="m in matchedMethods" :key="m.sig">
+      <h3>{{ m.name }}</h3>
+      <pre><code>{{ m.mods }} {{ m.name }}(<template v-for="(p, pi) in m.params" :key="p.name"><template v-if="pi != 0">, </template>{{ p.type }}{{ p.dim }} {{ p.name }}</template>)</code></pre>
+      <div><p>{{ m.desc }}</p></div>
+    </template>
+  </div>
+
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script>
+  var app = new Vue({
+  el: '#test',
+  data: {
+    message: '',
+    methods: [
+              {
+          name: 'isApproximableCollectionType',
+          mods: 'public static',
+          sig: 'isApproximableCollectionType(java.lang.Class)',
+          desc: ''/*'Determine whether the given collection type is an <em>approximable</em> type,
+ i.e. a type that {@link #createApproximateCollection} can approximate.'*/,
+          params: [
+                          {
+                name: 'collectionType',
+                dim: '',
+                type: 'Class',
+              },
+                      ]
+        },
+              {
+          name: 'createApproximateCollection',
+          mods: 'public static',
+          sig: 'createApproximateCollection(java.lang.Object, int)',
+          desc: ''/*'Create the most approximate collection for the given collection.
+ <p><strong>Warning</strong>: Since the parameterized type {@code E} is
+ not bound to the type of elements contained in the supplied
+ {@code collection}, type safety cannot be guaranteed if the supplied
+ {@code collection} is an {@link EnumSet}. In such scenarios, the caller
+ is responsible for ensuring that the element type for the supplied
+ {@code collection} is an enum type matching type {@code E}. As an
+ alternative, the caller may wish to treat the return value as a raw
+ collection or collection of {@link Object}.'*/,
+          params: [
+                          {
+                name: 'collection',
+                dim: '',
+                type: 'Object',
+              },
+                          {
+                name: 'capacity',
+                dim: '',
+                type: 'int',
+              },
+                      ]
+        },
+              {
+          name: 'createCollection',
+          mods: 'public static',
+          sig: 'createCollection(java.lang.Class, int)',
+          desc: ''/*'Create the most appropriate collection for the given collection type.
+ <p>Delegates to {@link #createCollection(Class, Class, int)} with a
+ {@code null} element type.'*/,
+          params: [
+                          {
+                name: 'collectionType',
+                dim: '',
+                type: 'Class',
+              },
+                          {
+                name: 'capacity',
+                dim: '',
+                type: 'int',
+              },
+                      ]
+        },
+              {
+          name: 'createCollection',
+          mods: 'public static',
+          sig: 'createCollection(java.lang.Class, java.lang.Class, int)',
+          desc: ''/*'Create the most appropriate collection for the given collection type.
+ <p><strong>Warning</strong>: Since the parameterized type {@code E} is
+ not bound to the supplied {@code elementType}, type safety cannot be
+ guaranteed if the desired {@code collectionType} is {@link EnumSet}.
+ In such scenarios, the caller is responsible for ensuring that the
+ supplied {@code elementType} is an enum type matching type {@code E}.
+ As an alternative, the caller may wish to treat the return value as a
+ raw collection or collection of {@link Object}.'*/,
+          params: [
+                          {
+                name: 'collectionType',
+                dim: '',
+                type: 'Class',
+              },
+                          {
+                name: 'elementType',
+                dim: '',
+                type: 'Class',
+              },
+                          {
+                name: 'capacity',
+                dim: '',
+                type: 'int',
+              },
+                      ]
+        },
+              {
+          name: 'isApproximableMapType',
+          mods: 'public static',
+          sig: 'isApproximableMapType(java.lang.Class)',
+          desc: ''/*'Determine whether the given map type is an <em>approximable</em> type,
+ i.e. a type that {@link #createApproximateMap} can approximate.'*/,
+          params: [
+                          {
+                name: 'mapType',
+                dim: '',
+                type: 'Class',
+              },
+                      ]
+        },
+              {
+          name: 'createApproximateMap',
+          mods: 'public static',
+          sig: 'createApproximateMap(java.lang.Object, int)',
+          desc: ''/*'Create the most approximate map for the given map.
+ <p><strong>Warning</strong>: Since the parameterized type {@code K} is
+ not bound to the type of keys contained in the supplied {@code map},
+ type safety cannot be guaranteed if the supplied {@code map} is an
+ {@link EnumMap}. In such scenarios, the caller is responsible for
+ ensuring that the key type in the supplied {@code map} is an enum type
+ matching type {@code K}. As an alternative, the caller may wish to
+ treat the return value as a raw map or map keyed by {@link Object}.'*/,
+          params: [
+                          {
+                name: 'map',
+                dim: '',
+                type: 'Object',
+              },
+                          {
+                name: 'capacity',
+                dim: '',
+                type: 'int',
+              },
+                      ]
+        },
+              {
+          name: 'createMap',
+          mods: 'public static',
+          sig: 'createMap(java.lang.Class, int)',
+          desc: ''/*'Create the most appropriate map for the given map type.
+ <p>Delegates to {@link #createMap(Class, Class, int)} with a
+ {@code null} key type.'*/,
+          params: [
+                          {
+                name: 'mapType',
+                dim: '',
+                type: 'Class',
+              },
+                          {
+                name: 'capacity',
+                dim: '',
+                type: 'int',
+              },
+                      ]
+        },
+              {
+          name: 'createMap',
+          mods: 'public static',
+          sig: 'createMap(java.lang.Class, java.lang.Class, int)',
+          desc: ''/*'Create the most appropriate map for the given map type.
+ <p><strong>Warning</strong>: Since the parameterized type {@code K}
+ is not bound to the supplied {@code keyType}, type safety cannot be
+ guaranteed if the desired {@code mapType} is {@link EnumMap}. In such
+ scenarios, the caller is responsible for ensuring that the {@code keyType}
+ is an enum type matching type {@code K}. As an alternative, the caller
+ may wish to treat the return value as a raw map or map keyed by
+ {@link Object}. Similarly, type safety cannot be enforced if the
+ desired {@code mapType} is {@link MultiValueMap}.'*/,
+          params: [
+                          {
+                name: 'mapType',
+                dim: '',
+                type: 'Class',
+              },
+                          {
+                name: 'keyType',
+                dim: '',
+                type: 'Class',
+              },
+                          {
+                name: 'capacity',
+                dim: '',
+                type: 'int',
+              },
+                      ]
+        },
+              {
+          name: 'createStringAdaptingProperties',
+          mods: 'public static',
+          sig: 'createStringAdaptingProperties()',
+          desc: ''/*'Create a variant of {@code java.util.Properties} that automatically adapts
+ non-String values to String representations on {@link Properties#getProperty}.'*/,
+          params: [
+                      ]
+        },
+          ]
+  },
+  methods: {
+    show: function() {
+      alert(this.message);
+    }
+  },
+  computed: {
+    up: function() {
+      return this.message.toUpperCase();
+    },
+    matchedMethods: function() {
+      var a = this;
+      return this.methods.filter(function(m) {
+        return m.name.toLowerCase().indexOf(a.message.toLowerCase()) !== -1;
+      });
+    }
+  }
+});  
+  </script>
+</body>
+</html>
+

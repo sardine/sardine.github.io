@@ -1,0 +1,139 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width" />
+  <title>Handle</title>
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+  <link rel="stylesheet" href="http://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <h1>Handle</h1>
+
+  org.springframework.asm.Handle
+
+
+  <div id="test">
+    <input type="text" v-model="message">
+
+    <template v-for="m in matchedMethods" :key="m.sig">
+      <h3>{{ m.name }}</h3>
+      <pre><code>{{ m.mods }} {{ m.name }}(<template v-for="(p, pi) in m.params" :key="p.name"><template v-if="pi != 0">, </template>{{ p.type }}{{ p.dim }} {{ p.name }}</template>)</code></pre>
+      <div><p>{{ m.desc }}</p></div>
+    </template>
+  </div>
+
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script>
+  var app = new Vue({
+  el: '#test',
+  data: {
+    message: '',
+    methods: [
+              {
+          name: 'getTag',
+          mods: 'public',
+          sig: 'getTag()',
+          desc: ''/*'Returns the kind of field or method designated by this handle.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'getOwner',
+          mods: 'public',
+          sig: 'getOwner()',
+          desc: ''/*'Returns the internal name of the class that owns the field or method
+ designated by this handle.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'getName',
+          mods: 'public',
+          sig: 'getName()',
+          desc: ''/*'Returns the name of the field or method designated by this handle.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'getDesc',
+          mods: 'public',
+          sig: 'getDesc()',
+          desc: ''/*'Returns the descriptor of the field or method designated by this handle.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'isInterface',
+          mods: 'public',
+          sig: 'isInterface()',
+          desc: ''/*'Returns true if the owner of the field or method designated
+ by this handle is an interface.'*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'equals',
+          mods: 'public',
+          sig: 'equals(java.lang.Object)',
+          desc: ''/*''*/,
+          params: [
+                          {
+                name: 'obj',
+                dim: '',
+                type: 'Object',
+              },
+                      ]
+        },
+              {
+          name: 'hashCode',
+          mods: 'public',
+          sig: 'hashCode()',
+          desc: ''/*''*/,
+          params: [
+                      ]
+        },
+              {
+          name: 'toString',
+          mods: 'public',
+          sig: 'toString()',
+          desc: ''/*'Returns the textual representation of this handle. The textual
+ representation is:
+ 
+ <pre>
+ for a reference to a class:
+ owner '.' name desc ' ' '(' tag ')'
+ for a reference to an interface:
+ owner '.' name desc ' ' '(' tag ' ' itf ')'
+ </pre>
+ 
+ . As this format is unambiguous, it can be parsed if necessary.'*/,
+          params: [
+                      ]
+        },
+          ]
+  },
+  methods: {
+    show: function() {
+      alert(this.message);
+    }
+  },
+  computed: {
+    up: function() {
+      return this.message.toUpperCase();
+    },
+    matchedMethods: function() {
+      var a = this;
+      return this.methods.filter(function(m) {
+        return m.name.toLowerCase().indexOf(a.message.toLowerCase()) !== -1;
+      });
+    }
+  }
+});  
+  </script>
+</body>
+</html>
+
